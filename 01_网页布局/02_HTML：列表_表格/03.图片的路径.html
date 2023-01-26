@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        路径：分两种 1.绝对路径 2.相对路径
+        1.绝对路径：
+            就是指路径是一个完整的，确切的路径。例如：https://xxxx/xxx
+        
+        2.相对路径：
+            就是相对于某个资源来说的路径。
+            相对路径一般是相对于当前文件所在的目录来说的。目录就是文件夹的意思。
+            利用相对路径就可以使用本地的图片。
+
+            相对路径涉及到的两个符号：
+            .     表示当前文件所在目录 . 可以省略
+            ..    表示当前文件所在目录的上级目录（返回上级目录）
+
+     -->
+     <img src="./9f8877b04de762c8.jpg" alt="">
+     <!-- 省略 ./ -->
+     <img src="9f8877b04de762c8.jpg" alt="">
+
+     <img src="./图片/3.jpg" alt="">
+
+     <img src="./../4.jpg" alt="">
+     <img src="../4.jpg" alt="">
+     
+</body>
+</html>

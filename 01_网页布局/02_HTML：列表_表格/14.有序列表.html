@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        有序列表：和无序列表类似，不同的是将无序列表中的项目符号变成了有序。
+        有序列表标签：ol order list
+        列表项标签：li list item
+        有序列表的属性：
+            type , 可选值有:1-默认的,  a A I i
+            strat , 可以设置项目符号从第几个开始
+            reversed ,反转的意思，倒着编号。值只有一个 reversed
+            （如果属性名和属性值一样时，可以只写属性名。）
+
+     -->
+     <ol type="A">
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+     </ol>
+    
+     <ol type="a" start="3">
+        <li>哈哈</li>
+        <li>哈哈</li>
+        <li>哈哈</li>
+        <li>哈哈</li>
+        <li>哈哈</li>
+
+     </ol>
+
+     <ol start="2">
+        <li>呵呵</li>
+        <li>呵呵</li>
+        <li>呵呵</li>
+        <li>呵呵</li>
+        <li>呵呵</li>
+     </ol>
+
+     <ol reversed="reversed">
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+     </ol>
+     <!-- 当属性名和属性值一样时，可以只写属性名 -->
+     <ol reversed>
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+        <li>嘻嘻</li>
+     </ol>
+</body>
+</html>

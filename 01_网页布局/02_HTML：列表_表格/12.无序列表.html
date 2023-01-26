@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        无序列表：就是列表中的信息没有顺序，体现出来的就是列表的项目符号默认是 实心圆圈。
+
+        无序列表使用 ul 标签。order-顺序、订单 unorder-无序 l-list 列表
+        列表项使用 li 标签。l-list 列表 i-item 项
+
+        ul 和 li 标签都有的属性：
+        type 属性，可以设置列表的项目符号。
+        type的取值有：desc-默认，实心黑点、 circle-圆、square-方块、 none-没有
+
+        列表是可以嵌套的。
+     -->
+
+     <ul type="circle">
+        <li>今天的军事新闻20230126</li>
+        <li>今天的财经新闻20230126</li>
+        <li>今天的民生新闻20230126</li>
+     </ul>
+
+     <ul type="square">
+        <li>今天的军事新闻20230126</li>
+        <li>今天的财经新闻20230126</li>
+        <li>今天的民生新闻20230126</li>
+     </ul>
+
+     <!-- 快捷键：ul>li*3 -->
+     <ul>
+        <li type="square">今天的财经新闻20230126</li>
+        <li type="circle">今天的财经新闻20230126</li>
+        <li>今天的财经新闻20230126</li>
+     </ul>
+
+     <!-- 快捷键：ul>li*3{内容} -->
+     <ul>
+        <li>今天的财经新闻20230126</li>
+        <li>今天的财经新闻20230126</li>
+        <li>今天的财经新闻20230126</li>
+     </ul>
+
+     <ul>
+        <li>
+            北京市
+            <ul>海淀区</ul>
+            <ul>大兴区</ul>
+            <ul>通州区</ul>
+        </li>
+        <li>
+            山西省
+            <ul>
+                <li>太原市</li>
+                <li>运城市</li>
+                <li>大同市</li>
+            </ul>
+        </li>
+        <li>
+            山东省
+            <ul type="square">
+                <li>青岛市</li>
+                <li>济南市</li>
+                <li>威海市</li>
+            </ul>
+        </li>
+     </ul>
+
+     <!-- 练习 -->
+     <ul>
+        <li>
+            <a href="#"></a>
+            <a href="https://news.yahoo.co.jp/pickup/6451897">マスク着用「個人に委ねる」方針</a>
+        </li>
+        <li>
+            <a href="#"></a>
+            <a href="https://news.yahoo.co.jp/pickup/6451897">マスク着用「個人に委ねる」方針</a>
+        </li>
+        <li>
+            <a href="#"></a>
+            <a href="https://news.yahoo.co.jp/pickup/6451897">マスク着用「個人に委ねる」方針</a>
+        </li>
+     </ul>
+
+     <!-- 快捷键：ul>li*3>a[]{内容} -->
+     <ul>
+        <li><a href="#">マスク着用「個人に委ねる」方針</a></li>
+        <li><a href="#">マスク着用「個人に委ねる」方針</a></li>
+        <li><a href="#">マスク着用「個人に委ねる」方針</a></li>
+     </ul>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        表格：表格主要就是用来展示数据的。类似于Excle表格。
+        表格中有：行(row)、列（column）、单元格（cell）
+
+        表格标签：table，是双标签
+        行标签：tr,table row
+        单元格标签：td,(table) date
+
+        标题标签：caption 可以给表格加标题，这个标题内容会在表中水平居中。（了解）
+
+        表格结构相关的标签：
+            1.表格头部标签 thead
+            2.表格主题标签 tbody
+            3.表格底部标签 tfoot
+        （这三个标签使用后不会对表格有任何影响）
+        但是要注意：我们在table中直接写的tr,在tr里面可以写td。
+                   但是浏览器会自动给我们table里面加上一个tbody，
+                   将所以的tr给包起来。
+     -->
+     <table border="1">
+        <tr>
+            <td>11</td>
+            <td>22</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>44</td>
+            <td>55</td>
+            <td>66</td>
+            <td>77</td>
+            <td>88</td>
+        </tr>
+        <tr>
+            <td>99</td>
+            <td>00</td>
+        </tr>
+     </table>
+
+     <!-- 快捷键：table>tr*3>td*3 -->
+     <table border="1">
+        <tr>
+            <td>我</td>
+            <td>是</td>
+            <td>大</td>
+        </tr>
+        <tr>
+            <td>傻</td>
+            <td>逼</td>
+            <td>才</td>
+        </tr>
+        <tr>
+            <td>怪</td>
+            <td>啊</td>
+            <td>哈</td>
+        </tr>
+     </table>
+
+     <!-- border 是边框的意思 -->
+     <table border="1">
+        <caption>我是标题</caption>
+        <tr>
+            <td>哈哈哈</td>
+            <td>哈哈哈</td>
+            <td>哈哈哈</td>
+        </tr>
+        <tr>
+            <td>哈哈哈</td>
+            <td>哈哈哈</td>
+            <td>哈哈哈</td>
+        </tr>
+        <tr>
+            <td>哈哈哈</td>
+            <td>哈哈哈</td>
+            <td>哈哈哈</td>
+        </tr>
+     </table>
+     
+     <table border="1">
+        <thead>
+            <tr>
+                <td>语文</td>
+                <td>数学</td>
+                <td>英语</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>99</td>
+                <td>88</td>
+                <td>77</td>
+            </tr>
+            <tr>
+                <td>66</td>
+                <td>55</td>
+                <td>44</td>
+            </tr>
+            <tr>
+                <td>33</td>
+                <td>22</td>
+                <td>11</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>9</td>
+                <td>8</td>
+                <td>7</td>
+            </tr>
+        </tfoot>
+        <tr>
+            <td>语文</td>
+            <td>数学</td>
+            <td>英语</td>
+        </tr>
+        <tr>
+            <td>99</td>
+            <td>88</td>
+            <td>77</td>
+        </tr>
+        <tr>
+            <td>66</td>
+            <td>55</td>
+            <td>44</td>
+        </tr>
+        <tr>
+            <td>33</td>
+            <td>22</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>8</td>
+            <td>7</td>
+        </tr>
+     </table>
+
+     <table border="1">
+        <caption>我是标题</caption>
+        <thead>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>33</td>
+                <td>44</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>55</td>
+                <td>66</td>
+            </tr>
+        </tfoot>
+     </table>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        超链接：
+
+        作用：点击超链接后可以跳转到另一个页面。
+        超链接标签的特点：超链接标签不会独占一整行，会水平摆放。
+        标签：<a></a> 双标签
+        属性：
+            href:指定超链接跳转的路径。可以相对路径，也可以是绝对路径。
+            target:制定以什么样式的方式跳转到另一个页面，它可选值有：
+                
+                _self:在当前页面去跳转，默认值
+                _blank:在一个新标签页去跳转
+        -->
+
+     <!-- 路径是绝对的 -->
+     <a href="https://www.baidu.com">点我跳转到百度</a>
+
+     <!-- 路径是相对的 -->
+     <a href="./9f8877b04de762c8.jpg">点我跳转到02页面</a>
+
+     <a href="https://www.jd.com" target="_self">点我跳转到京东</a>
+     <a href="https://www.jd.com" target="_blank">点我跳转到京东2</a>
+
+     <!-- 点击该超链接后去 name="bottom(底部）" 的超链接位置 -->
+     <a href="#bottom">去底部</a>
+     <a href="#dibu">去底部666</a>
+     
+     <br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+     <img src="./9f8877b04de762c8.jpg" alt=""><br>
+
+     <a name="bottom">我是底部</a>
+     <a name="dibu">我是底部666</a>
+     
+     <!-- # 井号 表示回到页面的顶部-->
+     <a href="#">去顶部</a>
+     
+     <!-- 
+        # 井号除了可以表示去顶部外，还可以用来作为占位符。
+        当你写超链接的时候，不知道往哪里跳转时，可以用 #
+      -->
+      <!-- 
+        在浏览器中按ctrl+shift+delete 可以清楚浏览器访问记录
+       -->
+      <!-- 
+        超链接有自己默认的样式：
+        1.没有访问过的超链接文字是蓝色，有下划线
+        2.鼠标移动到超链接上后，鼠标变为了小手
+        3.鼠标点击下去后文字变为红色
+        4.访问过的超链接文字就变为紫色
+        -->
+</body>
+</html>
