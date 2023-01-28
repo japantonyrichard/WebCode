@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        label 标签：就是用来提升用户体验度的。他要配合 radio 和 checkbox 使用。
+                    之前，我们单元按钮和复选框要选中时，用户必须点击按钮才行，点击文字是不行的。
+                使用label后，点击文字也可以选中。
+        
+        任何标签都可以写 id 属性。id 就是编号的意思，类似于我们的身份证号。
+                                所以说在一个页面中 id 是不能重复的。
+
+        label 的使用：
+        1.将要显示的文字写在label标签中
+        2.for 属性的值 写 要关联的表单项的 id值
+
+     -->
+    
+
+     <form action="">
+
+        性别：<input type="radio" name="sex" id="man" value="man"><label for="man">男</label>
+             <input type="radio" name="sex" id="woman" value="woman"><label for="woman">女</label>
+             <br>
+        爱好：<input type="checkbox" id="eat" name="hobby" value="eat"><label for="eat">吃饭</label>
+             <input type="checkbox" id="sleep" name="hobby" value="sleep"><label for="sleep">睡觉</label>
+             <input type="checkbox" id="ddd" name="hobby" value="ddd">
+             <label for="ddd">打豆豆</label>
+
+             <br>
+             
+             <input type="button" value="普通按钮">
+             
+             <button>我是按钮</button>
+             
+     </form>
+
+     <!-- 
+        问题：
+        1.表单项的内容都要写在form标签中
+        2.type=text,radio,checkbox,password
+        3.写代码，要想着写。
+      -->
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>练习1</h3>
+    <ul>
+        <li>
+            HTML
+            <ol>
+                <li>
+                    第一章
+                    <ul>
+                        <li>h1-h6</li>
+                        <li>p</li>
+                    </ul>
+                </li>
+                <li>
+                    第二章
+                    <ul>
+                        <li>img</li>
+                        <li>a</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li>
+            CSS
+            <ol>
+                1.第一章
+                <ul>
+                    <li>引入CSS的方式</li>
+                    <li>选择器</li>
+                </ul>
+            </ol>
+            <ol>
+                2.第二章
+                <ul>
+                    <li>盒模型</li>
+                    <li>浮动</li>
+                </ul>
+            </ol>
+        </li>
+    </ul>
+    
+    <!--caption表格表格自动居中，tr*4>td*5 ，th默认样式可以自动加粗居中，替代td  -->
+    <h3>练习2</h3>
+    <table width="800" border="2" cellspacing="0">
+        <!-- 标签嵌套，b标签套上标题文本可以加粗 -->
+        <caption><b>同学通讯录</b></caption>
+        <tr bgcolor="red">
+            <th>姓名</th>
+            <th>性别</th>
+            <th>电话</th>
+            <th colspan="2">兴趣爱好</th>
+            <!-- ↑ 4列5列合并的一个，所以把第5个删了，用 colspan合并 -->
+        </tr>
+        <tr align="center">
+            <td>张三</td>
+            <td>男</td>
+            <td>1234567890</td>
+            <td>旅游</td>
+            <td>篮球</td>
+        </tr>
+        <tr align="center">
+            <td>貂蝉</td>
+            <td>男</td>
+            <td>0987654321</td>
+            <td>音乐</td>
+            <td>舞蹈</td>
+        </tr>
+        <tr height="20">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+    <h3>练习3</h3>
+    <table width="800" border="2" cellspacing="0">
+        <tr bgcolor="red" align="center">
+            <td rowspan="2">
+                酒店<br>
+                <img src="../image/ayaka02.jpg" height="50" alt="">
+            </td>
+            <td>海外酒店</td>
+            <td>团购</td>
+        </tr>
+        <tr bgcolor="red" align="center">
+            <!-- ctrl+d 可以删除光标所在行 -->
+            <td>特价酒店</td>
+            <td>民宿·客栈</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

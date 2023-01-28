@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        实体字符：
+        有些字符在浏览器中是不能被识别的，那这些字符如果要能被正常显示，那我们就是用这些字符对应的实体字符。
+        比如：
+            1.在代码中的多个连续空格，浏览器只会识别成一个空格
+            2.在代码中写的> < ，浏览器会将其解析为标签的尖括号
+        
+            实体的语法格式：&实体符号；
+
+        常见的实体：
+                    空格 &nbsp ； not break space
+                     >   &gt ； greater than
+                     <   &lt ;  less than
+                    版权 &copy ; 
+
+
+        html语言是一个弱类型的语言。
+    
+    -->
+    <p>你       好  坏 啊</p>
+    <p>你&nbsp&nbsp&nbsp&nbsp&nbsp好&nbsp&nbsp&nbsp&nbsp坏&nbsp&nbsp啊</p>
+    <p>
+        a<b>c
+    </p>
+    <p>
+        a&ltb&gtc
+    </p>
+    <!-- 版权符号 -->
+    &copy;
+    
+    </body>
+</html>

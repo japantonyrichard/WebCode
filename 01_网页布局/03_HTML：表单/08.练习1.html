@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="./服务器.html" method="get" name="form1">
+
+        <table align="center" width="600" height="500" border="3" cellspacing="0">
+            <tr align="center">
+                <td>姓名：</td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr align="center">
+                <td>密码：</td>
+                <td>
+                    <input type="password" name="password">
+                </td>
+            </tr>
+            <tr align="center">
+                <td>确认密码：</td>
+                <td>
+                    <input type="password" name="password">
+                </td>
+            </tr>
+            <tr align="center">
+                <td>性别：</td>
+                <td>
+                    <input id="man" type="radio" name="sex" value="男">
+                    <label for="man">男</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="woman" type="radio" name="sex" value="女">
+                    <label for="woman">女</label>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>爱好：</td>
+                <td>
+                    <input id="eat" type="checkbox" name="hobby" value="eat">
+                    <label for="eat">吃饭</label>&nbsp;&nbsp;&nbsp;
+                    <input id="sleep" type="checkbox" name="hobby" value="sleep">
+                    <label for="sleep">睡觉</label>&nbsp;&nbsp;&nbsp;
+                    <input id="ddd" type="checkbox" name="hobby" value="ddd">
+                    <label for="ddd">打豆豆</label>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>城市：</td>
+                <td>
+                    <select name="city" id="">
+                        <option value="0">请选择</option>
+                        <option value="1">太原市</option>
+                        <option value="2">北京市</option>
+                        <option value="3">西宁市</option>
+                        <option value="4">其他</option>
+                    </select>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>自我介绍：</td>
+                <td>
+                    <textarea name="desc" id="" cols="30" rows="5">请填写你的自我介绍。</textarea>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="2">
+                    <input type="submit" value="立即注册">
+                </td>
+                
+            </tr>
+        </table>
+
+
+    </form>
+</body>
+</html>

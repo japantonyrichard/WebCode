@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        表单项就是表单标签中包含的元素，表单项中的内容最终就会提交给服务器。
+        表单项标签基本上都是input 标签，只不过是通过 input 标签的type 属性值的不同，在浏览器上显示的效果不同。
+
+        1.文本框：<input type="text">        text    文本
+        2.密码框：<input type="password">   password 密码
+        3.提交按钮：<input type="submit" value="登录"> submit 提交，value 属性就是要按钮上显示的文字。
+            表单项内容要想被服务器收到，表单项需要有 name 属性 。
+        4.单选按钮：<input type="radio">
+          一组单选按钮的 name 必须一样。
+          像单选按钮这种表单项，用户没有输入，只是用鼠标勾选，这时候表单项必须写value属性。
+        5.复选框：<input type="checkbox">
+            复选框必须写 name ，而且一组复选框的 name 得一样。
+        6.重置按钮：<input type="reset"> reset-重置 repeat-重复
+        7.普通按钮：<input type="button">
+
+
+
+        get 与 post 提交方式的区别？
+        1.get 方式 提交时，表单中的参数会在浏览器地址栏显示,不安全。格式：username=xxx&password=xxxx
+        2.post 方式 提交时，表单中的参数不会在浏览器地址栏显示，安全。
+        3.get 方式 提交时，参数不能太大，不能超过 2kb
+        4.post 方式 提交时，参数理论上大小是没有限制的。
+
+        计算机中的单位：
+        1.最小的单位是 位（bit）
+        2.单位的换算：
+            1 Byte = 8 bit
+            1 KB = 1024 Byte
+            1 MB = 1024 KB
+            1 GB = 1024 MB
+
+        一个字母，一个数字 都是 1 字节
+        一个中文在GBK编码时占用两个字节，在UTF-8编码是占用3字节。 
+     -->
+
+
+     <form action="服务器的地址" method="post" name="form1">
+        账号：<input type="text"><br>
+        密码：<input type="password"><br>
+        <input type="submit" value="登录">
+     </form>
+     
+     <form action="./服务器.html" method="get" name="form1">
+        账号：<input type="text" name="username"><br>
+        密码：<input type="password" name="password"><br>
+        性别：<input type="radio" name="sex" value="男">男    
+              <input type="radio" name="sex" value="女">女<br>
+
+        爱好: <input type="checkbox" name="hobby" value="smoking">抽烟
+            <input type="checkbox" name="hobby" value="drink">喝酒
+            <input type="checkbox" name="hobby" value="perm">烫头<br>
+            
+        <input type="submit" value="登录">
+        <input type="reset" value="清空">
+        <input type="button" value="点我">
+     </form>
+      
+</body>
+</html>
