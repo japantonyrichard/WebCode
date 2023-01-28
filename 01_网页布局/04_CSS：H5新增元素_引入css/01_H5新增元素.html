@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        html5，简称 H5 。
+        html5 新增了很多内容，比如：语义化布局标签、存储特性、视频、音频等等。
+        要注意：这些新特性 IE8及其以下是不支持的！
+        
+        语义化布局标签：
+        1.之前我们在做布局的时候，使用的是 div 。 div是一个无语义的标签。
+         所以当我们在页面中写了几个div后，如果不写注释说明的话，就不是很清楚这个div到底是想要放什么的容器？
+         是页面的头部？导航？底部？主题内容？
+        2.所以H5 新增了语义化布局标签，用它们代替了之前div的一些功能。
+            h5新增的语义化布局标签可以和div混合使用。
+        3.H5 新增的语义化标签（有语义）有：
+            header 标签：表示头部
+            nav 标签： 表示导航
+            aside 标签：侧边栏
+            article 标签：文章、博客、帖子等
+            section 标签：段落、评论等
+            footer 标签：底部
+        
+            H5虽然新增了语义化的布局标签，但我们还是爱用div。
+
+        单词：header 头部   navigator 导航(简写 nav) footer 底部   content 主题内容 article 文章
+    -->
+
+    <!-- 使用div布局 -->
+    <!-- 外层容器 -->
+    <div>
+        <!-- 头部信息 -->
+        <div></div>
+        <!-- 导航 -->
+        <div></div>
+        <!-- 主题内容 -->
+        <div>
+            <!-- 左边的 -->
+            <div></div>
+            <!-- 右边的 -->
+            <div></div>
+        </div>
+        <!-- 底部 -->
+        <div></div>
+    </div>
+
+    <!-- 利用 H5 新增的语义化布局标签布局 -->
+    <!-- 外层的容器 -->
+    <div>
+        <!-- 头部 -->
+        <header></header>
+        <!-- 导航 -->
+        <nav></nav>
+        <!-- 主题 -->
+        <div>
+            <!-- 侧边栏 -->
+            <aside></aside>
+            <!-- 文章 -->
+            <article>
+                <!-- 段落、评论 -->
+                <section></section>
+            </article>
+        </div>
+        <!-- 底部 -->
+        <footer></footer>
+    </div>
+
+    <!-- 
+        div是块元素。
+        H5新增的这些语义化布局标签也都是块元素。
+     -->
+    <header>123</header>
+    <footer>456</footer>
+    <nav>789</nav>
+
+</body>
+</html>

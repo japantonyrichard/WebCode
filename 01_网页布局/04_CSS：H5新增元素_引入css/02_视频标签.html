@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        H5新增了视频和音频。
+        之前没有对视频和音频的支持时，我们在浏览器中播放视频和音频时还需要借助第三方软件，如flash。
+
+        视频标签：video 属性有：
+        1. src : 指定视频的地址路径
+        2. width : 设置视频播放器的宽度
+        3. height : 设置视频播放器的高度
+        4. controls : 显示控制面板 (没有的话播放不了)
+        5. muted : 静音
+        6. autoplay : 自动播放 ,要想能自动播放，必须设置静音。
+        7. preload ：预加载 ， 当页面加载完毕后就会预先加载视频。  load 加载
+                        （↑如果有autoplay的话，可以不写它↑）
+        8. poster ：可以设置视频的封面(封面党 哈哈)
+        9. loop : 循环 ，可以使视频循环播放 loop="loop" 可以简写。
+     -->
+
+     <video height="400" muted autoplay width="400" controls src="./images/video1.mp4">
+        您的浏览器不支持视频播放，请升级</video>视频1
+        <!-- 要想能自动播放，必须设置静音。 -->
+        <video height="400" autoplay width="400" controls src="./images/video1.mp4">
+        您的浏览器不支持视频播放，请升级</video>视频2
+        <video height="400" loop poster="../image/秋田犬.jpg" preload width="400" controls src="./images/video1.mp4">
+        您的浏览器不支持视频播放，请升级</video>视频3
+        
+</body>
+</html>
