@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="./服务器.html" method="get" name="form1">
+        <table>
+            <tr>
+                <td align="right">*身份证类型：</td>
+                <td>
+                    <select name="idcard" id="">
+                        <option value="1">身份证</option>
+                        <option value="2">港澳台通行证</option>
+                        <option value="3">护照</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">*身份证号码：</td>
+                <td>
+                    <input autofocus type="text" name="idcard">
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">*姓&nbsp;&nbsp;&nbsp;名：</td>
+                <td>
+                    <input  type="text" placeholder="请输入与身份证一致的姓名">
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">*身份证有效时间段：</td>
+                <td >
+                    <input checked type="radio" name="time" value="5"><b>5年</b>
+                    <input type="radio" name="time" value="10"><b>10年</b>
+                    <input type="radio" name="time" value="20"><b>20年</b>
+                    <input id="long" type="radio" name="time" value="long">
+                    <label for="long"><b>长期</b></label>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">*密&nbsp;&nbsp;&nbsp;码</td>
+                <td>
+                    <input type="text" placeholder="8位以上数字、字母特殊字符">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">*确认密码</td>
+                <td>
+                    <input type="text" placeholder="请再次输入密码">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">*电子邮箱</td>
+                <td>
+                    <input type="text" placeholder="请输入电子邮箱">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">*手机号码</td>
+                <td>
+                    <input type="text" placeholder="请输入手机号码">
+                </td>
+            </tr>
+
+            <tr>
+                <!-- ↓前面有空的话，可以做一个空表格<td></td>↓ -->
+                <td></td>
+                <td>
+                    <input id="isAgree" type="checkbox" name="agree" value="1">
+                    <label for="isAgree">我已阅读并同意</label>
+                    <a href="#">《中国教师资格网注册协议》</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

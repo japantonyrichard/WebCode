@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        目前我们学习了表单标签，表单项标签。
+        也学习了里面的一些属性。
+
+        form的属性有：action  method  name
+        input的属性有：type  value  id  name 
+
+        表单项的属性除了上面的以外，还有很多：
+        1.placeholder：可以在输入框中显示文字，当用户输入的时候，文字自动消失
+        2.autofocus: 自动聚集，当打开页面后，鼠标光标会自动聚焦到某个表单项里
+        3.checked:选中的意思。配合单选按钮和复选框使用。使用它可以默认选中某个单选按钮，或者某几个复选框
+        4.selected:选中的意思。配合 下拉列表（select）使用，使用它可以默认选中某个下拉列表选项。
+        5.minlength 和 maxlength :指定输入框中字符的最小个数和最大个数。
+        6.readonly:使用readonly修饰的表单项元素，用户只能看不能改。但是提交表单的时候还是会提交它到服务器的。
+        7.disabled ：不可用。用户只能看，不能点进去，颜色就是灰色。不会提交到服务器。
+    
+     -->
+
+     <form action="">
+        <!-- 属性名和值一样的时候可以省略 autofocus="autofocus"省略为autofocus -->
+        <input type="text" autofocus minlength="2" maxlength="5" name="username" placeholder="账号"><br>
+        <input type="text" value="123" readonly><br>
+        <input type="text" value="456" disabled><br>
+        <input type="text" autofocus="autofocus" name="username" placeholder="账号"><br>
+        <input type="password" name="password" placeholder="密码"><br>
+        
+        <input type="radio" name="sex" checked value="男">男
+        <input type="radio" name="sex" value="女">女<br>
+
+        <input type="checkbox" name="hobby" value="eat">吃饭
+        <input type="checkbox" checked name="hobby" value="sleep">睡觉
+        <input type="checkbox" checked name="hobby" value="ddd">打豆豆<br>
+
+        <select name="city" id="">
+            <option value="0">北京市</option>
+            <option value="1">上海市</option>
+            <option value="2" selected>深圳市</option>
+        </select><br>
+        <input type="submit"><br>
+
+    
+     </form>
+</body>
+</html>
