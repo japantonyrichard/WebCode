@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 给 class="box" 的元素里面的所有的后代（a）设置样式*/
+        .box a{
+            color: violet;
+        }
+
+        /* 给 class="box"元素里面的子元素a（儿子 a）设置样式 */
+        .box>a{
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        后代元素选择器：
+        1.后代元素选择器就是用来选择（某些）祖先元素的（某些）后代元素。
+        2.语法格式：  ↓空格↓
+                祖先元素 后代元素{
+                    属性：属性值；
+                }
+     -->
+
+     <div class="box">
+        <a href="#">超链接1</a>
+        <a href="#">超链接2</a>
+
+        <p>
+            <a href="#">超链接3</a>
+            <a href="#">超链接4</a>
+        </p>
+     </div>
+
+     <a href="#">超链接5</a>
+     <a href="#">超链接6</a>
+</body>
+</html>

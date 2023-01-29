@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 给 class="pp" 的元素后面紧挨着的 p 元素设置样式 */
+        .pp+p{
+            color: red;
+        }
+
+        .pp666+p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        相邻兄弟选择器：
+        1.相邻兄弟选择器就是选中某个元素后面紧挨着它的兄弟。（选的是后一个兄弟）
+        2.语法格式：
+                前一个兄弟+后一个兄弟{
+                    属性：属性值；
+                }
+     -->
+
+     <div>
+        <p>段落1</p>
+        <p>段落2</p>
+        <p class="pp">段落3</p>
+        <p>段落4</p>
+        <p>段落5</p>
+     </div><br>
+
+     <div>
+        <p>段落1</p>
+        <p>段落2</p>
+        <p class="pp666">段落3</p>
+        <div>div1</div>
+        <p>段落4</p>
+        <p>段落5</p>
+     </div>
+</body>
+</html>

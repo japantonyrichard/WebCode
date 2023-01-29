@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{
+            color: red;
+            font-size: 25px;
+            font-style: italic;
+            font-family: Segoe Print;
+        }
+
+        h1{
+            font-size: 16px;
+            /* 字体粗细为正常的 */
+            font-weight: 400;
+            /* 字体加粗 */
+            font-weight: 700;
+        }
+
+        i{
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        字体属性介绍：
+        1.字体属性就是用来设置文字的各种样式的。
+        2.目前学习的字体相关属性有：
+            1，color        文字颜色
+            2，font-size    文字大小
+            3，font-weight  文字的粗细
+            4，font-style   文字是否斜体
+            5，font-family  字体，比如宋体黑体微软雅黑等
+
+        1.color属性：可以设置字体的颜色。
+        2.font-size 属性：可以设置字体的大小。浏览器默认字体是16px，支持的最小字体是12px
+        3.font-weight 属性：可以设置字体的粗细。可选值有：
+                1，normal   正常粗细
+                2，bold     加粗
+                3，bolder   更粗
+                4，light    细的
+                5，lighter  更细
+                6, 100、200、300、400、、、900 （工作一般用这个）
+                    400就相当于normal，也就是正常粗细******************
+                    700就相当于bold，也就是加粗。**********************
+        4.font-style 属性：可以设置字体倾斜。可选值有：
+                                            1，normal ， 默认 ，正常字体
+                                            2，italic   倾斜
+        5.font-family 属性：设置字体。可以设置多个字体，设置多个字体的话，用逗号（，）隔开。
+            比如：font-family：字体；微软雅黑； 
+                如果用户电脑上支持第一个字体，那就用第一个，如果不支持的话，就尝试第二个....
+     -->
+
+     <div class="box">
+        我是div中的内容
+        <p>我是段落中的内容</p>
+        <!-- 超链接自己有样式，本身就有颜色，所以不继承父亲的颜色样式 -->
+        <a href="#">我是超链接</a>
+    </div>
+
+    我是div外面的文字。
+
+    <h1>我是1级标题</h1>
+    <i>我是i标签中的内容</i>
+</body>
+</html>

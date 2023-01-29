@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 给 class="box1" 里面的子元素 p 设置样式*/
+        /* 用 div>p{
+            background-color: violet; 
+            } 这么写也可以 */
+        .box1>p{
+            background-color: violet;
+        }
+        /* 给 class="pp"里面的子元素 a 设置样式 */
+        .pp>a{
+            color: tomato;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        子元素选择器：
+        1.选择父元素中指定的子元素
+        2.语法格式：
+                    父元素>子元素{
+                        属性：属性值；
+                    }
+     -->
+
+     <div class="box1">
+        <p>段落1</p>
+        <p>段落2</p>
+        <h3>标题1</h3>
+     </div>
+
+     <p>段落3</p>
+     <p>段落4</p>
+     <p class="pp">
+        <a href="#">超链接1</a>
+        <a href="#">超链接2</a>
+        <div>
+            <!-- 超链接4是属于后代了 所有不适用1,2的样式  -->
+            <a href="#">超链接4</a>
+        </div>
+     </p>
+     <a href="#">超链接3</a>
+</body>
+</html>

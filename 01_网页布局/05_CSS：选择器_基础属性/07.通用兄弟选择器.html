@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+       /* 选择 class="p3" 的后面的所有的 p 兄弟 */
+       .p3~p{
+            background-color: violet;
+        }
+
+        .p3~p{
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        通用兄弟选择器：
+        1.通用兄弟选择器就是选择某个元素后面的指定的所有的兄弟。
+        2.语法格式：
+                A~B{
+                    属性：属性值；
+                }
+     -->
+
+     <div class="box">
+        <p>段落1</p>
+        <p>段落2</p>
+        <p class="p3">段落3</p>
+        <p>段落4</p>
+        <p>段落5</p>
+        <p>段落6</p>
+        <p>段落7</p>
+        <p>段落8</p>
+     </div><br>
+
+     <div class="box">
+        <p>段落1</p>
+        <p>段落2</p>
+        <p class="p3">段落3</p>
+        <div>div</div>
+        <p>段落4</p>
+        <p>段落5</p>
+        <div>
+            <p>段落666</p>
+        </div>
+        <p>段落6</p>
+        <div>div2</div>
+        <p>段落7</p>
+        <p>段落8</p>
+     </div>
+</body>
+</html>

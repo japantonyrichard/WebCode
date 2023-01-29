@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 1000px;
+            height: 600px;
+            background-color: blueviolet;
+        }
+
+        .left{
+            width: 200px;
+            height: 100%;
+            background-color: brown;
+            float: left;
+        }
+
+        .right{
+            width: 800px;
+            height: 100%;
+            background-color: palegreen;
+            float: left;
+        }
+
+        .box888{
+            width: 200px;
+            height: 300px;
+            background-color: yellow;
+            float: left;
+        }
+        /* 图片宽高与父元素100%就充满了 */
+        .img1{
+            width: 100%;
+            height: 100%;
+        }
+        .img2{
+            width: 100%;
+            height: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 外层的容器 -->
+    <div class="box">
+        <!-- 左边的容器 -->
+        <div class="left">
+            <img class="img1" src="./images/1.webp" alt="">
+        </div>
+        <!-- 右边的容器 -->
+        <div class="right">
+            <div class="box888">
+                <img class="img2" src="./images/2.webp" alt="">
+            </div>
+            <div class="box888"><img class="img2" src="./images/2.webp" alt=""></div>
+            <div class="box888"><img class="img2" src="./images/2.webp" alt=""></div>
+            <div class="box888"><img class="img2" src="./images/2.webp" alt=""></div>
+            <div class="box888"><img class="img2" src="./images/2.webp" alt=""></div>
+            <div class="box888"><img class="img2" src="./images/2.webp" alt=""></div>
+            <div class="box888"><img class="img2" src="./images/2.webp" alt=""></div>
+            <div class="box888"><img class="img2" src="./images/2.webp" alt=""></div>
+        </div>
+    </div>
+
+</body>
+</html>

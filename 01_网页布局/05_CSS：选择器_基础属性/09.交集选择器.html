@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 选中div元素，并且div的class="box" 里面的子元素a */
+        div.box>a{
+            color: violet;
+        }
+
+        /* 选中div元素里面的所有的class="box"的元素里面的子元素a */
+        div .box>a{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        昨天学习过并集选择器：
+        并集选择器的格式是：
+        选择器1，选择器2，...{
+
+        }
+
+        交集选择器：
+        1.就是选择符合多个条件的元素
+        2.语法格式：
+                选择器1选择器2...选择器n{
+
+                }
+     -->
+
+     <div class="box">
+        <a href="#">超链接1</a>
+     </div>
+     
+     <div>
+        <a href="#">超链接2</a>
+     </div>
+
+     <p class="box">
+        <a href="#">超链接3</a>
+     </p>
+
+     <div class="box">
+        <p class="box">
+            <a href="#">aaaaaaaaaaaaaaaa</a>
+        </p>
+     </div>
+</body>
+</html>
