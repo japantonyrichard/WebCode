@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 表示给 id="a" 的元素设置样式 */
+        #a{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+        /* 表示给id="b"的元素设置样式 */
+        #b{
+            color: rgb(124, 0, 128);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        关于id属性的说明：
+        1.每个标签都要有id属性
+        2.在一个页面中标签的id属性值是不能重复的
+        
+        id选择器：
+        1.id选择器就是根据标签的id属性值去选择元素，然后给它设置样式
+        2.语法格式：
+                #id值{
+                    属性：属性值；
+                }
+     -->
+
+     <div id="a">div1</div>
+     <div id="b">div2</div>  
+
+     <!-- id属性值不能重复，加了复数的只能显示前面写的↓ -->
+     <div id="a" id="b">我是div666</div>
+     <div id="b" id="a">我是div666</div>
+</body>
+</html>

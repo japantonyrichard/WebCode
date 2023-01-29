@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 给 class="aa"，class="bb"，id="hh"，p,a 它们的元素都设置样式*/
+        .aa,.bb,#hh,p,a{
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        并集选择器：
+        1.并集选择器就是可以一次选中多个其他选择器选择的元素。
+        2.语法：
+            选择器1,选择器2,...{
+                属性：属性值；
+            }
+     -->
+
+     <div class="aa">div1</div>
+     <div class="bb">div</div>
+     <h2 id="hh">我是标题</h2>
+     <p>我是段落</p>
+     <a href="#">我是超链接</a>
+</body>
+</html>

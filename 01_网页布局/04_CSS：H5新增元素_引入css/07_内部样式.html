@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        /* 这是CSS的注释写法 */
+        /* .box是选择器写法，表示给 class="box" 的元素设置样式 */
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        内部样式：
+        1：内部样式是将CSS样式代码写在head标签的style标签中。
+        2：语法格式：
+                选择器{
+                    属性：属性值；
+                    属性：属性值；
+                    ...
+                }
+            选择器目前还没学习，先模仿着用。
+        3.特点：
+                1，html代码和css代码的耦合性降低了，但并不是彻底没有耦合性，因为CSS还是写在了html文件中。
+                2，可以达到样式在当前页面的重用
+                    （是一种比较推荐的方式，但还不是我们工作中要写的！）
+     -->
+     
+     <!-- html中的每个标签都可以有 class（类） 属性,而且class值是可以重复的 -->
+     <div class="box">
+        今天天气不错！
+     </div>
+
+     <p class="box">我是一段话</p>
+
+     <h3 class="box">我是标题</h3>
+</body>
+</html>

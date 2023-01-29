@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+     /* 给 class="box1" 的元素设置样式  */
+    .box1{
+        width: 200px;
+        height: 200px;
+        background-color: violet;
+    }
+
+    /* 给 class="box2"里面的文字设置颜色,和背景颜色 */
+    .box2{
+        color: tomato;
+        background-color: turquoise;
+    }
+</style>
+   
+</head>
+<body>
+    <!-- 
+        类选择器：
+        1.类选择器就是通过标签的class属性去选中元素，然后给元素设置样式
+        2.语法格式：
+            .class的值{
+                属性：属性值；
+            }
+        
+        class属性的说明：
+        1.class属性是每个html标签都有的一个属性
+        2.class属性值是可以重复的，也就是说页面中可以有两个标签的class的值一样
+        3.一个标签的class的属性值可以有多个，用空格隔开
+     -->
+
+     <div class="box1">111</div>
+     <div class="box2">222</div>
+     <p class="box1">我是段落1</p>
+     <p class="box2">我是段落2</p>
+     <p class="box1 box2">我是段落666</p>
+
+</body>
+</html>

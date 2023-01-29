@@ -1,0 +1,60 @@
+/* 外层容器的样式 */
+.box{
+    width: 900px;
+    height: 600px;
+    background-color: red;
+}
+
+/* 头部部分的样式 */
+.header{
+    width: 100%;
+    height: 15%;
+    background-color: yellowgreen;
+}
+
+/* 导航部分的样式 */
+.nav{
+    width: 100%;
+    height: 10%;
+    background-color: blueviolet;
+}
+
+/* 主题内容的样式 */
+.content{
+    /* 块元素不设置宽度的话，宽度默认是父元素的100% */
+    /* width: 100%; */
+    height: 50%;
+    background-color: springgreen;
+}
+
+/* 块元素会独占一整行，宽度默认是父元素的100%，高度默认由内容撑起来。在页面中垂直摆放。
+   如果要想让块元素能够水平摆放，那就在外部css文件中给要水平的那几个块元素 都 设置 属性：float：left；
+*/
+.left{
+    width: 300px;
+    /* height比例↓是父元素（content）的100%为基准 下同 */
+    height: 100%;
+    background-color: blue;
+    float: left;
+}
+.middle{
+    width: 300px;
+    height: 100%;
+    background-color: cadetblue;
+    float: left;
+}
+.right{
+    width: 300px;
+    height: 100%;
+    background-color: violet;
+    float: left;
+}
+
+/* 底部样式 */
+.footer{
+    width: 100%;
+    height: 25%;
+    background-color: tomato;
+}
+
+
