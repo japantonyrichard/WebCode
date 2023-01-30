@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+
+            text-align: center;
+        }
+
+        .p1{
+            text-decoration: underline;
+        }
+
+        .aa{
+            /* 去掉超链接的下滑线（最常用的） */
+            text-decoration: none;
+        }
+
+        .box a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        文本属性：
+        1.文本属性就是可以对元素内的内容做一些设置。
+        2.目前学习的文本属性有：
+                1，text-align：设置元素内的内容的对齐方式，
+                    可选值有： 
+                    left 左对齐 center 水平居中 right 右对齐
+                    这里的内容指的是：文字 和 行内元素。
+                2，text-decoration：文本装饰的意思。可以对内容设置下滑线、删除线、去掉下滑线等等..
+                    可选值有：
+                            underline：     下滑线
+                            overline：      上划线
+                            none：          默认，普通文本 
+                            line-through：  删除线
+
+     -->
+
+     <div class="box">
+        我是div中的内容<br>
+        <a href="#">我是超链接</a>
+    </div>
+
+    <p class="p1">我是段落</p>
+
+    <a href="#" class="aa">我是超链接</a>
+</body>
+</html>
