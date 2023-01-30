@@ -1,0 +1,15 @@
+/* 去掉外边8px的缝隙 还没学，先用，试试效果 */
+body{
+    margin: 0;
+}
+/* banner开始 */
+.banner{
+    /* 为了适配更多的分辨率，不要将宽度写死 */
+    width: 100%;
+    height: 670px;
+    /* background-color: red; */
+    background-image: url(../images/1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* banner结束 */

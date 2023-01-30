@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            text-transform: capitalize;
+            text-transform: uppercase;
+            text-transform: lowercase;
+        }
+
+        .box2{
+            /* 设置文本首行缩进：一个字是16px 中文一个缩进两个就是32px 中文情况一般 text-indent: 32px;
+            font-size: 16px;保持 indent=2size px */
+            font-size: 16px;
+            /* text-indent: 32px;  */
+            /* text-indent: -20px; */
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        文本属性
+        之前我们学过两个文本属性：
+        1.text-align 元素中文本对齐方式
+        2.text-decoration 去掉超链接下滑线，加下滑线，删除线..
+
+        3.text-transform 文本转换，
+            可选值：
+                1，none         默认不做任何改动
+                2, capitalize   将单词的首字母大写
+                3, uppercase    将单词转为全大写
+                4， lowercase   将单词转为全小写
+
+        4. text-indent 文本缩进，可以设置元素中内容首行缩进多少
+            取值可以是数字、也可以是百分比。可以是正数，也可以是负数。  
+                正数往右缩进，负数往左。
+
+        单位：em
+        em 其实是一个百分比的单位，他是相对于当前字体大小来说的。
+        1em = 1font-size （2em就是对当前字体大小来说缩进2个）
+
+     -->
+     
+     <!-- 输入 lorem 可以生成随机的一串英文  -->
+     <div class="box1">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit ratione consequatur hic ut amet eum explicabo sequi, velit modi voluptatum esse illum maiores porro quaerat tempora deleniti vel quos veritatis?
+     </div>
+     <div class="box2">
+        中唐时代，有一年冬天，一位大官去祭奠宗祠，见大殿墙壁上写了这样一首诗：“六出九天雪飘飘，恰似玉女下琼瑶。有朝一日天晴了，使扫帚的使扫帚，使锹的使锹。”大官读罢，顿时大怒，下令缉拿作诗人。左右将其平日喜作这类诗的张打油抓了来。为了证实该诗是否张打油所作，大官未急于治罪，而是令张再作诗一首。那时安禄山兵困南阳郡，张于是便以此为题，脱口吟道：“百万贼兵困南阳，也无援救也无粮。有朝一日城破了，哭爹的哭爹，哭娘的哭娘。”两首诗如出一辙，大家听了，哄堂大笑起来，连这位大官也被惹笑了，终于破例饶了张打油。张打油从此远近闻名。后来人们常把这类以俚语俗句入诗，不求平仄对仗的诗作，称为打油诗。
+     </div>
+</body>
+</html>

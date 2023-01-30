@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            width: 200px;
+            height: 100px;
+            background-color: violet;
+            /* 设置以一行去显示文字，也就是 不换行 white-space: nowrap; */
+            white-space: nowrap;
+
+            /* 溢出部分隐藏 overflow: hidden; */
+            overflow: hidden;
+
+            /* 文字最后加省略号 text-overflow: ellipsis(省略号);*/
+            text-overflow: ellipsis;
+
+            /* 这里面没有前后属性之分 放上面 放下面 都一样 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        实现：在元素中文字是一行显示的，如果有溢出的话，溢出部分隐藏，而且最后用省略号代替。
+     -->
+
+     <div class="box1">
+        实现：在元素中文字是一行显示的，如果有溢出的话，溢出部分隐藏，而且最后用省略号代替。
+     </div>
+</body>
+</html>

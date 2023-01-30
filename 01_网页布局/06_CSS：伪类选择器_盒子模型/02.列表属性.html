@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      li{
+         /* list-style-type: circle; */
+         /* 设置列表项目库符号类型 主要用none */
+         /* list-style-type: disc; */
+         /* list-style-type: none; */
+         /* 设置项目符号列表为一个图片 */
+         list-style-image: url(./images/1.jpg);
+         /* 设置项目符号的位置，inside、outside区分是和文字连一起还是不连。也就是里面和外面之分 */
+         list-style-position: inside;
+
+         list-style: none;
+         
+      }
+    </style>
+</head>
+<body>
+    <!-- 
+        列表，有三种：无序列表（ul）、有序列表（ol）、定义列表。
+        之前我们可以通过 type 属性去修改 无序列表和有序列表的 项目符号。
+
+        现在我们使用 list-style-xxx 属性去对 列表（有序、无序都可以）的项目符号进行设置。
+        1. list-style-type ：列表-样式-类型，可以设置列表的项目符号类型。
+            取值：disc-实心圆、circle-空心圆、A、a
+        2. list-style-image：可以设置列表的项目符号为一张图片
+        3.list-style-position：可以设置列表项目符号的位置，取值可以是：inside、outside
+
+        ***列表样式属性都是 list-style-xxx 格式，所以可以简写为：list-style:type image position；
+        ***最重要的是掌握：list-style:none；（不要项目符号）
+     -->
+
+     <!-- type="disc"是默认实心圆 -->
+     <ul type="circle">
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+     </ul>
+
+     <ol type="A">
+        <li>嘻嘻</li>
+        <li>哈哈</li>
+        <li>呵呵</li>
+     </ol>
+
+
+</body>
+</html>

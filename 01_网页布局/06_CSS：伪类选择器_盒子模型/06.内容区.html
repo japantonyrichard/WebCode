@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            /* 这里设置的宽度和高度其实就是设置的内容区大小 */
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+        }
+
+        /* 行内元素设置宽高不管用，因为是由内容撑起的 */
+        .aa{
+            width: 100px;
+            height: 100px;
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        内容区（content）
+        1.内容区就是一个盒子可以放多大的内容
+        2.我们平常给元素设置宽度（width）和高度(height),就是设置给了内容区。
+        3.单位：可以是 px ，也可以是 百分比。百分比就是相对于父元素来说的。
+        4.块元素的特点：独占一整行，宽度默认是父元素的100%,高度默认由内容撑起来，在页面垂直摆放。
+        5.行内元素的特点：不会独占一整行，宽度和高度都是由内容撑起来，内容有多大就占多大地，在页面水平摆放。
+            之前我们说 img标签是行内元素，但它却是可以设置宽高的，是因为，img标签严格来说是一种 行内块元素。
+        6.块元素可以设置宽度和高度；行内元素不能设置宽度和高度，即使设置了也不生效。
+
+        关于宽高还常见的有：（魅族官网导航栏浏览器缩边导航栏会动着居中，但有个最小宽度限制）
+        min-width 最小宽度
+        min-height 最小高度
+     -->
+
+     <div class="box1">
+        哈哈哈哈哈哈哈哈哈
+     </div>
+
+     <a href="#" class="aa">超链接</a>
+</body>
+</html>
