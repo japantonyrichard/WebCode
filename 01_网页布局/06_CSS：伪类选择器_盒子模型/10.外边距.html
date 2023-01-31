@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: violet;
+            /* margin-top: 20px; */
+            /* margin-top: -20px;
+            margin-left: 50px;
+            margin-left: -50px; */
+            /* margin-bottom: 50px; */
+
+            margin:50px;
+            margin:50px 100px;
+            margin:100px 200px 300px;
+            
+        }
+
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin-bottom: 50px;
+            margin-top: 20px;
+        }
+        .box4{
+            width: 100px;
+            height: 100px;
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        外边距
+        1.外边距（margin）：指的是盒子与盒子之间的距离
+        2.一个盒子有 top、bottom、left、right 4个方向，外边距也有四个：
+            margin-top、margin-right、margin-bottom、margin-left
+        3.外边距可以简写为：margin：值；
+            margin：数值；  四个外边距都一样
+            margin：数值1 数值2； 上下 左右
+            margin：数值1 数值2 数值3； 上 左右 下
+            margin：数值1 数值2 数值3 数值4； 上 右 下 左
+
+            外边距的取值可以是正数，也可以是负数。
+
+        在页面中元素都是靠上靠左摆放。所以，上外边距和左外边距能够决定当前元素的位置。(影响自己)
+                                         右和下外边距决定的是别的盒子和我之前的位置。（影响别人）
+
+     --> 
+
+     <div class="box1">
+
+     </div>
+
+     <div class="box2">
+
+     </div>
+
+     <div class="box3">
+
+     </div>
+
+     <div class="box4">
+
+     </div>
+</body>
+</html>

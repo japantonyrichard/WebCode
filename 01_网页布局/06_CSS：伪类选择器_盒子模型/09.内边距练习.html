@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            /* body标签默认有8px的外边距 */
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        ul{
+            /* ul 默认的外边距、内边距都去掉 */
+            margin: 0;
+            padding: 0;
+        }
+        /* ***************************************************** */
+        /* 这些可以用并集标签一起去掉 */
+        body,ul,li{                                 
+            /* 将元素默认的内边距、外边距都去掉 */
+            margin: 0;
+            padding: 0;
+        }
+        /* ***************************************************** */
+        .nav{
+            width: 788px;
+            height: 82px;
+            background-color: skyblue;
+        }
+        
+        li{
+            /* 去掉列表的项目符号 */
+            list-style: none;
+            float: left;
+            /* 设置内边距 */
+            padding: 31px 20px 30px;
+            
+        }
+        a{
+            /* 去掉下滑线 */
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            line-height: 21px;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        步骤：
+            0.去掉各种元素默认的内边距、外边距等
+            1.使用ul、li实现导航
+            2.开始布局，设置 ul 宽度、高度
+            3.去掉 li 的项目符号
+            4.对 li 进行浮动，就可以水平摆放，设置内边距
+            5.设置字体颜色、大小
+     -->
+    <!-- ul>li*10>a[herf=#] -->
+    <ul class="nav">
+        <li><a href="" herf="#">手机</a></li>
+        <li><a href="" herf="#">声学</a></li>
+        <li><a href="" herf="#">配件</a></li>
+        <li><a href="" herf="#">Lipro</a></li>
+        <li><a href="" herf="#">PANDAER</a></li>
+        <li><a href="" herf="#">Flyme</a></li>
+        <li><a href="" herf="#">服务</a></li>
+        <li><a href="" herf="#">社区</a></li>
+        <li><a href="" herf="#">企业服务</a></li>
+        <li><a href="" herf="#">APP下载</a></li>
+    </ul>
+</body>
+</html>
