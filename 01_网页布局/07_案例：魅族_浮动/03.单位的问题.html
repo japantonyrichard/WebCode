@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 500px;
+            height: 300px;
+            background-color: red;
+            /* 开启BFC 该元素布局不会受子元素的影响 */
+            overflow: hidden;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            /* 都是相对于父亲的宽度来说的 */
+            margin-top: 10%;
+            margin-left: 10%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        之前我们学习盒子模型，内边距、外边距 单位都是用的 px 。也可以使用 百分比 。
+        百分比是相对于父元素的宽度而言的。
+        
+     -->
+
+     <div class="box1">
+        <div class="box2">
+
+        </div>
+     </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 为访问过的超链接 */
+        a:link{
+            background-color: red;
+        }
+        /* 已访问过的超链接 */
+        a:visited{
+            background-color: violet;
+        }
+        /* 鼠标悬浮时 */
+        a:hover{
+            background-color: green;
+        }
+        /* 鼠标点击时 */
+        a:active{
+            background-color: yellow;
+        }
+
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+        /* 选中class="box1"的元素，而且鼠标要悬浮在其上面 */
+        .box1:hover{
+            background-color: red;
+        }
+        /* 选中class="box1"的元素，而且鼠标点击下去 */
+        .box1:active{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        伪类选择器
+        1.伪类选择器表示的是一种状态，比如：未访问的超链接、已访问的超链接、鼠标悬浮、鼠标点击 等等
+        2.语法格式：:xxx
+        3.伪类选择器有：
+            1， :link       表示未访问的超链接      只能用于超链接
+            2， :visited    表示访问过得超链接      只能用于超链接      
+            3， :hover      表示鼠标悬浮时          能用于所有元素 ****************
+            4， :active     表示鼠标按下去时        能用于所有元素
+        
+        4.强调：**************
+                这4个伪类选择器用在超链接上时，
+              顺序是1.:link 2.:visited 3.:hover 4.:active
+     -->
+     <!-- crtl+shift+delete 清除浏览器访问记录快捷键 -->
+     <a href="https://wwww.baidu.com">超链接</a>
+
+     <div class="box1">
+
+     </div>
+</body>
+</html>

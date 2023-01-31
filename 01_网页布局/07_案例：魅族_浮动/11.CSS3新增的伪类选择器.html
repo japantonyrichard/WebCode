@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 选中 p 标签，而且得是 第1个子元素 */
+        /* p:first-child{
+            background-color: aqua;
+        } */
+        /* 选中p标签，而且得是最后1个元素 */
+        /* p:last-child{
+            background-color: yellowgreen;
+        } */
+        /* 选中p标签，而且得是第4个元素 */
+        /* p:nth-child(4){
+            background-color: violet;
+        } */
+        /* 是在所以兄弟里面数，不只是p；a也是兄弟 */
+        /* p:nth-child(odd){
+            background-color: tomato;
+        }
+        p:nth-child(3n){
+            background-color: blue;
+        } */
+
+        /* p:first-of-type{
+            background-color: red;
+        }
+        p:last-of-type{
+            background-color: yellowgreen;
+        }
+        p:nth-of-type(5){
+            background-color: black;
+        } */
+
+        p:not(.pp){
+            background-color: red;
+        }
+
+        .input1:focus{
+            background-color: gray;
+        }
+
+        .input2:checked{
+            width: 50px;
+            height: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- 
+        CSS3新增的伪类选择器
+        
+        1.  :first-child    可以选中第一个子元素（第一个儿子），是在所以的兄弟中排第一个
+
+        2.  :last-child     可以选中最后一个子元素，是在所有兄弟中排最后一个
+
+        3.  :nth-child(值)  可以选中第n个子元素，它的取值可以是 数字、表达式（2n+3）、odd(奇数)、even（偶数）
+
+        4.  :first-of-type  可以选中第一个子元素，是在同类型子元素中的第一个
+
+        5.  :last-of-type   可以选中最后一个子元素，是在同类型子元素中的最后一个
+
+        6.  :nth-of-type    可以选中第n个子元素，是在同类型子元素中的第n个
+
+        7.  :not()          否定选择器
+
+        8.  :focus()        鼠标聚焦
+
+        9.  :checked        选中的单选按钮、复选框选中的
+     -->
+
+     <div class="box1">
+        <a href="#">超链接1</a>
+        <p>段落1</p>
+        <p>段落2</p>
+        <p>段落3</p>
+        <p class="pp">段落4</p>
+        <p>段落5</p>
+        <p>段落6</p>
+        <p>段落7</p>
+        <p>段落8</p>
+        <a href="#">超链接2</a>
+     </div>
+
+     输入框：<input class="input1" type="text">
+     <input class="input2" type="checkbox">吃饭
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            /* 会开启 BFC 格式，元素的布局就不会受子元素的影响 */
+            /* overflow: hidden; */
+            /* 开启元素的BFC 一般不用 常用是给子元素加 */
+            /* float: left; */
+            /* 给父元素加 上内边距1px 了解 */
+            /* padding-top: 1px; */
+            /* 给父元素加 上边框 了解 */
+            border-top: 1px solid yellow;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin-top: 50px;
+            /* 开启元素的BFC  常用 一般是给子元素加 */
+            /* float: left; */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        垂直方向外边距重叠问题：（因为儿子的边和父亲的边叠到一块了）
+        父元素中有一个子元素。比如：大div套了个小div
+        当给子元素设置上外边距的时候，发现上外边距是设置给了父元素，导致父元素和子元素一块下移。
+
+        解决方案：
+        1.给父元素加 overflow：hidden；父元素就开启了 BFC 格式，那父元素的布局就不会收到子元素的影响。***
+        2.给子元素加float：left；子元素就开启了 BFC格式 ，子元素的布局就不会影响到父亲。**
+                或者给父元素加 float：left；父元素开启了 BFC格式，父元素的布局就不会影响到子元素。
+        3.给父元素加 上内边距1px(不影响整体布局才加1px 可以加其他数值) （了解）
+        4.给父元素加 上边框     （了解）
+     -->
+
+     <div class="box1">
+        <div class="box2">
+
+        </div>
+     </div>
+</body>
+</html>

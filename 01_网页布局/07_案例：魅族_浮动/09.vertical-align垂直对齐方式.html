@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            /* 将表格中单元格、行的边框线合并到一块 border-collapse: collapse; */
+            border-collapse: collapse;
+
+            text-align: center;
+        }
+        tr,td{
+            border: 1px solid red;
+            /* vertical-align: top; */
+            vertical-align: bottom;
+        }
+        img{
+            width: 200px;
+            /* vertical-align: middle; */
+            /* 属性虽然设置给了 img ，但是得到的是 文字 的呈现方式 */
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        vertical-align (主要用来设置单元格里面的垂直对齐方式)
+        1.vertical-align:是垂直对齐方式的意思
+        2.学习html中table标签中的tr里面的td是，td标签有 valign 属性
+        3.我们可以用vertical-align属性对单元格中的内容做垂直对齐，
+            可选值有：top-上、middle-中、bottom-下
+        4.它还可以设置给图片，可以设置文字和图片的对齐方式 （常用之外的另一种用途）
+     -->
+
+     <!-- table>tr*2>td*2{哈哈} -->
+     <table>
+        <tr>
+            <td>哈哈</td>
+            <td>哈哈</td>
+        </tr>
+        <tr>
+            <td>哈哈</td>
+            <td>哈哈</td>
+        </tr>
+     </table>
+
+     <hr>
+
+     <img src="./images/1.png" alt="">大家好！
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-bottom: 50px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            /* margin-top: 30px; */
+            margin-top: 80px;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-right: 50px;
+            float: left;
+        }
+        .box4{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin-left: 30px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        外边距合并问题
+        1.有两个垂直摆放的元素，上面的元素设置了下外边距a,下面的元素设置了上边距b，
+                                    那这两个元素之间的距离是多少？
+            两个之间的距离是 a 和 b 中较大的那个数。
+            
+        2.有两个水平摆放的元素，左边的元素设置了右外边距a,右边的元素设置了左外边距b，
+                                    那这两个元素之间的距离是多少？
+            两个之间的距离是 a + b 。
+
+     -->
+
+     <!-- <div class="box1"></div>
+     <div class="box2"></div> -->
+     
+     <div class="box3"></div>
+     <div class="box4"></div>
+
+</body>
+</html>

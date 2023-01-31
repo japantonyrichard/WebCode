@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* *是 全局选择器 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body{
+            font:14px/1.5 Helvetica,Tahoma,Arial;
+        }
+
+        .box{
+            width: 100%;
+            height: 575px;
+            background-color: rgb(244, 244, 244);
+        }
+        .wrap{
+            width: 1240px;
+            height: 575px;
+            /* background-color:pink; */
+            margin: 0 auto;
+        }
+
+        .title{
+            width: 100%;
+            height: 45px;
+            margin-bottom: 10px;
+            /* background-color: yellowgreen; */
+            text-align: center;
+            font-size: 30px;
+            /* color: ; */
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .Flyme-box{
+            width: 100%;
+            height: 520px;
+            /* background-color: violet; */
+        }
+
+        .Flyme-box>div{
+            width: 303px;
+            height: 245px;
+            margin-right: 9px;
+            margin-bottom: 15px;
+            /* background-color: aqua; */
+            background-color: #fff;
+            float: left;
+        }
+
+        .Flyme-box>div:nth-child(3),.Flyme-box>div:nth-child(7){
+            margin-right: 0
+        }
+        
+        .Flyme-box>div:first-of-type{
+            width: 615px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 最外层的容器 -->
+    <div class="box">
+        <!-- 居中的容器，往往叫 wrap -->
+        <div class="wrap">
+            <!--标题  -->
+            <h3 class="title">Flyme</h3>
+            <div class="Flyme-box">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
