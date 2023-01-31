@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 500px;
+            /* 解决高度塌陷问题：第一种：给父元素设置高度即可 height: px; */
+            /* height: 100px; */
+            border: 5px solid red;
+            /* ☆解决高度塌陷问题：第二种：给父亲开启BFC，父元素的布局就不会受到子元素布局的影响
+                而且会自动找到一个合格的高度 overflow: hidden; */
+            overflow: hidden;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            float: left;
+        }
+        .box4{
+            width: 200px;
+            height: 200px;
+            background-color: seagreen;
+            float: left;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: violet;
+            /* 解决高度塌陷问题：第三种：清除浮动对我的影响 clear:both; */
+            clear:both;
+        }
+        .clear{
+            /* <!-- （不推荐）解决高度塌陷问题：第四种：给父亲的最后加 空div --> */
+            clear: both;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 
+        高度塌陷问题
+
+        块元素（在文档流的）的特点是：会独占一整行，宽度默认是父元素的100%,高度默认由内容撑起来。
+
+        当一个块元素，我们没有设置它的高度，那高度就是由子元素撑起来。
+            如果所有的子元素都浮动的话，子元素就脱离了文档流，就没有东西能够撑起父元素了，
+               父元素高度塌陷了...高度变为0， 
+            高度塌陷会造成页面布局的混乱，比如：父元素后面的元素会向上移动！！！
+     -->
+
+     <div class="box1">
+        <div class="box2"></div>
+        <div class="box4"></div>
+        <!-- （不推荐）解决高度塌陷问题：第四种：给父亲的最后加 空div -->
+        <div class="clear"></div>
+     </div>
+
+     <div class="box3"></div>
+</body>
+</html>

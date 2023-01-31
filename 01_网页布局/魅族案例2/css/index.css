@@ -1,0 +1,77 @@
+body{
+    font:14px/1.5 Helvetica,Tahoma,Arial;
+}
+/* banner样式 开始 */
+.banner{
+    width: 100%;
+    height: 670px;
+    background-color: skyblue;
+
+    /* 设置背景图片 */
+    background: url(../images/2.jpg) center no-repeat;
+}
+/* banner样式 结束 */
+
+/* 导航开始 */
+.nav{
+    width: 788px;
+    height: 82px;
+    /* background-color: skyblue; */
+    /* ul居中 */
+    margin: 0 auto;    
+}
+
+.nav li{
+    float: left;
+    /* 调内边距 */
+    padding: 31px 20px 30px;
+}
+.nav li a{
+    color: #333;
+}
+/* 导航结束 */
+
+/* 因为整个页面好多地方都要居中，而且居中的div宽度都是一样的。
+所以专门写一个居中的样式，只设置 宽度 和 居中，不能设置高度 */
+/* 但凡有一个div标签想要居中 就取个class名字叫 wrap */
+.wrap{
+    width: 1240px;
+    margin: 0 auto;
+}
+
+/* 广告位开始 */
+.ad{
+    width: 100%;
+    height: 278px;
+    margin-bottom: 50px;
+    /* background-color: aqua; */
+}
+
+.ad-box{
+    height: 100%;
+    /* background-color: violet; */
+}
+
+.ad-box div{
+    width: 310px;
+    height: 187px;
+    padding-top: 45px;
+    /* background-color: palegreen; */
+    float: left;
+}
+
+.ad-box img{
+    width: 130px;
+    
+}
+
+.ad-box .name{
+    color: #333;
+    font-size: 20px;
+    font-weight: 400px;
+}
+.ad-box .desc{
+    color: #999;
+    font-size: 14px;
+}
+/* 广告位结束 */
