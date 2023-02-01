@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 元素开启固定定位 */
+            position: fixed;
+            /* top: 0;
+            left: 0; 相对于浏览器窗口定位 */
+            /* top: 100px;
+            left: 100px; */
+            right: 50px;
+            bottom: 100px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        固定定位
+
+        1.固定定位：position：fixed；
+        2.固定定位是参照浏览器窗口去定位的 **************
+        3.固定定位的特点：
+            1，使用固定定位后，元素原来的位置不保留，也就是元素会脱离文档流，层级会提升 ************
+            2，固定定位的元素不会随着滚动条的滚动而滚动 *************
+        4.应用场景：
+            网站的广告、返回顶部..
+     -->
+
+     <div class="box1"></div>
+     <div class="box2"></div>
+</body>
+</html>

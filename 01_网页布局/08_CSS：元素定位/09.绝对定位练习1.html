@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../魅族案例2/images/logo.ico">
+    <link rel="stylesheet" href="../魅族案例2/css/reset.css">
+    <title>魅族绝对定位练习1</title>
+    <style>
+        body {
+            font: 14px/1.5 Helvetica,Tahoma,Arial,"Hiragino Sans GB","Microsoft YaHei",SimSun,Heiti,sans-serif;
+        }
+        .box1{
+            width: 303px;
+            height: 375px;
+            background-color: red;
+            /* 相对定位 */
+            position: relative;
+
+        }
+        .box1 img{
+            width: 303px;
+        }
+        .box2{
+            width: 303px;
+            height: 88.5px;
+            /* background-color: skyblue; */
+            /* 相对于<div class="box1">定位 */
+            position: absolute;
+            top: 267px;
+            left: 0;
+        }
+        .box2 p:first-child{
+            color: #fff;
+            font-size: 21px;
+            font-weight: 700;
+        }
+        .box2 p:nth-child(2){
+            color: #fff;
+            font-size: 14px;
+        }
+        .box2 p:last-child{
+            color: #ebce6b;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .box2 span:first-child{
+            font-size: 22px;
+            bottom: 1px;
+            left: -4px;
+        }
+        .box2 del{
+            font-size: 14px;
+            margin-left: 4px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <a href="">
+            <img src="./images/2.jpg" alt="">
+            <div class="box2">
+                <p>超合金机械键盘 · OLLIE</p>
+                <p>三模连接｜96%布局｜长久续航｜PBT 键帽</p>
+                <p><span>￥</span>1399<del>￥1499</del></p>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

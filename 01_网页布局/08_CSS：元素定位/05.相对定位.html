@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 开启相对定位,相对于原来的位置 */
+            position: relative;
+            /* top: 50px;
+            left: 50px; */
+            /* top: -50px;
+            left: -50px; */
+            
+            /* right: 50px;
+            bottom: 50px; */
+            left: 200px;
+            right: 100px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        相对定位（relative）
+        1.相对定位就是 position：relation
+        2.相对定位就是相对于它原来的位置进行定位 ****************************
+        3.相对定位配合使用 top、bottom、left、right 进行移动。建议用 top 和 left 。************
+                                                           如果上下左右都设置了的话 上 和 左 优先。
+        4.相对定位的特点：
+            *相对定位后原来的位置会保留，也就是不会脱离文档流，但是元素的层级会提升！
+        5.相对定位的应用场景：
+            1，小范围内的移动 ***********
+            2，相对定位往往配合绝对定位使用 ************
+     -->
+
+     <div class="box1"></div>
+     <div class="box2"></div>
+</body>
+</html>

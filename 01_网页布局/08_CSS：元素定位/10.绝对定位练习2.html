@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../魅族案例2/css/reset.css">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 303px;
+            height: 375px;
+            background-color: red;
+            /* 相对定位 是box2的祖先 */
+            position: relative;
+            /* 溢出隐藏 */
+            overflow: hidden;
+        }
+        .box1 img{
+            width: 303px;
+        }
+        .box2{
+            width: 303px;
+            height: 375px;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 绝对定位 祖先找box1 */
+            position: absolute;
+            top: 0;
+            /* left: 0; */
+            left: 303px;
+            /* 这个属性后面会学 */
+            transition: all 2s;
+        }
+        
+        /* 选中box1的 还得是 hover 鼠标悬浮的 里面的box2 */
+        .box1:hover>.box2{
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <img src="./images/1.jpg" alt="">
+        <div class="box2">
+
+        </div>
+    </div>
+</body>
+</html>

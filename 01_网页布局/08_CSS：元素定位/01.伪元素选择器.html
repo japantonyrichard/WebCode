@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1::before{
+            /* 演示利用伪元素加文字 这个文字无法选中↓复制不了 */
+            content: "我是前面的内容";
+        }
+
+        .box1::after{
+            content: "我是后面的内容";
+        }
+
+        /* 演示利用伪元素加图片 */
+        .box1::before{
+            content: url(./images/1.jpg);
+        }
+        .box1::after{
+            content: url(./images/1.jpg);
+        }
+
+        /* 演示利用伪元素自定义新增内容 */
+        /* 伪元素新增的内容默认是行内元素，不能设置宽度和高度，有如下两种解决方案 */
+        /* 1.将元素浮动 float 浮动后的元素就变为了行内块元素*/
+        /* 2.利用 display:block;可以将行内元素转为块元素 */
+        .box2::before{
+            content: "";
+           
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            /* float: left; */
+            display: block;
+        }
+        .box2::after{
+            content: "";
+           
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            /* float: left; */
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        之前学过伪类选择器：
+        :link
+        :visted
+        :hover
+        :active
+        是对元素状态的一种描述。
+
+        伪元素选择器：
+        1.伪元素选择器就是通过 css 的技术给页面中加一个元素。这个元素不是html真正的标签。
+            所以称为伪元素。
+        2.伪元素有两种，它可以在某个元素内的最前面或者某个元素内的最后面加元素。
+        3.语法结构：
+            1,给某个元素内的最后面加伪元素(也可以理解为给某个元素内最后加个子元素)
+            :after{
+                content:"";
+            }
+            或者
+            ::after{
+                content:"";
+            }
+            2，给某个元素内的最前面加伪元素（也可以理解为给某个元素内最前面加个子元素）
+                :before{
+                    content:"";
+                }
+                或者：
+                ::before{
+                    content:"";
+                }
+        4.应用：
+            1，利用伪元素加文字
+            2，利用伪元素加图片
+            3，利用伪元素自定义新增内容 *****************
+
+     -->
+
+     <div class="box1">
+        我是html中的内容
+     </div>
+
+     <dlv class="box2">
+        哈哈哈
+     </dlv>
+</body>
+</html>

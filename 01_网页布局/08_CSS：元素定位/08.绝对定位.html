@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            /* 开启相对定位 */
+            /* position: relative; */
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            /* 开启绝对定位，会相对于最近的有定位的祖先元素定位，会脱离文档流 */
+            position:absolute;
+            /* top: 0;
+            left: 0; */
+            bottom: 50px;
+            left: 50px;
+        }
+        .box4{
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        绝对定位
+
+        1.绝对定位：position：absolute；
+        2.绝对定位是参照最近的有定位（static不算有定位）的祖先元素去定位。
+            如果所有的祖先元素都没有定位，那就相对于浏览器视口去定位。
+        3.一般，可以给body设置一个相对定位，如果所有的祖先元素都没有定位的话，
+            就相对于 body 进行定位。
+        4.绝对定位的特点：
+            *元素开启绝对定位后原位置不保留，脱离文档流（变成行内块元素 可以设置宽高），层级会提升。
+        
+        5.一般某个元素开启绝对定位后，它的祖先元素要开启相对定位。*********************
+        
+        6. 应用：    
+                我们看到页面中一个元素上又显示了另外一个元素，那就用绝对定位。（之前的小米案例）****************
+     -->
+
+     <div class="box1">
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+     </div>
+</body>
+</html>
