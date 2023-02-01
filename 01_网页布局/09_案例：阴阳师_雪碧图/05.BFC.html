@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            /* overflow: hidden; */
+
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-top: 50px;
+            /* float: left; */
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        BFC:就是块级格式上下文，元素开启了BFC后，它就是独立一块了，它的布局不会受到子元素的影响。
+        开始BFC的方式有：
+            1.overflow:hidden;/auto/scroll **************************************
+            2.float:left/right；
+            3.position:absolute/fixed；
+            4.display:inline-block / table-cell / flex; (flex是后面要学的内容)
+
+     -->
+     <div class="box1">
+        <div class="box2"></div>
+     </div>
+</body>
+</html>

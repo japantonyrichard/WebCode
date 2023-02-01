@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: relative;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 1;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            position: absolute;
+            z-index: 10;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            z-index: 100;
+            /* position: relative; */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        之前学习过绝对定位。绝对定位很大的一个应用场景就是可以在一个元素上显示另一个元素。
+        通过例子，我们可以看到使用绝对定位可以实现元素重叠的效果。
+        但是谁在上面，谁在下面，能不能设置呢？
+        使用 z-index 属性 可以对元素的层级进行设置。
+        层级越高就越优先显示。
+        如果层级一样的话呢，下面的元素会盖住上面的元素，这里的上下指的是界面结构中的上下。
+        z-index 的取值可以是正数，也可以是负数，但一般取的是 1-999
+        z-index属性是可以继承的。（儿子可以直接用父亲的）
+
+        z-index 属性 只能用在有定位的元素。
+
+     -->
+
+     <div class="box1"></div>
+     <div class="box2"></div>
+     <div class="box3"></div>
+</body>
+</html>

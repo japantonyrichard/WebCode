@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 演示将行内元素转为块元素 */
+        span{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            display: block;
+        }
+        /* 演示将块元素转为行内元素 */
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            display: inline;
+        }
+        /*  */
+    </style>
+</head>
+<body>
+    <!-- 
+        display 属性
+
+        1.display 是 显示 的意思
+        2.我们可以通过 display属性 实现元素类型之间的转换。
+            比如将行内元素转为块元素，将块元素转为行内元素或者将行内元素转为行内块元素等等。
+        3.display属性的可选值：
+            block（块） 将元素转为块元素
+            inline      将元素转为行内元素
+            inline-block 将元素转为行内块元素（不是很推荐，以为行内块元素会识别元素间的空白）
+            table   将元素显示为一个表格元素 了解
+            none    将元素隐藏！注意和 overflow：hidden；区分
+     -->
+
+     <span>我是span1</span>
+     <span>我是span2</span>
+     <hr>
+     <div>我是div1</div>
+     <div>我是div2</div>
+     <hr>
+</body>
+</html>
