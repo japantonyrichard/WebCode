@@ -141,3 +141,67 @@ body{
     background-size: 100%;
 }
 /* banner 结束 */
+
+/* 主体开始 */
+.container{
+    margin-top: 43px;
+    overflow: hidden;
+}
+
+/* 主体结束 */
+
+/* 平安世界开始 */
+.world{
+    width: 100%;
+    height: 495px;
+    margin-bottom: 70px;
+    /* background-color: pink; */
+}
+.world-title{
+    width: 54px;
+    height: 145px;
+    /* background-color: violet; */
+    background-image: url(../images/2.webp);
+    background-position: -835px -532px;
+}
+.world-box{
+    width: 100%;
+    height: 320px;
+    /* background-color: aqua; */
+    margin-top: 23px;
+    background: url(../images/shishen_bg_000bc91.webp) center 0 no-repeat;
+}
+.world-img{
+    width: 940px;
+    height: 320px;
+    /* background-color: olive; */
+    margin: 0 auto;
+    position: relative;
+}
+.left-a{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    /* background-color: palegreen; */
+}
+.right-a{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    /* background-color: violet; */
+}
+
+.left-a img{
+    position: relative;
+    left: -140px;
+    top: -186px;
+}
+.right-a img{
+    position: absolute;
+    top: -186px;
+    right: -140px;
+
+}
+/* 平安世界结束 */
