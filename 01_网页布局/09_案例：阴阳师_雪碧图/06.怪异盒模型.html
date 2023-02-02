@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            padding: 50px;
+            border: 5px solid red;
+        }
+        .box1{
+            background-color: blue;
+        }
+        .box2{
+            width: 410px;
+            height: 410px;
+            background-color: green;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        之前我们学习过盒模型是标准盒模型。
+
+        标准盒模型：
+        1.组成部分：内容区、内边距、边框、外边距
+        2.实际占据的空间大小：  
+            水平方向占据的大小：左右外边距+左右边框+左右内边距+内容区的宽度
+            垂直方向占据的大小：上下外边距+上下边框+上下内边距+内容区的高度
+        3.width和height：
+            在标准盒模型中，width和height是设置给了内容区。
+
+        怪异盒模型：
+        1.主要指的是 IE浏览器 
+        2.组成部分：内容区、内边距、边框、外边距
+        3.实际占据空间的大小：
+            水平方向占据的大小：宽度+左右外边距
+            垂直方向占据的大小：高度+上下外边距
+        4.width和height：
+            在怪异盒模型中，width和height是设置给到盒子的边框。
+        5.使用 box-sizing 属性可以实现标准盒模型与怪异盒模型之间的转换。
+        box-sizing：content-box；盒子模型就是标准盒模型，默认值
+        box-sizing：border-box；盒子模型就是怪异盒模型
+     -->
+     <div class="box1"></div>
+     <div class="box2"></div>
+</body>
+</html>

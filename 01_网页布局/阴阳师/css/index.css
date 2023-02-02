@@ -1,0 +1,143 @@
+body{
+    font-family: "Microsoft YaHei",simSun,"Lucida Grande","Lucida Sans Unicode",Arial;
+}
+/* 头部开始 */
+.header{
+    /* width: 100%;↓自己尝试用1920宽来做 不然全屏不适用 */
+    width: 1920px;
+    margin: 0 auto;
+    /* 自己尝试↑解决了。 */
+    height: 55px;
+    /* background-color: pink; */
+}
+
+.header-left{
+    width: 179px;
+    height: 54px;
+    background-color: #cf1132;
+    float: left;
+    font-size: 12px;
+    line-height: 54px;
+    color: #fff;
+}
+.header img{
+    margin-top: 5px;
+}
+.header-right{
+    width: 138px;
+    height: 54px;
+    /* background-color: aqua; */
+    float: right;
+    border-left: 1px solid #dadada;
+}
+.header-right a{
+    font-size: 12px;
+    color: #333;
+    line-height: 54px;
+}
+.s1{
+    padding-right: 5px;
+    font-size: 20px;
+}
+/* 头部结束 */
+
+/* 导航开始 */
+.nav{
+    width: 100%;
+    height: 60px;
+    background: url(../images/1.webp) center top no-repeat;
+    /* position: relative;注意：这个注释之后 新闻资讯 展开效果就变了。在下面试粘性定位。 */
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    /* 换了上面这4行，在最后提高层级后，nav粘性固定了，新闻资讯展开也恢复了 */
+}
+
+.wrap{
+    width: 1180px;
+    margin: 0 auto;
+}
+.nav li{
+    float: left;
+    width: 84px;
+    height: 70px;
+    line-height: 60px;
+    font-size: 14px;
+}
+.nav li a{
+    color: #fff
+}
+
+.active{
+    background: url(../images/nav_bg1_d44f09d.webp) 0 0 no-repeat;
+    /* 尝试：尝试提高层级 定位得加上才行 */
+    z-index: 100;
+    position: relative;
+}
+.nav .active a{
+    color: #000;
+}
+
+.nav-list{
+    width: 100%;
+    height: 140px;
+    background: url(../images/subnav_bg_5cc9309.webp) center 0 no-repeat;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    /* 隐藏 */
+    display: none;
+    /* 下面banner做完后这个就不显示了，得提高层级。必须得有定位才能用 position: ; */
+    z-index: 100;
+}
+.nav li:hover .nav-list{
+    display: block;
+}
+.nav li:hover{
+    background: url(../images/nav_bg1_d44f09d.webp) 0 0 no-repeat;
+}
+
+.nav li:hover a{
+    color: #000;
+}
+/* 导航结束 */
+
+/* banner 开始 */
+.banner{
+    width: 100%;
+    height: 784px;
+    /* background-color: pink; */
+    overflow: hidden;
+    /* 上面有缝隙 用相对定位（相对自己） */
+    position: relative;
+    top: -10px;
+}
+.banner img{
+    position: absolute;
+    left: 50%;
+    margin-left: -960px;
+    /* 用绝对定位，先离左边50%距离，然后回返自己宽度的一半，就居中了 */
+    /* ↓提升层级 img就会又盖住logo */
+    /* z-index: 10; */
+}
+
+.logo{
+    width: 77px;
+    height: 247px;
+    /* background-color: violet; */
+    position: absolute;
+    /* 143-60=83 */
+    top: 83px;
+    /* 320+150=470 */
+    left: 470px;
+    z-index: 10;
+}
+.logo a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/200.png) 0 0 no-repeat;
+    background-size: 100%;
+}
+/* banner 结束 */
