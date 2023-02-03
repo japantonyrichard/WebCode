@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+        }
+
+        .box1:hover{
+            /* 只有一个值时，表示水平方向移动 */
+            transform: translate(10px);
+            /* 负数往左上移动 */
+            transform: translate(-50px);
+
+            transform: translate(50px,50px);
+
+            transform: translate(0,50px);
+            /* 仅水平方向移动 */
+            transform: translateX(50px);
+            /* 仅垂直方向移动 */
+            transform: translateY(50px);
+            /* 仅Z轴移动 看不出来 */
+            transform: translateZ(50px);
+
+            transform: translate(10%);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        位移-translate
+
+        1.位移就是可以让元素进行位置上的移动
+        2.写法：transform：translate（x,y）；
+        3. x 表示 水平方向的移动， y 表示 垂直方向的移动
+        4.如果只有一个值，表示水平方向的移动
+        5.单位是 px 或 % （百分比是相对于元素自己的，水平方向移动就相对于宽，垂直方向移动相对于高）
+        6.正数往右下移动，负数往做左上移动
+        7.translateX() 仅水平移动 translateY（）仅垂直移动
+     -->
+     <div class="box1"></div>
+</body>
+</html>

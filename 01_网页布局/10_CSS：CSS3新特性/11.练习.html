@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 57px;
+            height: 64px;
+            background-color: #000;
+            color: #fff;
+            padding: 0 10px;
+            font-size: 14px;
+            line-height: 64px;
+            
+            position: relative;
+        }
+        .box1::after{
+            content: "";
+            width: 77px;
+            height: 2px;
+            background-color: yellow;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            
+            transform: scale(0);
+            
+            transition: all 0.4s;
+        }
+        .box1:hover::after{
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">产品中心</div>
+</body>
+</html>

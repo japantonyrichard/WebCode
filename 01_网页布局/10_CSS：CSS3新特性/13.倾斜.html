@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+
+            transition: all 2s;
+        }
+        .box1:hover{
+            /* 仅水平倾斜 */
+            transform: skew(30deg);
+            /* 可以取负值 */
+            transform: skew(-30deg);
+            /* 水平和垂直都倾斜 */
+            transform: skew(30deg,30deg);
+            
+            transform: skewX(30deg);
+            transform: skewY(30deg);
+
+            transform: skew(30deg,60deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        倾斜-skew
+        1.倾斜就是可以使元素以一定的角度去水平或者垂直倾斜，用的较少
+        2.倾斜的写法： transform：skew（x,y）；
+        3.取值是角度（deg）
+        4.只写一个值，表示水平方向倾斜
+        5.写两个值就是又水平又垂直方向倾斜
+        6.也可以使用 skewX（）仅水平方向倾斜，也可以使用 skewY（）仅垂直方向倾斜
+
+     -->
+     <div class="box1">哈哈哈</div>
+</body>
+</html>

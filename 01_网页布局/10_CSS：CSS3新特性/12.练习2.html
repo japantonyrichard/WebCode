@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 232px;
+            height: 64px;
+            background-color: aqua;
+            border: 2px solid blue;
+            margin: 100px;
+            text-align: center;
+            line-height: 68px;
+            border-radius: 34px;
+            position: relative;
+        }
+        .box1::before{
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.2);
+            display: block;
+            border-radius: 32px;
+            /* 绝对定位后，元素会脱离文档流，会变为行内块元素，就可以设置宽度和高度了 */
+            position: absolute;
+            transform: scale(0.5,1);
+            /* 透明度为0，表示元素完全透明，就是看不见元素了 */
+            opacity: 0;
+
+            transition: all 0.2s;
+        }
+        .box1:hover::before{
+            /* 透明度为1表示不透明，可以看见元素 */
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">立即下载</div>
+</body>
+</html>

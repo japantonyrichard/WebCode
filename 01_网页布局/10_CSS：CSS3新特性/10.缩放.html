@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+        }
+        .box1:hover{
+            /* 取值是一个，表示水平方向的缩放，垂直方向等比例变化 */
+            transform: scale(0.5);
+            transform: scale(1.5);
+            /* 水平和垂直方向都缩放 */
+            transform: scale(0.5,1.5);
+            /* 写0就消失了wwww */
+            transform: scale(0);
+            /* 写1就是原来的一样 */
+            transform: scale(1,1.5);
+
+            /* 仅水平方向缩放 */
+            transform: scaleX(0.5);
+            /* 仅垂直方向缩放 */
+            transform: scaleY(0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        缩放-scale
+
+        1.缩放就是可以放大或者缩小元素
+        2.使用格式：transform：scale（x，y）；
+        3.x表示水平方向的缩放，y表示垂直方向的缩放
+        4.取值就是一个数字，没有单位。表示缩放为原来的几倍。
+        5.取值是 0-1 ，就是缩小；取值大于 1 ，就是放大。
+        6.只有一个值，就表示水平方向的缩放，垂直方向等比例变化
+        7.缩放的中心默认就是元素的正中心，也可以使用transform-origin修改
+     -->
+     <div class="box1"></div>
+</body>
+</html>

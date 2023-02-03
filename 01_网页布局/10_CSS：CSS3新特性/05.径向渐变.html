@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 400px;
+            height: 400px;
+            /* 默认使用元素的中心作为渐变中心，默认形状是椭圆 */
+            background-image: radial-gradient(red,blue,yellow);
+            /* 指定渐变形状 是圆 */
+            background-image: radial-gradient(circle,red,blue,yellow);
+            /* 目前浏览器不支持这种改渐变中心点，要让谷歌浏览器支持的话 前面加-webkit-radial-gradient */
+            background-image: radial-gradient(top,circle,red,blue,yellow);
+            background-image: -webkit-radial-gradient(top,circle,red,blue,yellow);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        径向渐变（了解）
+
+        1.径向渐变，也叫扇形渐变、射线渐变
+        2.background-image：radial-gradient（渐变的中心点，渐变的形状，颜色1，颜色2，....）；
+        3.渐变的中心点，默认是元素的中心，也可以自己指定，top、right。默认浏览器是不知道的，需要特殊处理。
+        4.渐变的形状，默认是椭圆,也可以改为圆，circle
+        
+     -->
+     <div class="box1"></div>
+</body>
+</html>

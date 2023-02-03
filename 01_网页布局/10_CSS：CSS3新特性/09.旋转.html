@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 200px;
+            /* 过渡，后面学 */
+            transition: all 0.5s;
+        }
+        .box1:hover{
+            /* 旋转30度，顺时针转 */
+            transform: rotate(30deg);
+            /* 逆时针转 */
+            transform: rotate(-30deg);
+            /* 不要写 360度 看不出转动 要看的话，加个过渡 */
+            /* transform: rotate(360deg); */
+
+            /* 修改旋转的中心点 */
+            transform-origin: right bottom;
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        旋转-rotate
+
+        1.旋转可以使元素转起来，逆时针、顺时针都可以
+        2.旋转的写法：transform：rotate（角度）；
+        3.角度是正式，顺时针转；角度是负数，逆时针转；
+        4.旋转的中心点，默认就是元素的正中心。也可以改动，一般不改。
+        5.修改旋转的中心：transform-origin：right bottom；
+     -->
+     <div class="box1">大家好！</div>
+</body>
+</html>

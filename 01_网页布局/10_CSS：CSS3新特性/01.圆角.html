@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border: 2px solid blue;
+            margin: 100px;
+
+            /* 这种边框为圆角 上下左右都一样的半径 */
+            border-radius: 20px;
+            /* 上下 左右 上指的是元素的左上角，下是右下角，按照对角线去记忆 */
+            border-radius: 20px 40px;
+            /* 上 左右 下 */
+            border-radius: 10px 20px 30px;
+            /* 上 右 下 左 */
+            border-radius: 10px 20px 30px 40px;
+        }
+        .box2{
+            width: 400px;
+            height: 200px;
+            background-color: red;
+            border: 2px solid blue;
+            margin: 100px;
+           
+            border-radius: 10%;
+
+            /* 画个半圆 */
+            border-radius: 101px;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 100px;
+            /* border-radius: 50%; */
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        圆角：
+
+        1.之前我们写的元素，角度都是直角。
+        2.CSS3 新增了可以给元素边框设置圆角的属性：border-radius
+        3.使用 border-radius 属性是，值的规律和之前学习盒模型的一样，一个值、两个值、三个值、四个值
+        4.单位可以是 px 或 % ，百分比用的比较少。画圆的时候可以用百分比。
+        5.元素是一个正方形，可以设置边框半径是 50% 就是圆、半圆
+     -->
+     <div class="box1"></div>
+     <div class="box2"></div>
+     <div class="box3"></div>
+</body>
+</html>
