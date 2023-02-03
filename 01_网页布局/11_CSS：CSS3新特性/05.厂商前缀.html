@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 400px;
+            height: 300px;
+            border: 1px solid red;
+            /* 径向渐变，默认渐变中心点是元素的中心，可以改，但是改完后各种浏览器不支持 */
+            /* background-image: radial-gradient(red,blue,yellow); */
+
+            /* 以防万一，所以写5次 */
+            background-image: -webkit-radial-gradient(top,red,blue,yellow);
+            background-image: -moz-radial-gradient(top,red,blue,yellow);
+            background-image: -ms-radial-gradient(top,red,blue,yellow);
+            background-image: -o-radial-gradient(top,red,blue,yellow);
+            background-image: radial-gradient(top,red,blue,yellow);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        厂商：就是生产某个东西的厂家。
+        驻场开发  外包、外派
+
+        CSS 有各种特性，但是有的浏览器支持，有的浏览器不支持。
+        这时候我们就可以给属性加一些浏览器厂商前缀来解决不支持的问题。
+
+        比如：之前学习的颜色渐变中的径向渐变，改变渐变的中心点，发现各种浏览器都不支持。
+        这时候就可以给属性值加厂商前缀使浏览器支持。
+
+        常见的厂商前缀如下：
+
+        浏览器              厂商前缀            内核
+        谷歌                -webkit-           blink
+        苹果                -webkit-           webkit
+        火狐                -moz-              gecko
+        欧朋                 -o-               blink
+        IE                   -ms-             trident
+
+        因为不知道用户用的是什么浏览器，所以，对于有些新特性，我们会将同样的样式代码写5遍。
+     -->
+     <div class="box1">
+
+     </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+            /* transition: all,2s; */
+            /* 设置过渡的样式 */
+            transition-property: width,height,background-color,transform;
+            /* transition-property: all; */
+            /* 设置过渡的持续时间 */
+            transition-duration: 2s;
+            /* transition-duration: 2s,2s,2s,2s; */
+
+            /* 设置过渡的速度变化，默认是先加速，后减速 */
+            transition-timing-function: ease;
+            /* 加速 */
+            transition-timing-function: ease-in;
+            /* 减速 */
+            transition-timing-function: ease-out;
+            /* 先加速后减速 */
+            transition-timing-function: ease-in-out;
+            /* 匀速 */
+            transition-timing-function: linear;
+
+            /* 设置延迟时间 正数表示多长时间后才开始过渡的执行 */
+            /* transition-delay: 2s; */
+            /* 负数 表示省略掉指定时间的过渡效果后开始过渡 */
+            transition-delay: -1s;
+        }
+        .box1:hover{
+            width: 1200px;
+            /* width: 400px; */
+            /* height: 400px; */
+            background-color: blue;
+            /* transform: rotate(360deg); */
+            /* ↓没法过渡↓ */
+            /* display: none; */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        过渡-transition
+
+        1.过渡 我们之前已经用过很多次了。过渡就是从一种样式慢慢到达到另一种样式
+        2.过渡使用的属性 transition ，该属性是一个简写属性。
+        3.transition的单个属性有：
+            1，transition-property   过渡的属性     必须！
+                指定哪些样式要进行过渡。
+                不是所有的样式都能被过渡，能过渡的有：
+                    a.颜色相关的，比如背景颜色、字体颜色等等
+                    b.数值相关的，比如width、height、margin等等
+                    c.transform
+                    d.盒阴影
+
+            2，transition-duration    过渡的持续时间    必须！
+                transition-duration:时间1，时间2，...；
+                transition-duration：时间；
+                    单位可以是 s| ms ，但我们一般使用 s。1s=1000ms
+
+            3，transition-timing-function   过渡的速度  可选的
+                可选值有：
+                    ease，默认值，先加速后减速
+                    ease-in 加速
+                    ease-out 减速
+                    ease-in-out 先加速后减速
+                    linear 匀速
+
+            4，transition-delay     过渡的延迟时间      可选的
+                 延迟的取值可以是正负。
+                 正数：表示多长时间后开始出发过渡的执行。
+                 负数：表示省掉一段时间的过渡效果开始执行。
+
+        4.哪个元素要慢慢变化，那就给哪个元素加过渡
+
+        5.过渡的单个属性都是 transition-xxx 形式，所以可以简写为：
+            transition：过度的样式 过渡的持续时间 过渡的速度 过渡的延迟时间；
+            后面的属性值不区分先后顺序，不写的就使用默认的。
+            但是如果两个时间都有，会认为第一个时间是过渡的持续时间，第二个当做延迟时间。
+
+            一般这么写：
+                transition：all 2s；
+                transition：all 2s linear；
+     -->
+     <div class="box1"></div>
+</body>
+</html>
