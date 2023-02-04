@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .box{
+            width: 100%;
+            background-color: red;
+        }
+        .box>div{
+            width: 25%;
+            height: 450px;
+            background-color: blue;
+            float: left;
+            /* 转为怪异盒模型 往里走了不会往外扩 */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+        .box>div>div{
+            width: 100%;
+            height: 100%;
+            background-color: pink;
+            text-align: center;
+        }
+        .box img{
+            width: 100%;
+            max-width: 230px;
+        }
+
+        /* 手机端 */
+        @media screen and (max-width:768px) {
+            .box>div{
+                width: 50%;
+            }
+        }
+        /* 平板端 */
+        @media screen and (min-width:768px) and (max-width:992px) {
+            .box>div{
+                width: 33.3333%;
+            }
+        }
+        /* 电脑端 */
+        @media screen and (min-width:992px) {
+            .box>div{
+                width: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>
+            <div>
+                <a href="#">
+                    <img src="./images/1.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div>
+            <div>
+
+            </div>
+        </div>
+        <div>
+            <div>
+
+            </div>
+        </div>
+        <div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

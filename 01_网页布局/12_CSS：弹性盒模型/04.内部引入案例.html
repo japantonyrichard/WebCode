@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 编写meta标签 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 先写公共的样式 */
+        body{
+            font-size: 20px;
+            color: #fff;
+        }
+        /* 再写不同端，相应的样式 */
+        /* 从小设备到大设备写 */
+        /* 手机 */
+        @media screen and (max-width:768px) {
+            body{
+                background-color: red;
+            }
+        }
+        /* 平板端 */
+        @media screen and (min-width:768px) and (max-width:992px) {
+            body{
+                background-color: blue;
+            }
+        }
+        /* 电脑端 */
+        @media screen and (min-width:992px) {
+            body{
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus dignissimos illo similique sint ea porro animi cupiditate a alias. Dolorem maxime doloribus modi porro sint quasi! Id facere distinctio culpa?
+</body>
+</html>

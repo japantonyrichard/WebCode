@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100%;
+            background-color: red;
+            /* 开启弹性盒模型，里面的弹性子元素会水平排列 */
+            display: flex;
+            height: 700px;
+
+            /* 设置弹性子元素在容器中的排列方式 */
+            /* row 默认值 水平方向 从左到右 */
+            /* flex-direction: row; */
+            /* row-reverse 水平方向 从右向左 */
+            /* flex-direction: row-reverse; */
+            /* column 垂直方向 从上到下（从start到end） */
+            /* flex-direction: column; */
+            /* column-reverse 垂直方向 从下到上（从end到start） */
+            /* flex-direction: column-reverse; */
+
+            /* 设置弹性子元素在主轴方向的对齐方式 */
+            /* justify-content: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+            justify-content: space-between;
+            justify-content: space-around; */
+
+            /* 设置弹性子元素在侧轴方向的对齐方式 */
+            /* align-items: flex-start;
+            align-items: flex-end;
+            align-items: center; */
+
+            /* 设置弹性子元素在容器中是否换行 */
+            /* 默认值，不换行，如果子元素宽度之和大于父元素，会往里面挤 */
+            flex-wrap: nowrap;
+            flex-wrap: wrap;
+        }
+        .box>div{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            
+        }
+        .box>div:nth-child(2n){
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        学习弹性盒模型，重点就是学习 弹性父容器 和 弹性子元素 中分别能写哪些属性？属性有什么作用？
+        
+        弹性父容器中可以写的属性：
+            1.display属性(掌握)
+                display:flex； 表示当前这个元素开启弹性盒模型
+                一个元素一旦开启了弹性盒模型，那它里面的弹性子元素，默认会水平摆放
+            2.flex-direction 属性(了解)
+                该属性可以设置弹性子元素在容器中的排列方式，可选值有：
+                    row:默认值，弹性子元素会在容器中水平从左到右摆放
+                    row-reverse
+                    column
+                    column-reverse
+            3.justify-content 属性（熟悉）
+                该属性可以设置弹性子元素在主轴方向的对齐方式，可选值有：
+                    flex-start
+                    flex-end
+                    center
+                    space-between
+                    space-around(环绕)
+            4.align-items 属性（熟悉）
+                该属性可以设置弹性子元素在侧轴方向的对齐方式，可选值有：
+                    flex-start
+                    flex-end
+                    center
+            5.flex-wrap 属性（了解） 
+                该属性可以设置弹性子元素是否在一行显示，可选值有：
+                    nowrap 不换行
+                    wrap   换行
+
+            总结：
+                弹性父容器中的属性，display属性是必须掌握。使用该属性可以开启弹性盒模型。
+                弹性子元素默认会水平排列。
+     -->
+     <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+     </div>
+</body>
+</html>

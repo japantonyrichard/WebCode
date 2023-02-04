@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./手机.css" media="screen and (max-width:768px)">
+    <link rel="stylesheet" href="./平板.css" media="screen and (max-width:768px) and (max-width:992px)">
+</head>
+<body>
+    <!-- 
+        媒体查询可以用来做响应式布局。
+        具体的步骤：
+        1.在页面中引入 meta 标签。
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        2.根本不同的条件（设备），写不同的样式代码。
+            不同的设备尺寸不一样，手机宽度<768px ； 平板>=768px 平板<992px ； 电脑>=992px （注意临界点）
+
+            具体的写法有两种：(顺序不能乱！)
+                内部引入：（//注释）
+                //手机端
+                @media screen and (max-width:768px){
+                    //手机相关的样式代码
+                }
+                //平板端
+                @media screen and (min-width:768px) and (max-width:992px){
+                    //平板端的样式代码
+                }
+                //电脑端
+                @media screen and (min-width:992px){
+                    //电脑端的样式代码
+                }
+                
+                外部引入
+                就是将上面内部引入的各个终端代码分别写在单独的文件中。
+                之后在页面中引入，只不过是引入的时候要加以判断。
+                <link rel="stylesheet" href="./手机.css" media="screen and (max-width:768px)">
+     -->
+</body>
+</html>
