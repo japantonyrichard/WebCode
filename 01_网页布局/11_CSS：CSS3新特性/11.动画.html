@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            /* 调用动画 */
+            /* animation: ani 6s; */
+            animation: ani 6s linear 1s 3 alternate forwards;
+        }
+
+        .box1:hover{
+            /* 使动画暂停播放 */
+            animation-play-state: paused;
+        }
+
+        /* 定义动画 */
+        @keyframes ani{
+            0%{
+                background-color: red;
+            }
+            20%{
+                background-color: orange;
+            }
+            40%{
+                background-color: yellow;
+            }
+            60%{
+                background-color: green;
+            }
+            80%{
+                background-color: purple;
+            }
+            100%{
+                background-color: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        动画 animation
+
+        1.动画就是从一种样式变化到另一种样式。而且可以控制变化的过程和变化的次数。
+        2.定义动画，其实就是定义关键帧。
+            @keyframes 动画名字{
+                0%|from{
+                    css样式
+                }
+                10%{
+                    css样式
+                }
+                ...
+                100%|to{
+                    css样式
+                }
+            }
+        3.定义好动画后，调用执行动画。  animation：动画名字 动画持续时间；
+        4.调用动画时完整的写法:
+            animation: name duration timing-function delay iteration-count direction fill-mode;
+            name 动画的名字     *必须*
+            duration 动画的持续时间     *必须*
+            timing-function 动画的速度  ease、ease-in、ease-out等等     *可选*
+            delay 延迟时间      *可选*
+            iteration-count  迭代次数，播放次数  一般写的是 infinite 表示无穷次   *可选*
+            direction   方向，播放的方向，可以设置为 alternate-交替，也就是奇数次正序播放，偶数次倒序播放。
+            fill-mode   填充模式，可以设置最后动画播放完后停在最后一帧。默认是显示最初设置的效果。
+
+        5. animation-play-state属性：动画播放状态，默认值是 running，还有一个值是 pause-暂停。
+        6.上面我们用的是动画的简写属性 animation，其实动画也是有个个单个属性的：
+            animation-name
+            animation-duration
+            animation-timing-function
+            animation-delay
+            animation-iteration-count
+            animation-direction
+            animation-fill-mode
+        7.单个写属性太麻烦了，所以我们用的还是简写属性。
+            animation：名字 持续时间 linear infinite;
+     -->
+     <div class="box1">
+
+     </div>
+</body>
+</html>
