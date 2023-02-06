@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册｜客运服务｜铁路客户服务中心</title>
+		<link rel="stylesheet" type="text/css" href="css/register.css"/>
+		<script type="text/javascript">
+		    //验证用户名
+			function checkUname(elemObj){
+				//定义正则规则
+				var regex=/^[a-zA-Z]{1}\w{5,29}$/;
+				//获取当前输入的值
+				var val=elemObj.value;
+				//如果是空，则不进行验证
+				
+				//获取到当前触发事件元素的input的父元素td
+				var pelemNode=elemObj.parentElement;
+				
+				//获取到当前触发事件元素的input的父元素td的下一个td元素
+			    var pnextEleNode=pelemNode.nextElementSibling;
+				
+				if(val.length==0){
+					return false;
+				}else if(val.length<6){//长度验证
+					elemObj.style.borderColor="red";//文本框边框线变红
+					pnextEleNode.innerHTML="6-30位字母、数字或“_”,字母开头";//保证原始提示要求不变
+					var div=document.createElement("div");
+					div.style.color="red";
+					div.innerHTML="×用户名长度不能小于6个字符";
+					if(elemObj.nextElementSibling==null){//直接给出提示信息
+					    pelemNode.appendChild(div);
+					}else{//先删除后给出提示信息
+						 pelemNode.removeChild(elemObj.nextElementSibling);
+						 pelemNode.appendChild(div);
+					}
+					return false;
+				}else if(regex.test(val)){//正则验证
+					elemObj.style.borderColor="#ccc";//文本框边框线变#ccc
+					if(elemObj.nextElementSibling!=null){//先删除后给出提示信息
+						pelemNode.removeChild(elemObj.nextElementSibling);
+					    pnextEleNode.innerHTML="<font color='green'>√</font>6-30位字母、数字或“_”,字母开头";
+					}else{//直接给出提示信息
+					  pnextEleNode.innerHTML="<font color='green'>√</font>6-30位字母、数字或“_”,字母开头";
+					}
+					return true;
+				}else{//其他规则验证
+					elemObj.style.borderColor="red";//文本框边框线变红
+					pnextEleNode.innerHTML="6-30位字母、数字或“_”,字母开头";//保证原始提示要求不变
+					var div=document.createElement("div");
+					div.style.color="red";
+					div.innerHTML="×得由字母、数字和_组成且字母开头";
+					if(elemObj.nextElementSibling!=null){//先将原来的提示删除再给出新提示
+						pelemNode.removeChild(elemObj.nextElementSibling);
+					    pelemNode.appendChild(div);
+					}else{//提示
+					    pelemNode.appendChild(div);
+					}
+					return false;
+				}
+			}
+			
+			//验证登录密码
+			function checkPwd1(){
+				//获取登录密码的元素
+				var pwd=document.getElementById("pwd1");
+				
+				//获取密码提示元素
+				var tips=document.getElementById("pwd_tips1");
+				
+				//定义正则规则
+				var regex=/^\w{6,20}$/;
+				
+				//长度验证 
+				if(pwd.value.length<6){
+					tips.innerHTML="<font color='red'>×密码长度不能小于6个字符</font>";
+				}else if(regex.test(pwd.value)){//正则规则验证
+					 if(pwd.value.length<8){//密码强度验证
+					 	tips.innerHTML="<font color='green'>√********强度：弱********</font>";
+					 }else if(pwd.value.length<10){//密码强度验证
+					 	tips.innerHTML="<font color='green'>√********强度：中********</font>";
+					 }else{//密码强度验证
+					 	tips.innerHTML="<font color='green'>√********强度：强********</font>";
+					 }
+					 return true;
+				}else{//其他验证
+					tips.innerHTML="<font color='red'>×密码须由字母、数字、“_”组成</font>";
+					return false;
+				}
+			}
+			
+			//确认密码验证
+			function checkPwd2(){
+				//获取登录密码和确认密码元素
+				var pwd=document.getElementById("pwd1");
+				
+				var pwd2=document.getElementById("pwd2");
+				
+				//获取确认密码提示元素
+				var tips=document.getElementById("pwd_tips2");
+				
+				//空验证
+				if(pwd2.value==0){
+					return false;
+				}
+				
+				//登录密码和q确认密码比较
+				if(pwd2.value==pwd1.value){
+					tips.innerHTML="<font color='green'>√********已通过*********</font>";
+					return true;
+				}else{
+					tips.innerHTML="<font color='red'>×*****与登录密码不一致*****</font>";
+					return false;
+				}
+			}
+			
+			
+			//验证姓名
+			function checkRealname(){
+				//定义正则表达式
+				var regex=/^[\u4e00-\u9fa5]{2,15}$/;
+				
+				//获取需要验证的元素对象
+				var rname=document.getElementById("real_name");
+				
+				//获取用于验证信息提示的元素对象
+				var rtips=document.getElementById("real_name_tips");
+				
+				//进行验证
+				if(rname.value.length==0){
+					rtips.innerHTML="<font color='red'>×该项为必填项，不能为空</font>";
+					return false;
+				}else if(regex.test(rname.value)){
+					rtips.innerHTML="<font color='green'>√********通过*********</font>";
+					return true;
+				}else{
+					rtips.innerHTML="<font color='red'>×必须输入汉字，长度为2-15</font>";
+					return false;
+				}
+			}
+			
+			//验证身份证号码
+			function checkPid(elemObj){
+				//获取要验证的身份号码
+				var pid=elemObj.value;
+				
+				//获取用于验证提示的元素
+				var tips=document.getElementById("role_pid_tips");
+				
+				//定义正则规则
+				var regex=/^[1-9][0-9]{16}([Xx]|[0-9])$/;
+				
+				//长度验证和正则验证
+				if(pid.length<18){//长度验证
+					tips.innerHTML="<font color='red'>×该身份证号不足18位******</font>";
+					return false;
+				}else if(pid.length>18){
+					tips.innerHTML="<font color='red'>×该身份证号超过18位******</font>";
+					return false;
+				}else{//正则验证
+					if(regex.test(pid)){
+						tips.innerHTML="<font color='green'>√********已通过********</font>";
+					    return true;
+					}else{
+						tips.innerHTML="<font color='red'>×*****不符合规则********</font>";
+					    return false;
+					}
+				}
+			}
+			
+			//验证邮箱
+			function checkEmail(){
+				//获取要验证的邮箱
+				var email=document.getElementById("email").value;
+				
+				//获取用于验证提示的元素
+				var tips=document.getElementById("email_tips");
+				
+				//定义正则规则
+				var regex=/^[\w]{6,11}@[0-9a-z]{2,5}\.(com){1}(\.cn){0,1}$/;
+				
+				//长度验证和正则验证
+				if(email.length==0){//长度验证
+					tips.innerHTML="<font color='red'>建议写上邮箱，便于今后找回密码**</font>";
+					return true;
+				}else if(regex.test(email)){//正则验证
+					tips.innerHTML="<font color='green'>√********已通过********</font>";
+					return true;
+				}else{
+					tips.innerHTML="<font color='red'>×*****不符合邮箱规则******</font>";
+					return false;
+				}
+			}
+			
+			//验证手机
+			function checkPhone(){
+				//获取要验证的身份号码
+				var phone=document.getElementById("phone").value;
+				
+				//获取用于验证提示的元素
+				var tips=document.getElementById("phone_tips");
+				
+				//定义正则规则
+				var regex=/^1[34578]\d{9}$/;
+				
+				//正则验证
+				if(regex.test(phone)){
+					tips.innerHTML="<font color='green'>√********已通过********</font>";
+					return true;
+				}else{//正则验证
+					tips.innerHTML="<font color='red'>×****不符合号码规则****</font>";
+					return false;
+				}
+			}
+			
+			//验证协议
+			function checkAgree(){
+				var agree=document.getElementById("agree");
+				if(agree.checked){
+					return true;
+				}else{
+					alert("请先同意协议");
+					return false;
+				}
+			}
+			//下一步的验证
+			function  testSubmit(){
+				var flag1=checkUname(document.getElementById("uname"));
+				var flag2=checkPwd1();
+				var flag3=checkPwd2();
+				var flag4=checkRealname();
+				var flag5=checkPid(document.getElementById("pid"));
+				
+				var flag6=checkEmail();
+				var flag7=checkPhone();
+				var flag8=checkAgree();
+				return  flag1&&flag2&&flag3&&flag4&&flag5&&flag6&&flag7&&flag8;
+			}
+		</script>
+	</head>
+	<body>
+		<iframe src="header.html" width="100%" height="67"   frameborder="no" scrolling="no"></iframe>
+		<div id="content">
+			<div id="top">
+				<div id="title">
+						您现在的位置：客运首页&nbsp;&gt;&nbsp;<span>注册</span>
+			 </div><!--title end-->
+			</div><!--top end-->
+			<h1>账户信息</h1>
+			<div id="bottom">
+				<form action="#" method="get" onsubmit="return testSubmit();">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td class="t_right"><span>*</span>用户名：</td>
+						<td><input type="text" value="" id="uname" name="uname" placeholder="用户名设置成功后不可修改" onblur="checkUname(this);"/></td>
+						<td class="f7300">6-30位字母、数字或"_",字母开头</td>
+					</tr>
+					<tr>
+						<td  class="t_right"><span>*</span>登录密码：</td>
+						<td><input type="password" id="pwd1"  name="pwd" onblur="checkPwd1();"/></td>
+						<td class="f7300" id="pwd_tips1"> <img src="img/register/line.jpg" /></td>
+					</tr>
+					<tr>
+						<td  class="t_right"><span>*</span>确认密码：</td>
+						<td><input type="password" id="pwd2" onblur="checkPwd2();" /></td>
+						<td  class="f7300" id="pwd_tips2"></td>
+					</tr>
+					<tr>
+						<td  class="t_right"><span>*</span>姓名：</td>
+						<td><input type="text" id="real_name" value="" placeholder="请输入姓名" onblur="checkRealname();"/></td>
+						<td class="f7300" id="real_name_tips" >**输入中文名，只能是汉字**</td>
+					</tr>
+					<tr>
+						<td  class="t_right"><span>*</span>证件类型:</td>
+						<td>
+							<select>
+								<option> 二代身份证</option>
+								<option>港澳通行证</option>
+								<option>台湾通行证</option>
+								<option>护照</option>
+							</select>
+						</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td  class="t_right"><span>*</span>证件号码：</td>
+						<td><input  type="text" id="pid" placeholder="请输入您的身份证号码" onblur="checkPid(this);"/></td>
+						<td class="f7300" id="role_pid_tips"></td>
+					</tr>
+					<tr>
+						<td  class="t_right">邮箱：</td>
+						<td><input  type="text" id="email" placeholder="请正确填写邮箱地址" onblur="checkEmail();" /></td>
+						<td class="f7300" id="email_tips"></td>
+					</tr>
+					<tr>
+						<td  class="t_right"><span>*</span>手机号码</td>
+						<td><input type="text" placeholder="请输入您的手机号码 " id="phone" onblur="checkPhone();"/></td>
+						<td class="f7300" id="phone_tips">请正确填写手机号码，稍后将向该手机号码发送短信验证码</td>
+					</tr>
+					<tr>
+						<td  class="t_right"><span>*</span>旅客类型</td>
+						<td>
+							<select>
+								<option>成人</option>
+								<option>儿童</option>
+								<option>学生</option>
+								<option>残疾军人、伤残人民警察</option>
+							</select>
+						</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td  class="t_right">&nbsp;</td>
+						<td colspan="2" class="f14" >
+							<input  type="checkbox" class="none" id="agree" onclick="checkAgree();"/>&nbsp;
+							我已阅读并同意<a href="#">
+							《中国铁路客户服务中心网站服务条款》
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td  class="t_right">&nbsp;</td>
+						<td class="center">
+							<input  type="submit" value="下一步" style="background-color: orange;color: white;width: 122px;"/>
+						</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				</form>
+			</div><!--bottom end-->
+			 
+		</div><!--content end-->
+		<iframe src="footer.html" width="100%" height="136"   frameborder="no" scrolling="no"></iframe>
+	</body>
+</html>

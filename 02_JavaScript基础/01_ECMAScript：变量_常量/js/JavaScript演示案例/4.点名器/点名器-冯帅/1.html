@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#m{ /*图片按钮的div样式*/
+			    height: 100px;/*div的大小*/
+			    position: absolute; /*绝对路径*/
+			    left: 43%;
+			    top: 351px;
+			    width: 100px;
+			    z-index: 2;/*层次*/
+			}
+			#bj{/*背景图片的位置大小*/
+				position: relative;
+				left: 20%;
+				height: 50%;
+			}
+			#dm{/*随机人名Div的样式*/
+			    font-size: 99px;
+			    left: 36%;
+			    position: absolute;
+			    top: 161px;
+			    z-index: 2;
+			    text-align: center;
+			   	width: 300px;
+			   	color: darkslateblue;
+			   	
+			}
+			input{/*在Div中的大小和位置*/
+				width: 100px;
+				align-items: center;
+			}
+			#tab{/*表格的样式*/
+				font-size: 40px;
+				/*background-color: #6495ED;*/
+				color: chocolate;
+				position: absolute;
+				top: 7px;
+				left: 21%;
+				z-index: 2;
+				height: 120px;
+				text-align: center;
+			}
+		</style>
+		<script>
+			var index=1;//非常重要  决定在第几次幸运 小伙伴在第几行显示
+			function uname(){
+				/*把人名放入数组*/
+					var s=["刘老师","张晓煜","张盼盼","孔江涛","李赛路","董忠言","张清风",
+					"韩志鹏","尚旭航"," 李凯"," 陈楠","刘银章","樊鑫佳","杨杰如","胡芊芊",
+					" 张涛","邵玉亮","王成栋","孙栋梁"," 陈伟","陈云鹏","胡娇娇","豆小帅",
+					" 冯晓","葛祥雪","韩天亮","撖延龙","賀肇发","胡开拓","靳邢证","刘老师",
+					"李豪","李路广","刘立","刘佩","刘晓伟","刘依依","祁帅","秦红云","朱林",
+					"秦帅","宋果峰","夏鑫鑫","杨金鹏","张殿阳","张辉","张鹏","张伟伟","赵斌",
+					"赵洋","周晨","朱声瑞","郎艳华","刘曦","杨建茹","邓文云","陆建","宋世俊",
+					"张彦超","谢伟","何守优","李海鹏","张英杰","郝晓东","李娇娇","刘洋","翟艳华",
+					"赵海文","陈忠信","杜悦新","李阔","杜伟","李新","陆阊柱","朱汪键","张刚强"];
+					/*直接获取数组的长度*/
+					var s1=s.length;
+					/*parseInt强转随机数的类型 乘数组长度刚好是0--length-1的长度*/
+					var a=parseInt(Math.random()*s1);
+					/*索引得到人名*/
+					var w=s[a];
+				//	var t=document.getElementById("111").value=w;
+				/*标签名获取表格的数组*/
+					var t=document.getElementsByTagName("tr");
+					/*这个for是尽可能的降低重复出现一个人的名字，
+					 * 但是做不到绝对，拷贝数组可以做到绝对
+					 但是懒得写了 现在是490分之一的几率重复*/
+					for(var i=1;i<=3;i++){
+						if(w==t[i].value){
+							w=s[parseInt(Math.random()*s1)];	
+						}
+					}
+					/*把随机是时候的效果插入DIV*/
+				document.getElementById("dm").innerHTML=w;
+				/*把名字赋值到tr的value 这样再提取可以直接显示然后插入到Div 
+				 如果不用也可以 那样会显示和上面一样的动态效果
+				 */
+				t[index].value=w;
+			}
+			
+			function begin(){
+				if(index==4){/*判断3个人名选取完以后不让页面在进行操作*/
+					alert("今天的次数用完！明天再来吧");
+					return;
+				}else{
+					d=window.setInterval(uname,50);//无限调用
+					//按钮事件触发师父隐藏
+					document.getElementById("w").style.display="none";
+					document.getElementById("w1").style.display="block";	
+				}
+			}
+			function pause(){
+				window.clearInterval(d);
+				document.getElementById("w").style.display="block";
+				document.getElementById("w1").style.display="none";
+				//var tab=document.getElementById("111").value;
+				//	document.getElementById("111").innerHTML=tab;
+				//提取之前赋值的Value 
+				var tab=document.getElementsByTagName("tr")[index].value;
+				//吧提取的值插入到指定的dvi
+				document.getElementsByTagName("tr")[index].innerHTML=tab;                                        
+				index++;//下次再调用就是下个tr上场了
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="bj"><img src="img/1791507_100851006_2.jpg" /></div>
+		<div id="dm"><font face="楷体">点名</font></div>
+		<div id="m">
+			<input type="image" id="w" src="img/u=2607810376,1068908940&fm=21&gp=0.jpg" onclick="begin()" style="display: block;"/>
+			<input type="image" id="w1" src="img/u=1008120483,2091004177&fm=21&gp=0.jpg" onclick="pause()" style="display: none;"/>
+		</div>
+		<table  id="tab">
+			<tr style="background-color: cornflowerblue;"><th style="height: 30px;">幸运小伙伴</th></tr>
+			<tr><th style="height: 30px;" id="111" ></th></tr>
+			<tr><th style="height: 30px;" id="112" ></th></tr>
+			<tr><th style="height: 30px;" id="113" ></th></tr>
+		</table>
+	</body>
+</html>

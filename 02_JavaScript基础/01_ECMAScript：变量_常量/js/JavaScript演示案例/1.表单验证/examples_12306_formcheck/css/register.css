@@ -1,0 +1,27 @@
+*{ margin: 0px; padding: 0px; border: 0px;}
+#content{ width: 982px; height: 550px; margin: 0px auto; margin-bottom: 10px;}
+#title{ height: 30px; line-height: 30px; font-size: 12px;}
+#bottom{ width: 978px; height: 480px; border: 1px solid #0772FF; border-top: none; }
+h1{ height: 35px; background: url(../img/register/registerbg.jpg) 0px 0px no-repeat;
+ color: #fff; font-size: 14px; font-weight: normal; line-height: 35px; padding-left: 30px;}
+
+#bottom table{ width: 600px; margin: 0px auto;  font-size: 12px;
+}
+#bottom form{padding-top: 20px;}
+#bottom form input{ border: 1px solid #ccc;
+ width: 200px; height: 25px; color: #939393;}
+#bottom table tr{ height: 40px;}
+
+#bottom table td span{ color: red; padding-left: 10px; padding-right: 5px;}
+#bottom table td select{ width: 200px; height: 25px;}
+#bottom table input.none{ width: auto; border: none; vertical-align: middle;}
+#bottom table td a{ text-decoration: none; font-size: 14px;}
+#bottom table td a:hover{ color: #ff7300;}
+#bottom table td.f14{ font-size: 14px;}
+#bottom table td.f7300{ color: #ff7300; text-align: left;}
+#bottom table input.btn_register{ background: url(../img/images/button.jpg) 0px 0px no-repeat; 
+color:#fff; border: none;}
+
+#bottom table td{text-align: center; }
+
+#bottom table td.t_right{ text-align: right;}

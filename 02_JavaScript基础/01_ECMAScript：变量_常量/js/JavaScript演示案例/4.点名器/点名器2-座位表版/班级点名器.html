@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+		
+			td{
+				height: 30px;;
+				width: 80px;
+				border-radius: 5px;
+			}
+			select{
+				border-radius: 5px 5px 0 0;
+				height: 30px;
+				width: 200px;
+				border: 1px solid silver;
+				background-color: antiquewhite;
+				text-align: center;
+			}
+			
+			#www{
+				font-size: 20px;
+				color:chartreuse;
+				font: "新宋体";
+				width: 200px;
+				align-items: center;
+				position: absolute;
+				top: 600px;
+				left: 25%;
+			}
+			#dt{
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+			.c{
+				background-color: brown;
+			}
+			.xz{/*在Div中的大小和位置*/
+				
+				
+				position: absolute;
+				top: 600px;
+				left: 45%;
+			}
+			input{
+				align-items: center;
+				width: 100px;
+			}
+			#tab{/*表格的样式*/
+				color:midnightblue ;
+				font-family: "微软雅黑";
+				font-size: 25px;
+				/*background-color: #6495ED;*/
+				position: absolute;
+				top: 3%;
+				left: 18%;
+				z-index: 2;
+				font-weight: 500;
+				text-align: center;
+			}
+
+			body{
+				background-image:url(img/sxt.jpg) ;
+				background-size:   cover;
+			}
+		</style>
+		<script type="text/javascript">
+				
+				var s1=0;
+				var wf=new Array();
+				
+				wf["随机选择"]=["单人随机","双人随机","三人随机"];
+				wf["顺序选择"]=["从前至后","从后至前"];
+			
+				var index=0;//在载入页面辅助
+				var f=0;
+				var f2=0;//在载入界面赋值  直接在这里赋值无效
+				var n=document.getElementsByTagName("tr");//获取所有tr
+				var weizhi=2;//
+				
+			function choice(){
+				
+				var row1=document.getElementById("row").getElementsByTagName("td").length;
+				//alert(row1);
+				for(var i=0,j=row1;i<row1;i++,j--){
+					if(j==row1){
+					document.getElementById("row").getElementsByTagName("td")[i].innerHTML="排/列";
+					}else{
+							document.getElementById("row").getElementsByTagName("td")[i].innerHTML=j;
+					}
+				
+					
+				}
+					
+				var xuan=document.getElementById("xz");//选择点名的方法
+				for (var i in wf){
+					xuan.add(new Option(i,i),null);
+				}
+				
+				
+				 index=document.getElementsByTagName("tr").length-3;//给index赋值
+				 f2=document.getElementById("row").getElementsByTagName("td").length+1;//给f2赋值
+				
+			}
+			function choice2(){
+				var xuan=document.getElementById("xz").value;
+				var xuan2=document.getElementById("xz2");
+				xuan2.length=0;
+				for ( var i in wf[xuan]){
+					xuan2.add(new Option(wf[xuan][i],wf[xuan][i]),null);
+				}
+			}
+			
+			function uname (){
+					/*直接获取数组的长度*/
+				var row1=document.getElementsByTagName("tr").length;
+				var row2=document.getElementById("row").getElementsByTagName("td").length;
+					/*parseInt强转随机数的类型 乘数组长度刚好是0--length-1的长度*/
+					var a=parseInt(Math.random()* (row1-4))+2;
+					var a1=parseInt(Math.random()* (row1-4))+2;
+					var a2=parseInt(Math.random()* (row1-4))+2;
+					var b=parseInt(Math.random()*(row2-1))+1;
+					var b1=parseInt(Math.random()*(row2-1))+1;
+					var b2=parseInt(Math.random()*(row2-1))+1;
+					for(var i=2;i<row1;i++){
+						for(var j=1;j<row2;j++){
+							document.getElementsByTagName("tr")[i].getElementsByTagName("td")[j].className="";
+						}
+					}
+					
+					var value1=document.getElementById("xz2").value;
+					if(value1=="单人随机"){	/*标签名获取表格的数组*/
+						var dd=document.getElementsByTagName("tr")[a].getElementsByTagName("td")[b].textContent;
+						if(dd==""){
+							a=a1;b=b2;
+						}
+						document.getElementsByTagName("tr")[a].getElementsByTagName("td")[b].className="c";
+					}
+					if(value1=="双人随机"){
+						document.getElementsByTagName("tr")[a].getElementsByTagName("td")[b].className="c";
+						document.getElementsByTagName("tr")[a1].getElementsByTagName("td")[b1].className="c";
+					}
+					if(value1=="三人随机"){
+						document.getElementsByTagName("tr")[a].getElementsByTagName("td")[b].className="c";
+						document.getElementsByTagName("tr")[a1].getElementsByTagName("td")[b1].className="c";
+						document.getElementsByTagName("tr")[a2].getElementsByTagName("td")[b2].className="c";
+					}
+			}
+			function uname2(){
+				var value2=document.getElementById("xz2").value;
+				var row1=document.getElementsByTagName("tr").length;
+				var row2=document.getElementById("row").getElementsByTagName("td").length;	
+					
+					if(value2=="从后至前"){
+						f++;
+						if(f==1){
+							document.getElementsByTagName("tr")[weizhi].getElementsByTagName("td")[f].className="c";
+						}
+						
+						if(f==row2){
+							document.getElementsByTagName("tr")[weizhi].getElementsByTagName("td")[f-1].className="";
+							f=0;
+							weizhi ++;
+						}
+						if(weizhi==row1-2){
+							weizhi=2;
+						}
+						document.getElementsByTagName("tr")[weizhi].getElementsByTagName("td")[f-1].className="";
+						document.getElementsByTagName("tr")[weizhi].getElementsByTagName("td")[f].className="c";
+					}else if(value2=="从前至后"){
+						
+						f2--;
+						var row1=document.getElementsByTagName("tr").length-3;
+						var row2=document.getElementById("row").getElementsByTagName("td").length;	
+					if(f2==row2-1){
+							document.getElementsByTagName("tr")[index].getElementsByTagName("td")[f2].className="c";
+						}
+						if(f2==0){
+							document.getElementsByTagName("tr")[index].getElementsByTagName("td")[f2+1].className="";
+							f2=row2;
+							index--;
+						}
+						
+						if(index==1){
+							index=row1;
+						}
+						document.getElementsByTagName("tr")[index].getElementsByTagName("td")[f2+1].className="";
+						document.getElementsByTagName("tr")[index].getElementsByTagName("td")[f2].className="c";
+					}
+			}
+		
+			function button1(){
+				var row2=document.getElementById("row").getElementsByTagName("td").length
+				
+				for(var i=n.length-1;i>1;i--){
+					for(var j=row2-1;j>=0;j--){
+						
+						document.getElementsByTagName("tr")[i-1].getElementsByTagName("td")[j].className="";
+					}			
+				}
+				var xuan=document.getElementById("xz").value;
+				switch(xuan){
+					case "随机选择" :
+					d=window.setInterval(uname,50);break;
+					case "顺序选择" :
+					d=window.setInterval(uname2,30);break;
+					default :
+					window.alert("请选择点名的方式！");
+					return;
+				}
+				/*if(xuan=="随机选择"){
+					d=window.setInterval(uname,50);
+				}else if(xuan=="顺序选择"){
+					d=window.setInterval(uname2,50)
+				}else{
+					window.alert("请选择点名的方式！")；
+				}*/
+				document.getElementById("dt").innerHTML="";
+				document.getElementById("dt1").innerHTML="";
+				document.getElementById("b1").style.display="none";
+				document.getElementById("b2").style.display="block";
+			}
+			function button2(){
+				window.clearInterval(d);
+				document.getElementById("b1").style.display="block";
+				document.getElementById("b2").style.display="none";
+			}
+			function disbg(){	
+				document.getElementById("bg").style.display="block";
+			}
+			function bg1(){	
+				document.getElementById("body1").style.backgroundImage="url(img/bjsky.jpg)";
+				document.getElementById("tab").style.color="#DAA520";
+				document.getElementById("ul").style.color="#DAA520";
+				document.getElementById("bg").style.display="none";
+			}
+			function bg2(){	
+				document.getElementById("body1").style.backgroundImage="url(img/mayun.jpg)";
+				document.getElementById("tab").style.color="goldenrod";
+				document.getElementById("ul").style.color="goldenrod";
+				document.getElementById("bg").style.display="none";
+			}
+			function bg3(){	
+				document.getElementById("body1").style.backgroundImage="url(img/simple.jpg)";
+				document.getElementById("tab").style.color="aliceblue";
+				document.getElementById("ul").style.color="aliceblue";
+				document.getElementById("bg").style.display="none";
+			}
+			function bg4(){	
+				document.getElementById("body1").style.backgroundImage="url(img/zgc.jpg)";
+				document.getElementById("tab").style.color="black";
+				document.getElementById("ul").style.color="black";
+				document.getElementById("bg").style.display="none";
+				
+			}
+			function bg5(){	
+				document.getElementById("body1").style.backgroundImage="url(img/sxt.jpg)";
+				document.getElementById("tab").style.color="midnightblue";
+				document.getElementById("ul").style.color="midnightblue";
+				document.getElementById("bg").style.display="none";
+			}
+		</script>
+	</head>
+	<body onload="choice()" id="body1">
+		<!--
+            	作者：冯帅
+            	时间：2016-04-20
+            	描述：
+            -->
+		<table border="1" id="tab" >
+		<tr><th colspan="11">座次表</th></tr>
+		<!--不能删 过道 -->
+		 <tr id="cc">
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		   	<td rowspan="11" style="height:0xp;">过道</td>
+		    <td>&nbsp;</td>
+		   <!-- <td>&nbsp;</td>-->
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  	<td>&nbsp;</td>
+		   
+		 </tr><!--不能删 -->
+		 
+		 
+		 
+		  
+		  <tr><td>八排</td>
+		     <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		  </tr>
+		  
+		  <tr><td>七排</td>
+		     <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		  </tr>
+		  
+		  <tr><td>六排</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		  </tr>
+		  
+		  <tr><td>五排</td>
+		      <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		  </tr>
+		  
+		  <tr><td>四排</td>
+		      <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		  </tr>
+		  
+		    <tr><td>三排</td>
+		      <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    </tr>
+		    
+		    <tr><td>二排</td>
+		      <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		  </tr>
+		  
+		  <tr><td>一排</td>
+		       <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		    <td>武大郎</td>
+		  </tr>
+		     <!--
+                显示行数的  切记不能删                      
+                        -->
+		   <tr id="row">  
+		   	
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		  </tr>   
+		  
+		  <tr > 
+		    <td colspan="11">讲台</td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		    <td style="display: none;"></td>
+		  </tr>   
+		 <!-- <tr >  
+		    <th></th>
+		    
+		  </tr>-->
+		<!-- <tr><th colspan="11">座次表</th></tr>-->
+		</table>
+		<div class="xz">
+			<input type="image" id="b1" src="img/E`CJNIBE(P)VYR~$Sdrfd2}M(R2_副本.png" onclick="button1()" style="display: block;"/>
+			<input type="image" id="b2" src="img/E`CJNIBE(P)VYRrtge2_副本.png" onclick="button2()" style="display: none;"/>
+		</div>
+		<form id="www">
+			<div id="111" >点名方式选择:</div>
+			<select id="xz" onchange="choice2()">
+				<option>--请选择--</option>
+			</select>
+			<select id="xz2">
+				<option>--请选择--</option>
+			</select>
+			
+		</form>
+		
+		<div style="top: 10px;position: absolute;">
+		<a  href="javascript:disbg(this)">皮肤选择</a>
+		
+		<div id="bg" style="display: none;">
+			<input type="image" src="img/bjsky.jpg" onclick="bg1()" /><br />
+			<input type="image" src="img/simple.jpg" onclick="bg3()" /><br />
+			<input type="image" src="img/zgc.jpg" onclick="bg4()" /><br />
+			<input type="image" src="img/mayun.jpg" onclick="bg2()" /><br />
+			<input type="image" src="img/sxt.jpg" onclick="bg5()"  />
+		</div>
+		
+		</div>
+		
+		<div id="dt"></div>
+		<div id="dt1"></div>
+		
+		
+		<div style="top: 80%;position: absolute;right: 50px;">冯帅<br />2016.4.20</div>
+		
+	</body>
+</html>
