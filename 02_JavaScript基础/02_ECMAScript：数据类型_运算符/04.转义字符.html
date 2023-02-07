@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        转义字符
+
+        转义字符是 \ 反斜杠
+        转义字符可以使一些特殊符号变的不特殊，比如：\" 引号就是一个很普通的引号了。
+        也可以使一些不特殊的符号变的特殊，比如： \n 就表示 回车符。
+        \t 表示制表符，就相当于你敲了一下 tab键
+
+     -->
+     <script>
+        console.log("大家\n上午好！");
+        // document.write("大家\n上午好！");
+        document.write("大家<br>上午好！");
+        console.log("大家\t上午好");
+
+
+        // prompt 返回的值是 string类型
+        // var age = prompt("请输入你的年龄：");
+        // console.log(age, typeof age);
+
+        // var n1 = NaN; // NaN 'number'
+        var n1 = 'NaN';// NaN string
+        console.log(n1, typeof n1);
+     </script>
+</body>
+</html>

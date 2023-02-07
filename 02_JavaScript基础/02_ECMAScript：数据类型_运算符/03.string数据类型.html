@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        string 数据类型
+
+        1.string 是 字符串的意思
+        2.字符串就是一个一个的字符串起来
+        3.字符：就是一个字母、一个汉字、一个符号...
+        4.字符串的值必须使用引号引起来，可以是双引号也可以是单引号。
+        5.字符串的值在写的时候是用引号引起来的，但是打印出来后是没有引号的，也就是只打印引号中的内容。
+        6.双引号里面是可以套单引号的。
+        7.单引号里面也是可以套双引号的。
+        8.如果要在双引号里面套双引号，那需要将里面的双引号进行转义。
+            转义使用 反斜杠 \   转义字符可以使一些特殊符号变为普通符号
+     -->
+     <script>
+        var sex = "男";
+        var sex2 = '女';
+        var name = "貂蝉";
+        var name2 = "张无忌喜欢'赵敏'";
+        var name3 = '周芷若也喜欢"张无忌"';
+        // var name4 = "你喜欢"灭绝师太"吗？";// Uncaught SyntaxError: Unexpected identifier '灭绝师太'
+        var name4 = "你喜欢\"灭绝师太\"吗？";// 转义使用 反斜杠 \   转义字符可以使一些特殊符号变为普通符号
+        var name5 = '\'小昭\'也喜欢张无忌';
+        var name6 = "";// 空字符串 里面没东西
+
+        console.log(sex,typeof sex);
+        console.log(sex2,typeof sex2);
+        console.log(name,typeof name);
+        console.log(name2,typeof name2);
+        console.log(name3,typeof name3);
+        // console.log(name4,typeof name4);// Uncaught SyntaxError: Unexpected identifier '灭绝师太'
+        console.log(name4,typeof name4);
+        console.log(name5,typeof name5);
+        console.log(name6,typeof name6);
+     </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        常量
+
+        1.常量就是不能变化的量。
+        2.常量的声明使用 const，而且在声明时就必须给定值，一旦给定值之后，不能再改了。
+        3.常量的命名习惯：一般都是全大写字母，如果有多个单词的话，使用下划线连接，比如：XXX_YYY
+        4.常量是不能提升的。
+     -->
+     <script>
+        // 声明一个常量
+        // const A;// 会报错，因为没有给常量赋值 'const' declarations must be initialized.
+
+        // 声明一个常量,在声明的时候就必须初始化（赋值）
+        const B = 18;
+        console.log(B);
+        // B = 28;// 常量一旦赋值后，不能再重新赋值了。
+        // console.log(B);// 报错：Uncaught TypeError: Assignment to constant variable.at 14.常量.html:23:11
+
+        // 常量是不能提升的
+        // console.log(C);
+        // const C = 20;// 报错：Uncaught ReferenceError: Cannot access 'C' before initialization
+     </script>
+</body>
+</html>

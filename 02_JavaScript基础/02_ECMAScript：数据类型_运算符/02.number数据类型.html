@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        number 数据类型
+
+        1.number 就是 数字、数值的意思
+        2.所有的数字都是 number类型的，不管是 正数、负数、整数、小数、各种进制的数、NaN、Infinity，都属于 number。
+        3.通过 typeof 运算符可以返回某个变量、某个值的数据类型。
+            比如：typeof 3.14 得到的结果是 number
+
+        4.小数也称为 浮点数。
+     -->
+     <script>
+        var a1 = 123;
+        var a2 = 12.3;
+        var a3 = -456;
+        var a4 = 0b1010;
+        var a5 = 0o11;
+        var a6 = 0x2f;
+        var a7 = 5 - "你好";// NaN，not a number 不是一个数字
+        var a8 = 0 / 0;// NaN
+        var a9 = 1 / 0;// Infinity-正无穷
+        var a10 = -2 / 0;// -Infinity-负无穷
+        var a11 = 5e10;// 这里的 e 表示的是 10。 5e10表示5*10的10次方；5e3表示5*10的3次方。
+
+        console.log(a1,typeof a1);
+        console.log(a2,typeof a2);
+        console.log(a3,typeof a3);
+        console.log(a4,typeof a4);
+        console.log(a5,typeof a5);
+        console.log(a6,typeof a6);
+        console.log(a7,typeof a7);
+        console.log(a8,typeof a8);
+        console.log(a9,typeof a9);
+        console.log(a10,typeof a10);
+        console.log(a11,typeof a11);
+     </script>
+</body>
+</html>

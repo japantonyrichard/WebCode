@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 一般写一个标签就行（head或body） -->
+    <!-- 以前是这么写，<script type="text/javascript">现在不用了。 -->
+    <script>
+        var age = 15;
+        var age2 = 20;
+        alert(age);
+    </script>
+</head>
+<body>
+    <!-- 
+        JS 的引入方式：
+        
+        1.将 JS 代码写在 html 文件中的 script 标签中。
+            一般我们会在 head 标签 或者 body 标签中写一个 script 标签，然后在 script标签中写 JS 代码。
+                不推荐使用该方式。
+                *工作后，还是使用第二种方式，将JS代码写在外部的文件中。
+
+        2.将 JS 代码写在后缀是 .js 的文件中。
+            之后哪里要运行该 js 代码，就通过 <script src="">标签引入。
+
+        JS 代码写完后，让浏览器去解析运行。浏览器运行代码的时候，从上到下。
+     -->
+     <script>
+        var name = "苏明玉";
+        alert(name);
+     </script>
+     <script>
+        var sex = "女";
+     </script>
+
+     <h3>我是标题</h3>
+</body>
+</html>

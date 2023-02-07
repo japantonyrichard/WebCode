@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        JS的输出方式：
+
+        我们可以将一些信息输出用以下方式输出，查看。
+
+        1.输出到控制台：console.log(内容);
+        2.输出到页面：document.write(内容);
+        3.使用警告框: window.alert(内容); alert(内容);
+
+        这些输出方式主要是我们用来做调试使用。
+     -->
+     <script>
+        // 将内容输出到浏览器控制台。  console-控制台 log-日志 带小括号的（）方法、函数
+        console.log(123);
+        // 直接打log 选第二个。  注意文本要用引号引起来。
+        console.log("貂蝉");
+
+        // 可以使用 log方法 输出多个 值
+        console.log("吕布",18);
+
+        // 也可以输出标签到控制台（但控制台不识别）
+        console.log("<h3>我是标题</h3>");
+
+        // 会报错。李四 是文本，需要用双引号或单引号引起来。
+        // console.log(李四);
+
+        // 给页面中写入内容（输出内容到页面）
+        document.write(123);
+        document.write("<br>今天天气不错！");
+        document.write("<h3>我是标题</h3>");
+
+        // 弹出一个警告框
+        window.alert(123);
+        // 弹出一个字符串内容
+        window.alert("你好");
+
+        // window. 可以省略。window这个对象，相对窗口而言是js里面最大的。
+        alert("大家好");
+        alert('<h3>你好</h3>');
+        // 下面↓这个里面写两个就不行了，虽然不报错，但是没效果。
+        // alert("大家好","我是吕布");
+     </script>
+</body>
+</html>
