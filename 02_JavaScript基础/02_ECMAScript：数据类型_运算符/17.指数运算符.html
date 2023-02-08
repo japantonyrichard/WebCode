@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        指数运算符：是ES6新增的。
+
+        比如：3 ** 2 意思是 3的2次方
+        指数运算符是 右结合，先从 右边 开始算起。
+     -->
+     <script>
+        console.log(3 ** 2);// 9
+        document.write(3 ** 2);
+
+        console.log(2 ** 2 ** 3);// 256 从右往左算：先是2的三次方=8，然后左边的2的八次方=256
+        console.log((2 ** 2) ** 3);// 64 非得想要从左往右算的话可以加个括号，加了括号的优先算
+     </script>
+</body>
+</html>

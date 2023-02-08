@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        比较运算符：就是比较两个数据的大小，最后得到的结果是Boolean布尔类型的，也就是 true 和 false。
+
+        比较运算符有：
+        >
+        >=
+        <
+        <=
+        ==  （等于，只会比较两个数据的大小）
+        !=  (不等于，只会比较两个数据的大小)
+        === （等于，既比较两个数据的大小，又比较两个数据的类型）
+        !== （不等于，既比较两个数据的大小，又比较两个数据的类型。只要数据不一样或者类型不一样就算不相等。）
+
+        比较运算符，有一边是number类型，另一边是别的类型，那会将别的类型自动转为数字类型进行比较。
+        
+        比较运算符，如果两边都是字符串类型，那会按照字符串对应的Unicode值（UTF-8是里面的一种）进行比较，
+            而且是一位一位的比较，如果比较出来结果的话，就不会继续往后比较了。
+            要记住的几个Unicode编码值：
+                0 - 48      a - 97      A - 65
+                1 - 49      b - 98      B - 66
+                2 - 50
+                  ...
+     -->
+     <script>
+        console.log(3 > 2);// true
+        console.log(3 < 2);// false
+        console.log(3 >= 2);// true
+        console.log(3 <= 2);// false
+        console.log(3 != 2);// true
+        console.log(3 == 2);// false
+        console.log(3 == '3');// true
+        console.log(3 != '2');// true
+        console.log(3 == '2');// false
+        console.log(3 === 3);// true
+        console.log(3 === '3');// false
+        console.log(3 !== '3');// true
+        console.log(3 !== 3);// false
+        
+        
+        console.log(5 > '8');// false
+        console.log(5 > true);// true
+
+        console.log('-----------------------------------------');
+
+        console.log('31' > '5');// false
+        console.log('3123' > '315');// false
+
+        console.log('abc' > 'd');// false
+        console.log('a' < 'A');// false
+        console.log('a' > '0');// true
+
+        console.log('-----------------------------------------');
+
+        console.log(0 == false);// true
+        console.log(0 == '');// true
+        console.log(false == '');// true
+
+        console.log(0 == null);// false
+        console.log(undefined == null);// true
+
+        // NaN 是 number类型的，NaN 和 任何数据 比较都是 false，包括它自己
+        console.log(0 == NaN);// false
+        console.log(NaN == NaN);// false
+     </script>
+</body>
+</html>

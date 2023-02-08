@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        算数运算符，有以下：
+        + 加法
+        - 减法
+        * 乘法
+        / 除法
+        % 取模，求余数
+        ++ 自增
+        -- 自减
+        ** 指数
+
+        第一种情况：number 类型的值参与算数运算，和数学上的一样的效果。
+        第二种情况：有 string 类型的值参与算数运算。
+            1,字符串和其他数据进行加法运算时会进行字符串的拼接，最后得到的结果还是字符串。
+            2,字符串和其他数据进行减法、乘、除、取模等等，都会自动将字符串转为数值，然后计算。
+            如果字符串转不了数值，那得到的结果就是 NaN
+        第三章情况：有boolean 类型的值参与运算。 true 会自动转为 1 ，false 会自动转为 0 。
+        第四种情况：有 undefined 参与运算。undefined 会转为 NaN，所以计算结果是 NaN。
+        第五种情况：有 null 参与运算。null 会转为 0 。
+     -->
+     <script>
+        var x = 10;
+        var y = 3;
+        
+        console.log(x + y);// 13
+        console.log(x - y);// 7
+        console.log(x * y);// 30
+        console.log(x / y);// 3.3333333333333335
+        console.log(x % y);// 1
+        console.log(x ** y);// 1000
+
+        console.log("--------------------------------");
+        
+        var x = '10';
+        var y = 3;
+        // 进行字符串的拼接
+        console.log(x + y);// 103（字符串）
+        console.log(x - y);// 7
+        console.log(x * y);// 30
+        console.log(x / y);// 3.3333333333333335
+        console.log(x % y);// 1
+        console.log(x ** y);// 1000
+
+        var z = '你好';
+        console.log(y - z);// NaN
+
+        console.log("y 的值是：" + y);// y 的值是：3
+
+        // 从左到右计算
+        console.log(3 + 5 + '8');// 88
+        console.log(3 + '5' + 8);// 358
+
+        console.log("--------------------------------");
+        var x = 5;
+        console.log(x + true);// 6
+        console.log(x - false);// 5
+        console.log(x * false);// 0
+        console.log(x / true);// 5
+
+        console.log('3' + true);// 3true
+
+        console.log("--------------------------------");
+        console.log(3 + undefined);// NaN
+        console.log(3 - undefined);// NaN
+        console.log(3 * undefined);// NaN
+        console.log(3 / undefined);// NaN
+        console.log('3' + undefined);// 3undefined
+
+        console.log("--------------------------------");
+        console.log(3 + null);// 3
+        console.log(3 - null);// 3
+        console.log(3 * null);// 0
+        console.log(3 / null);// Infinity
+
+        console.log('3' + null);// 3null
+        console.log('3' + undefined);// 3undefined
+     </script>
+</body>
+</html>

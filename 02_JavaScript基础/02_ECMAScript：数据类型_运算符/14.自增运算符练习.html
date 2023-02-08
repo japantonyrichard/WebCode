@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var x = 5;
+        // console.log(x++);// 打印出来的是 5，x=6
+        // console.log(x++);// 打印出来的是 6，x=7
+        // console.log(++x);// 打印出来的是 8，x=8
+        // console.log(++x);// 打印出来的是 9，x=9
+        // console.log(x);// 打印出来的是 9，x=9
+
+        // 首先，当自增运算符和其他算数运算符运算时，自增运算符的优先级高。
+        var x = 5;
+        var y = (x++) + (++x) + (x++) + (++x);
+        console.log(x);// 9
+        console.log(y);// 28
+    </script>
+</body>
+</html>

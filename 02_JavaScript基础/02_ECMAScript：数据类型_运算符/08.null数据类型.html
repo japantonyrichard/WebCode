@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        null 数据类型
+
+        1.null 翻译过来是 空 的意思。
+        2.null 类型里面只有一个值，就是 null。（跟undefined类似）
+        3.typeof null 返回的是 object类型。这是历史原因造成的，早期的时候没有null这种类型，
+          null原来是作为object类型中的一个特殊值，后来null独立出来，称为一个单独的数据类型，
+          但是为了兼容之前的代码，typeof null没有做改变，还是返回object。
+     -->
+     <script>
+        var a = null;
+        console.log(a, typeof a);// null 'object'
+     </script>
+</body>
+</html>

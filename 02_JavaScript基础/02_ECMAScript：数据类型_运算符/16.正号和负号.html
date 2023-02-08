@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        数学上的正号和负号
+        正号很大的作用就是将一些其他类型的数据转为 number类型。
+
+        总结：
+            true        转为    number类型是    1
+            false       转为    number类型是    0
+            ''          转为    number类型是    0
+            null        转为    number类型是    0
+            undefined   转为    number类型是    NaN
+     -->
+     <script>
+        console.log(+3);// 3
+        console.log(-3);// -3
+
+        console.log(+true);// 1
+        console.log(-false);// -0
+        console.log(+false);// 0
+        console.log(+null);// 0
+        console.log(+undefined);// NaN
+        console.log(+'');// 0
+        console.log(+NaN);// NaN
+        console.log(+'你好');// NaN
+     </script>
+</body>
+</html>

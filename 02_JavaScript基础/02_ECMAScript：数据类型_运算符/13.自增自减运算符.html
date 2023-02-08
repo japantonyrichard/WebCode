@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        *** 面试容易考 ***
+
+        自增运算符：i++ 和 ++i
+
+        1.无论是 i++ 还是 ++i 最终 i 的值都会加1
+        2.i++，先使用 i 的值，然后再将 i 的值加1
+        3.++i，先将 i 加1，然后再使用 i
+     -->
+     <script>
+        var x = 5;
+        x++;
+        console.log(x);// 6
+
+        var x = 5;
+        ++x;
+        console.log(x);// 6
+
+        var x = 5;
+        var y = x++;
+        console.log(x);// 6
+        console.log(y);// 5
+
+        var x = 5;
+        var y = ++x;
+        console.log(x);// 6
+        console.log(y);// 6
+     </script>
+</body>
+</html>

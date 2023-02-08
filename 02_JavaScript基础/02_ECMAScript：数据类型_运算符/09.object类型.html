@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        object 类型
+
+        1.object 单词就是 对象 的意思。
+        2.object 类型，也称为引用类型，也可以认为是 合成类型，
+            它包括：
+                1，狭义上的对象 object
+                2，函数 function
+                3，数组 array
+
+        3.注意 typeof 函数 会返回 function，但其实函数也是对象类型的。
+     -->
+     <script>
+        // 定义一个对象变量
+        var a1 = {}; // 空对象
+        console.log(a1, typeof a1);// {} 'object'
+
+        // 定义一个数组变量
+        var a2 = [];// 空数组
+        console.log(a2, typeof a2);// [] 'object'
+
+        // 定义一个函数变量
+        var a3 = function(){};
+        console.log(a3, typeof a3);// ƒ (){} 'function'
+     </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        undefined 类型
+        1.undefined-未定义
+        2.undefined 数据类型就表示未定义，该类型就只有一个值，就是 undefined。
+        3.所以，往往将 undefined 看做是一个特殊值。
+        4.什么时候会出现 undefined？只声明了变量，没有赋值，这时候变量的值就是 undefined，变量的类型也就是undefined。
+     -->
+     <script>
+        var a;
+        console.log(a, typeof a);// undefined 'undefined'
+
+        var b = undefined;
+        console.log(b, typeof b);// undefined 'undefined'
+
+        a = 666;
+        console.log(a, typeof a);// 666 'number'
+
+        a = "你好";
+        console.log(a, typeof a);// 你好 string
+
+        a = true;
+        console.log(a, typeof a);// true 'boolean'
+     </script>
+</body>
+</html>
