@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        if 语句
+
+        1.if - 如果的意思
+        2.语法格式：
+            if(条件表达式){
+                条件成立后执行的代码;
+            }
+
+        3.语法说明：
+            1，条件表达式成立的话，就会执行大括号里面的代码；条件表达式不成立的话，就不会执行大括号中的代码。
+            2，条件表达式不是boolean类型的话，会自动转为布尔类型。
+            3，当大括号内的代码只有一行时，可以省略大括号，但不建议。
+     -->
+     <script>
+        // 用户输入一个年龄，大于等于18岁，打印成年！
+        // var age = Number(prompt('请输入一个年龄：'));
+        // if(age >= 18){
+        //     console.log('你成年了！');
+        // }
+
+        // console.log('我是后面的代码！');
+
+        // 判断是否是闰年
+        var year = Number(prompt('请输入一个年份：'));
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 ==0){
+            console.log(year + '是闰年！');
+        }
+     </script>
+</body>
+</html>

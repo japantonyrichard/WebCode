@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        if else 语句
+
+        1.if 如果的意思，else 是否则的意思
+        2.语法格式：
+            if(条件表达式){
+                条件成立的话执行的代码
+            }else{
+                条件不成立的话执行的代码
+            }
+
+        3.语法说明：
+            1，条件表达式成立的话，就执行它后面大括号中的代码
+            2，条件表达式不成立的话，就执行 else 后面大括号中的代码
+            3，之前 if 结构是单分支，if-else 是双分支
+     -->
+     <script>
+        // var age = Number(prompt('请输入你的年龄：'));
+        // if(age >= 18){
+        //     console.log('成年了，年龄是：' + age);
+        // }else{
+        //     console.log('未成年，年龄是：' + age);
+        // }
+
+        // 1.判断输入的年份是闰年还是平年
+        // var year = Number(prompt('请输入一个年份：'));
+        // if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+        //     console.log(year + '是闰年！');
+        // }else{
+        //     console.log(year + '是平年！');
+        // }
+
+        // 2.用户输入一个年龄，判断用户能不能考取驾照。交规说：大于等于18，小于等于70才能考取。
+        // var age = Number(prompt('请输入你的年龄：'));
+        // if(age >= 18 && age <= 70){
+        //     console.log('你可以考取驾照，age：' + age);
+        // }else{
+        //     console.log('很遗憾，你不能考取驾照，age：' +age);
+        // }
+
+        // 3.动态输入一个数，判断奇偶数
+        // var num = Number(prompt('请输入一个数：'));
+        // if(num % 2 == 0){
+        //     console.log(num + '是偶数！');
+        // }else{
+        //     console.log(num + '是奇数！');
+        // }
+
+        // 4.用户输入自己的性别，比如 男、女，然后输入自己的年龄，判断能否结婚（男年龄大于等于22，女年龄大于等于20）
+        var sex = prompt('请输入你的性别：')
+        var age = Number(prompt('请输入你的年龄：'));
+        if(sex == '男' && age >= 22 || sex == '女' && age >= 20){
+            // console.log('性别是：' + sex + '，年龄是：' + age + '，可以结婚了！');
+            // 上面字符串拼接的太多了，在 ES6 中 新增的 模板字符串，可以解决拼接繁琐的问题。
+            console.log(`性别是：${sex},年龄是：${age},可以结婚了！`);
+        }else{
+            // console.log('性别是：' + sex + '，年龄是：' + age + '，还不到法定年龄哦！');
+            console.log(`性别是：${sex},年龄是：${age},还不到法定年龄哦！`);
+        }
+
+        // 5.用户输入两个数，若两个数之和大于100，则输出两数之和，否则输出两数之差
+        var num1 = Number(prompt('请输入第一个数：'));
+        var num2 = Number(prompt('请输入第二个数：'));
+
+        if(num1 + num2 > 100){
+            console.log(num1 + num2);
+        }else{
+            console.log(num1 - num2);
+        }
+
+        // 6.判断一个三位数是否是水仙花数，三位数由用户输入。
+        // 水仙花数的特点：这个数本身 == 这个数的个位数的立方 + 十位数的立方 + 百位数的立方
+        // 比如 153 = 1*1*1 + 5*5*5 + 3*3*3     153、370、371、还有一个忘了
+        var num = Number(prompt('请输入一个三位数：'));
+
+        var gewei = num % 10;
+        var shiwei = ~~(num / 10) % 10;
+        var baiwei = ~~(num / 100);
+        if(gewei ** 3 + shiwei ** 3 + baiwei ** 3 == num){
+            console.log(`恭喜您！您输入的：${num}是水仙花数！`);
+        }else{
+            console.log(`很遗憾！您输入的：${num}不是水仙花数。`);
+        }
+
+        // 7.用户输入一个4位正整数，求其各位数字之积，并输出。
+        // 例如：输入 2523，则输出应该是 2 * 5 * 2 * 3
+        var num = Number(prompt('请输入一个4位正整数：'));
+
+        var gewei = num % 10; // 最低位
+        var shiwei = ~~(num / 10) % 10; // 要取余
+        var baiwei = ~~(num / 100) % 10; // 要取余
+        var qianwei = ~~(num / 1000); // 最高位
+        console.log(gewei * shiwei * baiwei * qianwei);
+        
+     </script>
+</body>
+</html>
