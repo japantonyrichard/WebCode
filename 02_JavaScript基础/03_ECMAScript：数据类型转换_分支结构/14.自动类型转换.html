@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        自动类型转换：
+
+        1.转为 number
+            1，将 string 转为 number
+                console.log('5' - 0);   // 手动转/强制转：console.log(Number('5') - 0);
+                console.log('666' - 0);
+                console.log('你好' - 0);// NaN
+            2，将 boolean 转为 number
+                console.log(true - 0);// 1
+                console.log(false - 0);// 0
+        2.转为 string
+            1，将 number 转为 string
+                console.log(5 + '');// '5'
+                console.log(666 + '');// '666'
+            2，将 boolean 转为 string
+                console.log(true + '');// 'true'
+                console.log(false + '');// 'false'
+        3.转为 boolean
+            1，将 string 转为 boolean
+            2，将 number 转为 boolean
+
+            规律：除了以下6个数据是转为false外，其他的都会转为true
+            false
+            ''
+            0
+            null
+            undefined
+            NaN
+
+            之前我们在三目运算符中见过：
+                "你好" ? "yes" : "no";
+
+            if 条件中也会自动转
+            循环条件中也会自动转
+
+     -->
+</body>
+</html>

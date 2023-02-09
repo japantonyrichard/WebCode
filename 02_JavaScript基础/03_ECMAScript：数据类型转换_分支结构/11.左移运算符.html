@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        左移运算符
+
+        1.左移运算符的符号：<<
+        2.一个数要左移，那需要将该数转为二进制的补码形式，然后再左移，右侧用0补齐。
+        3.左移的规律：一个数左移几次，就等于这个数乘以2的几次方。***************************
+
+        计算 13 << 2 (把13左移2次)
+        13 的补码是：
+        00000000 00000000 00000000 00001101
+
+        13 左移2次：这个数是某个数的补码
+        000000 00000000 00000000 00001101 00
+        000000 00000000 00000000 0000110100
+
+        上面的数是 52
+
+        13 << 2 = 52
+
+        经典的面试笔试题目：
+        怎么高效的计算 2 * 8  →  2 << 3  8 << 1
+     -->
+     <script>
+        console.log(13 << 2);// 52
+        console.log(5 << 3);// 40
+        console.log(13.2 << 0);// 13  左移也可以取整。
+     </script>
+</body>
+</html>

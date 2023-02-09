@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 练习5：
+
+        //1. 计算消费的金额，如果消费金额大于等于200，打八折；否则原价。
+            var price = prompt('请输入消费的金额：');
+            var result = price >= 200 ? price * 0.8 : price;
+            console.log('您最后需要结账：' + result);
+
+        //2. 判断是否为闰年
+            //  闰年是：4的倍数，且不是100的倍数；或者 是 400的倍数
+            var year = prompt('请输入年份：');
+            var result = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? '闰年' : '平年';
+            console.log(year + '是' + result);
+
+
+        //3. 用户输入一个数字，判断这个数字是否能同时被5和6整除
+            var num = prompt('请输入一个数字：');
+            var result = num % 5 == 0 && num % 6 == 0 ? 'yes' : 'no';
+            console.log(num + '能同时被5和6整除吗？' + result);
+
+        //4. 比较三个数，找到最大的那个数。
+            var num1 = 100;
+            var num2 = 90;
+            var num3 = 95;
+
+            // 找到 num1 和 num2 中较大的那个数
+            var max = num1 > num2 ? num1 : num2;
+            max = max > num3 ? max : num3;
+            console.log('最大的数是：' + max);
+
+            // 或者 （三目运算符里面套了个三目）
+            var max = num1 > num2 ? (num1 > num3 ? num1 : num3) : (num2 > num3 ? num2 : num3);
+            console.log('最大的数是：' + max);
+    </script>
+</body>
+</html>

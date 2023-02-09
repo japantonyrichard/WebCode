@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        非布尔值的逻辑与运算
+
+        1.第一个表达式的结果为 true，那最终的结果就是 第二个表达式。
+        2.第一个表达式的结果为 false，那最终结果就是 第一个表达式的值。
+        3.如果有多个表达式时，最终结果就是第一个为假的那个表达式的值。
+            如果所有的表达式都是true，那就返回最后一个表达式的值。
+
+        其实本质上用的还是短路机制。
+
+        对于 && 操作，false 能够决定整体的最终结果
+        对于 || 操作，true 能够决定整体的最终结果
+
+        6个特殊的值，这6个值转为布尔类型是false，其他的值转为布尔类型都是true。
+        false
+        0
+        null
+        undefined
+        ""
+        NaN
+     -->
+     <script>
+        console.log(3 > 2 && "你好");// 你好    (还是有短路机制的影子的)
+        console.log(3 > 5 && "哈哈");// false   (还是有短路机制的影子的)
+
+        console.log(5 > 3 && 7 > 2 && 3 < 2 && "你好");// false
+        console.log(5 > 3 && 7 > 2 && 3 > 2 && "你好");// 你好
+
+        var a = "你好" && 666;
+        console.log(a);// 666
+
+        console.log("NaN" || "哈哈");// NaN
+        console.log("" || "哈哈");// 哈哈
+     </script>
+</body>
+</html>

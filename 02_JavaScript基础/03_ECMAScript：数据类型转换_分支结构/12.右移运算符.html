@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        右移运算符
+
+        1.友谊运算符的符号是：>>
+        2.一个数右移，就是将该数的二进制的补码向右移动，正数右移，左侧补0；负数右移，左侧补1。
+        3.一个数右移几次，就是这个数除以2的几次方（看正数）。
+
+        计算 4 >> 1
+
+        4 的补码是：
+        00000000 00000000 00000000 00000100
+
+        4 的补码右移一次后：下面的数就是某个数的补码
+        00000000 00000000 00000000 00000010
+
+        这个数是 2
+
+        4 >> 1 = 2
+     -->
+     <script>
+        console.log(25 >> 2);// 6
+        // console.log(-25 >> 2);// -7
+     </script>
+</body>
+</html>

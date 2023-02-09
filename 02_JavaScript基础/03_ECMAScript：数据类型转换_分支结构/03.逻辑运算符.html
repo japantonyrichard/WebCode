@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        逻辑运算符
+
+        1.逻辑运算符有3个：&&-与、||-或、!-非
+        2.逻辑运算符的结果是 Boolean类型
+
+        非运算符    !
+        1.非运算符就是对数据进行取反操作
+        2.如果数据是Boolean类型，那 !ture 的结果就是 false； !false 的结果就是 true
+        3.如果数据不是Boolean类型的,那会将数据自动转为Boolean类型，然后再取反。
+            规律：除了以下6个值取反后是 true ，其余数据都是 false 。
+            false
+            ''
+            null
+            undefined
+            NaN
+            0
+            总结：这6个东西都没东西、没意义、空的。转成Boolean就是false，取反就是true。
+
+        4.将一个值连续取反两次，其实就是将该值转为了相应的Boolean类型的值。
+
+
+        与运算符    &&（and）
+        1.逻辑与运算符说的是一种与、且的关系，and
+        2.a && b，当 a 和 b 都是真时，结果才是真；只要有一个是假的，那结果就是假。
+        3.逻辑与操作有短路机制：当通过一个表达式能够得到最终结果时，就不会执行后面的表达式了。
+        
+
+        或运算符 ||（or）
+        1.逻辑或运算符说的是一种或的关系，or
+        2.a || b ,当 a 和 b 里面只要有一个是真的，那结果就是真的；a 和 b 都是假的时候，最后结果才是假的。
+        3.逻辑或操作也有短路机制：当通过一个表达式能够得到最终结果时，就不会执行后面的表达式了。
+     -->
+     <script>
+        // 逻辑非运算符：!
+        console.log(!true);// false
+        console.log(!false);// true
+
+        console.log(!(3 > 5));// true
+        console.log(!(3 < 5));// false
+
+        console.log(!3);// false
+        console.log(!"你好");// false
+        
+        // // 6个特殊值
+        console.log(!0);// true
+        console.log(!null);// true
+        console.log(!'');// true
+        console.log(!undefined);// true
+        console.log(!NaN);// true
+        console.log(!false);// true
+
+
+        console.log(!!"你好");// true
+
+        console.log("5" - 0);// 5
+
+        // 逻辑与运算符：&&（and）
+        console.log(5 > 3 && 7 > 2);// true
+        console.log(5 > 3 && 7 < 2);// false
+        console.log(5 < 3 && 7 > 2);// false
+        console.log(5 < 3 && 7 < 2);// false
+        console.log(5 != 3 && 7 >= 2);// true
+        console.log(5 > 3 && 7 != 2);// true
+        console.log(5 == 3 && 7 > 2);// false
+        console.log(5 > 3 && 7 == 2);// false
+        console.log(5 == '5' && 7 > 2);// true
+        console.log(5 == '5' && 7 != 2);// true
+
+        // 短路机制：一旦能够得到最终的结果，就不会再做无用功了。
+        var x = 5;
+        console.log(5 > 7 && x++ > 3);// false
+        console.log(x);// 5
+
+        var x = 5;
+        console.log(5 > 3 && x++ > 3);// true
+        console.log(x);// 6
+
+        // 逻辑或运算符：||（or）
+        console.log(5 > 3 || 7 > 2);// true
+        console.log(5 > 3 || 7 < 2);// true
+        console.log(5 < 3 || 7 > 2);// true
+        console.log(5 < 3 || 7 < 2);// false
+        console.log(5 != 3 || 7 >= 2);// true
+        console.log(5 > 3 || 7 != 2);// true
+        console.log(5 == 3 || 7 > 2);// true
+        console.log(5 > 3 || 7 == 2);// true
+        console.log(5 == '5' || 7 > 2);// true
+        console.log(5 == '5' || 7 != 2);// true
+
+        // 短路机制，一旦得到结果，后面的就不走了。
+        var x = 5;
+        console.log(5 > 3 || x++ > 6);// true
+        console.log(x);// 5
+
+        var x = 5;
+        console.log(5 > 7 || x++ > 6);// false
+        console.log(x);// 6
+
+        //逻辑运算符的优先级：非! > 与&& > 或||
+        console.log(7 > 2 || 5 > 3 && 6 > 8);// true
+        console.log(7 < 2 || 5 > 3 && 6 < 8);// true
+        console.log(7 < 2 || 5 < 3 && 6 < 8);// false
+        console.log(7 > 2 || 5 < 3 && 6 > 8);// true
+        console.log(7 < 2 || 5 > 3 && 6 < 8);// true
+        console.log(7 != 2 || 5 > 3 && 6 > 8);// true
+        console.log(7 > 2 || 5 != 3 && 6 > 8);// true
+        // 搞不清楚优先级的话自己给里面加括号就行，加括号的会优先算。
+     </script>
+</body>
+</html>
