@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        生成随机整数
+
+        [0,100] 闭区间（大于等于0小于等于100）
+        
+        1.js 生成随机数使用：Math.random()
+            Math-数学 random-随机
+        2.Math.rando() 生成的随机数是：[0,1) 大于等于0小于1
+
+        3.使用规律生成 [min,max] 之间的数：~~(Math.random() * (max - min +1) + min)
+     -->
+     <script>
+        // console.log(Math.random());
+        // 生成 [0,100] 之间的随机整数
+        var num = ~~(Math.random() * (100 - 0 + 1) + 0);
+        console.log(num);
+     </script>
+</body>
+</html>

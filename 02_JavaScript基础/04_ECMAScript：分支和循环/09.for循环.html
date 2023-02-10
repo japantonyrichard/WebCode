@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        for 循环
+
+        1.语法结构：
+            for(1.初始化部分; 2.循环条件; 4.迭代部分){
+                3.循环体
+            }
+        2.语法说明：
+            执行顺序：1 - 2 - 3 - 4 - 2 - 3 - 4 - 2 ···
+            首先执行初始化部分，然后执行循环条件，条件成立的话，就执行循环体，
+            循环体执行完后，执行迭代部分，再执行循环条件，然后条件成立的话，执行循环体···
+            直到循环条件不成立，循环结束！
+     -->
+     <script>
+        // 利用 for 循环 输出10次 放假啦！
+        // for(var i = 0; i < 10; i++){ // i < 10 or i <= 9
+        //     console.log('放假了');
+        // }
+
+        // 1.控制台打印 1-100 之间的数
+        // for(var i = 1; i < 101; i++){
+        //     console.log(i);
+        // }
+
+        // 2.打印 1-100 之间的偶数
+        // for(var i = 1; i < 101; i++){
+        //     if(i % 2 == 0){
+        //         console.log(i);
+        //     }
+        // }
+
+        // for(var i = 2; i < 101; i += 2){    // i += 2 等价于 i = i + 2
+        //     console.log(i);
+        // }
+
+        // 3.打印 1-100 之间的奇数
+        // for(var i = 1; i < 101; i++){
+        //     if(i % 2 != 0){
+        //         console.log(i);
+        //     }
+        // }
+
+        // for(var i = 1; i < 101; i += 2){
+        //     console.log(i);
+        // }
+
+        // 4.计算 1-100 的和
+        // 1+2+3+4+5+6+····+100=？
+
+        // 定义一个变量，用来存储和
+        // var sum = 0;
+
+        // for(var i = 1; i < 101; i++){
+        //     sum = sum + i;      // sum = sum + i; 等价于 sum += i;
+        // }
+
+        // console.log(sum);
+
+        // 5.分别计算 1-100 之间奇数的和与偶数的和
+        // var jishu = 0;// 奇数的和
+        // var oushu = 0;// 偶数的和
+
+        // for(var i = 1; i < 101; i++){
+        //     if(i % 2 != 0){
+        //         jishu = jishu + i;
+        //     }else{
+        //         oushu = oushu + i;
+        //     }
+        // }
+
+        // console.log(`奇数的和是：${jishu}`);
+        // console.log(`偶数的和是：${oushu}`);
+
+        // 6.打印三位数中所有的水仙花数
+        // for(var i = 100; i < 1000; i++){
+        //     var gewei = i % 10;
+        //     var shiwei = ~~(i / 10) % 10;
+        //     var baiwei = ~~(i / 100);
+
+        //     if(gewei ** 3 + shiwei ** 3 + baiwei ** 3 == i){
+        //         console.log(i);// 153、370、371、407
+        //     }
+        // }
+
+        // 7.打印 1-100 之间所有的 5 和 6 的公倍数
+        for(var i = 1; i < 101; i++){
+            if(i % 5 == 0 && i % 6 == 0){
+                console.log(i);
+            }
+        }
+            
+     </script>
+</body>
+</html>

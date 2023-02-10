@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.输入 0~6 之间的整数，如果是 0 和 6，输出周末愉快，否则输出期待周末
+        // var num = ~~(Math.random() * 7);
+        // console.log(num);
+
+        // if(num == 0 || num ==6){
+        //     console.log('周末愉快！');
+        // }else{
+        //     console.log('期待周末！');
+        // }
+
+        // switch(num){
+        //     case 0:
+        //     case 6:
+        //         console.log('周末愉快！');
+        //         break;
+        //     case 1:
+        //     case 2:
+        //     case 3:
+        //     case 4:
+        //     case 5:
+        //         console.log('期待周末！');
+        //         break;
+        //     default:
+        //         console.log('请输入正确的数字！');
+        // }
+
+        // 2.随机得到一个分数 【0-100】
+        // 如果分数在[90,100]，输出 优秀
+        // 如果分数在[80,90)，输出 良好
+        // 如果分数在[60,80)，输出 及格
+        // 如果分数在[0,60)，输出 不及格！
+        var score = ~~(Math.random() * 101);
+        var num = ~~(score / 10);
+        console.log(score);
+
+        switch(num){
+            case 9:
+            case 10:
+                console.log('优秀！');
+                break;
+            case 8:
+                console.log('良好！');
+                break;
+            case 7:
+            case 6:
+                console.log('及格！');
+                break;
+            default:
+                console.log('不及格！');
+        }
+
+    </script>
+</body>
+</html>
