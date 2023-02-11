@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        一般，函数有几个形参，我们在调用函数的时候就传入几个实参。
+
+        如果实参个数少于形参个数，就意味着有些形参值是undefined。
+        如果实参个数大于形参个数，就意味着有些实参被舍去了。
+     -->
+    <script>
+        // 1.定义函数，功能是求圆的面积
+        function fun1(r){
+            console.log(3.14 * r * r);
+        }
+
+        fun1(666);
+        fun1(25);
+
+        // 2. 定义函数，功能是求两个数的和
+        // 下面函数最通俗的说法：我定义了一个函数 fun2，有两个参数，num1和num2，
+        // 别人在调用我的时候，就需要给我传入两个具体的值。我就能计算这两个数的和。
+        function fun2(num1, num2){
+            console.log(num1 + num2);
+        }
+
+        fun2(23,37);
+        fun2(888,666);
+
+        // 3.
+        function fun3(a,b){
+            console.log(a,b);
+        }
+
+        fun3(2,3);
+        fun3(10);// 10 undefined
+        fun3(20,30,40);// 20 30
+    </script>
+</body>
+</html>

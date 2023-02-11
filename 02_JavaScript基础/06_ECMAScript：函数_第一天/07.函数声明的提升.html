@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        之前我们学习过 变量声明的提升！
+        变量声明的提升指的是：浏览器在解析我们的js代码时。会将所有变量的声明提到最前面，变量的赋值是不提升的。
+
+        函数的声明也是可以提升的，类似于变量声明的提升！
+        函数的声明的提升是指：浏览器在解析我们的js的代码时，会将所有函数的声明提到最前面！
+
+        函数声明提升 和 变量声明提升 这两个 要分清楚！！！
+     -->
+     <script>
+        // console.log(age);// undedined
+        // var age = 18;
+
+        // 上面的代码其实等价于
+        // var age;
+        // console.log(age);
+        // age = 18;
+
+        // 演示function命令的方式，函数声明的提升
+        // fun1();
+
+        // function fun1(){
+        //     console.log('hello');
+        // }
+
+        // 上面的代码等价于如下：
+        // function fun1(){
+        //     console.log('hello');
+        // }
+
+        // fun1();
+
+        // 演示函数表达式的方式 函数声明的提升
+        // fun1();
+        // var fun1 = function(){
+        //     console.log('hello');// Uncaught TypeError: fun1 is not a function
+        // };
+        // 上面的代码，其实用了变量声明的提升。等价于：
+        // var fun1;
+        // fun1();
+        // fun1 = function(){
+        //     console.log('hello');
+        // };
+
+        // 演示构造函数的方式 函数声明的提升
+        fun1();
+        var fun1 = new Function('console.log("哈哈");');// Uncaught TypeError: fun1 is not a function
+
+        // 上面的代码等价于
+        var fun1;
+        fun1();// Uncaught TypeError: fun1 is not a function
+        fun1 = new Function('console.log("哈哈");');
+
+     </script>
+</body>
+</html>

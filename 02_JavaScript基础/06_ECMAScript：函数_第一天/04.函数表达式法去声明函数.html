@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        函数表达式 声明函数
+
+        语法格式：
+            var 变量名 = function(参数1,参数2,...,参数n){
+                函数体
+            };
+
+        语法格式说明：
+            1.函数其实是属于对象类型，也是可以赋值给某个变量的
+            2.这种写法往往不写函数的名字，称为匿名函数。
+              也可以写函数名，但没有多大意思，因为即使写了函数名，我们调用函数的时候还是通过变量名调用的。
+            3.这种写法最后大括号后面写个分号;
+     -->
+     <script>
+        // 1. 定义函数，打印 Hello World       函数也称为 方法
+        // var fun1 = function(){
+        //     console.log('Hello World');
+        // };
+        // 调用函数
+        // fun1();
+
+        // fun1();
+
+        // 演示使用函数表达式法声明函数时，给函数起名字
+        // var fun2 = function abc(){
+        //     console.log('Hello World!');
+        //     abc();// 可以自己调用自己   递归！
+        // };
+
+        // fun2();
+        // abc();
+
+        // 3. 定义函数，实现打印倒三角的功能
+        var fun3 = function(){
+            for(var i = 1; i <= 5; i++){
+                for(var j = 1; j <= 6 - i; j++){
+                    document.write('* ');
+                }
+                document.write('<br>');
+            }
+        };
+
+        fun3();
+        fun3();
+     </script>
+</body>
+</html>

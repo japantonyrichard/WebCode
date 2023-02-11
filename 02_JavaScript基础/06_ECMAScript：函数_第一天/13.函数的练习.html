@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.定义一个函数，功能是判断某个年份是不是闰年并输出
+        function fun1(year){
+            if(year % 4 == 0 && year % 100 != 0 || year % 400 ==0){
+                console.log(`${year}是闰年！`);
+            }else{
+                console.log(`${year}是平年！`);
+            }
+        }
+
+        fun1(2000);
+        fun1(2023);
+
+        // 2.结合第1题，判断 1900-2020 之间所有的年份是否是闰年并输出
+        for(var i = 1900; i <= 2020; i++){
+            fun1(i);
+        }
+
+        // 3.定义函数，功能是计算任意数的累加和并输出
+        function fun3(num){
+            var sum = 0;
+            for(var i = 1; i <= num; i++){
+                sum += i;// 累加求和
+            }
+            console.log(`1+2+3+...+${num}=${sum}。`);
+        }
+
+        fun3(100);
+        fun3(10);
+
+        // 4.定义函数，打印 1-100 之间偶数的个数 和 平均数
+        function fun4(){
+            var count = 0;// 存储个数
+            var sum = 0;// 总和
+
+            for(var i = 1; i <= 100; i++){
+                if(i % 2 == 0){
+                    count++;
+                    sum += i;
+                }
+            }
+
+            console.log(`1-100之间的偶数有：${count}个，平均数数：${sum/count}。`);
+        }
+
+        fun4();
+
+        // 5.定义函数，输出任意值的绝对值
+        function fun5(num){
+            if(num < 0){
+                console.log(-num);
+            }else{
+                console.log(num);
+            }
+        }
+
+        fun5(-6);
+        fun5(7);
+
+        // 6.定义一个函数，判断 num 是否存在小数部分，存在输出 true，否则输出 false
+        function fun6(num){
+            if(num == ~~(num)){
+                console.log(`${num}是整数，false`);
+            }else{
+                console.log(`${num}是小数，true`);
+            }
+        }
+
+        fun6(5.6);
+        fun6(5);
+        fun6(-7.778);
+
+        // 7.编写一个函数，比较三个数字的大小，输出最大值
+        function fun7(num1,num2,num3){
+            if(num1 > num2){// 先比较里面两个，找到最大值，再和第三个比较。
+                if(num1 > num3){
+                    console.log(`${num1},${num2}和${num3}中，${num1}最大！`);
+                }else{
+                    console.log(`${num1},${num2}和${num3}中，${num3}最大！`);
+                }
+            }else{
+                if(num2 > num3){
+                    console.log(`${num1},${num2}和${num3}中，${num2}最大！`);
+                }else{
+                    console.log(`${num1},${num2}和${num3}中，${num3}最大！`);
+                }
+            }
+        }
+
+        fun7(5,-9,12,);
+        fun7(3,-3,0,);
+    </script>
+</body>
+</html>

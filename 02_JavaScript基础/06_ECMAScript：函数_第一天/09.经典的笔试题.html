@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var fun1 = function(){
+            console.log(100);
+        };
+
+        function fun1(){
+            console.log(200);
+        }
+
+        fun1();// 100 
+
+        // 上面的代码等价于：
+        var fun1;
+
+        function fun1(){
+            console.log(200);
+        }
+
+        fun1 = function(){
+            console.log(100);
+        };
+
+        fun1();
+
+    </script>
+</body>
+</html>

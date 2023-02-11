@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        构造函数法 声明函数
+
+        1.构造函数，目前我们没学过，是在js高级阶段学
+        2.语法格式：
+            var 变量名 = new Function('参数1','参数2',...,'参数n','函数体');
+            或者
+            var 变量名 = Function('参数1','参数2',...,'参数n','函数体');
+
+        语法格式说明：
+            1.这种方式类似于函数表达式法，都是将函数赋值给某个变量
+            2.这种方式是使用构造函数去创建一个自己的函数
+            3.所以的参数、函数体都需要用引号引起来，最后一个是函数体
+     -->
+     <script>
+        // 1. 定义一个函数，实现打印 Hello的功能
+        // var fun1 = new Function('console.log(\'hello\');');
+        var fun1 = new Function('console.log("hello");');
+        // 调用函数
+        fun1();
+     </script>
+</body>
+</html>

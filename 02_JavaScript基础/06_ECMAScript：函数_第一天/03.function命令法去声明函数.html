@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        function 命令法声明一个函数
+
+        语法格式：
+            function 函数名(参数1,参数2,...,参数n){
+                函数体
+            }
+
+        语法说明：
+            1.function 是定义函数的关键字
+            2.函数名，遵守标识符的命名规则及规范
+            3.参数，看具体情况的，可以有多个，也可以没有
+            4.函数体，就是写该函数要实现的功能代码
+
+        函数就是为了完成某个功能的，简单来说，就是将一些代码按照函数的格式写在一块，
+        以后哪里要用这些代码，就调用函数即可。
+     -->
+     <script>
+        // 1.定义一个函数，功能是在控制台打印 Hello
+        function fun1(){
+            console.log('Hello');
+        }
+
+        // 调用函数
+        fun1();
+        fun1();
+
+
+        // 2.控制台打印 100 次 Hello
+        for(var i = 0; i < 100; i++){
+            // console.log('Hello');
+            fun1();
+        }
+
+        // 3.定义一个函数，打印5行的正向三角
+        function printTra(){
+            for(var i = 1; i <= 5; i++){
+                for(var j = 1; j <= i; j++){
+                    document.write('* ');
+                }
+                document.write('<br>');
+            }
+        }
+
+        // 调用函数
+        printTra();
+     </script>
+</body>
+</html>
