@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            /* 边框折叠 折叠 */
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid red;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        循环嵌套
+
+        循环嵌套指的是可以在一个循环中再套另一个循环。while、for、do-while 都可以互相嵌套。
+
+        比如：
+            for(){
+                for(){
+
+                }
+            }
+        外面的循环就称为外层循环，里面的循环称为内存循环。
+
+        外层循环执行一次，内层循环执行一轮。
+
+        外层循环可以看做是要产生几行内容
+        内存循环可以看做是每行里面要产生几个小东西
+     -->
+     <script>
+        // 输出以下效果
+        /*
+            ******
+            ******
+            ******
+            ******
+         */
+        // for(var j = 1; j <= 4; j++){
+        //     for(var i = 1; i <= 6; i++){
+        //         document.write('*');
+        //     }
+        //     document.write('<br>');
+        // } 
+
+        // 输出如下效果
+        /*
+            *
+            **
+            ***
+            ****
+            *****
+        */
+        // for(var i = 1; i <= 5; i++){
+        //         for(var j = 1; j <= i; j++){
+        //             document.write('* ');
+        //         }
+        //         document.write('<br>')
+        // }
+
+        // 实现如下效果：
+        /*
+            *****
+            ****
+            ***
+            **
+            *
+        */
+        
+        // for(var i = 1; i <= 5; i++){
+        //     for(var j = 1; j <= 6 - i; j++){
+        //         document.write('* ')
+        //     }
+        //     document.write('<br>')
+        // }
+
+        // 打印九九乘法表
+        // 方式1：
+        for(var i = 1; i <= 9; i++){
+            for(var j = 1; j <= i; j++){
+                // document.write(j + 'x' + i + '=' + (j*i) + '&nbsp;&nbsp;&nbsp;');
+                document.write(`${j}x${i}=${j*i}&nbsp;&nbsp;&nbsp;`);
+                //模板字符串
+            }
+            document.write('<br>')
+        }
+
+        document.write('<hr>');
+
+        // 方式2：
+        document.write('<table>');
+        for(var i = 1; i <= 9; i++){
+            document.write('<tr>');
+
+            for(var j = 1; j <= i; j++){
+                document.write('<td>');
+                    document.write(`${j}x${i}=${j*i}`);
+                document.write('</td>');
+            }
+
+            document.write('</tr>');
+        }
+        document.write('</table>');
+     </script>
+</body>
+</html>

@@ -15,7 +15,8 @@
         var oper = prompt('请输入运算符：+ - * /');
 
         if(oper == '+'){
-            console.log(num1 + num2);
+            // console.log(num1 + num2);
+            console.log(`${num1} + ${num2} = ${num1+num2}`);
         }else if(oper == '-'){
             console.log(num1 - num2);
         }else if(oper == '*'){
@@ -28,6 +29,128 @@
             }   
         }else{
             console.log('请输入正确的运算符！');
+        }
+
+        // 2.随机得到一个年龄：[1-100]
+        // 3岁以下，输出儿童，4-10 输出少儿
+        // [10,20) 少年
+        // [20,30) 青年
+        // [30,40) 壮年
+        // [40,60) 中年
+        // 60 以上老年
+        
+        var age = ~~(Math.random()*(100-1+1)+1);
+
+        if(age <= 3){
+            console.log('儿童' + age);
+        }else if(age < 10){
+            console.log('少儿' + age);
+        }else if(age < 20){
+            console.log('少年' + age);
+        }else if(age < 30){
+            console.log('青年' + age);
+        }else if(age < 40){
+            console.log('壮年' + age);
+        }else if(age < 60){
+            console.log('中年' + age);
+        }else{
+            console.log('老年' + age);
+        }
+
+        // 3.计算 1-100 之间所有不能被3整除的整数的和
+        var sum = 0;
+        for(var i = 1; i < 101; i++){
+            if(i % 3 != 0){
+                sum = sum + i;
+            }
+        }
+
+        console.log(sum);
+
+        // 4.计算 5 的阶乘。5! = 5 * 4 * 3 * 2 * 1
+        var r = 1;
+        for(var i = 5; i >= 1; i--){
+            // r = r * i;
+            r *= i;
+        }
+
+        console.log(r);
+
+        // 5.判断 1000 以内，能被3整除且个位数是6的所有整数。
+        for(var i = 1; i <= 1000; i++){
+            var gewei = i % 10;
+            if(i % 3 == 0 && gewei == 6){
+                console.log(i);
+            }
+        }
+
+        // 6.输入一个日期，判断这一天是这一年的第几天。
+        // 比如：输入 20200303 输出 第63天。(31+29+3)
+        var date = Number(prompt('请输入一个日期：'));
+        var year = ~~(date / 10000);
+        var month = ~~(date / 100) % 100;
+        var day = date % 100;
+
+        var r = 0;
+        for(var i = 1; i <= month - 1; i++){
+            if(i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12){
+                r += 31;
+            }else if(i == 4 || i == 6 || i == 9 || i == 11){
+                r += 30;
+            }else{  // i = 2
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    r += 29;
+                }else{
+                    r += 28;
+                }
+            }
+        }
+
+        r = r + day;
+        console.log(`${year}年${month}月${day}日是一年中的第${r}天！`);
+
+        // 7.判断一个数是否是完数。
+        // 完数，就是某个数除了它自身以外的其它约数的和等于它自己。
+        // 比如，6 就是一个完数。它的约数有：1 2 3 6  1 + 2 + 3 == 6
+
+        // 假如输的是 8
+        var num = Number(prompt('请输入一个数字：'));
+
+        var sum = 0; // 放约数的和
+        for(var i = 1; i <= num - 1; i++){
+            if(num % i == 0){
+                sum += i;
+            }
+        }
+
+        if(sum == num){
+            console.log(`${num}是完数！`);
+        }else{
+            console.log(`${num}不是完数！`);
+        }
+
+        // 8.判断一个数是否为质数，质数就是除了1和它自己以外，没有其它的约数
+        // 比如一个数 15，判断它是不是质数？ 判断 2 - 14 看有没有能被 15 整除的，有的话，说明 15 不是质数！
+        var num = Number(prompt('请输入一个数字：'))
+
+        var flag = true; // 表示是质数 只要有一个能被除尽就不是质数了！
+        for(var i = 2; i <= num - 1; i++){
+            if(num % i == 0){
+                falg = false;
+            }
+        }
+
+        if(flag == true){
+            console.log(num + '是质数！');
+        }else{
+            console.log(num + '不是质数！');
+        }
+
+        // 10.打印 1900-2022 之间所有的闰年
+        for(var i = 1900; i <= 2022; i++){
+            if(i % 4 == 0 && i % 100 != 0 || i % 400 == 0){
+                console.log(i);
+            }
         }
     </script>
 </body>

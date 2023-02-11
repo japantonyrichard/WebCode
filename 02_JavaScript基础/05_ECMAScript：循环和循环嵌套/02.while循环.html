@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        循环包括：
+        1.初始化部分
+        2.循环条件
+        3.循环体
+        4.迭代部分
+
+        while 循环：
+
+        1）.语法格式：
+            1.初始化部分
+            while(2.循环条件){
+                3.循环体
+                4.迭代部分
+            }
+        
+        2）.语法说明：
+            执行顺序：1 - 2 - 3 - 4 - 2 - 3 - 4 - 2···
+            先执行初始化部分，然后执行循环条件。
+            条件成立的话，就执行循环体，执行迭代部分，
+            然后再执行循环条件，条件成立的话，执行循环体、执行迭代，
+            知道循环条件不成立结束循环。
+
+            注意：写while循环不要丢了迭代部分，丢掉迭代部分的话，循环可能就变成了死循环！！！
+            
+     -->
+     <script>
+        // 1.使用while循环输出 1-100 之间的所有数字
+        var i = 1;
+        while(i < 101){
+            console.log(i);
+            i++;
+        }
+
+        // 2.使用while循环输出 1-100 之间的所有偶数
+        var i = 1;
+        while(i < 101){
+            if (i % 2 == 0) {
+                console.log(i);
+            }
+            i++;
+        }
+
+        // 3.使用while循环计算 1-100 的和
+        var i = 1;
+        var sum = 0;
+        while(i < 101){
+            sum += i;
+            i++;
+        }
+        
+        console.log(sum);
+     </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        break 关键字    break-打断
+
+        1.break 之前在 switch 中见过，在 case 中的最后写一个 break；
+          当程序执行遇到 break 后就会结束 switch。
+
+        2.break 关键字也可以用在 循环 中，在循环中，代码执行遇到 break 的话，会结束整个循环。
+
+        continue 关键字 continue-继续
+
+        1.continue 关键字 只能 用在循环中，
+          在循环中，一旦程序执行碰到 continue ，就会结束本次循环，进入下一次循环。
+        
+        2.
+     -->
+     <script>
+        // break 关键字演示
+        // for(var i = 1; i <= 10; i++){
+        //     if(i == 5){
+        //         break; // break 会结束整个循环。
+        //         // console.log('哈哈');// 这行代码走不到。break后面不要写代码，写了也执行不了。
+        //     }
+        //     console.log(i);
+        // }
+
+        // continue 关键字演示
+        // for(var i = 1; i <= 10; i++){
+        //     if(i == 6){
+        //         continue; // continue 会结束本次循环，进入下一次循环。
+        //         console.log('呵呵');// continue 后面不要写代码，写了也执行不了。
+        //     }
+        //     console.log(i);
+        // }
+
+        // 3. 输入一个数，判断它是不是质数。
+        // 质数就是只能被1和它自己整除，不能被其它数整除。
+        // 比如：25,  1   25   主要看 2-24之间还有没有能被25整除的，只要有能被整除的，说明 25 就不是质数
+        // var num = Number(prompt('请输入一个数：'));
+
+        // var flag = true;// 表示是质数
+        // for(var i = 2; i <= num - 1; i++){
+        //     if(num % i == 0){
+        //         flag = false;// 该数不是质数。
+        //         break;
+        //     }
+        // }
+
+        // if(flag){   // if(flag == true)
+        //     console.log(num + '是质数！');
+        // }else{
+        //     console.log(num + '不是质数！');
+        // }
+
+        // 4. 打印出 1-100 之间的所有的质数
+        for(var i = 2; i <= 100; i++){
+
+            var flag = true; // 表示是质数
+            // 就是判断 i 是不是质数，思路：看从2到i-1之间有没有能够被i整除的，如果有，i就不是质数。
+            for(var j = 2; j <= i-1; j++){
+                if(i % j == 0){
+                    flag = false;
+                    break;
+                }
+            }
+
+            if(flag){
+                console.log(i + '是质数！');
+            }
+        }
+     </script>
+</body>
+</html>
