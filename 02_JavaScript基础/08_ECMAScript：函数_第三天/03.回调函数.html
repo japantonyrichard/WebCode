@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        回调函数
+
+        1.回调函数 英文：callback （往回召唤）
+        2.回调函数就是将某个函数A作为参数传递给另一个函数B，在函数B执行完后调用参数函数A，
+          函数A就称为回调函数。
+          如果回调函数没有名字，那就称为匿名回调函数。
+        
+        3.注意:回调函数指的是作为参数的那个函数！！！
+     -->
+     <script>
+        // 回调函数
+        // function fun1(){
+        //     console.log(123);
+        // }
+
+        // 主函数
+        // function fun2(f){
+        //     console.log(456);
+        //     f();
+        // }
+
+        // fun2(fun1);
+        // 456
+        // 123
+
+        // setInterval(function(){},xxxx);
+
+        // 演示回调函数参数传递
+        function fun3(a,b){
+            console.log(123);
+            console.log(a,b);
+        }
+
+        function fun4(f,x,y){
+            console.log(456);
+            f(x,y);
+        }
+
+        fun4(fun3,10,20);
+        // 456
+        // 123
+        // 10 20
+     </script>
+</body>
+</html>

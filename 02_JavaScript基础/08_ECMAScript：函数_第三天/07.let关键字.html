@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        let 关键字
+
+        1.let 关键字 是 ES6 新增的
+        2.let 关键字的作用就是用来声明变量的，和 var 关键字的作用一样，但是效果肯定不一样
+        3.ES5 中有两个作用域：函数作用域、全局作用域
+          ES6 中新增了块级作用域
+        4.let 声明的变量是在块级作用域中生效！之前var关键字声明的变量是在 函数作用域内 或者 全局作用域内 生效。
+        5.块级作用域指的就是：{} 、 if后面的{} 、 for循环的{} 等
+
+        6.let 声明的变量不能提升！ var 声明的变量是可以提升的！
+        7.let 声明的变量不能重复声明（在同一个作用域内）！ var 声明的变量是可以重复声明的。
+
+        8.以后，一般情况下，尽量用 let 声明变量！！！更严谨。
+     -->
+     <script>
+        // 演示 let 关键字声明变量
+        // var num1 = 20;
+        // let num2 = 50;
+
+        // console.log(num1);// 20
+        // console.log(num2);// 50
+
+        // 演示 let 声明的变量是在块级作用域内生效！
+        // if(true){
+        //     var num1 = 20;// num1 是全局变量！
+        //     let num2 = 50;// num2 是let声明的，在块级作用域内有效，也就是在包裹它的那个大括号内有效！
+        //     console.log(num2);// 50
+        // }
+
+        // console.log(num1);// 20
+        // console.log(num2);// 报错！Uncaught ReferenceError: num2 is not defined
+
+
+        // console.log(i);// undefined
+        // 演示 let 声明的变量是在块级作用域内有效！
+        // for(var i = 0; i < 5; i++){
+        //     console.log(i);// 0 1 2 3 4
+        // }
+
+        // console.log(i);// 5
+
+        // for(let j = 0; j < 5; j++){
+        //     console.log(j);// 0 1 2 3 4
+        // }
+
+        // console.log(j);// 报错！let声明的，在块级作用域内有效，也就是在包裹它的那个大括号内有效！
+
+        // 演示 var 声明的变量是可以提升的
+        // console.log(num);// undefined
+        // var num = 20;
+
+        // 演示 let 声明的变量是不可以提升的
+        // console.log(num);// 报错 Uncaught ReferenceError: Cannot access 'num' before initialization（在初始化之前不能访问num）
+        // let num = 100;
+
+        // 演示 var 声明的变量是可以重复声明的
+        // var num = 50;
+        // var num = 100;
+        // console.log(num);// 100
+
+        // 演示 let 声明的变量是不可以重复声明的
+        // let num = 50;
+        // let num = 100;// let 声明的变量（在同一个作用域内）是不可以重复声明！
+        // console.log(num);// Uncaught SyntaxError: Identifier 'num' has already been declared
+
+        let num = 50;// 在整个<script>大括号内能用
+        num = 150;// 给变量num重新赋值 这是可以的       常量用constant
+        function fun1(){
+            // let num = 100;
+            console.log(num);// 100     注释上一行的 // 50
+        }
+
+        fun1();
+        console.log(num);// 50
+
+
+        var name = '貂蝉';// 全局变量
+        function fun1(){
+            console.log(name);// undefined
+            var name = '吕布';
+        }
+
+        fun1();
+
+        console.log(name);// 貂蝉
+
+
+        let name = '貂蝉';
+        function fun1(){
+            console.log(name);// 报错
+            let name = '吕布';
+        }
+
+        fun1();
+
+        console.log(name);
+     </script>
+</body>
+</html>

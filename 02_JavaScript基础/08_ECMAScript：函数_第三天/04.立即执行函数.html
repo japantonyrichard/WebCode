@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        立即执行函数
+
+        1.我们知道，函数声明后，默认是不会执行的，需要通过事件驱动或者调用才会执行
+          目前，我们就会调用执行函数。
+        2.调用函数的格式：
+                函数名();       () 称为执行符
+
+        3.立即执行函数，也称为自执行函数，也称 IIFE
+          立即执行函数就是不需要我们去调用，写完后自己就能执行。
+
+        4.函数的声明方式有三种：
+            1，函数表达式法
+            2，构造函数法
+            3，function命令法
+
+        5.声明一个函数，然后将其变为立即执行函数，就不能再通过 函数名(); 去调用执行了！
+
+        6.使用 函数表达式法 和 构造函数法 声明的函数要变为立即执行函数，只需要在后面直接写 () 就行。
+          使用 function命令法 声明的函数，要变为立即执行函数，不能在后面直接写 ()
+
+          js中规定：以 function 开头的，称为语句，不以 function 开头的称为 表达式，
+                   表达式后面可以直接写 () ，语句后面不能直接写 () 。
+
+          所以说使用 function命令法 声明的函数要变为立即执行函数，
+          核心思想：就是不要让 function 开头就行，
+          一般我们就是用 小括号 () 把函数声明括起来，再后面再加个 ();还可以用 () 全包起来，这样function也不是打头的。
+     -->
+     <script>
+        // 演示函数表达式法声明的函数变为立即执行函数*****
+        // var fun1 = function(){
+        //     console.log(123);
+        // }(); // 自执行  () 称为执行符  
+
+        // fun1();  // 会报错 不能再调用了
+
+        // 演示构造函数法声明的函数变为立即执行函数*****
+        // var fun2 = new Function('console.log(456);')(); // 加个执行符 ()
+
+        // fun2(); // Uncaught TypeError: fun2 is not a function
+
+        // 演示function命令法声明的函数变为立即执行函数*************
+        // function fun3(){
+        //   console.log(123);
+        // }
+        (function fun3(){
+          console.log(123);
+        })(); // 用 () 把声明的函数包起来，后面再加个 ();
+
+        // 或者
+        (function fun4(){
+          console.log(123);
+        }()); // 从头包到尾
+
+        // fun3();
+
+
+        (function fun4(){
+            console.log(789);// 789
+        })();
+
+        '你好' && function fun5(){console.log(888);}();// 888   短路机制
+
+        '' || function fun6(){console.log(666);}();// 666
+
+
+        // setInterval(function(){},xx);// 回调函数
+
+        (function(){})(); // 自执行函数
+        (function(){}()); // 自执行函数
+     </script>
+</body>
+</html>

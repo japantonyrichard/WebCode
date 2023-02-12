@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        递归函数：
+
+        1.递归函数就是一个函数自己调用自己
+
+        2.递归一般是要有一个结束条件的，不然就很可能造成死循环！！！
+
+        3.递归是一级一级的往下调用自己，要得到最终结果的话，是一级一级的从下往上得到结果。
+     -->
+     <script>
+        // function fun1(){
+        //     fun1();
+        // }
+
+        // fun1();// Uncaught RangeError: Maximum call stack size exceeded
+
+        // 1.使用递归的方式计算任意数的累加和
+        // 分析： 计算 5 的累加和
+        // 5的累加和 = 5 + 4的累加和
+        // 4的累加和 = 4 + 3的累加和
+        // 3的累加和 = 3 + 2的累加和
+        // 2的累加和 = 2 + 1的累加和
+        // 1的累加和 = 1
+        
+        // 编写一个函数，作用是计算任意数的累加和
+        function fun1(num){
+            if(num == 1){
+                // return num;
+                return 1;
+            }else{
+                return num + fun1(num - 1);
+            } 
+        }
+        // console.log(fun1(5));
+        var result = fun1(5);
+        console.log(result);
+        /*
+            计算 5 的累加和
+            返回 5 + fun(4)
+
+            计算 4 的累加和
+            返回 4 + fun(3)
+           
+            计算 3 的累加和
+            返回 3 + fun(2)
+
+            计算 2 的累加和
+            返回 2 + fun(1)
+            
+            计算 1 的累加和
+            返回 1
+        */
+ 
+        // 原来的方式
+        // function fun1(num){
+        //     var sum = 0;
+        //     for(var i = 1; i <= num; i++){
+        //         sum += i;
+        //     }
+
+        //     return sum;
+        // }
+
+        // 2.使用递归的方式计算任意数的阶乘
+        // 5! = 5*4*3*2*1
+        // 5的阶乘 = 5*4的阶乘
+        
+        // 定义一个函数，实现计算任意数的阶乘
+        function fun2(num){
+            if(num == 1){
+                return 1;
+            }else{
+                return num * fun2(num - 1);
+            }  
+        }
+        var result = fun2(5);
+        console.log(result);
+
+        // 3.计算斐波那契数列第n个位置上的数字
+        // 斐波那契数列指的是：1、1、2、3、5、8、13、21、34、……
+        // 第一个位置上是1，第二个位置上是1，从第3个位置开始，每个位置上的数等于前面两个位置上数的和
+        function fun3(n){
+            if(n == 1 || n == 2){
+                return 1;
+            }else{
+                return fun3(n - 1) + fun3(n - 2);
+            }
+        }
+        // console.log(fun3(9));
+        var result = fun3(9);
+        console.log(result);// 34
+     </script>
+</body>
+</html>
