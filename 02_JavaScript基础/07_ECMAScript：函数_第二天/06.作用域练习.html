@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        变量分为两种：
+
+        1.局部变量
+            只能在函数内部使用
+                形参、在函数内使用 var 关键字声明的变量
+        2.全局变量
+            在哪里都可以使用（函数内可以使用、函数外也可以使用）
+                除了局部变量都是全局变量
+     -->
+     <script>
+        // 1.说出下面代码的输出结果
+        // function fun1(num) {// num 是一个形参，属于局部变量，只能在函数内使用
+        //     console.log(num);// 10
+        // }
+        // fun1(10);
+        // console.log(num);// 报错，因为没有定义过num
+
+        // 2.说出下面代码的输出结果
+        // var num = 100;// num属于全局变量，在任何地方都可以使用，函数内可以用，函数外也可以用
+        // function fun2() {
+        //     console.log(num);// 100 
+        // }
+        // fun2();
+        // console.log(num);// 100
+
+        // 3.说出下面代码的输出结果
+        // var num = 100;// 全局变量，在哪里都能使用
+        // function fun3() {
+        //     var num = 10;// num 是局部变量，只能在函数内部使用
+        //     console.log(num);// 10  如果既可以使用全局变量，又能用局部变量，局部变量优先（就近原则）
+        // }
+
+        // fun3();
+        // console.log(num);// 100
+
+
+        // 4.说出下面代码的输出结果
+        // var num = 100;// num 是全局变量，哪里都能使用
+        // function fun4() {
+        //     num = 150; // 这里的num并不是重新声明的，而是使用的上面的全局变量
+        //     console.log(num);// 150
+        // }
+
+        // fun4();
+        // console.log(num);// 150
+
+        // 5.说出下面代码的输出结果
+        // var num = 100;// 全局变量，哪里都能用
+
+        // function fun5() {
+        //     num++;// num = num + 1   num = 101;
+        //     console.log(num);// 101
+        // }
+
+        // fun5();
+        // console.log(num);// 101
+
+
+        // 6.说出下面代码的输出结果
+        // var num = 100;// 全局变量，哪里都能用
+
+        // function fun6() {
+        //     var num = 10;// num 局部变量，只能在函数内部使用
+        //     num++;
+        //     console.log(num);// 11
+        // }
+        // fun6();
+        // console.log(num);// 100
+
+        // 7.说出下面代码的输出结果
+        var x, y, z; // x y z 都是全局变量，哪里都能用
+        function fun7() {
+            var x = y = z = 10;// x 是局部变量  y 和 z 都是用的全局
+            console.log(x, y, z);// 10 10 10
+        }
+        fun7();
+        console.log(x, y, z);// undefined 10 10
+     </script>
+</body>
+</html>

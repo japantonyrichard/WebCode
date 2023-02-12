@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        函数其实就是一个 object（对象）
+
+        对象就有 属性 和 方法（函数）。
+
+        所以说，函数也有 属性 和 方法（函数）。
+
+        调用属性：对象名.属性;
+        调用方法：对象名.方法();
+
+        函数的两个属性：（了解）
+            name 属性 ：可以获取到函数的名字。具体使用的时候，函数名.name;
+            length 属性：可以获取到形参的个数。 （arguments对象可以获取到所有的实参）
+
+        函数的一个方法：toString()
+            toString 方法：可以输出该函数的声明
+     -->
+     <script>
+        // function fun1(){
+        //     console.log(123);
+        // }
+
+        // console.log(fun1.name);// fun1 (函数的名字)
+
+        function fun1(){
+            console.log(123);
+        }
+
+        function fun2(f){ // f 是形参，而且 f 得是一个函数
+            f();
+            console.log(f.name);// fun1
+        }
+
+        fun2(fun1);// 123
+
+
+        function fun3(a,b,c){
+
+        }
+
+        console.log(fun3.length);// 3
+
+
+        function fun4(){
+            console.log(123);
+        }
+        // Math.random()也是调用Math对象里面的random()方法
+        console.log(fun4.toString);// ƒ toString() { [native code] }
+     </script>
+</body>
+</html>

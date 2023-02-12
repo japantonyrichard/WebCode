@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        函数的重载
+
+        1.在别的语言中，可能有函数的重载，比如java语言；在js语言中是没有函数的重载的。
+        2.函数的重载指的是：在一个页面中（或在一个js文件中），存在多个函数名一样，但是参数列表不同的函数，
+                           那这些函数就构成了函数的重载。
+        3.重载的英文是：overload
+        4.js中虽然没有函数的重载这种效果，但是可以通过 arguments对象 去模拟函数重载的效果。
+     -->
+     <script>
+        // function fun1(a,b){
+        //     console.log(a,b);
+        // }
+
+        // function fun1(a,b,c){
+        //     console.log(a,b,c);
+        // }
+
+        // function fun1(a,b,c,d){
+        //     console.log(a,b,c,d);
+        // }
+
+        // 因为js语言中如果函数重复声明的话，是最后一个生效。所以js是不支持函数重载的。
+        // 所以，下面的调用会执行上面 4 个参数的那个函数
+        // fun1(10,20);// 10 20 undefined undefined
+
+        /*
+            如果是Java语言的话，fun1(10,20); 会执行函数名是fun1的函数，并且形参得有两个的那个函数
+            fun1(10,20,30,40); 就走四个参数的那个
+        */
+
+        // 演示使用arguments对象去模拟函数重载的效果
+        function fun2(){
+            if(arguments.length == 2){
+                console.log(arguments[0], arguments[1]);
+            }else if(arguments.length == 3){
+                console.log(arguments[0], arguments[1], arguments[2]);
+            }else if(arguments.length == 4){
+                console.log(arguments[0], arguments[1], arguments[2], arguments[3]);
+            }
+        }
+
+        fun2(10,20);
+        fun2(10,20,30);
+        fun2(10,20,30,40);
+     </script>
+</body>
+</html>

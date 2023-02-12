@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        函数的返回值：
+
+        1.之前，我们声明的各种函数，其实都是没有返回值的函数。
+          后面，我们需要根据实际情况，看函数是否应该有返回值。
+        2.函数的返回值：就是指函数执行完后会给调用处返回一个值。
+                       简单来说，返回值就是谁调用我，我就将值返回给谁！
+        3.返回值的语法格式：
+                        return 值;          return-返回
+        4.return 语句一般写在函数体的最后，如果写在前面的话，它后面的代码就执行不到了。
+        5.return 关键字可以在函数中单独使用，结束函数。
+        6.函数声明中没有通过return去返回数据，那我们称函数没有返回值，
+          也可以认为该函数的返回值是 undefined。
+
+
+        在声明一个函数的时候，要考虑两个事情：
+            1.要不要有参数？ 要的话要几个？
+            2.要不要有返回值？ 
+     -->
+     <script>
+        // 演示没有返回值的
+        // function fun1(){
+        //     console.log('fun1被执行啦！');
+        // }
+
+        // fun1();// fun1被执行啦！
+
+
+        // 演示有返回值的
+        // function fun2(){
+        //     console.log('fun2被执行了');
+        //     // 返回一个字符串，谁调用我我就给谁
+        //     return 'hello';
+        // }
+
+        // var a = fun2();
+        // console.log(a);
+
+        // function fun3(){
+        //     console.log('哈哈');
+        //     return 123;
+        // }
+
+        // // var b = fun3();
+        // // console.log(b);
+        // console.log(fun3());
+
+
+        // function fun3(){
+        //     console.log(123);
+        //     return 'hello'; // 函数执行碰到 return语句的话就结束了
+        //     console.log(456); // 这的代码是在 return语句之后，所以就执行不到了！
+        // }
+
+        // var a = fun3();
+        // console.log(a);
+
+        // 演示 单独使用 return 关键字
+        // function fun4(){
+        //     console.log(123);
+        //     return; // 这里的return仅仅是结束函数，并没有返回任何东西
+        //     console.log(456); // 这的代码执行不到！
+        // }
+
+        // fun4();// 123
+
+
+        // 演示 没有返回值，也可以认为返回值是 undefined
+        function fun5(){
+            console.log(123);
+        }
+
+        var a = fun5();
+        console.log(a);
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.定义一个函数，打印任意行的正三角
+        function fun1(row){
+            for(var i = 1; i <= row; i++){
+                for(var j = 1; j <= i; j++){
+                    document.write('* ');
+                }
+                document.write('<br>');
+            }
+        }
+
+        fun1(5); 
+        fun1(10); 
+
+        // 2.定义一个函数，判断数字的奇偶性
+        function fun2(num){
+            if(num % 2 == 0){
+                console.log(`${num}是偶数！`);// 模板字符串（ES6新增）
+            }else{
+                console.log(`${num}是奇数！`);
+            }
+        }
+
+        fun2(11);
+        fun2(8);
+
+        // 3.定义函数，判断某个数是否是水仙花数；找出所有的水仙花数.
+        function fun3(num){ // 125
+            var gewei = num % 10;
+            var shiwei = ~~(num / 10) % 10;
+            var baiwei = ~~(num / 100);
+            if(gewei ** 3 + shiwei ** 3 + baiwei ** 3 == num){
+                console.log(`${num}是水仙花数！`);
+            }else{
+                // console.log(`${num}不是水仙花数！`);
+            }
+        }
+
+        fun3(151);
+        fun3(370);
+        fun3(371);
+
+        for(var i = 100; i <= 999; i++){
+            fun3(i);// 153是水仙花数！ 370是水仙花数！ 371是水仙花数！ 407是水仙花数！
+        }
+
+        // 4.做一个小游戏，报7游戏的安全数（轮流报数，报到能被7整除或者包含7的都要表演节目），报出1-100之间的安全数
+        // 定义函数，判断某个数是否是7的倍数，是否包含7
+        function fun4(num){ // 28  7
+            var gewei = num % 10;
+            var shiwei = ~~(num / 10);
+            if(num % 7 == 0 || gewei == 7 || shiwei == 7){
+                document.write(`过<br>`);
+            }else{
+                document.write(num + '<br>');
+            }
+        }
+
+        for(var i = 1; i <= 100; i++){
+            fun4(i);
+        }
+
+        // 5.珠峰海拔8848米，现在有足够大的纸，厚度是0.01米，折多少次高度可以超过珠峰？
+            var height = 0.01;
+            var count = 0;
+            while(height < 8848){
+                // height = height * 2;
+                height *= 2;
+                count++;
+            }
+
+            console.log(`折叠${count}次。`);// 折叠20次。
+
+        // 6.编写一个函数，比较三个数字的大小，按照从小到大的顺序输出
+        function fun6(num1,num2,num3){  // 5 9 2
+            if(num1 > num2){    //      num2     num1
+                if(num3 > num1){
+                    console.log(`${num2}<${num1}<${num3}`);
+                }else if(num3 < num2){
+                    console.log(`${num3}<${num2}<${num1}`);
+                }else{
+                    console.log(`${num2}<${num3}<${num1}`);
+                }
+            }else if(num1 < num2){    //      num1    num2
+                if(num3 > num2){
+                    console.log(`${num1}<${num2}<${num3}`);
+                }else if(num3 < num1){
+                    console.log(`${num3}<${num1}<${num2}`);
+                }else{
+                    console.log(`${num1}<${num3}<${num2}`);
+                }
+            }
+        }
+
+        fun6(5,9,2);
+        fun6(7,-9,0);
+        fun6(-10,-9,-8);
+        fun6(3,1,2);
+
+        // 7.编写函数实现随机生成一个4位数的验证码，打印10组验证码
+        function fun7(){
+
+            var code = '';// 空串
+            for(var i = 1; i <= 4; i++){
+                // 随机生成[0,9]
+                var num = ~~(Math.random() * 10);
+                code += num;// code = code + num
+            }
+
+            console.log(code);
+        }
+
+        for(var i = 1; i <= 10; i++){
+            fun7();
+        }
+
+        /*
+            debug
+
+            bug:缺陷、漏洞
+
+            调试（debug）程序，看哪里有问题。
+
+            debug
+
+            调错，可以通过浏览器提供的调试工具。
+
+            断点：程序默认是直接快速全部执行完了，我们可以通过给某行代码处打一个断点，
+                  程序执行到断点处就会停下来，我们就可以控制程序使其单步执行。
+                  程序在单步执行的时候，注意观察变量的变化情况，从而找到有问题的地方。
+        */
+
+        // 8.定义函数，求随机颜色（rgb颜色）  rgb(xxx,xxx,xxx)
+        function fun8(){
+            var red = ~~(Math.random() * 256);
+            var green = ~~(Math.random() * 256);
+            var blue = ~~(Math.random() * 256);
+
+            console.log(`生成的随机颜色是：rgb(${red},${green},${blue})`);
+        }
+
+        fun8();
+
+        // 9.利用 arguments 求任意个数字的和
+        
+        // 通过 arguments 对象可以获取到所有的实参
+        // arguments 对象的使用类似于 数组！
+        function fun9(){
+
+            // console.log(arguments);
+
+            // arguments[0] + arguments[1] + arguments[2] + ... + arguments[6]
+
+            var sum = 0;
+            for(var i = 0; i < arguments.length; i++){
+                sum += arguments[i];
+            }
+            console.log(sum);
+        }
+
+        fun9(1,2,3,4,5,6,7);// 28
+    </script>
+</body>
+</html>

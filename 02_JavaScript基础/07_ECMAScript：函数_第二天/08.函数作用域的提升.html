@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        函数的声明也可以提升，函数声明的提升是提到自己所在作用域的顶部！
+
+        子函数可以使用父函数的内容，
+        父函数不可以使用子函数的！
+     -->
+     <script>
+        // var num = 100;
+
+        // function fun1() {
+        //     var num = 10;
+
+        //     function fun2() {
+        //         var num = 1;
+        //         var num2 = 100;
+        //         console.log(num);// 自己有就用自己的，没有就就近往上级找。
+        //     }
+        //     fun2();
+        //     console.log(num2); // Error:num2 is not defined
+        // }
+
+        // fun1();
+
+        var num = 100;
+
+        function fun1() {
+            var num = 200;
+            fun2();
+        }
+        fun1();
+
+        function fun2() {
+            console.log(num);
+        }
+
+        //上面代码等价于：
+        var num;
+        function fun1() {
+            var num = 200;
+            fun2();
+        }
+        function fun2() {
+            console.log(num);//100
+        }
+
+        num = 100;
+
+        fun1();// 100 浏览器从上往下读，上面 fun1,fun2浏览器只是看了一眼，并没有执行，到读到最下面调用才会执行。
+    </script>
+</body>
+</html>
