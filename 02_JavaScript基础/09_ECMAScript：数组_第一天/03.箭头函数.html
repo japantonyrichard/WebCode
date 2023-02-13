@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        箭头函数（ES6新增的）
+
+        1.箭头函数是ES6新增的
+        2.箭头函数的目的就是为了简化函数的编写
+        3.语法格式：
+            var 变量名 = (参数1,参数2,...,参数n) => {函数体};
+        4.语法说明：
+            1，当参数是一个的时候，可以省略小括号()
+            2，函数体中就一条语句的时候，可以省略大括号{}
+            3，函数体中只有一条语句，而且这条语句还是返回值语句，那大括号{} 和 return关键字 都可以省略！
+
+        5.箭头函数注意点：
+            使用箭头函数后，不能再使用 arguments 对象获取实参了，（不要用旧的了）
+            但是可以使用 rest 参数获取实参。（新的配新的！）
+     -->
+     <script>
+        // 演示将ES5中各种函数转为ES6中箭头函数的写法！！！
+
+        // var fun1 = function(){
+        //     console.log(123);
+        // };
+
+        let fun1 = () => console.log(123);// 123
+        fun1();
+
+        // function fun2(){
+        //     console.log(456);
+        // }
+
+        let fun2 = () => {console.log(456);};// 456
+        fun2();
+
+        // var fun3 = function(a){
+        //     console.log(7896);
+        // }
+
+        let fun3 = a => console.log(7896);// 7896
+        fun3(2333);
+
+        // function fun4(a,b){
+        //     console.log(456);
+        //     console.log(123);
+        // }
+
+        let fun4 = (a,b) => {
+            console.log(a);// 10
+            console.log(b);// 20
+        };
+        fun4(10,20);
+
+        // let fun5 = function(a,b){
+        //     if(a > b){
+        //         return a;
+        //     }else{
+        //         return b;
+        //     }
+        // }
+
+        let fun5 = (a,b) => {
+            if(a > b){
+                return a;
+            }else{
+                return b;
+            }
+        };
+        let result = fun5(50,100);
+        console.log(result);// 100
+
+        // function fun6(a){
+        //     return '你好';
+        // }
+
+        // let fun6 = (a) => {return '你好';};
+        let fun6 = a => '你好';
+        let result2 = fun6(123);
+        console.log(result2);// 你好
+
+
+        // 编写一个箭头函数，计算任意数的累加和
+        let fun7 = (num) => {
+            let sum = 0;
+            for(let i = 1; i <= num; i++){
+                sum += i;
+            }
+            return sum;
+        };
+
+        let result3 = fun7(100);
+        console.log(result3);// 5050
+
+        // 演示使用箭头函数的话，再使用 arguments 对象获取实参 会报错
+        // let fun7 = () => {
+        //     console.log(arguments);
+        // };
+
+        // fun7(1,2,3);
+
+        // 演示使用箭头函数，再使用 rest 参数获取所有的实参
+        let fun8 = (...rest) => {
+            console.log(rest);
+        };
+
+        fun8(1,2,3,4,5);
+     </script>
+</body>
+</html>

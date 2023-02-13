@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        通过索引可以获取到数组中指定位置的元素，
+        也可以通过索引为数组中指定位置赋值。
+
+        语法格式：
+            数组名[索引] = 值;
+     -->
+     <script>
+        // 演示给数组中指定位置赋值
+        let arr = [10,20,30,40,50,60];
+
+        console.log(arr[2]);// 30
+        arr[2] = 200;
+        console.log(arr);// (6) [10, 20, 200, 40, 50, 60]
+
+        arr[2] = '吕布';
+        console.log(arr);// (6) [10, 20, '吕布', 40, 50, 60]
+     </script>
+</body>
+</html>

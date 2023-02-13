@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.求数组中所有元素的和
+        let arr1 = [10,20,30,40,50,60];
+        let sum = 0;
+        for(let i = 0; i <= 5; i++){
+            sum += arr1[i];
+        }
+        console.log(sum);// 210
+
+        // 2.给数组中的每个元素加10，输出最新的值
+        let arr2 = [10,20,30,40,50,60];
+        for(let i = 0; i <= 5; i++){
+            // arr2[i] = arr2[i] + 10;
+            arr2[i] += 10;
+        }
+        console.log(arr2);// (6) [20, 30, 40, 50, 60, 70]
+    </script>
+</body>
+</html>

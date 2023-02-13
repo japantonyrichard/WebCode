@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        数组的长度
+
+        1.数组是属于对象，对象一般都有属性和方法。所以数组也有属性和方法。
+            对象名.属性     对象.方法()
+        2.对于数组，我们要掌握 length 属性。它表示当前数组中元素的个数。 length-长度。
+        3.语法格式：
+            数组名.length
+        4.数组的长度会算上空位的,如果要获取空位的元素值，得到的是undefined
+
+        5.数组的长度是动态变化的，随着元素的个数会变化。
+
+        6.数组的长度是有限的，最多是 2的32次方 - 1 ，如果设置数组元素，索引超过了最大的索引，会将其转为属性！
+
+        7.数组通过之前的各种案例，观察到现象：当前数组的最大索引值 = 数组的长度 - 1
+
+        8.数组的长度是可以直接赋值的
+            1，当新赋值的长度是大于原来的长度时，多出来的位置就使用空位代替
+            2，当新赋值的长度是小于原来的长度时，超出的元素就舍掉了
+            3，当新赋值的长度是0时，相当于清空了数组
+            4，数组的长度是大于等于0的整数！
+
+        数组的特殊情况：
+            1.数组的索引表示元素在数组中的位置，但是，索引也可以是字符串
+              索引是字符串时，数组会将该索引作为属性了！！！
+              因为数组本质上是属于对象的，对象是可以有属性的！
+              这种方式给数组加进去的值，不会算在长度内
+            2.当给数组中元素赋值时，如果索引超过了数组能具备的最大索引(2 ** 32 - 2)时，
+              会将该索引转为属性。
+     -->
+     <script>
+        // 演示获取数组的长度
+        let arr = [10,20,30,40,50];
+        console.log(arr.length);// 5
+
+        // 演示数组中空位也会算在长度内
+        let arr2 = [10,20,30,,,,40,50];
+        console.log(arr2.length);// 8
+
+        // 演示数组的长度是动态变化的
+        arr2[8] = 100;
+        console.log(arr2.length);// 9
+        arr2[100] = 125;
+        console.log(arr2.length);// 101
+        console.log(arr2);// (101) [10, 20, 30, empty × 3, 40, 50, 100, empty × 91, 125]
+
+        // 演示数组的长度是有限的，最大是 2的32次方 - 1
+        arr2[2 ** 32] = 123; // 4294967296: 123
+        console.log(arr2.length);
+
+        // 演示数组的长度是可以直接赋值的
+        let arr3 = [10,20,30,40];
+        // 当赋值的新长度大于原来数组的长度时，多余的就会用空代替
+        arr3.length = 100;
+        console.log(arr3.length);// 100
+        console.log(arr3);// (100) [10, 20, 30, 40, empty × 96]
+
+        // 当赋值的新长度小于原来数组的长度时，超出的元素就会舍掉
+        arr3.length = 2;
+        console.log(arr3.length);// 2
+        console.log(arr3);// (2) [10, 20]
+
+        // 当赋值的新长度等于 0 时，就意味着清空了该数组
+        arr3.length = 0;
+        console.log(arr3);// Array(0) []
+
+        // 演示数组的长度只能是大于等于0的整数
+        let arr4 = [10,20,30,40];
+        // arr4.length = 3.3;// Uncaught RangeError: Invalid array length
+        // arr4.length = -5;// Uncaught RangeError: Invalid array length
+        // arr4.length = 2 ** 32;//Uncaught RangeError: Invalid array length
+        // arr4.length = 2 ** 32 - 5;
+
+        // 演示数组的特殊情况
+        // 演示数组的索引是字符串
+        let arr5 = [10,20,30];
+        // 其实会将name作为数组的属性
+        arr5['name'] = '貂蝉';
+        console.log(arr5);// (3) [10, 20, 30, name: '貂蝉']
+
+        // 下面的这个索引超过了数组能具备的最大索引，那就会将该索引值转为字符串，当做数组的属性！
+        arr5[999999999999] = 123;
+        console.log(arr5);// (3) [10, 20, 30, name: '貂蝉', 999999999999: 123]
+     </script>
+</body>
+</html>

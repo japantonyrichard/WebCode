@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        函数形参的默认值（ES6）
+
+        1.在 ES5 中，函数的形参，如果没有被赋值的话，值是 undefined
+
+        2.在 ES6 中，函数的形参是可以设置默认值的。如果调用的时候传入了相应的实参，那就用传入的。
+          如果没有传入相应的实参，那就用默认值。
+
+        3.注意：使用 ES6 给函数形参设置默认值时，形参不能有重名的。（之前 ES5 中形参是可以重名的）
+     -->
+     <script>
+        // 演示 ES5 中实参比形参个数少的话，部分形参的值是undefined
+        // function fun1(a,b,c){
+        //     console.log(a,b,c);
+        // }
+
+        // fun1(10);// 10 undefined undefined
+
+        // 演示 ES6 中可以给形参设置默认值
+        function fun2(a,b = 2,c = 3){
+            console.log(a,b,c);
+        }
+
+        fun2(10);// 10 2 3
+        fun2(10,20);// 10 20 3
+        fun2(10,20,100);// 10 20 100
+
+        // 演示 ES5 中形参是可以重名的
+        // function fun3(a, a){
+        //     console.log(a);
+        // }
+
+        // fun3(10,20);
+
+        // 演示 ES6 中设置形参默认值是，形参不可以重名
+        function fun4(a = 1, a){// 报错 Uncaught SyntaxError: Duplicate parameter name not allowed in this context
+            console.log(a);
+        }
+
+        fun4(2,3);
+     </script>
+</body>
+</html>

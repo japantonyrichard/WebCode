@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        数组的空位 empty
+
+        1.数组的某个元素是 空 时，也就是两个逗号 , , 之间什么也没有，就成为空位
+        2.数组的长度会算上空位
+        3.注意：最后一个元素后写逗号，不算空位
+     -->
+     <script>
+        // 演示数组的空位 
+        let arr1 = [1, 3, , , 5, 7];
+        console.log(arr1);// (6) [1, 3, empty × 2, 5, 7]
+
+        let arr2 = [10,20,,,30,40,50,];
+        console.log(arr2);// (7) [10, 20, empty × 2, 30, 40, 50] 最后面的不算空位
+     </script>
+</body>
+</html>

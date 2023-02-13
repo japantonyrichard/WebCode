@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        rest 参数 （ES6新增的）
+
+        1.之前我们学过使用 arguments 对象获取所有的实参
+        2.在 ES6 中新增了 rest 参数，它也可以获取所有的实参，代替了 arguments对象 的功能。
+        3.使用 rest 参数 方式获取到所有的实参结果是数组，对于数组的操作会更方便！
+        4.使用 arguments 对象 方式获取到的所有的实参结果是对象(只不过是这个对象是一个类数组对象)
+     -->
+     <script>
+        // 演示使用 arguments对象获取所有的实参
+        // function fun1(){
+        //     console.log(arguments);// Arguments(5)
+        //     console.log(arguments.length);// 5
+        // }
+
+        // fun1(1,2,3,4,5);
+
+        // 演示使用 rest 参数获取所有的实参
+        function fun2(...rest){// 这里的参数名起什么都行，一般起rest
+            console.log(rest);// Array(5) (5) [1, 3, 5, 7, 9]
+        }
+
+        fun2(1,3,5,7,9);
+     </script>
+</body>
+</html>

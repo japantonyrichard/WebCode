@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        数组的创建
+
+        1.数组的创建有两种方式
+            1，字面量法     var a = 3/'貂蝉';  这里的 3/'貂蝉' 就叫 字面量
+            2，构造函数法
+
+        2.字面量法
+            1，语法格式：
+                var 数组名 = [元素1,元素2,...,元素n];
+            2，语法说明：
+                1）数组值需要用 [] 括起来
+                2）多个元素之间使用逗号 , 分隔
+
+        3.构造函数法
+            1，语法格式：
+                var 数组名 = new Array(元素1,元素2,...,元素n);
+                或者    
+                var 数组名 = Array(元素1,元素2,...,元素n);
+            2，语法说明：
+                跟字面量法不一样，构造函数法是用小括号 () 把数组值括起来，Array的首字母A必须大写！
+
+            // 平时，就写一个大写字母时，不要按切换大写的键，按住shift+ 要写的字
+            // AAWOIWEOIDPALJDQPOFQOIQFPFQPOIDKJSDKJFOWO
+
+        4.字面量法 和 构造函数法 创建数组的区别？
+            使用这两种方式创建数组，基本上是没有什么区别的。只有在一种情况下有区别：
+            当创建数组时，数组里面只有一个数据，而且数据还是 number 类型的，而且数据还是大于等于0的整数时。
+            1，使用字面量法创建的数组会将 该数据 认为是数组中的一个元素
+            2，使用构造函数法创建的数组会将 该数据 认为是数组的长度
+     -->
+     <script>
+        // 演示使用字面量法创建空数组
+        let arr1 = [];
+        console.log(arr1);// Array(0) []
+
+        // 演示使用字面量法创建有数据的数组
+        let arr2 = [1,3,5,7,9];
+        console.log(arr2);// (5) [1, 3, 5, 7, 9]
+        console.log(arr2.length);// 5   length属性就表示数组中有多少个元素
+
+        // 演示使用字面量法创建数组，里面存储任意类型的数据
+        let arr3 = [2, '貂蝉', true, null, undefined, [1,2,3]];
+        console.log(arr3);// (6) [2, '貂蝉', true, null, undefined, Array(3)]
+
+        // 演示使用构造函数法创建空数组
+        let arr4 = new Array();
+        console.log(arr4);// []
+
+        // 演示使用构造函数法创建有数据的数组
+        let arr5 = new Array(1,3,5,7,9);
+        console.log(arr5);// (5) [1, 3, 5, 7, 9]
+
+        // 演示使用构造函数法创建数组，数组中放任意类型的数据(工作中还是一般放同一类型的，比如name/age..)
+        let arr6 = new Array(125, '苏明玉', false, null, undefined, [1,2,3]);
+        let arr7 = Array(125, '苏明玉', false, null, undefined, [1,2,3]);
+        console.log(arr6);// (6) [125, '苏明玉', false, null, undefined, Array(3)]
+        console.log(arr7);// (6) [125, '苏明玉', false, null, undefined, Array(3)]
+
+        // 演示两种创建方式的区别
+        let arr8 = [5];
+        console.log(arr8);// [5]
+        // 认为长度是5，里面是5个空位
+        let arr9 = new Array(5);
+        console.log(arr9);// (5) [empty × 5]
+     </script>
+</body>
+</html>
