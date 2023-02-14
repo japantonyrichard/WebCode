@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        数组的增删改查
+
+        1. 数组元素的增加
+            1) 就是给数组中添加一个元素： arr[3] = 18;
+            2) 如果要给数组中的最后一个位置加一个元素： arr[arr.length] = 10
+        
+        2. 数组元素的删除
+            语法格式：
+                delete 数组名[索引]
+            这种方式不推荐，就不用！！！ 因为这种方式不是真正的将元素从数组中删掉，
+            而是将该索引位置的元素变为空位，值变为undefined
+            后面我们用方法去删除！
+        
+        3. 数组元素的修改
+            就是给指定位置重新赋值即可
+
+        4. 数组元素的查询
+            就是指获取数组中指定位置的元素
+     -->
+
+     <script>
+        let arr = [10, 20, 30, 40];
+
+        // 演示给数组中添加元素
+        arr[arr.length] = 50;
+
+        // 演示删除数组中某个位置元素
+        delete arr[1];
+
+        // 演示修改数组中某个元素
+        arr[2] = 130;
+
+        // 演示查询数组中的某个元素
+        console.log(arr[3]);
+
+        console.log(arr);
+    </script>
+</body>
+</html>

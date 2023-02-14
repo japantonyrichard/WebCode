@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        in 操作符（了解）
+
+        1. in 操作符最适用的地方是对象。但是数组也算是对象，所以数组里面也可以用，但是很少很少用。
+
+        2. in 操作符用在数组的就是判断数组中是否存在某个索引， in - 在...里面
+
+        3. 语法格式：
+            索引 in 数组名;  
+
+        4. 语法说明：
+            1) 如果该数组中有这个索引，并且该索引位置的元素不是空位，返回 true，否则返回false！
+            2) 索引，也可以写成为字符串
+     -->
+
+     <script>
+        let arr = [10, 20, , , , 30, 40, 50];
+
+        console.log('1' in arr);// true
+        console.log(2 in arr);// false
+        console.log(200 in arr);// false
+
+    </script>
+</body>
+</html>

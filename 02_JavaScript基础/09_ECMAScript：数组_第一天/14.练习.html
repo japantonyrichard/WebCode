@@ -16,10 +16,40 @@
         console.log(arr1);// (10) [97, 86, 84, 12, 100, 21, 48, 54, 29, 29]
 
         // 2.创建一个函数，功能是：可以创建任意长度的数组，并且数组中的元素为任意范围内的随机数
-        function fun1(len, mun, max){
-            let arr = [];
 
+        // 之前的写法
+        function fun2(len, min, max){ // 参数1-数组的长度 参数2-最小值 参数3-最大值
+            let arr2 = [];
+            for(let i = 0; i < len; i++){
+                arr2[i] = ~~(Math.random() * (max - min + 1) + min);
+            }
+            return arr2;
         }
+        let arr2 = fun2(10,50,80);
+        console.log(arr2);// (10) [69, 60, 64, 55, 62, 50, 54, 56, 64, 60]
+
+        // 箭头函数写法
+        let fun3 = (len, min, max) => {
+            let arr3 = [];
+            for(let i = 0; i < len; i++){
+                arr3[i] = ~~(Math.random() * (max - min + 1) + min)
+            }
+            return arr3;
+        };
+        let arr3 = fun3(5,15,30);
+        console.log(arr3);// (5) [27, 28, 25, 18, 17]
+
+        // 3.创建一个函数，功能是：对任意的数组求元素的和
+        let fun4 = (a) => {
+            let sum = 0;
+            for(let i = 0; i < a.length; i++){
+                sum += a[i];
+            }
+            return sum;
+        };
+        let arr = [10,20,30,40,50];
+        let result = fun4(arr);
+        console.log(result);// 150
     </script>
 </body>
 </html>

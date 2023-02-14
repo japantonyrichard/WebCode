@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        数组的遍历
+
+        1.数组的遍历，指的就是查看每一个数组元素。
+        2.数组的遍历有很多方式：
+            1，for 循环（おすすめ）
+            2，for-in
+            3，for-of
+            4，map 方法
+            5，forEach 方法
+
+        3.for 循环遍历数组
+
+        4.for-in 
+            in 操作符，语法格式：索引 in 数组名;    如果索引在数组中，并且该索引位置的元素不是空位，返回true，否则返回false。
+            语法格式：
+                for(let i in 数组名){
+                    console.log(数组名[i]);
+                }
+            语法说明：
+                1，i 表示的是 数组的索引
+                2，i 是字符串类型的
+                3，不会遍历空位
+
+        5. for-of
+            语法格式：
+                for(let 变量名 of 数组名){
+                    console.log(变量名);
+                }
+            语法说明：
+                1) 变量中存放的是数组的元素
+                2) 会遍历空位
+        
+        6. map 方法 (这个好用)
+            语法格式：
+                数组名.map(function(ele, index, arr){  // 函数作为一个方法（函数）的参数，那就是回调函数
+
+                });
+            
+            语法说明：
+                1) map方法中参数是一个函数，这个函数没有名字，这个函数其实就是匿名回调函数
+                2) 回调函数有3个参数，参数1-表示本次遍历到的元素  参数2-表示本次遍历到的索引 参数3-表示遍历的那个数组
+                3) 这3个参数，参数名不是固定的，可以随便写！
+                4) 这3个参数，根据需要写即可，不是必须全写，但是注意顺序
+                5) 该方法可以有返回值
+
+        7. forEach 方法
+            语法格式：
+                数组名.forEach(function(ele, index, arr){   
+
+                });
+            语法说明：
+                1) forEach方法和map方法的使用基本上是一模一样！
+                2) 不同的是map方法支持返回值，forEach方法不支持返回值！
+     -->
+     <script>
+        let arr = [10,20,30,,50];
+
+        // 1.演示使用for循环遍历数组(最放心的一种)
+        // for(let i = 0; i <= arr.length; i++){
+        //     console.log(arr[i]);
+        // }
+
+        // 2.演示for-in方式遍历数组（空位遍历不出来了）
+        // for(let i in arr){
+        //     console.log(arr[i]);
+        // }
+
+        // 3.演示使用for-of方式遍历数组(空位能遍历出来)
+        // for(let ele of arr){ // element 元素 
+        //     console.log(ele);
+        // }
+
+        // 4.演示使用map方法遍历数组（很好用）
+        // 4.1演示使用传统函数写法
+        // arr.map(function(ele, index, arr){ // 这里名字可以随便取，但是相应位置对应的意思是不变的
+        //     console.log(ele, index, arr);
+        // });
+
+        // 小练习
+        // let newArr = [];
+        // arr.map(function(ele){
+        //     if(ele >= 20 && ele <= 30){
+        //         newArr[newArr.length] = ele; 
+        //     }
+        // });
+        // let result = newArr;
+        // console.log(result);// (2) [20, 30]
+
+        // 4.2演示使用箭头函数写法
+        // let result = arr.map((ele, index) => {   // 箭头函数前面的部分可以省略 let fun1 = () => {};
+        //     console.log(ele);
+        //     return ele;
+        // });
+        // console.log(result);// (5) [10, 20, 30, empty, 50]
+        
+        // 5.演示forEach方法遍历数组
+        // arr.forEach(function(ele, index, arr){
+        //     console.log(ele, index);
+        // });
+
+        arr.forEach((ele, index) => {
+            console.log(ele, index);
+        });
+
+        // let result = arr.forEach((ele, index) => {
+        //     console.log(ele, index);
+        // });
+        // console.log(result);// undefined        forEach方法不支持返回值！
+     </script>
+</body>
+</html>
