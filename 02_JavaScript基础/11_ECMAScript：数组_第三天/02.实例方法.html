@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        实例方法：
+
+        1. sort方法
+            1) sort-排序，这的排序是大小的顺序
+            2) sort 方法默认是将元素按照字符串的形式去排序，也就意味着，如果我们写的元素都是数字，那也会按照字符串去排序。
+            3) 字符串排序的话，是按照该字符串对应的 Unicode 码去排序的
+            4) 语法格式：
+                数组名.sort();
+                数组名.sort(() => {});//这个回调函数是用来指定排序规则的
+            5) 经过sort方法后，原数组是会改变的
+
+            回顾：字符串的比较是一位一位的比较的，能比较出来结果就停了，如果这一位一样话，就进行下一位的比较
+
+        2. filter方法
+            1) filter-过滤器
+            2) filter 方法就将数组中符合条件的元素组成一个新数组返回给我们
+            3) 语法格式：
+                数组名.filter((ele, index, arr) => {
+                    //判断条件
+                });
+            4) 不论怎样，filter返回的话，返回的是符合条件的哪些元素组成的数组
+        
+        3. some 方法 和 every 方法
+            1) some是一些的意思，every是每个的意思
+            2) 这两个方法都是判断数组中元素是否符合某个条件，
+                不同的是 some 方法要求数组中只要有符合条件的元素就返回true
+                而 every 方法要求数组中的所有元素都符合条件时才返回true
+            3) 语法格式：
+                数组名.some((ele, index, arr) => {
+
+                });
+                数组名.every((ele, index, arr) => {
+
+                });
+        
+        4. find 方法 和 findIndex 方法
+            1) find 是查找的意思，index 是索引的意思
+            2) 这两个方法就是在数组中查找符合条件的第一个元素
+            3) find 方法是将找到的元素返回，findIndex方法是将找到的元素的索引返回
+            4) 语法格式：
+                数组名.find((ele, index, arr) => {
+
+                });
+
+                数组名.findIndex((ele, index, arr) => {
+
+                });
+            5) 如果没找到符合条件的，返回 undefined  -1
+        
+        5. includes 方法
+            1) includes单词是包含的意思
+            2) includes方法就是判断数组中是否包含某个元素，包含的话返回true，不包含就返回false
+            3) 语法格式：
+                数组名.includes(元素, 开始位置);
+            4) 语法说明：
+                开始位置是可以省略的，省略的话就从 0 开始
+
+        6. fill 方法
+            1) fill单词是填充的意思
+            2) fill方法可以用指定的内容去填充数组
+            3) 语法格式：
+                数组名.fill(填充的内容, 开始位置, 结束位置);
+     -->
+     <script>
+        // 1.演示 sort 方法对数组进行排序
+        let arr1 = [12, 2, 3, 26, 4, 38];
+        // arr1.sort();// 默认按照字符串排序，不是我们想要的 (6) [12, 2, 26, 3, 38, 4]
+        arr1.sort((a, b) => { // 指定排序规则，固定的写法，这是 从小到大
+            return a - b;// b - a 反着来就是 指定排序规则，固定的写法，这是 从大到小 排序了
+        });
+        console.log(arr1);//  (6) [2, 3, 4, 12, 26, 38]
+
+        // 2.演示 filter 方法过滤数组中符合条件的元素
+        let arr2 = [1, 2, 3, 4, 5];
+        // 简单打印所有的元素
+        arr2.filter((ele, index, arr2) => {
+            console.log(ele, index, arr2);
+        });
+
+        // 打印所有的偶数元素
+        arr2.filter((ele, index) => {
+            if(ele % 2 == 0){
+                console.log(ele);// 2  4
+            }
+        });
+
+        // 获取到数组中所有的偶数元素
+        let result2 = arr2.filter((ele, index) => {
+            if(ele % 2 == 0){
+                return ele; // 会将所有符合条件的元素组成一个数组返回
+            }
+        });
+        console.log(result2);// (2) [2, 4]
+
+        // 获取数组中所有的偶数索引对应的元素(索引获取不了) 不论怎样，filter返回的话，返回的是符合条件的哪些元素组成的数组
+        // let result22 = arr2.filter((ele, index) => {
+        //     if(index % 2 == 0){
+        //         return index;// 索引返回不了！
+        //     }
+        // });
+        // console.log(result22);(2) [3, 5]
+        
+        // 3.演示 some 和 every 方法
+        // let arr = [1, 2, 3, 4, 5];
+        // let result = arr.some((ele, index) => {
+        //     return ele > 3;
+        // });
+        // console.log(result);// true
+
+        // result = arr.every((ele, index) => {
+        //     return ele > 3;
+        // });
+
+        // console.log(result);// false
+
+        // 4.演示 find 和 findIndex方法查找元素
+        // let arr = [1, 21, 3, 41, 5];
+
+        // let result = arr.find((ele, index, arr) => {
+        //     // return ele % 2 == 0;
+        //     if(ele % 2 == 0){
+        //         return true;
+        //     }
+        // });
+        // console.log(result);
+
+        // result = arr.findIndex((ele, index, arr) => {
+        //     return ele % 2 == 0;
+        // });
+        // console.log(result);
+
+        // 5.演示 includes 方法判断数组中是否包含指定的元素
+        // let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        // let result = arr.includes(3);
+        // console.log(result); // true
+
+        // result = arr.includes(3, 4); // false
+        // console.log(result);// false
+
+        // 6.演示 fill 方法填充指定的内容到数组中
+        // let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+        // arr.fill('*');// 将数组中全部用 * 填充
+        // console.log(arr);// ['*', '*', '*', '*', '*', '*', '*', '*']
+
+        // arr.fill('#', 3);
+
+        // console.log(arr);// ['*', '*', '*', '#', '#', '#', '#', '#']
+
+        // arr.fill('$', 1, 2);
+
+        // console.log(arr);// ['*', '$', '*', '#', '#', '#', '#', '#']
+     </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        见image5。这里的num是局部变量，当函数执行完后，它就会自动释放了。
+     -->
+    <script>
+        function fun1(num){
+            console.log(num);// 10
+            num = 15;
+        }
+
+        let a = 10;
+        fun1(a);
+        console.log(a);// 10
+    </script>
+</body>
+</html>

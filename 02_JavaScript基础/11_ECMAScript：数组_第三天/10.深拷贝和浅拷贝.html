@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        深拷贝和浅拷贝
+
+        1. 拷贝：copy这个单词音译过来的，就是复制的
+        2. 深拷贝 和 浅拷贝 主要指的就是引用类型变量之间的赋值
+        3. 将一个引用类型的变量 a 赋值给另一个变量 b，如果 a 改变后，b 也跟着变，那称为浅拷贝
+            如果 a 改变，b 不受影响，那称为深拷贝。
+        
+        4. 之前我们引用数据类型之间的赋值、函数参数的传递-引用类型 其实都是浅拷贝
+            因为它们之间的赋值都是将一个地址值赋值给对方了，两方都是指向的同一个堆中的数据
+
+        5. 怎样实现深拷贝？
+            方法很多，但是中心思想就一个：让两个变量指向堆中不同的地址！！！
+            实现深拷贝的方式：
+            1) 手动实现
+            2) 利用 concat 方法实现
+                数组中的 concat 方法可以合并多个数组、数据，会返回一个大数组给你，而且不会改变原来的数组
+        
+     -->
+     <script>
+        // let a = 10;
+        // let b = a;
+
+        // a = 20;
+        // console.log(b);// 10
+
+        // 演示浅拷贝
+        // let arr1 = [1, 2, 3];
+        // let arr2 = arr1;
+
+        // console.log(arr1[0]);// 1
+        // console.log(arr2[0]);// 1
+
+        // arr1[0] = 250;
+        // console.log(arr1[0]);// 250
+        // console.log(arr2[0]);// 250
+
+        // 手动实现深拷贝
+        // let arr1 = [1, 2, 3];
+        // let arr2 = [arr1[0], arr1[1], arr1[2]];
+
+        // arr1[0] = 250;
+        // console.log(arr2[0]);
+
+        // 利用 concat 方法实现深拷贝
+        let arr1 = [1,2,3];
+        let arr2 = arr1.concat();
+
+        arr1[0] = 100;
+
+        console.log(arr2[0]);
+
+
+        // 回顾 concat 方法的使用
+        // let arr1 = [1,2,3];
+        // let arr2 = [4,5,6];
+
+        // let result = arr1.concat(arr2);
+
+        // console.log(arr1);
+        // console.log(arr2);
+        // console.log(result);
+
+    </script>
+</body>
+</html>

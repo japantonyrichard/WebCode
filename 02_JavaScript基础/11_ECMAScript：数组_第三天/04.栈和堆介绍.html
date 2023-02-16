@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        栈 和 堆
+
+        1. JS 中的数据类型有：number string boolean null undefined object
+        2. 这六种数据类型可以分为两大类：
+            1) 基本类型：number string boolean null undefined
+            2) 引用类型：object 
+                ① object
+                ② function
+                ③ array
+        3. 程序在电脑上运行的话，需要将程序中涉及到的数据存储到内存中
+        4. JS 中涉及到的内存分为两部分：
+            1) 栈内存(stack)
+            2) 堆内存(heap)
+
+        5. 栈内存
+            1) 里面存储的是基本类型的数据 和 引用类型数据的地址
+            2) 自动分配，每个空间大小固定
+            3) 有先进后出，first in last out，FILO，后进先出 last in first out
+
+        6. 堆内存
+            1) 里面存储的是引用类型的数据
+            2) 动态分配，每个空间大小不确定
+
+        7. 全局变量和局部变量都是放在栈内存的，
+            局部变量在函数执行完后，就从栈空间中自动弹出了！
+            全局变量是在关闭浏览器后，才会从栈空间中弹出！
+
+            堆中的引用类型的数据，如果没有栈中的某个空间(变量)引用的话，在浏览器空闲的时候就会释放(回收)这块堆空间
+     -->
+     <script>
+        let a1 = 10;
+        let a2 = '张三';
+        let a3 = true;
+        let a4 = null;
+        let a5 = undefined;
+        let a6 = [1, 2, 3];
+    </script>
+</body>
+</html>
