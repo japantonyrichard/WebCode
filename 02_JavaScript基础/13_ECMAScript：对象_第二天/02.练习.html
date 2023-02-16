@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 面向对象编程实现： 把要解决的问题分解为几个对象， 每个对象都有自己的属性和方法
+         * 一个农夫走在路上，看到一条冻僵了的蛇，把蛇抱起来带回家，等蛇醒来以后攻击了农夫，农夫死了。
+         * 分析对象：农夫、蛇
+         * 分析对象的属性和功能：
+         * 农夫，属性：姓名；功能：救蛇、死
+         * 蛇，属性：姓名；功能：攻击、醒
+         */
+
+        // 创建农夫对象
+        let farmer = {
+            name:'许仙',
+            save:function(animal){
+                console.log(`${this.name}救了${animal.name}！`);
+            },
+            die:function() {
+                console.log(`${this.name}死了！`);// 如果用箭头函数的话，这里的名字打不出来！
+            }
+        };
+
+        // 创建蛇对象
+        let snake = {
+            name:'白素贞',
+            weak:function() {
+                console.log(this.name);
+                console.log(`${this.name}醒了！`);// 如果用箭头函数的话，这里的名字打不出来！
+            },
+            atc:(people) => {
+                console.log(`蛇攻击${people.name}！`);
+            }
+        };
+
+        farmer.save(snake);
+        snake.weak();
+        snake.atc(farmer);
+        farmer.die();
+
+    </script>
+</body>
+</html>

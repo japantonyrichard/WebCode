@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        in 关键字 （了解）
+
+        1. 之前在数组中使用过 in 关键字，它可以判断某个索引是不是在数组中，在的话，而且该位置的值不是空位的话 会返回true
+        2. in 关键字最合适的用处是在对象中，它可以用来判断某个属性是否在对象中，是的话，返回 true，否则返回 false。
+        3. 语法格式：
+            'key' in 对象名;
+        4. in 关键字也会判断继承过来的属性
+
+
+        instanceof 关键字 （了解）
+        1. instance 是实例的意思
+        2. 对象就是实际存在的事物，对象也称为实例。对象肯定是属于某个类型的。
+            我们通过类型也是可以创建出属于该类型的对象的。
+            Object 类型
+            let obj = new Object({}); // new - 新建  这里利用了构造函数
+            let arr = new Array(1,2,3); // 
+            let fun = new Function();
+
+        3. 比如上面的：obj(这个变量)的数据类型是object数据类型，它是属于 Object 类型
+                    arr 的数据类型object数据类型，它是属于 Array 类型，也是属于 Object类型
+                    fun 的数据类型object数据类型，它是属于 Function 类型，也是属于 Object 类型
+        4. instanceof 关键字可以判断某个对象是不是某个类型的实例。也就是说判断某个对象是不是属于某个类型的。
+
+        5. 语法格式：
+            对象名 instanceof 类型;
+
+        
+     -->
+
+     <script>
+        // let obj = {
+        //     name:'张三',
+        //     age:18
+        // };
+
+        // console.log('name' in obj); // true
+        // console.log('age' in obj); // true
+        // console.log('sex' in obj); // false
+        // console.log('toString' in obj); // true，obj 对象是属于Object类型，Object类型的对象都有 toString方法、valueOf方法
+
+        // let obj1 = {};
+        // let obj2 = {};
+
+        // console.log(obj1 instanceof Object); // true
+        // console.log(obj2 instanceof Object); // true
+        // console.log(obj2 instanceof Array); // false
+
+        // let arr1 = [];
+        // let arr2 = [];
+        // console.log(arr1 instanceof Array); // true
+        // console.log(arr2 instanceof Array); // true
+        // console.log(arr2 instanceof Object); // true
+        // console.log(arr2 instanceof Function); // false
+
+        let fun1 = () => {};
+        let fun2 = () => {};
+
+        console.log(fun1 instanceof Function); // true
+        console.log(fun2 instanceof Object); // true
+        console.log(fun1 instanceof Array); // false
+    </script>
+</body>
+</html>

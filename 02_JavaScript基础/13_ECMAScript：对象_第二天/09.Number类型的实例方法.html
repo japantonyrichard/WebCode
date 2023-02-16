@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Number 类型的实例方法
+
+        1. toString()
+            1) Number 类型有自己的 toString方法，以后可以用自己的 toString()
+            2) Number 类型的toString()方法可以将数据转为相应进制，返回一个字符串
+            3) 语法格式：
+                let num = 数值;
+                num.toString(进制);
+        
+        2. toFixed() ************* 项目中经常使用。
+            1) 该方法的作用是将数据保留指定的小数位。会四舍五入。
+     -->
+
+     <script>
+
+        // let num = 10;
+
+        // 将数据转为二进制，返回一个字符串
+        // console.log(num.toString(2));
+
+        // console.log(num.toString(8));
+
+        // console.log(num.toString(16));
+
+        // 演示 toFixed() 保留小数
+        let num = 12.34567;
+
+        console.log(num.toFixed()); // 默认保留 0 位小数
+        console.log(num.toFixed(1)); // 保留1位小数
+        console.log(num.toFixed(2)); // 保留2位小数
+        console.log(num.toFixed(3)); // 保留3位小数
+
+    </script>
+</body>
+</html>

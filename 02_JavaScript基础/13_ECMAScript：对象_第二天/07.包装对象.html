@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        包装对象
+
+        1. 包装对象，其实就是一个名词，有3个，Number、String、Boolean
+
+        2. 包装对象的作用：
+            1) 可以将某个基本数据包装成对象
+            2) 可以将数据强转为指定的数据类型  
+
+        只有以下6种转为布尔后是false，其它的都是true：
+        false
+        ''
+        0
+        null
+        undefined
+        NaN
+        
+     -->
+
+     <script>
+
+        // 1. 演示将基本的数据类型 包装 相应的对象
+        // console.log(new Number(123));
+
+        // console.log(new String('你好'));
+
+        // console.log(new Boolean(true));
+
+        // 2. 演示将数据强转为指定的数据类型
+        // console.log(Number('123') + 5);// 128
+
+        // console.log(String(123) + 5);// 1235
+
+        // console.log(Boolean('你好'));// true
+
+        // 演示 toString 方法的使用
+        let str = new String(123);
+        console.log(str.toString());
+        console.log(str.valueOf());
+
+        let num = new Number('123');
+        console.log(num.toString());
+        console.log(num.valueOf());
+
+        let b = new Boolean('true');
+        console.log(b.toString());
+        console.log(b.valueOf());
+
+    </script>
+</body>
+</html>

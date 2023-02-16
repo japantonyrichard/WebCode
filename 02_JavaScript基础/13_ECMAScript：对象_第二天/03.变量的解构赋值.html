@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        变量的解构赋值
+
+        1. 变量的解构赋值，是 ES6 新增的
+        2. 变量的解构赋值指的是 ES6 允许我们使用一种格式，去提取数组 和 对象中的值，然后将这些个值赋值给变量
+        3. 变量的解构赋值是用在 对象、数组中的
+        4. 变量的解构赋值目的是为了方便我们将数组和对象中的值赋值给变量
+        
+        解构赋值-在数组中的应用
+        1. 语法格式：
+            let [变量1, 变量2, ..., 变量n] = [元素1, 元素2, ..., 元素n];
+
+        2. 语法说明：
+            1) 解构赋值要求等号左右两边的格式得一致，右边是[]，左边也得是[]
+            2) 解构赋值会将右边数组中的元素一一赋值给左边相应位置的变量
+            3) 左右两边的个数可以不一样
+
+        解构赋值-在对象中的应用
+        1. 语法格式：
+            let {变量1, 变量2, ..., 变量n} = {key1:value1, key2:value2, ..., keyn:valuen};
+        2. 语法说明：
+            1) 解构赋值要求等号左右两边的格式得一致，右边是{}，左边也得是{}
+            2) 左边{}中的变量的名字不能随便起，变量名要写属性名(键名)
+            3) 左边{}中的变量位置无所谓了
+
+        
+        解构赋值-默认值
+        1. 解构赋值，可以给变量设置默认值，这样的话，有赋值的话，就用赋的值，没有赋值的话，就用默认值
+        2. 语法格式：
+            let [变量1，变量2=值，...，变量n=值] = [元素1，元素2，...，元素n];
+
+
+        解构赋值的主要应用：
+        1. 交换两个变量
+
+
+        2. 当函数的返回值是多个数据时，使用解构赋值的方式接收
+     -->
+     <script>
+        // 1.演示变量的解构赋值
+        // 1.1 左右两边个数一样
+        // let arr1 = [10, 20, 30, 40];
+        // let [a1, a2, a3, a4] = arr1;
+        // console.log(a1, a2, a3, a4);
+
+        // 1.2 可以嵌套
+        // let [b1, [b2, b3], b4] = [10, [20, 30], 40];
+        // console.log(b1, b2, b3, b4);
+
+        // 1.3 左边的个数多，右边的个数少       在同一个作用域内，let 声明的变量不能重复声明
+        // let [c1, c2, c3, c4, c5] = [10, 20, 30];
+        // console.log(c1, c2, c3, c4, c5);
+
+        // 1.4 左边的个数少，右边的个数多
+        // let [d1, d2] = [10, 20, 30, 40];
+        // console.log(d1, d2);
+
+        // 2.演示解构赋值-对象
+        // let obj = {
+        //     name:'张三',
+        //     age:18,
+        //     sex:'男'
+        // };
+
+        // let {a, b, c} = obj; 
+        // console.log(a, b, c); // undefined undefined undefined
+
+        // let {name, sex, age} = obj;
+        // console.log(name, sex, age); // 张三 男 18
+
+        // let {name, sex, age, hobby} = obj;
+        // console.log(name, sex, age, hobby); // 张三 男 18 undefined
+
+        // let {name, sex} = obj;
+        // console.log(name, sex); // 张三 男
+
+        // 3.演示解构赋值，默认值
+        // let [a1 = 1, a2 = 2, a3] = [];
+
+        // console.log(a1, a2, a3); // 1 2 undefined
+
+        // let [b1 = 1, b2 = 2, b3 = 3] = [10, 20];
+
+        // console.log(b1, b2, b3); // 10 20 3
+
+        // let [c1 = 10, c2 = 20] = [undefined, 50];
+
+        // console.log(c1, c2); // 10 50
+
+        // 4.演示解构赋值的应用
+        // 4.1 交换两个变量
+        // 方式一：使用中间变量
+        // let a = 10;
+        // let b = 20;
+        // let temp = a;
+        // a = b;
+        // b = temp;
+        // console.log(`a=${a}，b=${b}`); // a=20，b=10
+
+        // 方式二：使用 异或位运算符     
+        // let a = 10;
+        // let b = 20;
+        // a = a ^ b;
+        // b = a ^ b;
+        // a = a ^ b;
+        // console.log(`a=${a}，b=${b}`); // a=20，b=10
+
+        // 方式三：使用解构赋值
+        // let a = 10;
+        // let b = 20;
+        // [a, b] = [b, a];
+        // console.log(`a=${a}，b=${b}`); // a=20，b=10
+
+        // 4.演示解构赋值应用在函数调用上
+        function fun1() {
+            return [10, 20, 30, 40];
+        }
+
+        let [a, b, c, d] = fun1();
+        console.log(a, b, c, d); // 10 20 30 40
+
+        let fun2 = () => {
+            return {
+                name: '吕布',
+                age: 18
+            };
+        };
+
+        let {name, age} = fun2();
+        console.log(name, age); // 吕布 18
+    </script>
+</body>
+</html>

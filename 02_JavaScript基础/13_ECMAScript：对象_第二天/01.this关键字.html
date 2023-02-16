@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        this 关键字
+
+        1. this 单词是这个的意思
+        2. this 指的就是当前这个对象，根据 this 使用的位置不同，代表的含义也不同，但是肯定是指向的一个对象
+        3. this 可以用在：
+            1) 在全局环境中，this 指的是 window 这个对象   （了解）
+            2) 在函数中，this 指的就是谁调用该函数，this 指的就是谁！ （重点！）
+            
+            注意：如果是箭头函数的话，this不生效！！！这时候得用传统函数了！
+
+     -->
+     <script>
+        // var num = 123;
+        // let a = 1111;
+        // console.log(this);
+
+        // function fun1(){
+        //     console.log(this);
+        // }
+
+        // window.fun1();
+
+        let obj = {
+            name:'张三',
+            age:18,
+            eat:function(){
+                console.log(`${this.name}在吃东西！`);
+            }
+        };
+
+        obj.eat();
+
+
+    </script>
+</body>
+</html>

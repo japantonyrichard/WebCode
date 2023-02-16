@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Object 对象     （了解）
+
+        1. Object 对象要想理解的很清楚，需要学习到 JS 高级阶段原型
+
+        2. Object 对象有两个作用：
+            1) 能够创建对象，其实这里面用到了构造函数
+                let obj = new Object({});
+                let obj2 = {};
+            2) 能将数据转为 object 数据类型
+                Object(数据);
+                如果数据本身就是引用类型的话，Object 转 和 不转 没有区别，效果一样！
+                所以，其实可以根据 Object() 判断某个数据是基本类型还是引用类型
+
+
+        Object 的静态方法
+        1. 静态方法：就是该方法是定义在某个类型上的，Object 的静态方法调用格式是： Object.xxx();
+
+        2. Object.keys();  Object.values();  Object.entries();
+
+        3. getOwnPropertyNames()
+            1) 该方法的作用是获取对象中的所有的属性名，返回一个数组
+
+        4. defineProperty()
+            1) 该方法的作用就是给某个对象中添加一个属性，而且该属性不能删除！
+            2) 语法格式：
+                Object.defineProperty(对象名, '属性名', {
+                    value:值
+                });
+
+        5. is()
+            1) 该方法的作用是可以判断两个值是不是相等
+            2) 该方法主要的目的是为了判断：
+                NaN 和 NaN 的比较
+                +0 和 -0 的比较
+
+        6. assign()
+            1) 该方法的作用是可以将多个对象的内容，复制给某个对象(目标对象)
+            2) 语法格式：
+                Object.assign(目标对象, 对象1, 对象2, ...)
+                如果属性重复的话，是后面的生效
+
+
+        Object 的实例方法
+        实例方法：就是给对象使用的，Object 的实例方法，那就是给 属于 Object 类型的对象使用的
+        实例方法的调用格式：对象名.xxx();
+
+        1. valueOf()
+            1) 该方法的作用就是返回对象的值，这个方法默认我们输出一个对象的时候就会自动调用。
+
+        2. toLocaleString()     locale-区域 以后做项目要用。
+            1) 该方法的作用就是返回对象的字符串形式
+            2) 这个方法一般没有什么用，只有在使用 Date 对象的时候，用它特别好！！！！！
+
+        3. toString()
+            1) 该方法的作用就是返回对象的字符串形式
+            2) toString() 方法可以判断某个数据转为引用类型后所属的类型
+            Object.prototype.toString.call(值);
+
+        4. hasOwnProperty()
+            1) 该方法的作用就是判断对象中是否有某个属性
+            2) 和 in 关键字不同的是，in 会判断继承的属性，而该方法不会判断继承过来的属性
+
+
+     -->
+
+     <script>
+        // 利用 Object() 方法将数据转为object数据类型，引用数据类型
+        console.log(Object(123)); // Number {123}
+
+        console.log(Object('你好')); // String {'你好'}
+
+        console.log(Object(true)); // Boolean {true}
+
+        console.log(Object(true) instanceof Object); // true
+        console.log(Object(true) instanceof Boolean); // true
+
+        console.log(Object(null)); // {}
+        console.log(Object(undefined)); // {}
+
+        console.log('--------------------------');
+
+        // // 如果数据
+        // console.log(Object({name:'李四'}));
+        // console.log(Object([1,2,3]));
+
+        // 利用 Object() 判断某个数据是否是引用类型
+        // let fun = (value) => {
+        //     if(Object(value) === value){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // };
+
+        // console.log(fun(123)); // false
+        // console.log(fun('你好')); // false
+        // console.log(fun(null)); // false
+        // console.log(fun([1,2,3])); // true
+
+        // getOwnPropertyNames() 获取对象中所有的属性名
+        // let obj = {
+        //     name:'张三',
+        //     age:18
+        // };
+
+        // let names = Object.getOwnPropertyNames(obj);
+        // console.log(names); // ['name', 'age']
+
+        // let keys = Object.keys(obj);
+        // console.log(keys);
+
+        // 演示 defineProperty() 方法给对象添加属性
+        // console.log(obj);
+
+        // Object.defineProperty(obj, 'sex', {
+        //     value:'男'
+        // });
+
+        // console.log(obj);
+
+        // is() 用来判断两个值是否一样
+
+        // console.log(NaN == NaN); // false, NaN 是 number 数据类型的，是一个特殊值，表示
+        // console.log(+0 == -0); // true
+
+        // console.log(Object.is(NaN, NaN)); // true
+        // console.log(Object.is(+0, -0)); // false
+
+        // let obj1 = {
+        //     a:10,
+        //     b:20
+        // };
+
+        // let obj2 = {
+        //     b:30,
+        //     c:40
+        // };
+
+        // let obj3 = {
+        //     c:50,
+        //     d:60
+        // };
+
+        // Object.assign(obj1, obj2, obj3);
+
+        // console.log(obj1); // a 10  b 30  c 50  d 60
+
+        // let obj1 = {
+        //     name:'张三',
+        //     age:18
+        // };
+
+        // console.log(obj1.valueOf());
+        // console.log(obj1);
+
+        // console.log({name:'张三'}.toLocaleString()); // [object Object]
+        // console.log({name:'张三'}.toString()); // [object Object]
+
+        // console.log([1,2,3].toString());
+
+        // console.log(5.toString());
+
+
+        // console.log(Object.prototype.toString.call(5));
+        // console.log(Object.prototype.toString.call('你好')); // [object String]
+        // console.log(Object.prototype.toString.call(true));
+        // console.log(Object.prototype.toString.call(null));
+        // console.log(Object.prototype.toString.call(undefined));
+        // console.log(Object.prototype.toString.call({}));
+        // console.log(Object.prototype.toString.call([1,2,3]));
+        // console.log(Object.prototype.toString.call(()=>{}));
+
+
+        let obj = {
+            name:'李四',
+            age:18
+        };
+
+        console.log(obj.hasOwnProperty('name'));
+        console.log(obj.hasOwnProperty('name2'));
+        console.log(obj.hasOwnProperty('age'));
+        console.log(obj.hasOwnProperty('toString')); // false
+
+
+
+    </script>
+</body>
+</html>
