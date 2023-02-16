@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        对象的深拷贝
+
+        对象的深拷贝，道理和之前学习的数组一样。就是：
+        让两个变量指向堆中不同的地址区域就行了！！！
+
+        对象的深拷贝方式：
+        1. 手动实现
+        2. 扩展运算符实现
+
+     -->
+     <script>
+        // 1.演示手动实现对象的深拷贝
+        // let obj1 = {
+        //     name:'宋江',
+        //     age:18
+        // };
+
+        // let obj2 = {
+        //     name:obj1.name,
+        //     age:obj1.age
+        // };
+
+        // console.log(obj1);
+        // console.log(obj2);
+
+        // obj1.name = '林冲';
+        // console.log(obj1);
+        // console.log(obj2);
+
+        // 回顾利用扩展运算符实现数组的深拷贝
+        // let arr1 = [1,2,3];
+        // let arr2 = [...arr1];
+
+        // 演示在对象中使用扩展运算符
+        // let obj = {
+        //     name:'李四',
+        //     age:18
+        // };
+
+        // console.log(obj);
+        // console.log(...obj); // 这个用不了，会报错
+
+        // 2.演示使用扩展运算符实现对象的深拷贝
+        let obj1 = {
+            name:'李四',
+            age:20
+        };
+
+        let obj2 = {
+            ...obj1
+        };
+
+        console.log(obj1);
+        console.log(obj2);
+
+        obj1.name = '田七';
+        console.log(obj1);
+        console.log(obj2);
+    </script>
+</body>
+</html>

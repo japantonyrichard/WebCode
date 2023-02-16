@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        数组的深拷贝
+        1. 手动实现
+        2. 利用 concat 方法实现
+        3. 利用 slice 方法实现
+            1) slice 方法可以将数组进行截取，返回一个新的数组，不会改变原来的数组
+            2) 数组名.slice(开始位置，结束位置);
+
+        深拷贝的中心思想：就是让两个变量指向堆中不同的地址！
+                        关键是：返回一个新数组！
+     -->
+
+     <script>
+        // 演示利用 slice 方法实现数组的深拷贝
+        let arr1 = [1,2,3];
+        let arr2 = arr1.slice();// 将arr1全部截取，不改变arr1，返回一个新数组
+
+        arr1[0] = 100;
+        console.log(arr2);// [1, 2, 3]
+    </script>
+</body>
+</html>

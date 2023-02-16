@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        创建对象的方式有：
+        1. 字面量法
+        2. 构造函数法
+            1) 语法格式：
+                let 对象名 = new Object();// 空对象
+                let 对象名 = new Object({
+                    xxx:xxx
+                });
+
+        3. 对象的静态方法
+            静态方法：指的是该方法定义在某个类型上的，比如：Object、Array、Function等等
+            对象的静态方法就是定义在 Object 类型上的！
+            所以，要调用对象的静态方法格式是：Object.xxx();  
+
+            语法格式：
+                let 对象名 = Object.create(null | {});
+
+     -->
+     <script>
+        // 1.演示构造函数法创建对象
+        // let obj1 = new Object(); // 空对象
+        // console.log(obj1); 
+        // obj1.name = '吕布';
+        // obj1['age'] = 25;
+        // obj1.run = function(){
+        //     console.log('我在跑步！');
+        // }
+        // console.log(obj1);
+
+
+        // let obj2 = new Object({
+        //     name:'关羽',
+        //     age:28
+        // });
+        // console.log(obj2);
+
+        // 2.演示对象的静态方法创建对象
+        let obj1 = Object.create(null);// 创建了一个空对象
+        console.log(obj1);
+        obj1.name = '吕不韦';
+        obj1.age = 18;
+        console.log(obj1);
+
+        console.log('-------------------------------');
+        let obj2 = Object.create({});// 创建了一个空对象 在这个{}空的里面写age什么的不管用，还是打不出来
+        obj2.name = '刘能';
+        obj2.sex = '男';
+
+        console.log(obj2);
+
+    </script>
+</body>
+</html>

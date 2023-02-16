@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        对象的遍历
+
+        之前我们遍历数组，就是通过数组的索引去获取到每个数组元素。
+        遍历对象，通过对象的键去获取值。
+        对象的遍历方式有：
+        1. for-in
+        2. keys() 对象的静态方法
+            语法格式：Object.keys(对象名);
+            语法说明：
+                该方法会返回一个含有所有 key 的数组
+
+        3. values() 对象的静态方法
+            语法格式：Object.values(对象名);
+
+            语法说明：
+                该方法会返回一个含有所有 值 的数组
+
+        4. entries() 对象静态方法
+            语法格式：Object.entries(对象名);   
+            语法说明：
+                该方法会获取到对象中的所有的键值对，并以二维数组的形式返回
+     -->
+     <script>
+        let obj = {
+            name:'孙悟空',
+            age:989,
+            sex:'男'
+        };
+
+        // 1.演示使用for-in遍历对象
+        for(let key in obj){ // key里面存储的是对象中的每个 key
+            // console.log(obj.key);// 3个undefined    这样不行。
+            // console.log(obj['key']);// 3个undefined 和上面一样
+            console.log(obj[key]);// 孙悟空  989   男   拿到对应的值了。 [key]变量。
+        }
+
+        // 2.演示使用对象的静态方法 key() 遍历对象
+        let keys = Object.keys(obj);// 获取对象的所有的key，返回一个数组
+        console.log(keys);// (3) ['name', 'age', 'sex']
+
+        for(let i = 0; i < keys.length; i++){
+            console.log(obj[keys[i]]);// 中括号[] 这里面可以写变量。
+        }
+
+        // 3.演示使用对象的静态方法 values() 遍历对象
+        let values = Object.values(obj);
+        for(let i = 0; i < values.length; i++){
+            console.log(values[i]);// 最简单的方法。
+        }
+
+        // 4.演示使用对象的静态方法 entries() 遍历对象
+        let entries = Object.entries(obj);// [['name','孙悟空'],['age',989],['sex','男']]
+        for(let i = 0; i < entries.length; i++){
+            console.log(entries[i][0], entries[i][1]);
+        }
+     </script>
+</body>
+</html>

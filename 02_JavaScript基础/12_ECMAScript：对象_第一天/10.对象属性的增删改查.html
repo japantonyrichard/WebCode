@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        增删改查，英文：CRUD
+
+        C：create 增加
+        R：retrieve 查询（检索）
+        U：update 修改（更新）
+        D：delete 删除
+
+
+
+        增加属性：
+            对象名.键 = 值；
+
+        修改属性：
+            对象名.键 = 值；
+
+        查询属性：
+            对象名.键;
+
+        删除属性：
+            delete 对象名.属性;
+            说明：
+            1. 删除完会返回 true，无论删除的属性是否存在都会返回 true
+            2. 什么时候会返回 false，这个属性不能删的时候就返回 false
+            3. 使用 Object.defineProperty() 方法定义的属性是不能删的！！！
+               语法格式：
+                Object.defineProperty(对象名，'key'，{
+                    value:值
+                });
+
+                参数1表示给哪个对象定义属性
+                参数2表示要定义的key
+                参数3是一个对象，固定写法，表示值
+
+     -->
+
+     <script>
+        let obj1 = {
+            name:'段誉'
+        };
+
+        // 增加属性
+        obj1.age = 18;
+        obj1.sex = '男';
+        console.log(obj1);
+
+        // 修改属性
+        obj1.name = '虚竹';
+        console.log(obj1);
+
+        // 查询属性
+        console.log(obj1.age);
+
+        // 删除属性
+        console.log(delete obj1.age);
+        console.log(obj1);
+
+        console.log(delete obj1.hobby);
+
+
+        console.log('----------------------------');
+        console.log(obj1);
+
+        // 使用对象的静态方法添加属性
+        Object.defineProperty(obj1, 'hobby', {
+            value:'学习'
+        });
+
+        console.log(obj1);
+
+        console.log(delete obj1.hobby);// false 删不掉
+        console.log(obj1);
+
+    </script>
+</body>
+</html>

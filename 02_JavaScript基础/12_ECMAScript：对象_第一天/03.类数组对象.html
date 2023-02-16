@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        类数组对象
+
+        1. 类数组对象之前学习中已经使用过。比如 arguments 对象
+        2. 类数组对象本质上是对象，但是它的使用类似于数组，比如：有 length 属性，
+            可以通过 arguments[0] arguments[1] 获取数据
+        3. 类数组对象毕竟不是数组，它不可以使用数组中的方法
+     -->
+     <script>
+        function fun1(){    // 这里用不了箭头函数 箭头是ES6新增的，不搭。
+            console.log(arguments);// Arguments(5) [1, 2, 3, 4, 5, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+            console.log(arguments[0]);// 1
+            console.log(arguments[1]);// 2
+            console.log(arguments.length);// 5
+            // console.log(arguments.reverse());// Uncaught TypeError: arguments.reverse is not a function
+            // 毕竟不是数组，用不了数组的方法
+
+            // isArray 是一个静态方法。可以判断一个数据|变量 是不是数组
+            console.log(Array.isArray(arguments)); // false
+
+            // from 方法 也是一个静态方法。可以将类数组对象转为数组
+            let result = Array.from(arguments);
+            console.log(result);// (5) [1, 2, 3, 4, 5]
+        }
+        
+        fun1(1,2,3,4,5);
+     </script>
+</body>
+</html>

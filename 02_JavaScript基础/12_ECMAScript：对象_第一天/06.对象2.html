@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 演示给对象的属性赋值
+        let obj = {}; //空对象
+
+        obj.name = '苏明玉';
+        obj.sex = '女';
+        obj.age = 18;
+        obj.eat = () => {
+            console.log('我在吃东西！');
+        };
+
+        obj['hobby'] = ['唱歌', '跳舞'];
+
+        console.log(obj);
+
+        // 调用对象中的函数  对象名.函数名();
+        obj.eat();
+    </script>
+</body>
+</html>
