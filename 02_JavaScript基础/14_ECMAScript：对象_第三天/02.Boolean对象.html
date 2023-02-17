@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Boolean 对象(类型)
+        
+        1. Boolean对象是三个包装对象之一
+
+        2. Boolean包装对象的作用：
+            1) 可以将boolean类型的基本数据，转为引用类型，对象
+            2) 可以将数据进行强转
+     -->
+
+     <script>
+        // 1.演示包装对象将基本数据转为引用类型
+        let b1 = new Boolean(true);
+        console.log(b1, typeof b1);
+
+        // 2.演示包装对象进行强转
+        console.log(Boolean('你好'));
+        console.log(Boolean(''));
+        console.log(Boolean(false));
+        console.log(Boolean(0));
+        console.log(Boolean(null));
+        console.log(Boolean(undefined));
+        console.log(Boolean(NaN));
+
+        // 3.将数据转为 boolean 数据类型   !   &&  ||  
+        console.log(!!'你好'); // true
+
+    </script>
+</body>
+</html>

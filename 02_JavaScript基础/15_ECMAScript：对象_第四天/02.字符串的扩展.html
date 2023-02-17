@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        ES6 对于字符串方面新增了以下一些内容：
+
+        1. 字符串的遍历
+            字符串的遍历方式有：
+            1) for循环
+            2) for-of
+
+        2. 模板字符串
+            模板字符串的主要目的，就是为了方便我们拼接字符串。
+            使用格式：`字符串内容${变量名}`   
+
+        3. includes()
+            1) includes 是包含的意思
+            2) 该方法的作用就是判断字符串中是否包含指定的内容，包含的话返回 true，不包含返回 false
+            3) 语法格式：
+                字符串.includes(内容, 开始位置);
+            4) 语法说明：
+                开始位置如果省略的话，就从头开始找
+
+        4. startsWith()
+            1) 该方法的作用就是判断字符串是否以指定的内容开始，是的话返回true，否则返回false
+            2) 语法格式：
+            字符串.startsWith(内容, 开始位置);
+
+
+        5. endsWith()
+            1) 该方法的作用就是判断字符串是否是以指定的内容结尾，是的话返回true，否则返回false
+
+        6. trimStart() trimEnd()
+            1) 之前学习过字符串的trim()，表示去掉字符串首尾的空格
+            2) trimStart() 只是去掉字符串前面的空格
+            3) trimEnd() 只是去掉字符串后面的空格
+            4) 调用该方法后，去掉空格给返回一个新串，原来的字符串不会改动
+
+        7. repeat()
+            1) repeat 是重复的意思
+            2) 该方法的作用就是将字符串重复指定的次数，然后返回一个新串，不改原来的字符串
+            3) 语法格式：
+                字符串.repeat(次数);
+            4) 说明：次数写的是大于等于0的正整数，如果是小数的话，会取整，如果是负数的话，会报错！
+        
+        8. padStart() padEnd()
+            1) padding-内边距、泡沫、填充  pad是填充的意思
+            2) padStart() 作用是在字符串前面以指定的内容去填充到指定的长度
+            3) padEnd() 作用是在字符串的后面以指定的内容去填充到指定的长度
+            4) 语法格式：
+                字符串.padStart(指定的长度，填充的内容);
+                字符串.padEnd(指定的长度，填充的内容);
+     -->
+     <script>
+        // 1.演示for循环遍历字符串
+        // let str = 'helloworld';
+        // for (let i = 0; i < str.length; i++) {
+        //     console.log(str[i]);
+        // }
+        // 2.回顾数组使用 for-of 遍历
+        // let arr = [1, 2, 3];
+        // for (let ele of arr) {
+        //     console.log(ele);
+        // }
+
+        // 3.演示 for-of 遍历字符串
+        // let str = 'love';
+        // for(let ele of str){ // ele 变量中存储的就是字符串的每个字符
+        //     console.log(ele);
+        // }   
+
+        // 4.演示模板字符串的使用
+        // let name = '貂蝉';
+        // let age = 18;
+        // let address = '苏州';
+
+        // 字符串拼接的写法
+        // console.log('我叫' + name + ', 来自' + address + ', 今年' + age + '岁了！');
+        // 模板字符串的写法
+        // console.log(`我叫${name}，来自${address}，今年${age}岁了！`);
+
+        // 5.演示 includes() 方法查找内容
+        // let str = 'helloworld!';
+
+        // let result = str.includes('wo');
+        // console.log(result); // true
+
+        // result = str.includes('wto');
+        // console.log(result); // false
+
+        // result = str.includes('wo', 7); // 从字符串的索引是7开始往后找内容
+        // console.log(result); // false
+
+        // 6.演示 statsWith() 方法看字符串是否以指定的内容开始
+        // let str = 'hello';
+
+        // let result = str.startsWith('he');
+        // console.log(result); // true
+
+        // result = str.startsWith('hee');
+        // console.log(result); // false
+
+        // result = str.startsWith('he', 3); // 从字符串的索引3开始，看开头是否是 he
+        // console.log(result);
+
+        // 7.演示 endsWith() 方法看字符串是否是以指定的内容结尾
+        // let str = 'helloWorld';
+
+        // let result = str.endsWith('ld');
+        // console.log(result); // true
+
+        // result = str.endsWith('ldd');
+        // console.log(result); // false
+
+        // result = str.endsWith('Wo', 7); // 看字符串索引是7前面的东西是不是以 Wo 结尾
+        // console.log(result);
+
+        // 8.演示 trimStart() 和 trimEnd() 方法分别去掉字符串前面的空格 和 后面的空格
+        // let str1 = '  hello  ';
+        // let str2 = str1.trim(); //首尾空格都会去掉
+        // let str3 = str1.trimStart(); //去掉前面的空格
+        // let str4 = str1.trimEnd(); // 去掉后面的空格
+
+        // console.log(str1);
+        // console.log(str2);
+        // console.log(str3);
+        // console.log(str4);
+
+        
+        // 9.演示 repeat() 方法对字符串进行重复
+        // let str = 'hello';
+        // let str2 = str.repeat(10);
+
+        // console.log(str);
+        // console.log(str2);
+
+        // str2 = str.repeat(-10.5);
+        // console.log(str2);
+
+        // 10.演示 padStart() 和 padEnd() 对字符串进行填充
+        let str = '你好';
+
+        let str2 = str.padStart(5, '*');
+        console.log(str); // 你好
+        console.log(str2); // ***你好
+
+        str2 = str.padStart(5, 'ab');
+        console.log(str2); // aba你好
+
+        str2 = str.padEnd(5, '*');
+        console.log(str2); // 你好***
+
+        str2 = str.padEnd(5, 'ab');
+        console.log(str2); // 你好aba
+
+    </script>
+</body>
+</html>

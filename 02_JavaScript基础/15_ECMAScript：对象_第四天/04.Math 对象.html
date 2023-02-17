@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Math 对象
+
+        1. Math 是数学的意思
+        2. Math 对象是 JS 内置的一个关于数学方面计算的对象！
+
+        静态属性 （了解）
+        1. Math.E   自然数 e
+        2. Math.LN2  2的自然对数
+        3. Math.LN10 10的自然对数
+        4. Math.LOG2E 以2为底的e的对数
+        5. Math.LOG10E 以10为底的e的对数
+        6. Math.PI 常数π
+        7. Math.SQRT1_2  0.5的算数平方根
+        8. Math.SQRT2  2的算数平方根
+        等等...
+
+        静态方法 （掌握）
+        1. abs()：可以返回参数的绝对值
+        2. max()：可以返回多个参数中最大的那个值
+        3. min()：可以返回多个参数中最小的那个值
+        4. floor()：floor是地板的意思，作用是将数据向下取整
+        5. ceil()：ceil是天花板的意思，作用是将数据向上取整
+        6. round()：可以对参数进行四舍五入
+            四舍五入，管你是正数还是负数，将该数 + 0.5，然后向下取整就是四舍五入后的结果。****************
+        7. pow()：对数据进行指数运算。
+            语法格式：Math.pow(底数，指数);
+        8. sqrt()：求数据的算数平方根
+        9. random()：random是随机的意思，该方法可以生成 [0,1) 的随机数！
+            规律：要生成 [min, max] 之间的整数，代码是：
+                ~~(Math.random()*(max-min+1)+min)
+
+        10. Math 里面可以计算各种三角函数。需要注意的是，参数得是弧度
+            Math.sin(弧度);
+            角度和弧度之间的转换关系： 1° = 2π / 360
+
+            - `Math.sin()`：返回参数的正弦（参数为弧度值）
+            - `Math.cos()`：返回参数的余弦（参数为弧度值）
+            - `Math.tan()`：返回参数的正切（参数为弧度值）
+            - `Math.asin()`：返回参数的反正弦（返回值为弧度值）
+            - `Math.acos()`：返回参数的反余弦（返回值为弧度值）
+            - `Math.atan()`：返回参数的反正切（返回值为弧度值）
+            - 注意：参数都得是弧度，角度 = 2π / 360
+     -->
+
+     <script>
+        // console.log(Math.E); // 2.718281828459045
+        // console.log(Math.LN2); // 0.6931471805599453
+        // console.log(Math.LN10); //2.302585092994046
+        // console.log(Math.LOG2E); //1.4426950408889634
+        // console.log(Math.LOG10E); //0.4342944819032518
+        // console.log(Math.PI); // π
+        // console.log(Math.SQRT1_2); // 0.7071067811865476
+        // console.log(Math.SQRT2); // 1.414
+
+        // console.log(Math.abs(-5)); // 5
+        // console.log(Math.abs(5)); // 5
+
+        // console.log(Math.max(3, 7, 6, -5)); // 7
+        // console.log(Math.min(3, 7, 6, -5)); // -5
+        // console.log(Math.max()); // -Infinity
+        // console.log(Math.min()); // Infinity
+
+        // console.log(Math.floor(3.2)); // 3
+        // console.log(Math.floor(-3.2)); // -4
+        // console.log(Math.ceil(3.2)); // 4
+        // console.log(Math.ceil(-3.2)); // -3
+
+        // 编写函数，利用 floor() 和 ceil() 实现获取任意数的整数部分
+        // let fun = (value) => {
+        //     return value > 0 ? Math.floor(value) : Math.ceil(value);
+        // };
+
+        // console.log(fun(3.2));
+        // console.log(fun(-3.2));
+
+        // 演示 round() 方法对数据进行四舍五入
+        // console.log(Math.round(3.1)); // 3
+        // console.log(Math.round(3.5)); // 4
+        // console.log(Math.round(3.6)); // 4
+        // console.log(Math.round(-3.1)); // -3
+        // console.log(Math.round(-3.5)); // -3
+        // console.log(Math.round(-3.6)); // -4
+        // 四舍五入，管你是正数还是负数，将该数 + 0.5，然后向下取整就是四舍五入后的结果。**********
+
+        // 演示 pow 方法
+        // console.log(Math.pow(2, 3)); // 计算 2的3次方
+        // console.log(2 ** 3); // 计算 2的3次方
+
+        // 计算圆的面积，保留两位小数
+        // let r = 2;
+        // let s = Math.PI * Math.pow(r, 2);
+        // console.log(s.toFixed(2)); // 12.57
+
+        // 演示 sqrt() 计算数据的算术平方根
+        // console.log(Math.sqrt(16)); // 4
+
+        // 演示 random() 方法生成 [0,1) 的随机数
+        // console.log(Math.random()); // 0.6381644449732577
+
+        // 生成 [50,100] 的整数
+        // console.log(~~(Math.random()*(100-50+1) + 50));
+
+        // 演示三角函数的使用，参数得是弧度    1度 = 2π / 360
+        console.log((Math.sin(30 * 2 * Math.PI / 360)).toFixed(1)); // 计算 sin 30°
+
+    </script>
+</body>
+</html>

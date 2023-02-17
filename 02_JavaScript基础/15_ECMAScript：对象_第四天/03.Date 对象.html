@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--     
+        Date 对象
+
+        1. Date单词是日期的意思, data是数据的意思
+        2. Date 对象是日期时间，是 JS 内置对象
+        3. 世界标准时间中，日期时间的零点是 1970-01-01 0:0:0 
+        4. UTC、GMT 世界标准时间   中国是东八区，比世界标准时间 + 8 小时
+
+        
+        Date 的使用
+        1. Date()
+            1) 该方法会返回当前日期时间的字符串
+            2) 该方法不能接收参数，写了参数也没效果
+
+        2. new Date()
+            1) 这种写法比较灵活，可以返回当前的日期时间字符串，也可以接收参数返回指定的日期时间
+            2) 可以传入参数：
+                第一种：new Date(年, 月, 日, 时, 分, 秒, 毫秒);
+                第二种：new Date('yyyy-MM-dd HH:mm:ss');
+                        new Date('yyyy/MM/dd HH:mm:ss');
+
+                year - 年
+                month - 月 
+                date - 日
+                hour - 时
+                minute - 分钟
+                seconds - 秒
+                注意：月是从0开始  0表示1月  11表示12月
+
+        3. 计算两个日期的时间差
+            计算两个日期的时间差，那就直接用两个日期相减即可。
+            底层实际是这样计算的：将两个日期分别转为距离时间零点的毫秒值，然后两个毫秒值相减，
+            所以，两个日期做减法，得到的是一个毫秒数！
+
+        4. 静态方法：（了解）
+            1) now()：返回当前时间距离时间零点的毫秒值
+            2) parse()：返回指定的一个字符串日期距离时间零点的毫秒值
+            3) UTC()：返回指定的一个日期距离时间零点的毫秒值 （按照世界标准时间算）
+
+        5. 实例方法
+            Date对象的实例方法除了 valueOf 方法外，其余的方法分为三类：
+            1) toXxx()：将日期时间显示为某种字符串
+                toString()：将日期转为字符串的形式显示
+                toLocaleString()：将日期转为当地区域的字符串形式显示  ***********
+                toDateString()：将日期转为字符串
+                toTimeString()：时间的字符串
+                toUTCString()：标准时间的字符串
+
+            2) getXxx()：获取单个的日期时间
+                getFullYear()：获取4位数的年份
+                getMonth()：获取月  0-11
+                getDate()：获取日
+                getHours()：获取时
+                getMinutes()：获取分
+                getSeconds()：获取秒
+                getMilliSeconds()：获取毫秒  （了解）
+                getTime()：获取日期时间距离时间零点的毫秒值  （了解）
+
+                getDay()：获取星期 0-星期日 1-星期一   6-星期六
+
+            3) setXxx()：设置单个的日期时间
+                setFullYear()：设置年份
+                setMonth()：设置月
+                setDate()：设置日
+                setHours()：设置时
+                setMinutes()：设置分
+                setSeconds()：设置秒
+                setMilliSeconds()：设置毫秒
+     -->
+
+     <script>
+        // 1.获取当前的日期时间
+        // let date = Date();
+        // console.log(date);
+
+        // 2.获取当前的日期时间
+        // let date = new Date(); // 没有传参，那就获取当前的日期时间
+        // console.log(date);
+
+        // // Date中，月 0-11
+        // let date2 = new Date(2000, 7, 9);
+        // console.log(date2);
+
+        // let date3 = new Date(2010, 9, 10, 15, 30, 25);
+        // console.log(date3);
+
+        // let date4 = new Date(1992, 5);
+        // console.log(date4);
+
+        // let date5 = new Date(1378218728000);
+        // console.log(date5);
+
+        // // 当某个日期或者时间给的太大的话，会自动折算，往前去进1
+        // let date6 = new Date(2000,15,39,10,25,30,1500);
+        // console.log(date6);
+
+        // let date7 = new Date('1992/05/09 15:50:30');
+        // console.log(date7);
+
+        // let date8 = new Date(2000,5,-9);
+        // console.log(date8);
+
+        // 计算1997年1月1日出生的孩子现在多大了
+        // let date1 = new Date(1997, 0, 1); // 0 表示 1月
+        // let date2 = new Date();
+
+        // let age = date2 - date1; // 两个日期相减后得到的结果是毫秒数
+        // console.log((age / 1000 / 60 / 60 / 24 / 365).toFixed());
+
+        // 演示静态方法
+        // let d1 = Date.now();
+        // console.log(d1); // 1649402006007
+
+        // let d2 = Date.parse('1997-05-05');
+        // console.log(d2);
+
+        // let d3 = Date.UTC(2022,4,8);
+        // console.log(d3);
+
+        // 演示日期的实例方法
+        // 1.valueOf 方法会返回日期距离时间零点的毫秒值
+        // let d1 = new Date();
+        // console.log(d1.valueOf());
+
+        // // 2.toString
+        // let d2 = new Date();
+        // console.log(d2); // Fri Apr 08 2022 15:48:37 GMT+0800 (中国标准时间)
+        // console.log(d2.toString()); // Fri Apr 08 2022 15:48:37 GMT+0800 (中国标准时间)
+
+        // // 3.toLocaleString   *************************
+        // let d3 = new Date();
+        // console.log(d3.toLocaleString()); // 2022/4/8 15:48:37
+
+        // // 4.toDateString
+        // let d4 = new Date();
+        // console.log(d4.toDateString()); // Fri Apr 08 2022
+
+        // // 5.toTimeString
+        // let d5 = new Date();
+        // console.log(d5.toTimeString()); // 15:49:44 GMT+0800 (中国标准时间)
+
+        // // 6.toUTCString
+        // let d6 = new Date();
+        // console.log(d6.toUTCString());
+
+
+        // 演示 getXxx() 方法     掌握**************************
+        // let date = new Date();
+        // console.log(date.getFullYear()); // 2022
+        // console.log(date.getMonth()); // 3  4-1=3
+        // console.log(date.getDate()); // 8
+        // console.log(date.getHours()); // 16
+        // console.log(date.getMinutes()); // 6
+        // console.log(date.getSeconds()); // 30
+        // console.log(date.getMilliseconds()); // 115
+
+        // console.log(date.getDay()); // 5
+        // console.log(date.getTime()); // 1649405343405
+
+        // 1.定义函数，计算当前年还剩多少天     时间倒计时。
+        // let fun1 = () => {
+        //     // 获取当前的日期时间
+        //     let date1 = new Date();
+        //     let date2 = new Date(date1.getFullYear(), 11, 31, 23, 59, 59);
+        //     return ~~((date2 - date1) / 1000 / 60 / 60 / 24);
+        // };
+
+        // console.log(fun1()); 
+
+        // 2.控制台打印当前时间，格式为：2021年04月22日 星期四 19时37分04秒
+        // let date = new Date();
+        // let year = date.getFullYear();
+        // let month = date.getMonth() + 1;
+        // if(month < 10){
+        //     month = '0' + month;
+        // }
+        // let day = date.getDate();
+        // if(day < 10){
+        //     day = '0' + day;
+        // }
+        // let hours = date.getHours();
+        // let minutes = date.getMinutes();
+        // let seconds = date.getSeconds();
+        // let week = date.getDay(); // 0-星期日  1-星期一
+        // // let arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        // let str = '日一二三四五六';
+
+        // if(hours < 10){
+        //     hours = '0' + hours;
+        // }
+        // if(minutes < 10){
+        //     minutes = '0' + minutes;
+        // }
+        // if(seconds < 10){
+        //     seconds = '0' + seconds;
+        // }
+        // // console.log(`${year}年${month}月${day}日 ${arr[week]} ${hours}时${minutes}分${seconds}秒`);
+        // console.log(`${year}年${month}月${day}日 星期${str[week]} ${hours}时${minutes}分${seconds}秒`);
+
+        // 日本时间
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        let week = date.getDay();
+        let str = '日月火水木金土';
+        if(month < 10){
+            month = '0' + month;
+        }
+        if(day < 10){
+            day = '0' + day;
+        }
+        if(hours < 10){
+            hours = '0' + hours;
+        }
+        if(minutes < 10){
+            minutes = '0' + minutes;
+        }
+        if(seconds < 10){
+            seconds = '0' + seconds;
+        }
+        console.log(`今は${year}年${month}月${day}日 ${str[week]}曜日 ${hours}時${minutes}分${seconds}秒。`);
+
+        // 演示 set类方法
+        // let date = new Date();
+        // console.log(date.toLocaleString());
+
+        // date.setFullYear(2000);
+        // // date.setMonth(8);
+        // date.setMonth(18); // 这里18大于 11，往前进1
+        // date.setDate(20);
+        // date.setHours(18);
+        // date.setMinutes(50);
+        // date.setSeconds(20);
+
+        // console.log(date.toLocaleString());
+
+        // let date = new Date();
+        // date.setDate(date.getDate() + 1000);
+        // date.setHours(date.getHours() + 6);
+        // date.setFullYear(date.getFullYear() - 1);
+        // console.log(date.toLocaleString());
+
+    </script>
+</body>
+</html>

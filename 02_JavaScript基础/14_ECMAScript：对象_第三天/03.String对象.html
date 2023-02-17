@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        String 对象(类型)
+
+        1. String 对象是属于三个包装对象中的一个。(Number、Boolean)
+        2. String 包装对象的作用：
+            1) 将基本数据包装为对象类型，object 数据类型
+            2) 可以进行数据的强转，将数据转为 string 数据类型
+
+        3. String 类型的对象其实是一个类数组对象. 也就是类似于数组但其实是对象。
+            可以像数组一样，有 length 属性，也可以 对象[0]  对象[1] 通过索引获取值
+            但是不能调用数组的方法
+        4. 在 JS 中，基本的字符串也可以直接当做和 String 类型的对象一样去使用
+
+        5. 在 JS 中，字符串的值，一旦给定后，是不能直接修改这个值的。不能更改！！！
+           但是可以给变量重新赋值
+
+
+        length 属性
+        1. length 属性可以返回字符串的字符个数。
+        2. 字符串的值，一旦给定后，是不能修改的。所以，字符串的 length 不能修改
+
+
+        静态方法：
+        1. fromCharCode()
+            1) char是字符的意思  code是代码的意思
+            2) 该方法的作用是将传入的多个 Unicode码 转为相应的字符串返回
+            3) 语法格式：
+                String.fromCharCode(Unicode码1, 码2, ....);
+            4) 回顾：不论是什么样的编码方式，0-127 放的都是 ASCII 码的值
+
+        实例方法：
+        1. charAt()
+            1) 该方法的作用是返回字符串中指定索引位置的字符
+            2) 等价于 str[索引]
+            3) 语法格式：
+                字符串.charAt(索引);
+
+        2. charCodeAt()
+            1) 该方法的作用是返回字符串中指定索引位置的字符对应的 Unicode码
+
+        3. indexOf()
+            1) 该方法的作用是在字符串中查找某个字符、子字符串的位置，从前往后找，找到后返回索引，找不到返回 -1
+            2) 语法格式：
+                字符串.indexOf(要找的字符串, 开始位置);
+            3) 语法说明：
+                参数1就是你要找的内容
+                参数2就是指定从哪个位置开始找，可以省略，省略的话从头开始找
+
+        4. lastIndexOf()
+            1) 该方法的作用是在字符串中查找内容，从后往前找，一旦找到后就停止了，返回找到的索引位置，找不到返回 -1
+
+        5. concat()
+            1) 该方法的作用就是拼接多个字符串，返回一个拼接好的字符串，原来的字符串不会改变。
+            2) 语法格式：
+                字符串.concat('字符串2', '字符串3', ...);
+
+        6. slice()
+            1) 该方法的作用是截取字符串中某段内容，返回一个截取好的新字符串，不会改变原来的字符串
+            2) 语法格式：
+                字符串.slice(startIndex, endIndex);
+            3) 语法说明：
+                参数1表示开始的位置，参数2表示结束的位置，包括开始不包括结束
+                参数1 和 参数2 都可以省略，都省略的话就从头截到尾
+                只省略参数2，就从开始位置截到最后
+                可以从后往前数，去截取，最后一个位置 -1, -2 -3 
+                开始位置要比结束位置小，如果大的话，就返回 空串
+
+        7. substring()
+            1) 该方法的作用也是截取字符串中的内容，返回一个截取好的新字符串，不改变原来的字符串
+            2) 语法格式：
+                字符串.substring(startIndex, endIndex);
+            3) 语法说明：
+                参数1表示开始的位置，参数2表示结束的位置，包括开始不包括结束
+                参数1 和 参数2 都可以省略，都省略的话就从头截到尾
+                只省略参数2，就从开始位置截到最后
+        8. substr()
+            1) 该方法的作用也是截取字符串中的内容，返回一个截取好的新字符串，不改变原来的字符串
+            2) 语法格式：
+                字符串.substr(startIndex, length);
+            3) 语法说明：
+                参数1表示从哪里开始截取，参数2表示截几个
+                参数1和参数2都省略的话，就是从头截取到尾
+                只省略参数2的话，表示从开始位置截取到最后
+                可以从后往前数索引去截取，-1 -2。。。
+
+        9. split()          要配合正则表达式使用
+            1) split单词是分割的意思
+            2) 该方法的作用是将字符串以指定的符号去分割，将分割后得到的各个子字符串以数组的形式返回，不会改变原来字符串的值
+            3) 语法格式：
+                字符串.split(指定的符号);
+            4) 语法说明：
+                将一个字符串按照空字符串去分割的话，返回的数组中每个元素就是字符串中的每个字符
+
+            5) 通过字符串的 split 方法可以将字符串 ===> 数组
+               通过数组的 join 方法可以将 数组 ===> 字符串
+
+        10. trim()      比如搜索框去掉搜索内容的没用的首尾空格
+            1) trim单词是修剪
+            2) 该方法的作用是将字符串首尾的空格给去掉！返回一个新的字符串，原来的字符串不变
+            3) 语法格式：
+                字符串.trim();
+        
+        11. toLowerCase()
+            1) to-变为什么... 意思  lower-低级、小   case-案例，项
+            2) 该方法的作用是将字符串中的字母都转为小写，返回一个转换好的新字符串，原来的字符串不变
+
+        12. toUpperCase()
+            1) 该方法的作用是将字符串中的字母都转为大写，返回一个转换好的新字符串，原来的字符串不变
+
+
+        13. search()        要配合正则表达式使用
+            1) search单词是搜索的意思
+            2) 该方法的作用是在字符串中查找某个内容第一次出现的位置，返回该位置的索引，找不到的话返回 -1
+            3) 该方法是要配合 正则表达式去使用最好。 否则的话 和 indexOf() 方法效果一样！
+
+        14. match()         要配合正则表达式使用
+            1) match单词是匹配的意思
+            2) 该方法的作用也是在字符串中查找内容，会返回找到的所有的内容组成的数组，找不到的话返回 null
+            3) 要配合正则表达式使用
+
+        15. replace()       要配合正则表达式使用
+            1) replace单词是替换的意思
+            2) 该方法的作用是将字符串中的某个内容用别的内容替换
+            3) 该方法要配合正则表达式使用，不用正则的话，只能替换第一个找到的
+            4) 语法格式：
+                字符串.replace(旧的内容，新的内容);
+
+        所有的方法要明白：
+        1. 方法的作用是什么
+        2. 方法需要的参数是什么
+        3. 方法执行完返回什么
+     -->
+
+     <script>
+        // 1. 演示 String对象 将基本数据包装为对象类型
+        // let str = new String('你好');
+        // console.log(str, typeof str);
+
+        // console.log(new String(123));
+        // console.log(new String(true));
+        // console.log(new String(null));
+        // console.log(new String(undefined));
+
+        // 2. 演示 String() 进行数据的强转
+        // console.log(String(123)); // 123 + ''  Number('123')  123  '123' - 0
+        // console.log(String(true)); // 'true'
+        // console.log(String(null)); // 'null'
+        // console.log(String(undefined)); // 'undefined'
+
+        // 通过观察输出的 String 对象的结果，能够看出 String类型的对象是类数组对象
+        // let str2 =  new String('你好啊');
+        // console.log(str2.length); // 3
+        // console.log(str2.pop());// 报错
+
+        // '你好'  是 string 基本数据类型
+        // console.log(typeof '你好');
+
+        // console.log('你好坏！'.length); // 4
+        // console.log('你好坏！'[2]); // 坏
+
+
+        // let str = 'hello  world!';
+        // console.log(str); // hello  world!
+        // console.log(str[1]); // e
+        // console.log(str.length); // 13 空格也算一个
+
+        // str[1] = '哈';
+        // console.log(str); // hello  world! 可以看到结果，并没有修改了字符串的值
+
+        // str = '哈哈';
+        // console.log(str);
+
+        // 演示 length 属性
+        // let str = 'hello';
+        // console.log(str);
+        // console.log(str.length);
+
+        // str.length = 10; // 字符串的长度是不能改的
+        // console.log(str.length);
+
+        // str.length = 0;
+        // console.log(str.length);
+
+
+        // 静态方法 fromCharCode() 
+        // let result = String.fromCharCode(48, 65, 97, 65205); // '0Aa'
+        // console.log(result);
+
+        // result = String.fromCharCode(104, 101, 108, 108, 111);
+        // console.log(result); // hello
+
+        // 演示 charAt()
+        // let str = 'hello world!';
+        // let result = str.charAt(1);
+        // console.log(result); // e
+        // console.log(str[1]);
+
+        // 演示 charCodeAt()
+        // let str = 'hello';
+        // let result = str.charCodeAt(1);
+        // console.log(result); // e对应的那个Unicode码 101
+
+        // 演示 indexOf() 方法查找字符串的位置
+        // let str = '张无忌喜欢赵敏，周芷若喜欢张无忌。';
+        // let result = str.indexOf('喜欢');
+        // console.log(result); // 3
+
+        // result = str.indexOf('喜欢', 5); // 找 '喜欢', 从索引是5的位置开始
+        // console.log(result); // 11
+
+        // result = str.indexOf('喜欢你');
+        // console.log(result); // -1
+
+        // 演示 lastIndexOf() 方法查找内容
+        // let str = '我是宇宙人，我爱宇宙！';
+        // let result = str.lastIndexOf('宇宙');
+        // console.log(result); // 8
+
+        // result = str.lastIndexOf('宇宙', 6);
+        // console.log(result); // 2
+
+        // result = str.lastIndexOf('你好');
+        // console.log(result); // -1
+
+        // 演示 concat() 方法拼接字符串
+        // let str1 = '赵扬';
+        // let str2 = '李通';
+        // let str3 = '柴海龙';
+
+        // let result = str1.concat(str2, str3, '哈哈', '呵呵');
+        // console.log(str1);
+        // console.log(str2);
+        // console.log(str3);
+        // console.log(result);
+
+        // console.log(3 + 4 + '5'); // 75
+        // console.log(3 + '4' + 5); // 345
+
+        // 演示 slice() 方法截取字符串 ****************************
+        // let str = '张无忌喜欢赵敏，周芷若喜欢张无忌。';
+        // let result = str.slice(); // 参数都省略，从头截到尾
+        // console.log(result); // 
+
+        // result = str.slice(3); 
+        // console.log(result); // 喜欢赵敏，周芷若喜欢张无忌。
+
+        // result = str.slice(3, 5);
+        // console.log(result); // 喜欢
+        // console.log(str); // 张无忌喜欢赵敏，周芷若喜欢张无忌。
+
+        // result = str.slice(-9, -6);
+        // console.log(result); // 周芷若  从后往前数
+
+        // result = str.slice(6, 3); // 开始位置大于了结束位置了，返回 ''空串
+        // console.log(result);
+
+        // 演示 substring() 截取字符串内容
+        // let str = '张无忌喜欢赵敏，周芷若喜欢张无忌。';
+        // let result = str.substring(); // 省略所有参数，表示从头截到尾
+        // console.log(result); // 张无忌喜欢赵敏，周芷若喜欢张无忌。
+
+        // result = str.substring(3); // 省略结束位置，表示从开始截取到最后
+        // console.log(result); // 喜欢赵敏，周芷若喜欢张无忌。
+
+        // result = str.substring(3, 5); // 包括开始，不包括结束
+        // console.log(result); // 喜欢
+
+        // result = str.substring(-9, -6); // 参数是负数的话，会自动转为0
+        // console.log(result); // '' 空串
+
+        // result = str.substring(-8, 3); // -8 是负数，会自动转为0
+        // console.log(result); // 张无忌
+
+        // result = str.substring(6, 3); // 如果开始位置大于结束位置的话，会自动调换一下
+        // console.log(result); // 喜欢赵
+
+        // 演示 substr() 截取字符串
+        // let str = '张无忌喜欢赵敏，周芷若喜欢张无忌。';
+        // let result = str.substr(); // 参数都省略，截取整个字符串
+        // console.log(result); // 张无忌喜欢赵敏，周芷若喜欢张无忌。
+
+        // result = str.substr(3);
+        // console.log(result); // 喜欢赵敏，周芷若喜欢张无忌。
+
+        // result = str.substr(3, 4); // 从索引3开始，截取4个字符
+        // console.log(result); // 喜欢赵敏
+
+        // result = str.substr(-4, 3);
+        // console.log(result); // 张无忌
+
+        // result = str.substr(3, -5);
+        // console.log(result); // '' 空串 从索引3开始截取0个
+
+
+        // 演示 split() 方法去分割字符串
+        // let str = '涂成来|毕艳宁|郑笑雨';
+        // let result = str.split('|');
+        // console.log(result); // ['涂成来', '毕艳宁', '郑笑雨']
+        // console.log(str);
+
+        // str = '|a|b|c|';
+        // result = str.split('|');
+        // console.log(result); // ['', 'a', 'b', 'c', '']
+
+        // str = '0357-7654321';
+        // result = str.split('-');
+        // console.log(result); // ['0357', '7654321']
+
+        // str = 'abcde';
+        // result = str.split(''); // 将字符串按照空串去分割 *********************
+        // console.log(result); // ['a', 'b', 'c', 'd', 'e'] 这个用的最多！！！
+
+        // 回顾：数组中的 join() 方法，join是连接的意思，该方法就是将数组中的元素以指定的符号连接起来，返回一个字符串
+        // let arr = [10, 20, 30];
+        // console.log(arr);
+        // let result = arr.join('-');
+        // console.log(result); // 10-20-30
+
+        // result = arr.join('**');
+        // console.log(result); // 10**20**30
+
+        // result =  arr.join(''); // *************************
+        // console.log(result); // 102030
+
+        // 演示 trim() 方法去掉字符串首尾的空格
+        // let str = '   哈    哈   ';
+        // let result = str.trim();
+        // console.log(str);
+        // console.log(result);
+
+        // 演示 toLowerCase() 将字母转为小写
+        // let str = 'Hello World AAA';
+        // let result = str.toLowerCase();
+        // console.log(str);
+        // console.log(result);
+
+        // 演示 toUpperCase() 将字母转为大写
+        // let str = 'Hello World aaa';
+        // let result = str.toUpperCase();
+        // console.log(result);
+        // console.log(str);
+
+        // 演示 search() 方法查找字符串中的内容
+        // let str = '我是宇宙人，我爱宇宙！';
+        // let result = str.search('宇宙');
+        // console.log(result); // 2
+
+
+        // 演示 match() 方法匹配字符串中的内容
+        // let str = '我是宇宙人，我爱宇宙！';
+        // let arr = str.match('宇宙');
+        // console.log(arr); // ['宇宙', index: 2, input: '我是宇宙人，我爱宇宙！', groups: undefined]
+
+        // 演示 replace() 方法替换字符串中的内容
+        let str = '我是宇宙人，我爱宇宙！';
+        let result = str.replace('宇宙', '大宇宙');
+        console.log(str);
+        console.log(result);
+
+
+    </script>
+</body>
+</html>

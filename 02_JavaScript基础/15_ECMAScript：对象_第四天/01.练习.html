@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.统计任意字符串中，指定字符的个数
+        // let fun1 = (str, value) => { // abcdaaa    a
+        //     let count = 0;
+
+        //     // 字符串是类数组对象，有 length 属性，可以 str[索引]，但是不能调用数组中的方法
+        //     for(let i = 0; i < str.length; i++){
+        //         if(str[i] == value){
+        //             count++;
+        //         }
+        //     }
+
+        //     return count;
+        // };
+
+        // let result = fun1('hello', 'l');
+        // console.log(result);
+
+        // result = fun1('hello', 'a');
+        // console.log(result);
+
+        // 2.统计任意字符串中，每个字符出现的个数 
+        //  abcaabcdaaccc
+        // 思路：需要遍历字符串，将字符串中的每个字符记录下来，记录的时候，需要看看它之前记录过没有，
+        // 如果记录过，将数+1，没记过记上，数字1
+        // 记录的话，使用对象去做，利用对象中的属性不重复的特点！！！
+
+        /**
+         * 遍历字符串，将每个字符往对象中去放，也就是将每个字符当做对象的属性名，
+         * 放的时候要进行判断，判断该属性是否已经存在了，如果存在的话，就将该属性的值+1，不存在就将该属性加进去，值是1
+         */
+        // let fun2 = (str) => {
+        //     // 创建一个空对象
+        //     let obj = {};
+
+        //     for(let i = 0; i < str.length; i++){
+        //         if(str[i] in obj){ // 对象中已经有该字符了
+
+        //             obj[str[i]] = obj[str[i]] + 1;
+        //         }else{ //对象中没有该字符
+        //             obj[str[i]] = 1;
+        //         }
+        //     }
+
+        //     return obj;
+        // };
+
+        // let result = fun2('hello');
+        // console.log(result);
+
+        // 1.将 hello 转为 Hello
+        // let fun1 = (str) => {
+        //     return str.substr(0, 1).toUpperCase() + str.slice(1);
+        // };
+
+        // let result = fun1('world');
+        // console.log(result);
+
+        // 2.将 'hello-world-hello-china' 转为小驼峰命名法：helloWorldHelloChina
+        // let str = 'hello-world-hello-china';
+
+        // let arr = str.split('-'); // ['hello', 'world', 'hello', 'china']
+
+        // for(let i = 1; i < arr.length; i++){
+        //     arr[i] = arr[i].substr(0, 1).toUpperCase() + arr[i].slice(1);
+        // }
+
+        // console.log(arr.join(''));
+
+        // 3.实现将任意字符串，大写字符变为小写，小写字符变为大写
+        // let str = 'abcXYzaaBB';
+
+        // // 将字符串转为数组，因为字符串本身值是不能改变的
+        // let arr = str.split(''); // ['a', 'b', 'A']
+         
+        // for(let i = 0; i < arr.length; i++){
+        //     if(arr[i] >= 'a' && arr[i] <= 'z'){
+        //         arr[i] = arr[i].toUpperCase();
+        //     }else{
+        //         arr[i] = arr[i].toLowerCase();
+        //     }
+        // }
+
+        // let result = arr.join('');
+        // console.log(result);
+
+        // 4.自定义函数，实现得到一个任意长度的、随机字符的字符串(字符串可以包含大小写字母和数字)
+        // let fun4 = (len) => {   
+        //     let result = '';
+        //     let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+        //     for(let i = 0; i < len; i++){
+        //         result += str.substr(~~(Math.random()*(61-0+1) + 0), 1); // 这里的61是str.length - 1
+        //     }
+
+        //     return result;
+        // };
+
+        // let result = fun4(4);
+        // console.log(result);
+
+        // result = fun4(6);
+        // console.log(result);
+
+        // 5.判断第一个字符串是否以第二个字符串结尾，是返回 true，否则返回 false
+        // helloworld  rld
+
+
+        let fun5 = (str1, str2) => {
+            return str1.substr(-str2.length) == str2; // 也可以用三目运算符判断；也可以if else判断，但如果是true or false，可以把这个省了，直接传出判断的结果。 
+        };
+
+        let result = fun5('helloworld', 'rld');
+        console.log(result);
+
+        result = fun5('hello', 'aaa');
+        console.log(result);
+
+    </script>
+</body>
+</html>

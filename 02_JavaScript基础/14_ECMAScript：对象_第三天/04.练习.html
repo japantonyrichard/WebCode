@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 创建数组，利用for循环给数组中添加 a-z 的元素
+        // let arr = [];
+
+        // for(let i = 0; i < 26; i++){
+        //     // fromCharCode() 可以将Unicode码转为字符串返回
+        //     arr.push(String.fromCharCode(97 + i));
+        // }
+        // console.log(arr);
+
+        // 2. 反转字符串，比如 abcde 变为 edcba
+        // 分析：字符串没有反转的方法，数组有反转的方法
+        // let str = 'abcde';
+        // // 将字符串转为数组
+        // let arr = str.split(''); // ['a', 'b', 'c']
+        // // 将数组反转，reverse方法会直接改变原来的数组
+        // arr.reverse(); // ['c', 'b', 'a']
+        // // 将数组转为字符串
+        // let result = arr.join('');
+
+        // console.log(result);
+
+        // 3. 将字符串中所有的 o 替换为 a
+        // 字符串的值给定后，是不能直接修改的，所以可以将字符串转为数组
+        // 遍历数组，看哪个是 o，将o 替换为 a，之后再将数组转为字符串
+        // let str = 'hello world!';
+        // let arr = str.split(''); // ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '!']
+        
+        // for(let i = 0; i < arr.length; i++){
+        //     if(arr[i] == 'o'){
+        //         arr[i] = 'a';
+        //     }
+        // }
+
+        // for(let ele of arr){
+        //     if(ele == 'o'){
+        //         ele = 'a'; // 这里只是改了 ele 这个变量的值，并没有真正的去修改数组中某个索引位置的元素
+        //     }
+        // }
+
+        // let result = arr.join('');
+        // console.log(result);
+
+
+        // 4. 传入 'ios Android HTML5 Java' 返回 'avaJ 5LMTH diordnA soi'
+        // let fun4 = (str) => {
+        //     // 将字符串分割为数组
+        //     let arr = str.split('');
+        //     // 将数组反转
+        //     arr.reverse();
+        //     // 将数组转为字符串
+        //     str = arr.join('');
+        //     return str;
+        // };
+
+        // let result = fun4('ios Android HTML5 Java');
+        // console.log(result);
+
+        // 5. 传入 'ios Android HTML5 Java' 返回 'soi diordnA 5LMTH avaJ'
+
+        let fun5 = (str) => {
+            let arr = str.split(' '); // ['ios', 'Android', 'HTML5']
+            for(let i = 0; i < arr.length; i++){
+                arr[i] = arr[i].split('').reverse().join(''); // soi
+            }
+
+            return arr.join(' ');// 注意空格
+        };
+
+        let result = fun5('ios Android HTML5 Java');
+        console.log('ios Android HTML5 Java');
+        console.log(result);
+
+    </script>
+</body>
+</html>
