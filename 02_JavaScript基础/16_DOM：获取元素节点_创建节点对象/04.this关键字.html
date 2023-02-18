@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        this关键字
+        1. this就是这个的意思
+        2. this可以用在全局作用域中，表示 window对象
+        3. this可以用在函数中，表示谁调用这个函数，this指的就是谁！
+
+     -->
+
+     <script>
+        // console.log(this);
+        let obj1 = {
+            name:'张三',
+            age:18,
+            job:function(){
+                console.log(`${this.name}喜欢工作！`);
+            }
+        };
+
+        let obj2 = {
+            name:'李四',
+            age:20
+        };
+
+        obj1.job();
+
+        obj1.job.call(obj2);
+
+        obj1.job.apply(obj2);
+    </script>
+</body>
+</html>

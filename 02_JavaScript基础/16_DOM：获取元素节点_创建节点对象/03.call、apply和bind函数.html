@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        call apply 和 bind函数
+
+        1. call、apply和bind函数，它们都有可以借用函数的功能。
+            比如：两个对象A 和 B，B 对象中 有 方法 C，A对象中没有方法 C，
+            那 A 对象就可以通过这三个方法向 B 对象借方法C
+        2. call 和 apply 借用方法后不会产生其他的影响；而 bind 函数借用方法后是将该方法复制了一份放在内存中
+
+        3. 推荐使用 call 和 apply
+
+        4. 借另一个对象的方法是有好处的，这样的话，如果有很多对象都有相同的方法，那这些相同的方法只需要在其中一个
+        对象写一次就行，其它的对象要用方法的话，借用即可。这样不占用内存空间。
+
+
+        call 函数的使用
+        1. 作用：就是使一个对象向另一个对象借用方法
+        2. 语法格式：
+            a.b.call(c, 参数列表);  // a对象里的b方法call 借给c去用。
+
+        3. 语法说明：
+            上面的语法就表示，c 对象借用a对象的b方法
+            参数列表指的就是 方法执行时需要的参数，多个参数使用逗号隔开
+
+        apply 函数的使用
+        1. 作用：也是使一个对象向另一个对象借用方法
+        2. 语法格式：
+            a.b.apply(c, [参数1,参数2,...]);
+        3. 语法说明：
+            上面的语法就表示，c对象借用a对象中的b方法
+            方法需要的参数是以数组的形式给传递的
+
+
+        bind 函数的使用
+        1. 作用：也是使一个对象向另一个对象借用方法，但是和前面两种方式不同，它会将方法复制一份拿过来用
+
+     -->
+
+     <script>
+        // 演示 call 函数的使用
+        // let obj1 = {
+        //     name:'张三',
+        //     age:18,
+        //     job:function(){
+        //         console.log('我喜欢工作！');
+        //     },
+        //     sum:function(a, b){
+        //         console.log(a + b);
+        //     }
+        // };
+
+        // let obj2 = {
+        //     name:'李四',
+        //     age:20
+        // };
+
+        // obj1.job();
+        // obj1.sum(10,20);
+
+        // // 使用 call 函数借用另一个对象的方法
+        // obj1.job.call(obj2);
+
+        // obj1.sum.call(obj2, 20, 30);
+
+        // 演示 apply 函数的使用
+        // let obj1 = {
+        //     name:'张三',
+        //     age:18,
+        //     job:()=>{
+        //         console.log('我梦想是不上班!');
+        //     },
+        //     sum:(a, b)=>{
+        //         console.log(a + b);
+        //     }
+        // };
+
+        // let obj2 = {
+        //     name:'李四',
+        //     age:20
+        // };
+
+        // obj1.job.apply(obj2);
+        // obj1.sum.apply(obj2, [100, 50]);
+
+        // 演示 bind 函数的使用
+        let obj1 = {
+            name:'张三',
+            age:18,
+            job:function(){
+                console.log('我喜欢工作！');
+            },
+            sum:function(a, b){
+                console.log(a + b);
+            }
+        };
+
+        let obj2 = {
+            name:'李四',
+            age:20
+        };
+
+        let fun1 = obj1.job.bind(obj2);
+        fun1();
+
+        let fun2 = obj1.sum.bind(obj2);
+        fun2(50,30);
+
+        obj1.job.bind(obj2)();
+        obj1.sum.bind(obj2)(50,30);
+    </script>
+</body>
+</html>

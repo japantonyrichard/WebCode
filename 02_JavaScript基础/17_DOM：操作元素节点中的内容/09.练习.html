@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>生成随机数</button>
+
+    <script>
+        // 获取到按钮
+        let btn = document.querySelector('button');
+
+        // 给按钮绑定鼠标单击事件
+        btn.onclick = () => {
+            // 生成随机数 [50,100]
+            let num = ~~(Math.random() * (100-50+1) + 50);
+            // 获取表单项元素input并给其赋值
+            // document.querySelector('input').value = num;
+            let input = document.querySelector('input');
+            // 给表单项元素赋值
+            input.value = num;
+        };
+
+    </script>
+</body>
+
+</html>

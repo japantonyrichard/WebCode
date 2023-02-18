@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 300px;
+            background-color: red;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./images/1.webp" alt="">
+    </div>
+
+    <script>
+        // 获取到图片
+        let img = document.querySelector('img');
+
+        // 给图片绑定一个点击事件
+        img.onclick = () => {
+            if(img.src.endsWith('1.webp')){
+                img.src = './images/2.webp';
+            }else{
+                img.src = './images/1.webp';
+            }
+        };
+    </script>
+</body>
+</html>

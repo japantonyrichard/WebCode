@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        创建节点
+
+        1. 我们需要掌握节点有：
+            1) document 文档节点
+            2) element 元素节点
+            3) attribute 属性节点
+            4) text 文本节点
+        2. 学习通过 JS 创建元素、创建属性、创建文本
+
+
+        创建元素、创建元素节点
+        1. 语法格式：
+            document.createElement('标签');
+
+        创建文本节点（了解）
+        1. 语法格式：
+            document.createTextNode('文本内容');
+        2. 了解是因为这种操作起来太繁琐，后面有更好的方式
+
+        创建属性节点（了解）
+        1. 语法格式：
+            document.createAttribute('属性名');
+
+        2. 这种也是了解的，比较繁琐，后面有更好的方式
+        
+     -->
+     <script>
+        // 1.演示创建元素
+        let h3 = document.createElement('h3'); // DOM 对象
+
+        // 获取到body元素
+        let body = document.querySelector('body');
+
+        // 将元素追加到body中，作为body的最后一个子元素
+        body.appendChild(h3); // append 追加  child 儿子
+
+        // 2.演示创建文本节点
+        let text = document.createTextNode('我是标题');
+
+        // 将文本节点添加到元素中，JS 认为文本内容是标签的子元素
+        h3.appendChild(text); // append 追加
+
+        // 3.演示创建属性节点
+        let attr = document.createAttribute('style');
+        // 给属性节点设置属性值
+        attr.value = 'color:red';
+
+        // 将属性设置给元素
+        h3.setAttributeNode(attr);
+
+    </script>
+</body>
+</html>

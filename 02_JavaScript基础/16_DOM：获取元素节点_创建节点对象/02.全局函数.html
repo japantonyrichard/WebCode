@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--     
+        全局函数
+
+        我们知道可以在对象中定义属性、函数(方法)。
+        window 对象中当然也有属性和函数。
+        window 对象也称为全局对象，所以我们称 window 对象中的函数为 全局函数。
+        全局函数可以：window.xxx();   xxx();
+
+
+        1. isNaN()：判断数据是不是 NaN，是的话返回true，否则返回false
+            该方法在 Number 对象中也有，它们作用都一样
+
+        2. isFinite()：判断数据是不是有穷的，是的话返回 true，否则返回false
+            该方法在 Number 对象中也有，作用都一样
+
+        3. parseInt()：从一个字符串中解析数据为整数
+            该方法在 Number 对象中也有，作用都一样
+
+        4. parseFloat()：从一个字符串中解析数据为小数
+            该方法在 Number 对象中也有，作用都一样
+
+        5. encodeURI()：
+            1) encode 是编码的意思
+            2) 该方法的作用是可以对 URI 字符串进行编码
+            3) 对 URI 字符串进行编码的目的是为了更准确的将浏览器的数据传递给服务器
+            4) 只对中文、空格等进行编码
+        
+        6. decodeURI()：
+            1) decode 是解码的意思
+            2) 该方法的作用就是对 上面 使用过 encodeURI() 方法编码的结果进行解码
+
+        7. encodeURIComponent()：
+            1) component是组件的意思
+            2) 该方法的作用也是对URI字符串进行编码，但是它编码范围要比 encodeURI() 方法强
+            3) 推荐使用它
+            4) 该方法除了字母、数字不进行编码外，其余的都会进行编码
+
+        8. decodeURIComponent()：
+            1) 该方法的作用就是对经过 encodeURIComponent() 方法编码的字符串进行解码
+
+        9. eval()：
+            1) eval 理解为解析的意思
+            2) 该方法有很多作用，目前我们先掌握它可以将字符串的JS代码解析为真正的JS代码
+            3) 语法格式：
+                eval('JS的代码');
+
+            4) 如果字符串代码中是使用 let 声明变量的话会报错，不要用let，可以使用 var
+     -->
+
+     <form action="#">
+        <input type="text" name="username"><br>
+        <input type="password" name="password"><br>
+        <input type="submit">
+    </form>
+
+   <script>
+       // console.log(Number.isNaN(NaN)); // true
+       // console.log(window.isNaN(NaN)); // true
+       // console.log(isNaN(NaN)); // true
+
+       // console.log(Number.isFinite(123)); // true
+       // console.log(Number.isFinite(5 / 0)); // false
+       // console.log(window.isFinite(123)); // true
+       // console.log(isFinite(5 / 0)); // false
+
+       // console.log('------------------------------');
+
+       // console.log(Number.parseInt('5hello')); // 5
+       // console.log(window.parseInt('5hello')); // 5
+       // console.log(parseInt('5hello')); // 5
+       // console.log(parseInt('hello5')); // NaN
+       // console.log(parseInt('    5   ')); // 5
+       // console.log(parseInt('     5    5     ')); // 5
+
+       // console.log('-------------------------------');
+       // console.log(Number.parseFloat('5.6.789')); // 5.6
+       // console.log(window.parseFloat('5.6hello')); // 5.6
+       // console.log(parseFloat('5hello')); // 5   5.0
+
+       // 演示 encodeURI() 对字符串(URI)进行编码
+       // let str = encodeURI('username=哈哈123%23..**&password=123');
+       // console.log(str); // username=%E5%93%88%E5%93%88123%2523..**&password=123
+
+       // let str2 = decodeURI('username=%E5%93%88%E5%93%88123%2523..**&password=123');
+       // console.log(str2);
+
+       // let str3 = encodeURIComponent('username=哈哈123%23..**&password=123');
+       // console.log(str3); // username%3D%E5%93%88%E5%93%88123%2523..**%26password%3D123
+
+       // let str4 = decodeURIComponent('username%3D%E5%93%88%E5%93%88123%2523..**%26password%3D123');
+       // console.log(str4); // username=哈哈123%23..**&password=123
+
+       // 演示 eval() 解析字符串的JS代码为真正的JS代码
+       console.log('1+1'); // 1+1
+       console.log(eval('1+1')); // 2
+
+       console.log('var num1 = 100;');
+
+       eval('var num2 = 150;'); // 等价于  var num2 = 150;
+
+       console.log(num2 + 50);// 200
+
+       eval('let num3 = 200;'); // 字符串代码不要用 let 会报错！！！
+       console.log(num3);// Uncaught ReferenceError: num3 is not defined
+
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        获取元素节点
+
+        1. 一个网页就是一个文档，在 JS 眼中，一个文档就是 document 对象
+
+        2. 所以，我们通过 document 对象就可以操作网页中的元素、属性、文本
+
+        3. 之前学习css，学习过选择器：
+            id选择器：页面中元素可以有id属性，但是一个网页中id不能重复，可以根据id去选择元素
+            class选择器：页面中元素可以有class属性，class是可以重复的，可以根据class选择元素
+            标签选择器：通过标签去选择元素
+
+        4. JS 中获取元素的方式有：
+            1) document.getElementById('id值');
+            2) document.getElementsByTagName('标签');
+            3) document.getElementsByClassName('class值');
+            4) document.getElementsByName('name属性值');
+            5) document.querySelector()   document.querySelectorAll()
+
+
+        通过id获取元素
+        1. 每个元素都有id属性，但是在一个页面id不要重复
+        2. 我们可以通过元素的id属性去获取元素
+        3. 语法格式：
+            document.getElementById('id值');
+
+        4. 元素的id属性值、class属性值是区分大小的
+        5. getElementById() 方法只能是由 document 去调用，别的元素是不能调用
+
+
+        通过标签名获取元素
+        1. 这种方式就是通过标签去获取元素
+        2. 语法格式：
+            document.getElementsByTagName('标签');
+        3. 通过标签名去获取元素，在页面中可能这种标签有很多个，这时候就会获取到这多个标签，
+            返回一个类数组对象，以后要用哪个元素，就通过索引去获取相应的元素
+        4. getElementsByTagName() 不仅document可以调用，别的元素也可以调用
+
+        通过class获取元素
+        1. 语法格式：
+            document.getElementsByClassName('class值');
+        2. 因为元素的class值是可以重复的，所以通过class获取元素应该是可以拿到多个的，所以，返回是一个类数组对象！
+            之后要用哪个具体的元素就通过索引获取一下
+        3. class 是 js 中的保留字，所以以后一般用到class的地方都不直接写class，写的是 className
+        4. 该方法不仅 document 可以调用，其它元素也是可以调用的
+
+        通过name属性获取元素
+        1. 之前我们学习过表单，表单项元素都可以写name属性
+        2. 语法格式：
+            document.getElementsByName('name属性值');
+        3. 元素的name属性是可以重复的，所以获取到的可能是多个元素，返回的是类数组对象，
+            如果要用具体某个元素的话，需要使用索引获取到
+        4. 只有 document 对象可以调用该方法，其它元素是不能调用的
+
+        通过CSS选择器获取元素
+        1. 之前我们学习过CSS，里面有各种选择器，这里js获取元素，也可以使用CSS选择器的写法
+        2. 比如：#abc、.aaa、.box>ul、.box ul、.box>ul>li 
+        3. 语法格式：
+            document.querySelector('CSS选择器');  // query是查询的意思  selector是选择器
+            docuemnt.querySelectorAll('CSS选择器');
+
+        4. 语法说明：
+            方法1表示获取符合条件的第一个元素并返回
+            方法2表示获取符合条件的所有元素并返回，返回的是一个类数组对象
+        5. IE低版本不支持！
+     -->
+
+     <div id="box1">
+        <div>哈哈1</div>
+        <div>哈哈2</div>
+        <div>哈哈3</div>
+    </div>
+    <div id="box2">呵呵呵</div>
+    <div>呵呵呵</div>
+    <div>呵呵呵</div>
+
+    <p class="p1">段落1</p>
+    <p class="p1">段落2</p>
+    <div class="p1">我是div</div>
+    <p>段落</p>
+
+    <input type="checkbox" name="hobby">蓝球
+    <input type="checkbox" name="hobby">足球
+    <input type="checkbox" name="hobby">排球
+    <input type="checkbox" name="hobby">网球
+
+
+    <script>
+        // 1.演示通过id获取元素
+        // let div = document.getElementById('box1');
+        // console.log(div);
+
+        // let div2 = document.getElementById('BOX2');
+        // console.log(div2); // null
+
+        // 2.演示通过标签名获取元素
+        // let divs = document.getElementsByTagName('div');
+        // console.log(divs); // 返回的是类数组对象
+        // console.log(divs[1]); // 如果要使用某个元素，使用索引获取
+
+        // 演示使用别的元素调用 getElementsByTagName()
+        // let box1 = document.getElementById('box1');
+        // console.log(box1);
+        // let divs =  box1.getElementsByTagName('div');
+        // console.log(divs);
+
+        // 3.演示通过class获取元素
+        // let p1 =  document.getElementsByClassName('p1');
+        // console.log(p1);
+        // console.log(p1[2]);
+
+        // 4.演示通过name属性获取元素
+        // let inputs = document.getElementsByName('hobby');
+        // console.log(inputs);
+
+        // console.log(inputs[2]); // 以后用是这么用：inputs[2].xxx
+
+        // 5.演示通过CSS选择器获取元素
+        let divs = document.querySelectorAll('#box1>div');
+        console.log(divs);
+
+        let dd = document.querySelector('#box1>div');
+        console.log(dd);
+
+    </script>
+</body>
+</html>

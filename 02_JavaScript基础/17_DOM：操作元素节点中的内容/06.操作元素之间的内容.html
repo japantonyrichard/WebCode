@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        操作元素之间的内容
+
+        1. 之前我们学习过 创建元素、创建属性(了解)、创建文本(了解)
+
+        2. 使用元素的以下属性就可以很方便的去操作元素之间的内容：
+            元素.innerHTML  (掌握)
+            元素.innerText (了解)
+            元素.textContent (了解)
+
+        
+        通过 innerHTML 操作元素之间的内容
+        1. 语法格式：
+            元素.innerHTML;  // inner-内部
+            元素.innerHTML = 值;
+        2. 这种方式可以获取元素之间的所有的内容，包括html标签
+        3. 这种方式是可以识别html标签
+
+        通过 innerText 操作元素之间的内容
+        1. 语法格式：
+            元素.innerText;
+            元素.innerText = 值;
+
+        2. 这种方式只能识别元素之间的文字内容，不识别标签
+
+        通过 textContent 操作元素之间的内容
+        1. 语法格式：
+            元素.textContent;
+            元素.textContent = 值;
+        2. 这种方式也是只能识别元素之间的文字内容，不识别标签
+
+        innerText 和 textContent的区别：
+        innerText 获取不到隐藏元素的内容，textContent可以获取到隐藏元素的内容
+     -->
+
+     <div>
+        哈哈
+        <h3 style="display: none;">呵呵</h3>
+    </div>
+
+
+    <script>
+        // 1.演示 innerHTML的使用
+        // 获取div元素
+        // let div = document.querySelector('div');
+        // // 获取元素之间的内容
+        // console.log(div.innerHTML);
+
+        // // 设置元素之间的内容，会直接将原来的内容给覆盖掉
+        // div.innerHTML = 'Hello';
+
+        // // 不覆盖之前的内容，而是追加
+        // div.innerHTML = div.innerHTML + 'world';
+
+        // div.innerHTML = '<h3>我是标题</h3>';
+
+        // 2.演示 innerText的使用
+        // 获取 div
+        // let div = document.querySelector('div');
+        // console.log(div.innerText);
+
+        // div.innerText = '哈哈哈哈啊';
+        // div.innerText = '<h3>呵呵呵</h3>';
+
+        // div.innerText = div.innerText + '新内容';
+
+        // 3.演示 textContent 的使用
+        // let div = document.querySelector('div');
+
+        // // 获取div之间的内容
+        // console.log(div.textContent);
+
+        // // 设置div之间内容
+        // div.textContent = '哈哈哈啊';
+
+        // div.textContent = div.textContent + 'Hello';
+
+        // div.textContent = div.textContent + '<h3>aaaaaaaaaaaaa</h3>';
+
+        // 演示textContent 和 innerText 区别
+        let div = document.querySelector('div');
+        // console.log(div.innerText); // 获取不到隐藏的内容
+        console.log(div.textContent); // 能获取到隐藏的内容
+    </script>
+</body>
+</html>

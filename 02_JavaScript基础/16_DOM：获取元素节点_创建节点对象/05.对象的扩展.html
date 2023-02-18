@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        对象的扩展
+
+        1. ES6 在对象这部分也新增了特性
+
+        2. 新增的特性可以使对象的属性和函数写起来更简单！
+
+        3. ES6 对于对象属性的变化：
+            let obj = {
+                name, //表示属性名是name，属性值是name变量
+                age // 表示属性名是age，属性值是age变量
+            };
+        4. ES6 中对于对象的函数的变化：
+            let obj = {
+                job(){ // 省略了 function
+
+                }
+            };
+     -->
+     <script>
+        // 之前对象的写法
+        let obj1 = {
+            name:'张三', // 属性名或者键名默认是字符串的，所以不用加引号
+            age:18,
+            job:function(){
+                console.log(123);
+            }
+        };
+
+        let name = '李四';
+        let age = 20;
+        let obj2 = {
+            name:name, // 前者是属性名，后者是一个变量
+            age:age, // 前者是属性名，后者是一个变量
+            job:function(){
+                console.log(345);
+            }
+        };
+
+        // ES6 的写法
+        let obj3 = {
+            name, // 表示属性名是name，属性值是name这个变量的值
+            age, // 表示属性名是age，属性值是age这个变量的值
+            job(){ // job 函数
+                console.log(789);
+            }
+        };
+
+        console.log(obj3.name); // 李四
+        console.log(obj3.age); // 20
+        obj3.job(); // 789
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        节点的属性 （了解）
+
+        1. 一个网页由各种节点组成：
+            文档节点 document
+            元素节点 element
+            属性节点 attribute
+            文本节点 text
+
+            注释节点
+            文档片段节点
+            文档声明节点
+
+        2. 所有的节点都有下面这三个属性：
+            nodeType：节点类型，不同的节点有不同的类型值，通过类型值，就可以判断一个节点是什么类型的节点
+            nodeName：节点名字
+            nodeValue：节点的值
+
+
+        element 元素
+        tag 标签
+        attribute 属性
+        value 值
+        text 文本
+        node 节点
+        parent 父
+        child 子
+        sibling 兄弟
+        first 第一个
+        get 获取
+        by 通过...的方式    getElementById 
+     -->
+
+     <div id="box">哈哈</div>
+
+     <script>
+         // 演示节点的类型属性  nodeType
+         // document对象
+         console.log(document);
+         console.log(document.nodeType); // 9
+         console.log(document.nodeName); // #document
+         console.log(document.nodeValue); // null
+ 
+         // 元素节点
+         let div = document.getElementById('box'); // 获取 id='box' 的元素
+         console.log(div);
+         console.log(div.nodeType); // 1
+         console.log(div.nodeName); // DIV
+         console.log(div.nodeValue); // null
+ 
+         // 属性节点
+         let id = div.getAttributeNode('id');
+         console.log(id);
+         console.log(id.nodeType); // 2
+         console.log(id.nodeName); // id
+         console.log(id.nodeValue); // box
+ 
+         // 文本节点
+         let text = div.firstChild;
+         console.log(text);
+         console.log(text.nodeType); // 3
+         console.log(text.nodeName); // #text
+         console.log(text.nodeValue); // 哈哈
+ 
+     </script>
+</body>
+</html>

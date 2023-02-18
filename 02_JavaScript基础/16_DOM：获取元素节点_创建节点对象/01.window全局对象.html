@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        内置对象：就是 JS 已经创建好的对象，我们可以直接使用
+        内置对象有：
+        Object
+        Number
+        String
+        Boolean
+        Math
+        Date
+        window
+
+        window 对象
+        1. window 是窗口的意思
+        2. window 是一个 JS 中内置的对象，也称为 全局对象
+        3. window 对象是全局对象，在使用它的时候可以：window.xxx;  window.xxx();
+            直接简写为：xxx;   xxx();
+        4. 我们在全局作用域中声明的变量和函数(不能用let关键字)都会作为 window 对象的属性 和 方法
+        5. window 内置对象和之前的内置对象不一样的是，它的首字母是小写的
+     -->
+
+     <script>
+        console.log(window);
+
+        console.log(typeof window); // object
+
+        console.log(window instanceof Object); // true
+
+        // 该变量就会自动作为 window 对象的属性
+        var num1 = 10;
+
+        // 该函数就会自动作为 window 对象方法
+        function fun1(){
+            console.log(123);
+        }
+
+        console.log(window);
+
+        console.log(window.num1);
+        console.log(num1);
+
+        window.fun1();
+        fun1();
+
+        // let 声明的变量不会作为 window 对象的属性的 
+        let num2 = 20;
+        let fun2 = () => {
+            console.log(456);
+        };
+
+        console.log(window.num2); // undefined
+        window.fun2(); // 报错
+
+
+        // let obj = {
+        //     name:'张三',
+        //     job:function(){
+
+        //     }
+        // };
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            /* 去掉项目符号黑点 */
+            list-style: none;
+            padding: 38px 10px;
+        }
+
+        a {
+            /* 去掉超链接下划线 */
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    <ul>
+        <li><a href="#">手机</a></li>
+        <li><a href="#">红米</a></li>
+        <li><a href="#">电视</a></li>
+        <li><a href="#">笔记本</a></li>
+        <li><a href="#">平板</a></li>
+        <li><a href="#">家电</a></li>
+        <li><a href="#">路由器</a></li>
+        <li><a href="#">服务</a></li>
+        <li><a href="#">社区</a></li>
+    </ul>
+    -->
+
+    <script>
+        // 创建ul元素
+        let ul = document.createElement('ul');
+        // 获取body  document对象有一个body属性，就能得到body标签
+        let body = document.body;
+        // 将ul添加到body中
+        body.appendChild(ul);
+
+        let arr = ['手机', '红米', '电视', '笔记本', '平板', '家电', '路由器', '服务', '社区'];
+
+        for (let i = 0; i < 9; i++) {
+            // 创建li标签
+            let li = document.createElement('li');
+            // 将li添加到ul中
+            ul.appendChild(li);
+
+            // 创建a标签
+            let a = document.createElement('a');
+            // 将a添加到li中
+            li.appendChild(a);
+
+            // 创建属性节点
+            let href = document.createAttribute('href');
+            // 给属性设置值
+            href.value = '#';
+            // 给 a 设置属性
+            a.setAttributeNode(href);
+
+            // 创建文本节点
+            let text = document.createTextNode(arr[i]);
+            // 将文本添加到a中
+            a.appendChild(text);
+        }
+    </script>
+</body>
+</html>

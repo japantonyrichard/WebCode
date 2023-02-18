@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        目前我们能够通过元素的 innerHTML 去获取、设置元素之间的内容
+
+        表单项元素，input是一个单标签，就不能使用 innerHTML 获取内容
+
+        对于表单项元素，我们要通过 value 属性去获取、设置它的值。
+
+        格式：
+            表单项元素.value;
+            表单项元素.value = 值;
+
+     -->
+
+    <input type="text" value="123">
+    <button>点我查看输入的值</button>
+
+    <script>
+        // 获取到button元素
+        let btn = document.querySelector('button');
+
+        // 给按钮绑定鼠标单击事件
+        btn.onclick = () => {
+            // 获取input元素
+            let input = document.querySelector('input');
+
+            // 获取值
+            console.log(input.value);
+
+            input.value = '哈哈';
+        };
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        DOM
+
+        1. DOM，document object model，文档对象模型
+        2. 之前学习html，我们知道一个网页可以看做是一个文档，在 JS 眼中，一个文档就认为是一个 document 对象
+        3. document 对象是 JS 内置的对象，当页面运行起来后，document 对象就自动创建好了！
+
+        4. 元素 和 标签是一个意思。   <div>哈哈哈</div>
+        
+
+        节点(node)
+
+        1. JS 中的名词：节点(node)
+        2. 节点就是一个名词，比如，原来我们称 h3 是 h3标签 或者 h3元素，现在可以称为 h3节点
+        3. 节点总共有 7 种：
+            1) document     文档节点
+            2) element      元素节点
+            3) attribute    属性节点
+            4) text         文本节点
+
+            5) documentType 文档类型节点
+            6) comment      注释节点
+            7) document fragment    文档片段节点
+        4. 节点之间的关系有两种：
+            1) 父子关系
+            2) 兄弟关系
+
+        总结：
+            * 整个 html 网页就是一个 document 对象，在网页运行起来后，document 对象就自动创建好了
+            * 学习 DOM，其实就是学习以下内容：
+            * 获取页面中的元素
+            * 操作元素（添加元素、删除元素等）
+            * 操作元素的文本
+            * 操作元素的属性
+            * 操作元素的样式
+        
+            学习 DOM 其实就是学习使用js去操作页面中的（部分）元素、文本、属性、样式！
+     -->
+
+    <a href="#">
+        <!-- 文本算是a标签的儿子 -->
+        点我跳转百度   
+    </a>
+    <div>
+        <p>
+            <a href=""></a>
+        </p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+</body>
+</html>

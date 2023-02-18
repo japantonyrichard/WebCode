@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        属性节点的操作
+
+        1. 之前我们学习过怎样去 创建属性节点、给属性节点赋值，但是过于繁琐，不用！！！
+
+        2. 接下来会学习一种标准属性的操作方式，需要掌握，因为它操作起来比较简单。
+
+
+        元素的 attributes 属性 （了解）
+        1. 通过元素节点的attributes属性，可以获取到元素具有的所有的属性，返回类数组对象
+
+
+        元素节点的 getAttributeNode 方法  （了解）
+        1. 该方法可以获取指定的属性节点
+     -->
+
+    <div id="box" class="box" title="呵呵">
+        哈哈
+    </div>
+
+    <script>
+        // 获取div元素
+        // let div = document.getElementById('box');
+
+        // // 获取元素所有的属性
+        // let attrs = div.attributes;
+        // console.log(attrs);
+
+        // for(let i = 0; i < attrs.length; i++){
+        //     console.log(attrs[i]);
+        // }
+
+        let div = document.getElementById('box');
+
+        let aa = div.getAttributeNode('title');
+        console.log(aa);
+    </script>
+</body>
+
+</html>

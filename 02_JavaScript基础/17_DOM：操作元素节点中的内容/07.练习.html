@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 80px;
+            height: 30px;
+        }
+
+        div {
+            width: 400px;
+            height: 300px;
+            border: 1px solid red;
+            margin: 20px 0;
+        }
+
+        input{
+            width: 200px;
+            height: 50px;
+            border: 1px solid blue;
+            box-sizing: border-box;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <button type="button">创建div</button>
+    <button type="button">创建input</button>
+    <script>
+        // 获取到按钮
+        let btns = document.querySelectorAll('button');
+
+        // 给按钮绑定一个鼠标点击事件
+        btns[0].onclick = function () { // click 点击
+            // 创建div元素
+            let div = document.createElement('div');
+            let body = document.body;
+
+            // 将 div 添加到body中
+            body.appendChild(div);
+        };
+
+        // 给另一个按钮绑定鼠标单击事件
+        btns[1].onclick = () => {
+            let divs = document.querySelectorAll('div');
+
+            for(let i = 0; i < divs.length; i++){
+
+                // 创建input
+                // let input = document.createElement('input');
+                // divs[i].appendChild(input);
+
+                // 利用 innerHTML 属性给元素之间设置内容
+                divs[i].innerHTML = divs[i].innerHTML + '<input type="text">';
+            }
+        };
+    </script>
+</body>
+</html>

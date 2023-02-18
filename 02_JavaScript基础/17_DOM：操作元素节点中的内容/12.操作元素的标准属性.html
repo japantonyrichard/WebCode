@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        操作元素的标准属性
+
+        1. 元素的标准属性是指html标签本身有的属性，不是我们自己定义的
+        2. 语法格式：
+            元素.属性名;
+            元素['属性名'];
+
+            元素.属性名 = 值;
+            元素['属性名'] = 值;
+
+        class 是 JS 中的保留字，如果 直接写 class 不行，就换成 className
+
+     -->
+
+    <div id="box" class="box" title="呵呵" my="我的">哈哈哈</div>
+
+    <script>
+        // 获取到div元素
+        let div = document.getElementById('box');
+        console.log(div);
+
+        console.log(div.title); // 呵呵
+        console.log(div['className']); // box
+        console.log(div.my); // undefined
+
+
+        div.title = '哈哈哈哈';
+    </script>
+</body>
+
+</html>

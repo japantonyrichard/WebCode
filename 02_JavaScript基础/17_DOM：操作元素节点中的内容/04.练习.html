@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+        input {
+            width: 200px;
+            height: 50px;
+            border: 2px solid blue;
+            /* 将标准盒模型转为怪异盒模型 */
+            box-sizing: border-box;
+            /* 浮动会忽略掉元素之间的空白 */
+            float: left;
+            padding-left: 10px;
+            /* 去掉默认鼠标点进入后的黑色边框 */
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    <div class="box">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+    </div>
+    -->
+
+    <script>
+        // 创建div元素
+        let div = document.createElement('div');
+        // 获取body元素
+        let body = document.querySelector('body');
+        // 将div元素加到body中
+        body.appendChild(div);
+
+        // 创建属性节点
+        let divCls = document.createAttribute('class');
+        // 给属性节点赋值
+        divCls.value = 'box';
+        // 给元素设置属性
+        div.setAttributeNode(divCls);
+        // 循环添加4个input
+        for (let i = 0; i < 4; i++) {
+            // 创建input元素
+            let input = document.createElement('input');
+            // 将input添加到div中
+            div.appendChild(input);
+
+            // 创建属性节点
+            let type = document.createAttribute('type');
+            // 给属性赋值
+            type.value = 'text';
+            input.setAttributeNode(type);
+        }
+    </script>
+</body>
+</html>
