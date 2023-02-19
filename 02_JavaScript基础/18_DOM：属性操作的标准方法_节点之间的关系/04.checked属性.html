@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        checked 属性
+
+        1. 在表单项元素复选框有checked属性，该属性就表示复选框默认选中
+        2. checked 属性是标准属性，所以可以通过 元素.checked; 获取属性值
+            也可以通过  元素.checked = 值; 给属性赋值
+        3. 之所以单独讲 checked属性是因为该属性的值是 true、false
+
+     -->
+     <!-- checked="checked" 属性名checked和属性值相等时可以省略 -->
+    <input type="checkbox" name="hobby" checked>
+    <input type="checkbox" name="hobby">
+    <input type="checkbox" name="hobby">
+    <input type="checkbox" name="hobby" checked>
+    <input type="checkbox" name="hobby">
+
+    <script>
+
+        // 获取所有的input
+        let inputs = document.getElementsByName('hobby');
+
+        // 遍历类数组对象
+        for(let i = 0; i < inputs.length; i++){
+            console.log(inputs[i].checked);
+        }
+
+        inputs[4].checked = true;
+        inputs[0].checked = false;
+    </script>
+</body>
+
+</html>

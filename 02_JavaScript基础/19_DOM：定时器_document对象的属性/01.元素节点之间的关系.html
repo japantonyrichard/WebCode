@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        元素节点之间的关系
+
+        1. JS 中认为元素之间的关系有：父元素、子元素、兄弟元素
+
+        2. 任意一个元素，我们可以通过 相关的关系属性 去获取该元素的 父元素、子元素、兄弟元素
+
+        3. 元素之间的关系的属性：
+            元素.parentElement; 获取元素的父元素
+            元素.children;      获取元素的所有的子元素
+            元素.firstElementChild  获取元素的第一个子元素
+            元素.lastElementChild   获取元素的最后一个子元素
+            元素.nextElementSibling 获取元素的下一个兄弟元素    // Sibling 兄弟
+            元素.previousElementSibling 获取元素的上一个兄弟元素 // previous 上一个
+
+            js支持链式调用。 . . . .
+     -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        // 获取所有的li
+        // let lis = document.querySelectorAll('li');
+
+        // 获取元素的父元素
+        // console.log(lis[2].parentElement);
+        // console.log(lis[2].parentElement.parentElement.parentElement);
+
+        // 获取ul
+        // let ul = document.querySelector('ul');
+
+        // 获取ul中的所有的子元素
+        // let lis = ul.children;
+        // console.log(lis);
+
+        // for(let i = 0; i < lis.length; i++){
+        //     console.log(lis[i].innerHTML);
+        // }
+
+        // 获取ul
+        // let ul = document.querySelector('ul');
+        // 获取元素的第一个子元素
+        // console.log(ul.firstElementChild.innerHTML);
+
+        // 获取元素的最后一个子元素
+        // console.log(ul.lastElementChild.innerHTML);
+
+        // 获取所有的li
+        let lis = document.querySelectorAll('li');
+
+        // 获取元素的上一个兄弟元素
+        console.log(lis[2].previousElementSibling.innerHTML);
+
+        // 获取元素的下一个兄弟元素
+        console.log(lis[2].nextElementSibling.innerHTML);
+
+    </script>
+</body>
+
+</html>

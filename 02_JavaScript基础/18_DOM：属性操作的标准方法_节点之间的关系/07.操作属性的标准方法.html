@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        操作属性的标准方法（掌握）
+
+        1. 目前，我们可以通过 元素.属性 的方式获取或者设置属性。很方便
+
+        2. 使用 元素.属性 的方式，唯一不足的是 不能操作 自定义属性，只能操作标准属性
+
+        3. 其实，操作属性，也可以使用一些方法，这些方法也推荐使用，
+           它们不仅能操作标准属性，也可以操作自定义属性，也很简单！
+
+        4. 操作元素属性的方法使用格式：
+            元素.getAttribute('属性名');                获取属性        元素.属性名;
+            元素.setAttribute('属性名', '属性值');       设置属性        元素.属性名 = 值;
+            元素.removeAttribute('属性名');             删除属性        元素.属性名 = '';   remove 移除
+            元素.hasAttribute('属性名');                判断元素是否有指定的属性
+            元素.hasAttributes();                       判断元素有没有属性
+     -->
+
+    <div id="box" class="box" title="哈哈" my="我的">张无忌</div>
+    <p>我是段落</p>
+
+    <script>
+        // 1.演示使用 元素.属性名 的方式操作标准属性
+        // 获取div
+        // let div = document.getElementById('box');
+
+        // // 获取属性
+        // console.log(div.title); // 哈哈
+        // console.log(div['className']); // box
+        
+        // // 设置属性
+        // div.title = '啊啊';
+
+        // // 删除属性
+        // div.title = '';
+
+
+        // 2.演示使用 元素.属性方法() 的方式去操作属性
+        // 获取div元素
+        let div = document.getElementById('box');
+
+        // 获取属性
+        console.log(div.getAttribute('id')); // box
+        console.log(div.getAttribute('class')); // box  这里写'className'反而不行！null 不确定就试一试
+
+        // 设置属性
+        div.setAttribute('title', '张三');
+        div.setAttribute('style', 'color:red;');
+
+        // 删除属性
+        div.removeAttribute('style');
+        div.removeAttribute('title');
+
+        // 判断有没有指定的属性
+        console.log(div.hasAttribute('style')); // false
+        console.log(div.hasAttribute('id')); // true
+
+        // 判断有没有属性
+        console.log(div.hasAttributes()); // true
+        let p = document.querySelector('p');
+        console.log(p.hasAttributes()); // false
+
+        // 操作自定义属性
+        console.log(div.my); // undefined
+        console.log(div.getAttribute('my')); // 我的
+    </script>
+</body>
+
+</html>

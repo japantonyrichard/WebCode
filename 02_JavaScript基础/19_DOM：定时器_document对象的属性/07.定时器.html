@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        定时器
+
+        1. 定时器：就是可以每隔一定的时间，去做某个事情
+        2. JS 中定时器的写法：
+            let 变量名 = setInterval(回调函数, 时间间隔);   // window.setInterval() window.可省略
+        3. 语法说明：
+            1) 参数1是一个函数，也就是回调函数，定时器要做的事情就写在这个函数里面的
+            2) 参数1可以是匿名回调函数，也可以是调用其它有名的函数，如果是调用其它有名函数的话，只需要写函数名，不要写()
+                如果要写() 的话需要用引号引起来，比如 'fun1()'
+            3) 参数2是表示时间间隔，单位默认就是毫秒，那就会每隔指定的时间后就执行一次回调函数，无限次
+            4) 时间间隔后面还可以写参数，这些参数会传递给回调函数
+        4. setInterval函数是 window对象的函数，window对象是全局对象所以可以直接调用函数
+        5. 定时器代码写完后，不是打开浏览器就立马执行执行，而是等时间间隔到了之后才会执行第一次！
+        6. 定时器，如果不停止的话，会无限次的执行下去。但是定时器的执行不会影响到后面代码的执行，它是异步的！
+
+
+        定时器的停止
+        1. 定时器，只要我们不停止，它就会一直执行下去
+        2. 在一个页面中，可以写多个定时器。每个定时器是有返回值的，返回值就是该定时器的编号，从 1 开始
+        3. 我们要停止一个定时器，就是要通过定时器编号去停止，停止的语法：
+            clearInterval(定时器编号);
+
+        4. 一个定时器用完后，最好要停掉！   Interval 时间间隔   clear 清除
+
+     -->
+    <script>
+        // 在控制台每隔2秒打印一个Hello
+
+        // 方式1：使用匿名回调函数实现
+        // let timer = setInterval(function(){
+        //     console.log('hello');
+        // }, 2000); // 打开浏览器后2s才执行第一次
+
+        // 方式2：使用有名函数实现
+        // let fun = () => {
+        //     console.log('hello');
+        // };
+
+        // let timer = setInterval(fun, 2000);
+
+        // console.log(123);
+
+        // let fun = (a, b) => {
+        //     console.log(a + b);
+        // };
+
+        // setInterval(fun, 2000, 10, 20);
+
+
+        let timer1 = setInterval(() => {
+            console.log('定时器1被执行！');
+        }, 1000);
+
+        let timer2 = setInterval(() => {
+            console.log('定时器2被执行！');
+        }, 1000);
+
+        console.log(timer1); // 1
+        console.log(timer2); // 2
+
+        clearInterval(timer2);
+    </script>
+</body>
+
+</html>

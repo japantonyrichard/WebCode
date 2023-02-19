@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button">全选</button>
+    <button type="button">全不选</button>
+    <button type="button">反选</button>
+
+    <br>
+
+    <input type="checkbox">篮球
+    <input type="checkbox">足球
+    <input type="checkbox">排球
+    <input type="checkbox">网球
+    <input type="checkbox">台球
+
+    <script>
+        // 获取到所有的按钮
+        let btns = document.querySelectorAll('button');
+        // 获取所有的input
+        let inputs = document.querySelectorAll('input');
+
+        // 给全选按钮绑定事件
+        btns[0].onclick = () => {
+            for(let i = 0; i < inputs.length; i++){
+                inputs[i].checked = true;
+            }
+        };
+
+        // 给全不选按钮绑定事件
+        btns[1].onclick = () => {
+            for(let i = 0; i < inputs.length; i++){
+                inputs[i].checked = false;
+            }
+        };
+
+        // 反选
+        btns[2].onclick = () => {
+            for(let i = 0; i < inputs.length; i++){
+                // if(inputs[i].checked){   // if(inputs[i].checked == true){} 可以省略
+                //     inputs[i].checked = false;
+                // }else{
+                //     inputs[i].checked = true;
+                // }
+                inputs[i].checked = !inputs[i].checked; // 取反再放回去
+            }
+        };
+    </script>
+</body>
+
+</html>

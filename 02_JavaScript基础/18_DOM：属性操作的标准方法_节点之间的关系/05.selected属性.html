@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        selected 属性
+
+        1. 在表单项元素 select 下拉列表中，可以使用 selected 属性默认选中选项
+        2. selected 属性也是标准属性，也可以使用
+            元素.selected; 获取值
+            元素.selected = 值; 赋值
+        3. 之所以单独讲它，是因为 selected 属性的值也是只有两个：true、false
+     -->
+     <!-- selected="selected" 属性名selected和属性值相等时可以省略 -->
+     <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+    </select>
+
+    <script>
+
+        // 获取所有的option标签(元素)
+        let options = document.getElementsByTagName('option');
+
+        for(let i = 0; i < options.length; i++){
+            console.log(options[i].selected);
+        }
+
+        options[3].selected = true;
+
+    </script>
+</body>
+</html>

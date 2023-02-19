@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        节点之间的关系（了解，没上面的好用）
+
+        1. 之前我们学的是 元素节点之间的关系
+        2. 节点之间的关系：元素节点、文本节点、属性节点、document节点等等
+        3. 这种关系和之前元素节点之间的关系差不多，都是使用相关的关系属性去获取内容
+        4. 相关的关系属性：
+            元素.parentNode;  获取一个元素的父元素
+            元素.childNodes;  获取元素的所有的子元素节点
+            元素.firstChild;  获取元素的第一个子元素节点
+            元素.lastChild;   获取元素的最后一个子元素节点
+            元素.previousSibling; 获取元素的上一个兄弟节点
+            元素.nextSibling; 获取元素的下一个兄弟节点    
+
+
+
+        注意：使用上面这种方式，会认为空白是一个文本节点！！！  这种方式认为空格也是一个文本节点，不好用
+
+     -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li></ul>
+
+    <script>
+        // let lis = document.querySelectorAll('li');
+        // console.log(lis[2].parentNode);
+
+        // let ul = document.querySelector('ul');
+
+        // let children = ul.childNodes;
+        // console.log(children);
+
+        // console.log(ul.firstChild); // #text  这种方式认为空格也是一个文本节点，不好用
+
+        // console.log(ul.lastChild); // #text  这种方式认为空格也是一个文本节点，不好用
+
+        let lis = document.querySelectorAll('li');
+        console.log(lis[2].previousSibling.previousSibling);
+
+        console.log(lis[2].nextSibling.nextSibling.innerHTML);// js支持链式调用。 . . . .
+    </script>
+</body>
+
+</html>

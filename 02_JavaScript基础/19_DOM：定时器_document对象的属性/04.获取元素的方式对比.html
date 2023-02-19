@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        两类获取页面元素方式的对比：
+
+        1. getElementXxx()
+
+        2. querySelectorXxx()
+
+        第二种方式的话 IE浏览器低版本不支持
+        第一种方式可以获取到后来添加的元素，第二种方式，只能获取到页面最初的元素（但不是绝对的！！！！）
+
+     -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <button>按钮</button>
+
+    <script>
+        let btn = document.querySelector('button');
+        let lis1 = document.querySelectorAll('li');
+        let lis2 = document.getElementsByTagName('li');
+
+        btn.onclick = () => {
+            let li = document.createElement('li');
+
+            li.innerHTML = '哈哈';
+
+            let ul = document.querySelector('ul');
+
+            ul.appendChild(li);
+
+            console.log(lis1.length); // 5
+            console.log(lis2.length);
+        };
+    </script>
+</body>
+
+</html>

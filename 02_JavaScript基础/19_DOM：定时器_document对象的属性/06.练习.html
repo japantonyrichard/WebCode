@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        table {
+            width: 70%;
+            margin: 30px auto;
+            border-collapse: collapse;
+        }
+
+        tr,
+        td {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>动态生成表格</h3>
+    <span>行数：</span>
+    <input type="text" class="rowNum">
+    <span>列数：</span>
+    <input type="text" class="colNum">
+    <button>生成表格</button>
+
+    <script>
+        // 获取到按钮
+        let btn = document.querySelector('button');
+
+        // 给按钮绑定点击事件
+        btn.onclick = () => {
+            // 创建table标签
+            let table = document.createElement('table');
+
+            // 将table添加到页面中
+            document.body.appendChild(table);
+
+            // 获取行数
+            let rowNum = document.querySelector('.rowNum').value;
+            // 获取列数
+            let colNum = document.querySelector('.colNum').value;
+
+            for (let i = 0; i < rowNum; i++) {
+                // 创建tr标签
+                let tr = document.createElement('tr');
+                // 将tr添加到table中
+                table.appendChild(tr);
+
+                for (let j = 0; j < colNum; j++) {
+                    // 创建td标签
+                    let td = document.createElement('td');
+                    if (j == colNum - 1) {
+                        td.innerHTML = '<button>删除</button>';
+                        // 将td添加到tr中
+                    } else {
+                        td.innerHTML = '哈哈';
+                        // 将td添加到tr中
+                    }
+                    tr.appendChild(td);
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>

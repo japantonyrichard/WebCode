@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .box{
+            /* 画圆 */
+            border-radius: 50%;
+            border: 2px solid blue;
+        }
+
+        .box2{
+            /* 水平移动距离 垂直移动的距离 模糊度 阴影大小 阴影颜色 阴影位置 */
+            box-shadow: 0 0 30px gold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        操作元素的标准属性
+
+        1. 昨天已经学过操作元素的标准属性
+        2. 格式：
+            元素.属性名;
+            元素['属性名'];
+            元素.属性名 = 值;
+            元素['属性名'] = 值;
+
+        
+        操作元素的class属性
+        1. class属性也是元素的标准属性
+        2. 按道理来说，可以使用：元素.class; 方式获取class属性的值，但是不行
+        3. 这是因为 class 是 JS 中的保留字，不能直接使用，一般使用class的地方，往往写成 className
+        4. 操作元素的class属性格式：
+            元素.className;
+            元素['className'];
+            元素.className = 值;
+            元素['className'] = 值;
+     -->
+
+    <div id="box">
+
+    </div>
+    <button class="aaa bbbb">点我</button>
+
+    <script>
+        // 获取按钮元素
+        let btn = document.querySelector('button');
+
+        btn.onclick = () => {
+            // 获取到 div 元素
+            let div = document.getElementById('box');
+
+            // 给元素的class属性赋值
+            // div.className = 'box box2';
+            div.className = 'box';
+
+            div.className = div.className + ' box2'; // box空格box2 连接+
+        };
+    </script>
+</body>
+
+</html>

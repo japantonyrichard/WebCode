@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src=""></script>
+    <title>挖掘机</title>
+</head>
+
+<body>
+    <!-- 
+        document 对象有很多属性，分为三类：  （了解）
+        1. 快捷方式属性：可以很方便的让我们通过这些属性获取一些内容
+            1) doctype 属性，获取文档声明
+            2) documentElement 属性，获取文档的根元素，也就是html标签   （掌握**************）
+            3) body 属性，获取body元素 （掌握**************）
+            4) head 属性，获取head元素
+            5) title 属性，获取title标签中的内容，也可以通过该方式给title设置内容
+        2. 节点集合属性：下面的这些属性返回的都是多条数据，所以返回的是类数组对象
+            1) links 属性：能够获取到页面中所有设置了 href 属性的超链接
+            2) forms 属性：能够获取到页面中所有的表单
+            3) images 属性：能够获取到页面中所有的图片
+            4) scripts 属性：能够获取到页面中所有的 script 标签
+
+        3. 文档静态信息属性
+            1) documentURI 属性，能够获取到页面的地址
+            2) domain 属性，能够获取到页面地址中的域名
+            3) location 属性，通过该属性可以获取到 location对象，其实不用通过 document 的 location属性获取location对象，
+                location对象可以直接使用。
+        
+        4. location 对象的属性：
+            1) href 属性，该属性能够获取到当前浏览器地址栏地址，也可以通过它去设置地址，就能实现页面跳转  （掌握**************）
+            2) protocol 属性，该属性能够获取到浏览器地址栏地址的协议
+            3) host 属性，该属性能够获取到地址栏地址中 主机的ip地址 和 端口号
+                http  和 https 
+            4) hostname 属性，该属性返回主机名，也就是主机的ip地址 或 域名
+            5) port 属性，该属性返回地址栏地址中的 端口号
+            6) pathname 属性，该属性返回地址栏中域名后面的地址
+            7) search 属性，该属性返回地址栏中搜索部分的内容
+
+
+        cmd  ping www.baidu.com 可以拿到ip地址
+
+
+     -->
+
+     <a></a>
+     <a href="#"></a>
+     <a href="#"></a>
+     <a href="#"></a>
+     <a href="#"></a>
+
+     <form action=""></form>
+     <form action=""></form>
+     <img src="" alt="">
+     <img src="" alt="">
+     <img src="" alt="">
+     <img src="" alt="">
+
+    <script>
+        // console.log(document.doctype); // <!DOCTYPE html>
+        // console.log(document.documentElement);
+        // console.log(document.body);
+        // console.log(document.head);
+        // console.log(document.title);
+        // document.title = '呵呵呵';
+
+        console.log(document.links);
+        console.log(document.forms);
+        console.log(document.images);
+        console.log(document.scripts);
+    </script>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

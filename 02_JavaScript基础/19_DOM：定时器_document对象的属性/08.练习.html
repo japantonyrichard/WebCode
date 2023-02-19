@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 3px solid red;
+            margin: 0 auto;
+            /* 画圆 */
+            border-radius: 50%;
+            font-size: 70px;
+            line-height: 200px;
+            color: red;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>定时器</h2>
+    <div class="box">
+        5
+    </div>
+
+    <script>
+        // let timer;
+        let fun = () => {
+            let num = document.querySelector('.box').innerHTML;
+            num--;
+
+            if(num == 0){
+                // 跳转到百度
+                location.href = 'https://www.baidu.com/';
+                clearInterval(timer);
+            }else{
+                document.querySelector('.box').innerHTML = num;
+            }
+        };
+
+        let timer = setInterval(fun, 1000);
+        // timer = setInterval(fun, 1000);
+    </script>
+</body>
+
+</html>
