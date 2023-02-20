@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner {
+            position: relative;
+            width: 1226px;
+            height: 460px;
+            background-color: red;
+            margin: 50px auto;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 41px;
+            height: 69px;
+            background-color: burlywood;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        li {
+            list-style: none;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            float: left;
+            margin: 0 4px;
+        }
+
+        .active {
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(0, 0, 0, 0.4);
+        }
+
+        ul {
+            position: absolute;
+            right: 30px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        # 号有很多作用
+        1. 作为占位符，当不知道href具体写多少时，可以写个#
+        2. 点击href=# 会跳转到当前页面的顶部
+
+        href="javascript:;" 表示点击超链接后不会跳转
+     -->
+    <div class="banner">
+        <a href="javascript:;">
+            <img src="./images/1.webp" alt="">
+        </a>
+        <div class="prev"></div>
+        <div class="next"></div>
+        <ul>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        let prev = document.querySelector('.prev');
+        let next = document.querySelector('.next');
+        let img = document.querySelector('img');
+        let lis = document.querySelectorAll('li');
+
+        let arr = ['1.webp', '2.webp', '3.jpg', '4.webp'];
+        let count = 0;
+
+        function fun() {    // 这个函数是对重复写到的部分的优化，哪个需要用，就调这个函数就行了 让其与count一致
+            // 设置img的src路径
+            img.src = './images/' + arr[count];
+
+            // 去掉所有的li的class
+            for (let j = 0; j < lis.length; j++) {
+                lis[j].className = '';
+            }
+
+            // 设置当前li的class
+            lis[count].className = 'active'; 
+        }
+
+        // 前一张
+        prev.onclick = function () {
+            count--;
+            if (count < 0) {
+                count = arr.length - 1;
+            }
+            fun();
+        }
+
+        // 下一张
+        next.onclick = function () {
+            count++;
+            if (count > arr.length - 1) {
+                count = 0;
+            }
+
+            fun();
+        };
+
+        // 切换图片路径
+        function updateSrc() {
+            count++;
+            if (count > arr.length - 1) {
+                count = 0;
+            }
+
+            fun();
+        }
+
+        // 定时器，定时去调用切换图片的路径
+        let timer = setInterval(updateSrc, 2000);
+
+        // 当鼠标滑入 banner后，就不要切换图片了，其实也就是停止了定时器
+        // 当鼠标滑出banner后，定时器再打开
+        let banner = document.querySelector('.banner');
+
+        // 给banner绑定鼠标滑入事件
+        banner.onmouseover = function () {
+            // 停止定时器
+            clearInterval(timer);
+        }
+
+        // 绑定鼠标滑出事件
+        banner.onmouseout = function () {
+            // 这里要将新开的定时器赋值给timer变量，不然，上面鼠标滑入事件就不是停止当前这个定时器了
+            timer = setInterval(updateSrc, 2000);
+        }
+
+        // 给每个li绑定鼠标单击事件
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+
+                count = i;// 这里要特别注意！！！！！！！！！！！！！！！！！！！！！！************** 不然会乱！！！
+                fun();
+            }
+        }
+    </script>
+</body>
+
+</html>

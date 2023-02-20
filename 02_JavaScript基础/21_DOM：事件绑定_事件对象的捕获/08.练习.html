@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .box {
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+            width: 25px;
+            height: 40px;
+            border: 1px solid red;
+            text-align: center;
+            display: none;
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+            /* 父 - 儿子 / 2 图片垂直居中 */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="./images2/totop.png" alt="">
+    </div>
+    <script>
+        /**
+         * 默认回到顶部按钮是隐藏状态
+         * 当滚动条滚动到一定位置，top = 400px 显示 回到顶部按钮
+         * 然后点击回到顶部按钮，回到顶部，scrollTop = 0，然后隐藏回到顶部按钮
+         */
+        document.onscroll = function () {
+            //  获取到目前滚动条距离上面的距离
+            let top = document.documentElement.scrollTop || document.body.scrollTop;
+            if(top >= 400){
+                // 显示div
+                document.querySelector('.box').style.display = 'block';
+            }else{
+                // 隐藏div
+                document.querySelector('.box').style.display = 'none';
+            }
+        }
+        document.querySelector('.box').onclick = () => {
+            document.documentElement.scrollTop = document.body.scrollTop = 0;
+            // 隐藏div
+            document.querySelector('.box').style.display = 'none';
+        };
+    </script>
+</body>
+
+</html>

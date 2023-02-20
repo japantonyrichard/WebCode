@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .box {
+            width: 1180px;
+            height: 516px;
+            /* background-color: skyblue; */
+            margin: 50px auto;
+        }
+
+        .fun_box {
+            position: relative;
+            width: 1060px;
+            height: 516px;
+            /* background-color: red; */
+            float: right;
+        }
+
+        .fun_con {
+            position: relative;
+            width: 1060px;
+            height: 536px;
+            /* background-color: orange; */
+            overflow: hidden;
+        }
+
+        .fun_con>ul {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 2300px;
+            height: 516px;
+            /* background-color: antiquewhite; */
+            transition: all 0.6s;
+        }
+
+        .fun_con>ul>li {
+            width: 220px;
+            height: 516px;
+            float: left;
+            margin-right: 10px;
+            transition: all 0.4s ease;
+        }
+
+        .fun_con>ul>li:hover {
+            transform: translateY(-20px);
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            top: 50%;
+            margin-top: -35px;
+            width: 70px;
+            height: 70px;
+            border: 1px solid #c2a060;
+            display: block;
+            line-height: 70px;
+            background-color: #fff;
+        }
+
+        .left {
+            left: -36px;
+            display: none;
+        }
+
+        .right {
+            right: -36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="fun_box">
+            <div class="fun_con">
+                <ul>
+                    <li><a href="#"><img src="./images2/1.gif" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/3.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/4.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/5.gif" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/6.png" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/7.png" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/8.png" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/9.png" alt=""></a></li>
+                    <li><a href="#"><img src="./images2/10.png" alt=""></a></li>
+                </ul>
+            </div>
+            <a href="#" class="left"></a>
+            <a href="#" class="right"></a>
+        </div>
+    </div>
+
+    <script>
+        let rightBtn = document.querySelector('.right');
+        let leftBtn = document.querySelector('.left');
+
+        // 获取ul
+        let ul = document.querySelector('ul');
+
+        // 获取元素的left样式属性  0px   -230px
+        let left = getComputedStyle(ul).left;
+
+        left = parseInt(left); // 0   // parseInt 将字符串转换成整数
+
+        rightBtn.onclick = function () {
+            left -= 230;
+
+            if (left <= -1380) {
+                left = -1380;
+                rightBtn.style.display = 'none';
+            }
+
+            if (left <= -230) {
+                leftBtn.style.display = 'block';
+            }
+
+            // 将样式设置回去
+            ul.style.left = left + 'px';
+        }
+
+        leftBtn.onclick = function () {
+            left += 230;
+
+            if(left >= 0){
+                left = 0;
+                leftBtn.style.display = 'none';
+            }
+
+            // if (left >= -66666666) {     // 这里如果不设置的话两边点到底 左右两个按钮就全消失了 left < 0 left <= -230也行，没搞懂为什么...跟层级有关系？
+            //     rightBtn.style.display = 'block'; // 把这行移到上面if里面试试看，发现并不奏效...
+            // }
+            rightBtn.style.display = 'block'; // 不用if,这样也可以..
+
+            // 将样式设置回去
+            ul.style.left = left + 'px';
+        }
+    </script>
+</body>
+
+</html>

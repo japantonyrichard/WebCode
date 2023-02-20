@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            padding: 10px;
+
+            border: 5px solid blue;
+
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        DOM 常用属性
+
+        1. 通过 document 对象可以获取页面中的元素，这些元素有以下属性，它们的调用方式都是：元素.xxx;
+
+        2. DOM常用属性分为3类：
+            1) client系列，clientXXX
+            2) scroll系列，scrollXXX
+            3) offset系列，offsetXXX
+
+        
+        client系列的属性：
+        1. client系列的属性有4个，它们返回的都是整数值，而且没有单位
+        2. client系列的属性有：
+            1) clientWidth：返回元素的宽度，包括 width、左右padding     （掌握）
+            2) clientHeight：返回元素的高度，包括 height、上下padding   （掌握）
+            3) clientLeft：返回元素的左边框宽度                         （了解）
+            4) clientTop：返回元素的上边框宽度                          （了解）
+        
+        3. body元素的宽度和高度我们称为网页的实际宽度和高度
+        4. html元素的宽度和高度其实就是浏览器窗口实际大小，或者称为视口大小
+
+        scroll系列的属性：
+        1. scroll系列的属性有4个，它们返回的都是整数值，而且也没有单位
+        2. scroll系列的属性有：
+            1) scrollWidth：返回元素的宽度，包括 width、左右padding 和 溢出部分（即使设置了溢出部分隐藏）  （了解）
+            2) scrollHeight：返回元素的高度，包括 height、上面padding 和 溢出部分（即使设置了溢出部分隐藏） （了解）
+            3) scrollLeft：返回元素水平方向滚动条与左边的距离           （掌握）
+            4) scrollTop：返回元素垂直方向滚动条与上边的距离            （掌握）
+        
+        3. 平时我们很少给元素加滚动条，一般都是页面中自动有滚动条
+            浏览器页面中的垂直滚动条，一般浏览器都是将该滚动条算在 html 上，有些浏览器将滚动条算在body上
+            let top = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        4. scrollTop 和 scrollLeft 是可以赋值的！
+     -->
+
+    <div class="box"></div>
+
+    <script>
+        let box = document.querySelector('.box');
+        console.log(getComputedStyle(box).width); // 200px
+        // clientWidth：包括 width 和 padding
+        console.log(box.clientWidth); // 220
+
+        // clientHeight：包括 height 和 padding
+        console.log(box.clientHeight); // 220
+
+        // clientLeft：返回元素左边框的宽度
+        console.log(box.clientLeft); // 5  小数的话会四舍五入 比如5.6就是6
+
+        // clientTop：返回元素上边框的宽度
+        console.log(box.clientTop);
+        // body的宽度和高度称为网页实际宽度和高度
+        console.log(document.body.clientWidth);
+        console.log(document.body.clientHeight);
+
+        document.body.style.height = '2000px';
+        console.log(document.body.clientHeight);
+        console.log('------------------------------');
+        // html元素的宽度和高度是当前浏览器窗口的大小，也称视口大小
+        console.log(document.documentElement.clientWidth);
+        console.log(document.documentElement.clientHeight);
+    </script>
+</body>
+
+</html>

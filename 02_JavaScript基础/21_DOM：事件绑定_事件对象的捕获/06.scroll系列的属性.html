@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+
+            padding: 50px;
+            border: 5px solid blue;
+            margin: 50px;
+
+            /* 文字以一行显示，不换行 */
+            white-space: nowrap;
+            /* 表示如果有内容溢出的话，以滚动条的方式显示 */
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nobis deleniti, illum error blanditiis?
+        Ducimus magnam nihil voluptate autem asperiores qui id ad enim nisi. Labore facere tenetur mollitia!
+        <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nobis deleniti, illum error blanditiis?
+        Ducimus magnam nihil voluptate autem asperiores qui id ad enim nisi. Labore facere tenetur mollitia! -->
+    </div>
+
+    <script>
+        let box = document.querySelector('.box');
+
+        // scrollWidth包括 width、padding 和 溢出部分
+        console.log(box.scrollWidth);
+        // scrollHeight包括 height、padding 和 溢出部分
+        console.log(box.scrollHeight);
+
+        // 给元素绑定滚动条事件
+        box.onscroll = function () {
+            // scrollTop：元素垂直方向滚动条与上边的距离
+            // console.log(box.scrollTop);
+            
+            // scrollLeft：元素水平方向滚动条与左边的距离
+            console.log(box.scrollLeft);
+        }
+    </script>
+</body>
+
+</html>

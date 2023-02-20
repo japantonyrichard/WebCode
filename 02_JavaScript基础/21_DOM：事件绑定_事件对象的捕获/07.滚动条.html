@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <button>点我</button>
+    <script>
+        // 给整个文档绑定滚动条事件
+        document.onscroll = () => {
+            // console.log(document.body.scrollTop);
+            // console.log(document.documentElement.scrollTop);
+            // 这样写更通用，因为有的浏览器支持的是body的滚动条有的支持的是html的滚动条，这里利用了逻辑运算的短路机制
+            let top = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(top);
+        }
+
+        // 给按钮绑定事件，点击后使滚动条到距离上边400px
+        document.querySelector('button').onclick = () => {
+            // alert(123);
+            // document.documentElement.scrollTop = document.body.scrollTop = 400; // 两种都适配
+            document.documentElement.scrollTop = 400;
+        };
+    </script>
+
+</body>
+</html>

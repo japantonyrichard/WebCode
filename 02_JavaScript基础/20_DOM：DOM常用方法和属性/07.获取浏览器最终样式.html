@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box">
+
+    </div>
+    <!-- 
+        1. 目前我们可以通过JS中很多方式去操作元素的样式，而且我们操作的都是元素行内样式！！！
+
+        2. 有一种JS的方式是可以获取到元素最终生效的样式，可以是行内的、内部的、外部的、默认的！！！
+
+        3. 语法格式：
+            let 变量名 = window.getComputedStyle(元素);
+
+        4. 该方法对于IE低版本是不支持的！  在 IE浏览器中要实现同样功能的话，需要使用 元素.currentStyle;
+     -->
+    <script>
+        // let div = document.querySelector('.box');
+        // div.style.height = '200px';
+        // div.style.backgroundColor = 'red';
+
+        // let ss = window.getComputedStyle(div);
+        // console.log(ss); // 拿到这个div的所有样式
+        // console.log(ss.height);
+        // console.log(ss.backgroundColor);
+        // console.log(ss.width);
+        // console.log(ss.fontSize);
+
+        var div = document.getElementById('box');
+        div.style.height = '200px';
+        div.style.backgroundColor = 'red';
+
+        // var ss = window.getComputedStyle(div);
+        // console.log(ss.height);
+        // var ss = div.currentStyle;
+        // console.log(ss.height);
+
+        // console.log(window.getComputedStyle);
+
+
+        function fun(ele){
+            if(window.getComputedStyle){ // 判断用的是什么浏览器 只写函数名window.getComputedStyle 得到的是函数声明
+                return window.getComputedStyle(ele);
+            }else{
+                return ele.currentStyle; // IE低版本浏览器
+            }
+        }
+
+        var ss = fun(div);
+        console.log(ss.height);
+
+        console.log(fun);// 没有()是输出函数声明 fun()是输出执行的值
+
+    </script>
+</body>
+
+</html>

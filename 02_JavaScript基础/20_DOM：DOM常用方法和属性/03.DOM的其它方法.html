@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        DOM 的其它方法：（了解）
+        以下方法都是通过 元素.xxx(); 形式去调用
+
+        1. appendChild()    append是追加的意思，child是儿子的意思   掌握**************************
+            1) 该方法的作用就是在一个元素中添加一个元素作为最后一个子元素
+            2) 语法格式：
+                父元素.appendChild(子元素);
+            3) 注意：如果要添加的这个子元素是已经存在的元素的话，其实是将该子元素移动了位置
+
+        2. insertBefore()   insert是插入的意思   before是在...之前  掌握**************************
+            1) 该方法的作用就是在父元素中的某个子元素前面插入一个元素
+            2) 语法格式：
+                父元素.insertBefore(新元素, 指定的子元素);
+
+        3. cloneNode()   clone是克隆的意思
+            1) 该方法的作用就是将一个元素克隆一份
+            2) 语法格式：
+                元素.cloneNode(true|false);
+            3) 语法说明：
+                参数是true，表示不仅克隆元素，还克隆元素中的内容
+                参数是false，表示仅克隆元素，不克隆内容
+            4) 无论是true还是false，都不会克隆元素的事件！
+
+        4. contains()   contains 是包含
+            1) 该方法的作用就是判断一个父元素中是否有某个子元素
+            2) 语法格式：
+                父元素.contains(子元素);
+        
+        5. hasChildNodes()
+            1) 该方法的作用就是判断一个元素里面有子元素吗？  空白是一个文本节点
+            2) 语法格式：
+                元素.hasChildNodes()
+
+        6. isEqualNode()   equal是相等的意思
+            1) 该方法的作用就是判断两个节点是否一模一样，节点的类型、节点内容、属性
+            2) 元素.isEqualNode(另一个元素);
+
+        7. remove()     remove是移除的意思  掌握****************************************
+            1) 该方法的作用就是将某个元素从页面中删掉！
+            2) 语法格式：
+                元素.remove();
+
+        8. removeChild()    
+            1) 该方法的作用就是通过父元素删除里面的子元素
+            2) 语法格式：
+                父元素.removeChild(子元素);
+     -->
+
+    <ul>
+        <li>张无忌</li>
+        <li>杨过</li>
+        <li>段誉</li>
+        <li>乔峰</li>
+        <li>虚竹</li>
+    </ul>
+    <button>按钮</button>
+
+    <script>
+        let btn = document.querySelector('button');
+
+        let ul = document.querySelector('ul');
+        ul.onmouseover = function(){
+            console.log(123);
+        }
+
+        btn.onclick = function(){
+            // 1.演示 appendChild 给父元素中添加最后一个子元素
+            // 创建li
+            // let li = document.createElement('li');
+            // li.innerHTML = '周芷若';
+
+            // let ul = document.querySelector('ul');
+            // ul.appendChild(li);
+
+            // 2. 演示利用 appendChild 演示添加已存在的元素
+            // let lis = document.querySelectorAll('li');
+            // document.querySelector('ul').appendChild(lis[2]);
+
+            // 3. 演示 insertBefore 给父元素添加子元素
+            // let li = document.createElement('li');
+            // li.innerHTML = '赵敏';
+
+            // let ul = document.querySelector('ul');
+            // ul.insertBefore(li, ul.children[3]);
+
+            // 4. 演示 cloneNode 克隆元素
+            // let ul = document.querySelector('ul');
+            // let ul2 = ul.cloneNode(true);
+            // // let ul2 = ul.cloneNode(false);
+            // console.log(ul2);
+
+            // document.body.appendChild(ul2);
+
+            // 5. 演示 contains 判断是否包含某个元素
+            // let ul = document.querySelector('ul');
+            // let lis = ul.children;
+
+            // let li = document.createElement('li');
+
+            // console.log(ul.contains(lis[2])); // true
+            // console.log(ul.contains(li)); // false
+
+            // 6. 演示 hasChildNodes() 判断一个元素里面是否有子节点
+            // let ul = document.querySelector('ul');
+            // console.log(ul.hasChildNodes());
+
+            // let p = document.createElement('p');
+            // p.innerHTML = ' '; // 空白也算儿子
+
+            // console.log(p.hasChildNodes()); // true
+
+            // 7. 演示 isEqualNode 判断两个节点是否一样
+            // let lis = document.querySelectorAll('li');
+            // console.log(lis[0].isEqualNode(lis[1])); // 
+            // console.log(lis[0].isEqualNode(lis[0])); // 
+
+            // 8. 演示 remove 删除某个元素
+            // let lis = document.querySelectorAll('li');
+
+            // lis[2].remove();
+
+            // 9. 演示 removeChild 通过父元素删除子元素
+            let ul = document.querySelector('ul');
+            let lis = ul.children;
+
+            ul.removeChild(lis[2]);
+        }
+    </script>
+</body>
+
+</html>

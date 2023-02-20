@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            /* 边框折叠 */
+            border-collapse: collapse;
+            margin: 50px auto;
+            width: 800px;
+            height: 400px;
+            text-align: center;
+        }
+        tr,td{
+            border: 1px solid red;
+        }
+        tr:first-child{
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>产品名称</td>
+            <td>产品单价</td>
+            <td>产品数量</td>
+            <td>总价</td>
+            <td>操作</td>
+        </tr>
+        <tr>
+            <td>Apple iphone 13 Pro Max</td>
+            <td>9998</td>
+            <td>
+                <button class="reduce">-</button>
+                <span>1</span>
+                <button class="add">+</button>
+            </td>
+            <td class="money">9998</td>
+            <td>
+                <button class="del">删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Apple iphone 12</td>
+            <td>6708</td>
+            <td>
+                <button class="reduce">-</button>
+                <span>1</span>
+                <button class="add">+</button>
+            </td>
+            <td class="money">6708</td>
+            <td>
+                <button class="del">删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>AirPods Pro</td>
+            <td>1559</td>
+            <td>
+                <button class="reduce">-</button>
+                <span>1</span>
+                <button class="add">+</button>
+            </td>
+            <td class="money">1559</td>
+            <td>
+                <button class="del">删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">总计</td>
+            <td class="total">18265</td>
+            <td>
+                <button class="clear">清空购物车</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+
+        // 获取所有的添加按钮
+        let addBtns = document.querySelectorAll('.add');
+        // 获取所有的减号按钮
+        let reduceBtns = document.querySelectorAll('.reduce');
+
+        // 利用for循环给每个添加绑定鼠标单击事件
+        for(let i = 0; i < addBtns.length; i++){
+            addBtns[i].onclick = () => {
+                // 获取上一个兄弟元素
+                addBtns[i].previousElementSibling.innerHTML++;
+
+                // 修改这条数据的总价
+                addBtns[i].parentElement.nextElementSibling.innerHTML = addBtns[i].previousElementSibling.innerHTML * addBtns[i].parentElement.previousElementSibling.innerHTML;
+
+                
+                // 获取单条数据的总价
+                let moneys = document.querySelectorAll('.money');
+                let sum = 0;
+                for(let j = 0; j < moneys.length; j++){
+                    sum += Number(moneys[j].innerHTML);
+                }
+
+                // 修改总计
+                document.querySelector('.total').innerHTML = sum;
+            };
+        }
+
+
+        // 利用for循环给每个减法按钮绑定鼠标单击事件
+        for(let i = 0; i < reduceBtns.length; i++){
+            reduceBtns[i].onclick = () => {
+                // 获取当前的数量  num = 21
+                let num = reduceBtns[i].nextElementSibling.innerHTML;
+                num--;  // num = 20
+                // 对数量进行校验
+                if(num < 0){
+                    num = 0;
+                }
+                // 注意：上面的代码是修改的num变量，变量改好后，应该将该变量的值放到 页面的标签中！
+                reduceBtns[i].nextElementSibling.innerHTML = num;
+
+                // 修改这条数据的总价
+                reduceBtns[i].parentElement.nextElementSibling.innerHTML = reduceBtns[i].nextElementSibling.innerHTML * reduceBtns[i].parentElement.previousElementSibling.innerHTML;
+
+                // 修改总计
+                let moneys = document.querySelectorAll('.money');
+                let sum = 0;
+                for(let j = 0; j < moneys.length; j++){
+                    sum += Number(moneys[j].innerHTML);
+                }
+
+                 // 修改总计
+                 document.querySelector('.total').innerHTML = sum;
+            };
+        }
+
+        // 获取所有的删除按钮
+        let delBtns = document.querySelectorAll('.del');
+
+        /**
+         * this 关键字主要用在函数中
+         * 如果 this 在函数中的话，表示谁调用这个函数，this就是谁！
+         * 或者 谁在触发这个函数this就是谁！
+         */ 
+        // 利用循环给按钮绑定点击事件
+        for(let i = 0; i < delBtns.length; i++){
+            delBtns[i].onclick = function(){
+                // this 指的就是当前点击的那个按钮
+                this.parentElement.parentElement.remove();
+
+                let tds = document.querySelectorAll('.money');
+                let sum = 0;
+                for(let j = 0; j < tds.length; j++){
+                    sum += Number(tds[j].innerHTML);
+                }
+
+                document.querySelector('.total').innerHTML = sum;
+
+            }
+        }
+
+        // 清空购物车
+        let clearBtn = document.querySelector('.clear');
+        clearBtn.onclick = function(){
+            let table = document.querySelector('table');
+            table.remove();
+
+            let div = document.createElement('div');
+            document.body.appendChild(div);
+
+            div.style = "width:75%;height:400px;margin:50px auto;border:1px solid red;text-align:center;";
+            div.innerHTML = '购物车空空如也，快去购买东西！';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 240px;
+            height: 350px;
+            border: 1px solid #ff6700;
+            margin: 50px auto;
+            /* 行内块也可以用text-align居中，不要用margin 0 auto 这个不管用。 */
+            text-align: center; 
+        }
+        .box input {
+            width: 180px;
+            height: 30px;
+            margin: 20px 0;
+            border: 1px solid #ff6700;
+            /* 去掉点进去的默认黑边outline: none; */
+            outline: none;
+            padding: 0 5px;
+        }
+        button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: orange;
+            border: none;
+            margin-top: 20px;
+            /* 变成小手 */
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 注意：input、button这两个默认就是怪异盒模型 -->
+        <input type="text">     
+        <br>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>+</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>*</button>
+        <button>C</button>
+        <button>0</button>
+        <button>=</button>
+        <button>/</button>
+    </div>
+
+    <script>
+        let btns = document.querySelectorAll('button');
+        for(let i = 0; i < btns.length; i++){
+            btns[i].onmouseover = function(){
+                // 将所有按钮的背景颜色变为orange
+                for(let j = 0; j < btns.length; j++){
+                    btns[j].style.backgroundColor = 'orange';
+                }
+                this.style.backgroundColor = 'red'; // 如果是箭头函数的话就不能用this
+            }
+            let input = document.querySelector('input');
+
+            // 给每个按钮绑定鼠标单击事件
+            btns[i].onclick = function(){
+                if(this.innerHTML == 'C'){ // 清空
+                    input.value = '';
+                }else if(this.innerHTML == '='){ // 计算
+                    input.value = eval(input.value);
+                }else{ // 别的，需要将按钮内容拼接到input中
+                    // input.value = input.value + this.innerHTML;
+                    input.value += this.innerHTML;
+                }
+            }
+        }
+        /**
+         * 点击 C  和 = 按钮和别的按钮不一样
+         * 
+         * 点击 C 需要将input中的内容给清空，value=''
+         * 点击 = 需要将input中的内容进行计算 
+         * 点击其它按钮，就是将按钮中的内容拼接到input中
+         */
+
+    </script>
+</body>
+
+</html>

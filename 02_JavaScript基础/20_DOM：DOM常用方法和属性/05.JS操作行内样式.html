@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        JS操作行内样式
+
+        1. 其实我们已经会使用 JS 操作行内样式
+
+        2. 元素.style = "样式名:样式值;xxx:xxx";
+            元素.setAttribute('style', '样式名:样式值;xx:xxxx');
+
+        3. JS 操作行内样式还有其它方式
+
+
+        JS 操作行内样式的方式1：
+        1. 语法格式：
+            元素.style.样式名 = '样式值';
+            比如：元素.style.color = '#fff';  元素.style.fontSize = '30px';
+        2. 语法说明：
+            这种写法要注意，如果样式名是 - 连接的，需要将其转为驼峰命名，比如：background-color backgroundColor
+            如果样式名是关键字的话，需要加css，比如：元素.style.cssFloat = 'left';
+
+        JS 操作行内样式的方式2：
+        1. 语法格式：
+            元素.style.cssText = '样式名:样式值;xxx:xxx;';
+
+        JS 操作行内样式的方式3： （了解）
+        1. 这种方式操作样式太麻烦，不推荐使用
+        2. 语法格式：
+            元素.style.setProperty('样式名', '样式值', '!important 可选的');
+            元素.style.getPropertyValue('样式名');
+            元素.style.removeProperty('样式名');
+     -->
+
+    <script>
+        // let div = document.createElement('div');
+        // document.body.appendChild(div);
+
+        // div.style.width = '200px';
+        // div.style.height = '150px';
+        // div.style.backgroundColor = 'red';
+        // div.style.float = 'right';
+
+        // console.log(div.style.width);
+
+        // div.style.float = '';
+
+        // 使用方式2去设置样式
+        // let div = document.createElement('div');
+        // document.body.appendChild(div);
+
+        // // div.style.cssText = 'width:300px;height:300px;border-radius:50%;background-color:red;';
+        // div.style = 'width:300px;height:300px;border-radius:50%;background-color:red;';
+
+        // 使用方式3 去设置样式
+        let div = document.createElement('div');
+        document.body.appendChild(div);
+
+        div.style.setProperty('width', '200px');
+        div.style.setProperty('height', '200px');
+        div.style.setProperty('background-color','red');
+
+        console.log(div.style.getPropertyValue('width'));
+
+        div.style.removeProperty('width');
+
+        // property 属性   attribute 属性   field 属性
+        
+    </script>
+</body>
+
+</html>

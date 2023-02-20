@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #bigImg {
+            width: 600px;
+            height: 375px;
+        }
+
+        .btn>li {
+            width: 60px;
+            height: 38px;
+            display: inline-block;
+            margin: 20px 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn>li:first-child {
+            border-color: red;
+        }
+
+        .btn img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./images/1.jpg" alt="" id="bigImg">
+        <ul class="btn">
+            <li><img src="./images/1.jpg" alt=""></li>
+            <li><img src="./images/2.jpg" alt=""></li>
+            <li><img src="./images/3.jpg" alt=""></li>
+            <li><img src="./images/4.jpg" alt=""></li>
+            <li><img src="./images/5.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        let lis = document.querySelectorAll('li');
+
+        for(let i = 0; i < lis.length; i++){
+            lis[i].onmouseover = function(){
+                // 去掉所有的li的边框
+                for(let j = 0; j < lis.length; j++){
+                    lis[j].style.borderColor = 'transparent';
+                }
+
+                lis[i].style.borderColor = 'red';
+
+                let img = lis[i].children[0];
+
+                document.querySelector('#bigImg').src = img.src;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

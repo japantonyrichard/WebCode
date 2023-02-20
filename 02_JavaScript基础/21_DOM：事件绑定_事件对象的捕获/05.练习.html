@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            position: relative;
+        }
+        button {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            border-radius: 50%;
+            border: none;
+            margin: 50px 20px;
+            cursor: pointer;
+            color: #fff;
+            z-index: 666;
+        }
+        .box {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #ff6700;
+            left: 37px;
+            top: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>上移</button>
+    <button>下移</button>
+    <button>左移</button>
+    <button>右移</button>
+
+    <div class="box"></div>
+
+    <script>
+        // 获取所有的按钮
+        let btns = document.querySelectorAll('button');
+
+        let div = document.querySelector('div');
+
+        // 获取到元素 top样式的值  120px
+        let topDis = getComputedStyle(div).top; // distance距离 
+        // 将字符串的内容解析为整数
+        topDis = parseInt(topDis);
+
+        // 上移
+        btns[0].onclick = () => {
+            topDis -= 20;
+
+            if (topDis <= 0) {
+                topDis = 0;
+            }
+
+            // 将样式设置回去
+            div.style.top = topDis + 'px';
+        };
+
+        btns[1].onclick = () => {
+            topDis += 20;
+
+            // 获取浏览器窗口的高度
+            let viewportHeight = document.documentElement.clientHeight;
+
+            if (topDis >= viewportHeight - div.clientHeight) {
+                topDis = viewportHeight - div.clientHeight;
+            }
+
+            // 将样式设置回去
+            div.style.top = topDis + 'px';
+        };
+
+        // 获取元素的left样式值   37px
+        let leftDis = getComputedStyle(div).left;
+        leftDis = parseInt(leftDis);
+
+        // 左移
+        btns[2].onclick = () => {
+            leftDis -= 20;
+
+            if (leftDis <= 0) {
+                leftDis = 0;
+            }
+
+            // 将样式设置回去
+            div.style.left = leftDis + 'px';
+        };
+
+        // 右移
+        btns[3].onclick = () => {
+            leftDis += 20;
+
+            // 获取当前浏览器窗口的宽度
+            let viewportWidth = document.documentElement.clientWidth;
+
+            if(leftDis >= viewportWidth - div.clientWidth){
+                leftDis = viewportWidth - div.clientWidth;
+            }
+
+            // 将样式设置回去
+            div.style.left = leftDis + 'px';
+        };
+    </script>
+</body>
+
+</html>
