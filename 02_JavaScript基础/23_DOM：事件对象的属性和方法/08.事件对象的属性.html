@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        事件对象的属性
+
+        1. currentTarget 和 target 属性
+            1) current 是当前的意思，target 是目标、靶子的意思
+            2) currentTarget 属性指的是绑定事件的那个元素，也等价于 this
+            3) target 属性指的是触发事件的元素
+     -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <button>
+        <span>按钮</span>
+    </button>
+
+    <script>
+        let ul = document.querySelector('ul');
+
+        ul.onclick = (e) => {
+            console.log(e.currentTarget); // ul
+            console.log(e.target); // 
+        }
+
+        document.querySelector('button').onclick = (e) => {
+            console.log(e.currentTarget); // button
+            console.log(e.target); // span
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .box {
+            position: fixed;
+            right: 0;
+            /* bottom: 0; */
+            bottom: -200px;
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+        .box span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            background-color: aqua;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span>x</span>
+    </div>
+    <script>
+        let box = document.querySelector('.box');
+
+        let timer = setInterval(function(){
+            // -200px
+            let bottomDis = getComputedStyle(box).bottom;
+            bottomDis = parseInt(bottomDis);
+
+            bottomDis += 10;
+
+            if(bottomDis >= 0){
+                bottomDis = 0;
+                clearInterval(timer);
+            }
+
+            box.style.bottom = bottomDis + 'px';
+        }, 50);
+
+        document.querySelector('span').onclick = () => {
+            box.style.display = 'none';
+        };
+    </script>
+</body>
+
+</html>

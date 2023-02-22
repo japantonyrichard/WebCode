@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        事件对象的属性
+
+        1. cancelable 属性  （了解）
+            1) cancel 是取消的意思，cancelable 是可取消的意思
+            2) 该属性判断当前事件是否可以取消，可以取消，那就返回 true，不可以取消返回false
+            3) 一般不必要使用它，如果要用那就结合 preventDefault() 方法使用，能够阻止元素的默认行为，
+                比如：点击超链接后会自动跳转，要取消跳转那就使用 cancelable 和 preventDefault()
+            4) 一般直接使用   preventDefault()，能阻止就阻止了，不能阻止就不生效！ 没必要使用 cancelable属性去判断是否可以取消！
+
+        2. type 属性  （了解）
+            1) type 是类型的意思
+            2) 该属性返回当前事件的类型，也就是当前是什么样的事件，比如 click、mouseover 等
+
+        3. ctrlKey、altKey、shiftKey 属性  （熟悉）
+            1) 这三个属性是判断用户是不是按的 ctrl、alt、shift 键！  返回 true、false
+
+        4. button 属性  （了解）
+            1) 该属性可以判断用户是点击的哪个鼠标按键
+                0 - 左键
+                1 - 滚轮
+                2 - 右键
+
+        5. buttons 属性   （了解）
+            1) 该属性可以判断用户同时点击了哪些鼠标按键
+            2) 1 - 左键
+               4 - 滚轮
+               2 - 右键
+               如果同时按下某些键，会将单个的值加起来返回！
+     -->
+
+    <a href="https://www.jd.com" target="_blank">京东</a>
+
+    <script>
+        let a = document.querySelector('a');
+
+        a.onclick = (e) => {
+            // console.log(e.cancelable); // true
+            // if(e.cancelable){
+            //     e.preventDefault(); // 阻止默认行为
+            // }
+
+            console.log(e.type); // click
+        };
+
+        a.onmouseover = (e) => {
+            console.log(e.type); // mouseover
+        };
+
+        document.onkeydown = (e) => {
+            console.log('ctrl:' + e.ctrlKey);
+            console.log('alt:' + e.altKey);
+            console.log('shift:' + e.shiftKey);
+        }
+
+        document.onmousedown = (e) => {
+            // console.log(e.button);
+            console.log(e.buttons);
+        };
+
+    </script>
+</body>
+
+</html>

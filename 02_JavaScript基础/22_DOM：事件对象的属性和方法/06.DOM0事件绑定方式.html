@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        DOM0 事件绑定
+        1. 这种事件绑定方式就是我们之前一直使用的方式
+        2. 这种事件绑定方式不用考虑浏览器兼容性问题
+        3. 语法格式：
+            元素.on事件名称 = function(){};
+            或者
+            元素.on事件名称 = 函数名;
+        4. 使用 DOM0 的方式，一个元素是可以绑定多个不同事件的
+
+        5. 使用 DOM0 的方式，不要绑定多个相同的事件，如果绑定多个相同的事件，那后写的生效！
+     -->
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById('box');
+
+        box.onclick = function(){
+            console.log('hello');
+        }
+
+        function fun1(){
+            console.log('鼠标滑入!');
+        }
+        box.onmouseover = fun1;
+
+        box.onclick = function(){
+            console.log('world!');
+        }
+    </script>
+</body>
+
+</html>

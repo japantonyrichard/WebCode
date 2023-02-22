@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .box3 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        事件流
+
+        1. 事件流指的是页面中事件被响应的顺序
+        2. 事件流有两种模式：
+            1) 事件冒泡 默认，false
+            2) 事件捕获 true
+
+        事件冒泡
+        1. 事件冒泡指的是事件从内向外或者说从子元素向父元素去执行！
+        2. 一般事件，默认是冒泡的
+
+
+        事件捕获
+        1. 事件捕获指的是事件从外向内或者说从父元素向子元素去执行！
+
+
+        使用 DOM2 的方式绑定事件：
+            元素.addEventListener('事件名', 函数名, 事件流);
+
+            事件流不写，默认是false，表示是 事件冒泡
+            如果写 true，表示是 事件捕获
+     -->
+
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+
+    <script>
+        let box1 = document.querySelector('.box1');
+        let box2 = document.querySelector('.box2');
+        let box3 = document.querySelector('.box3');
+
+        // 演示事件冒泡
+        // box1.addEventListener('click', function(){
+        //     console.log('大div被执行！');
+        // }, false);
+
+        // box2.addEventListener('click', function(){
+        //     console.log('中div被执行！');
+        // }, false);
+
+        // box3.addEventListener('click', function(){
+        //     console.log('小div被执行！');
+        // }, false);
+
+        // 演示事件捕获
+        box1.addEventListener('click', function(){
+            console.log('大div被执行！');
+        }, true);
+
+        box2.addEventListener('click', function(){
+            console.log('中div被执行！');
+        }, true);
+
+        box3.addEventListener('click', function(){
+            console.log('小div被执行！');
+        }, true);
+    </script>
+</body>
+
+</html>

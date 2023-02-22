@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        .box2 {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border: 10px solid green;
+            background-color: blue;
+            /* margin: 10px; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        DOM 中常用的属性，有三个系列：client系列、scroll系列、offset系列
+
+        offset系列属性 （了解）
+        1. offset是偏移的意思
+        2. offset系列类似于绝对定位，是相对于最近的有定位的祖先元素，如果没有祖先是定位的，相对于body
+        3. offset系列有5个属性：
+            1) offsetParent：返回的是最近的有定位的祖先元素
+            2) offsetWidth：返回元素的宽度，包括 width、padding 和 border
+            3) offsetHeight：返回元素的高度，包括 height、padding 和 border
+            4) offsetLeft：返回的是元素距离定位元素左边的距离
+            5) offsetTop：返回的是元素距离定位元素上边的距离
+     -->
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+
+    <script>
+        let box2 = document.querySelector('.box2');
+
+        // offsetParent 返回的是最近的有定位的祖先元素
+        console.log(box2.offsetParent);
+
+        // offsetWidth：包括 width、padding、border
+        console.log(box2.offsetWidth);
+
+        // offsetHeight：包括 height、padding、border
+        console.log(box2.offsetHeight);
+
+        console.log(box2.offsetLeft);
+        console.log(box2.offsetTop);
+    </script>
+</body>
+
+</html>

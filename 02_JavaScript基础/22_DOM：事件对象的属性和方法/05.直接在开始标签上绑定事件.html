@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        演示 直接在开始标签上绑定事件
+        这种方式不推荐使用，因为这样的话，html代码 和 js 代码耦合性太强
+     -->
+    <div class="box" onclick="console.log('hello')"></div>
+    <button onclick="fun1()">按钮</button>
+    <button onclick="fun1(); fun2()">按钮2</button>
+
+    <script>
+        function fun1(){
+            console.log(123);
+        }
+
+        function fun2(){
+            console.log(456);
+        }
+    </script>
+</body>
+</html>

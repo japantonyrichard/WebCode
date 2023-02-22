@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        // 生成随机数
+        let fun1 = (min, max) => {
+            return ~~(Math.random()*(max-min+1) + min);
+        };
+
+        // 生成一个随机的颜色，比如：rgb(12,28, 97);
+        let fun2 = () => {
+            let red = fun1(0, 255);
+            let green = fun1(0, 255);
+            let blue = fun1(0, 255);
+
+            return `rgb(${red}, ${green}, ${blue})`;
+        }
+
+
+        // 生成一个大小随机、颜色随机、位置随机、速度随机的球
+        let fun = () => {
+            // 创建div元素
+            let div = document.createElement('div');
+            document.body.appendChild(div);
+
+            // 生成一个随机数，作为以后的宽度和高度
+            let num = fun1(20, 80);
+
+            // 设置div元素的宽度和高度
+            div.style.width = num + 'px';
+            div.style.height = num + 'px'
+
+            // 生成一个随机的颜色，作为以后的背景颜色
+            let color = fun2();
+
+            // 设置div元素的背景颜色
+            div.style.backgroundColor = color;
+
+            // 设置div变为圆形
+            div.style.borderRadius = '50%';
+
+            // 设置div固定定位
+            div.style.position = 'fixed';
+
+            // 获取浏览器窗口的高度
+            let windowHeight = document.documentElement.clientHeight;
+            let windowWidth = document.documentElement.clientWidth;
+
+            // 生成随机数，作为以后的top
+            div.style.top = fun1(0, windowHeight - num) + 'px';
+
+            // 设置 left 的样式
+            div.style.left = fun1(0, windowWidth - num) + 'px';
+
+            // 生成一个随机数，作为水平速度
+            let speedX = fun1(-10, 10);
+
+            // 生成一个随机数，作为垂直速度
+            let speedY = fun1(-10, 10);
+
+            setInterval(function(){ // 该匿名函数用来修改div的top 和 left
+                // 获取当前的top
+                let topDis = div.style.top;
+                topDis = parseInt(topDis);
+
+                topDis += speedY;
+
+                if(topDis <= 0 || topDis >= document.documentElement.clientHeight - num){
+                    speedY *= -1; // speedY = speedY * (-1)
+                }
+                div.style.top = topDis + 'px';
+
+                // 水平方向移动
+                let leftDis = div.style.left;
+                leftDis = parseInt(leftDis);
+
+                leftDis += speedX;
+
+                if(leftDis <= 0 || leftDis >= document.documentElement.clientWidth - num){
+                    speedX *= -1;
+                }
+
+                div.style.left = leftDis + 'px';
+
+            }, 50);
+        };
+
+        // 
+        for(let i = 0; i < 100; i++){
+            fun();
+        }
+    </script>
+</body>
+</html>

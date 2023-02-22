@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }        
+    </style>
+</head>
+
+<body>
+    <!-- 
+        事件对象的属性
+
+        1. 给元素绑定事件后，事件一旦被触发，就会生成一个事件对象，事件对象会以实参的形式传递给事件处理函数
+        2. 事件对象是有很多属性和方法，这些属性里面就存储了该事件相关的信息
+
+
+        1. bubbles 属性 (了解)
+            1) bubbles 是冒泡的意思
+            2) 该属性的作用就是判断事件是否支持冒泡，支持的话返回 true，不支持返回 false
+
+        2. eventPhase 属性 (了解)
+            1) phase 是阶段的意思
+            2) 该属性就是返回当前事件所处的阶段
+                0 - 事件没有发生
+                1 - 事件处于捕获阶段，也就是该事件是通过捕获的方式触发的
+                2 - 事件到达目标节点，也就是该事件就是通过绑定它的元素直接触发的
+                3 - 事件处于冒泡阶段，也就是该事件是通过冒泡的方式触发的
+
+        3. keyCode 属性 (掌握)
+            1) key 是键，keyBoard 是键盘的意思，code 是代码的意思
+            2) 键盘中的每个按键，按下去后其实都有一个对应的值，我们将按键对应的值称为键码值
+            3) 该属性就是可以获取到键的键码值
+            4) 该属性要配合键盘事件去使用
+        
+        4. key 属性 (了解)
+            1) 该属性就是获取到键对应的一个字符串  A - a，B - b，↑ - xxxxxx
+            2) 该属性没有keyCode属性好用，所以一般不用它
+     -->
+
+    <div class="box">
+        <div class="box2">
+
+        </div>
+    </div>
+
+    <script>
+        // let box = document.querySelector('.box');
+        // let box2 = document.querySelector('.box2');
+
+        // 4. 演示 key 属性获取到键对应的一个字符串
+        document.onkeydown = (e) => {
+            console.log(e.key);
+        };
+        
+        // 3. 演示 keyCode 属性获取键码值
+        // 给整个文档绑定键盘按下事件
+        // document.onkeydown = (e) => {
+        //     console.log(e.keyCode);
+        // };
+
+        // 2. 演示 eventPhase 属性获取事件所处的阶段
+        // box.onclick = (e) => {
+        //     console.log('大div所处的阶段：' + e.eventPhase);
+        // };
+
+        // box2.onclick = (e) => {
+        //     console.log('小div所处的阶段：' + e.eventPhase);
+        // };
+
+        // box.addEventListener('click', function(e){
+        //     console.log('大div所处的阶段：' + e.eventPhase);
+        // }, true); // true 表示事件捕获
+
+        // box2.addEventListener('click', function(e){
+        //     console.log('小div所处的阶段：' + e.eventPhase);
+        // }, true);
+
+
+        // 1. 演示 bubbles 属性
+        // box.onclick = (e) => {
+        //     // 获取当前是否支持冒泡
+        //     console.log(e.bubbles); // true
+        // };
+
+        // 绑定鼠标滑入、移入
+        // box.onmouseover = (e) => {
+        //     console.log(e.bubbles); // true
+        // };
+
+        // 绑定鼠标滑入、移入
+        // box.onmouseenter = (e) => {
+        //     console.log(e.bubbles); // false
+        // };
+    </script>
+</body>
+
+</html>

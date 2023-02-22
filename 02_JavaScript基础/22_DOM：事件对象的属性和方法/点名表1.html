@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: skyblue;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .time {
+            width: 600px;
+            text-align: right;
+            margin: 0 auto;
+            font-weight: 700;
+        }
+
+        .name-box {
+            width: 1200px;
+            height: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .name-box>span {
+            width: 100px;
+            height: 30px;
+            background-color: rgb(250, 204, 124);
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 3px rgb(186 116 9);
+            float: left;
+            margin: 10px;
+            line-height: 30px;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            background-color: rgb(250, 204, 124);
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 3px rgb(186 116 9);
+            margin: 10px;
+            line-height: 30px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>随机点名</h2>
+    <div class="time"></div>
+    <div class="name-box"></div>
+    <button>开始</button>
+    <button>结束</button>
+
+    <script>
+        // 实现动态的时间
+        let showTime = () => {
+            // 获取当前时间
+            let now = new Date();
+            let year = now.getFullYear();
+            let month = now.getMonth() + 1;
+            let date = now.getDate();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+            if (month < 10) {
+                month = '0' + month;
+            }
+            if (date < 10) {
+                date = '0' + date;
+            }
+            if (hour < 10) {
+                hour = '0' + hour;
+            }
+            if (minute < 10) {
+                minute = '0' + minute;
+            }
+            if (second < 10) {
+                second = '0' + second;
+            }
+            // 获取div
+            let div = document.querySelector('.time');
+            div.innerHTML = `${year}-${month}-${date} ${hour}:${minute}:${second}`;
+        };
+
+        // 初始调用一次
+        showTime();
+        // 定时器调用显示时间
+        let timer = setInterval(showTime, 1000);
+
+        // 实现座位表
+        let nameArr = ['林毅霞', '张柳柳', '鄢家豪', '高燕', '屈河', '杨贤融', '董江涛', '袁好民', '袁临临', '唐同同', '卢朝阳', '王琳涵', '尹瑜威', '汪洋',
+            '赵炎燚'
+        ];
+        for (let i = 0; i < nameArr.length; i++) {
+            let span = document.createElement('span');
+            let nameBox = document.querySelector('.name-box');
+            nameBox.appendChild(span);
+            span.innerHTML = nameArr[i];
+        }
+
+        // 实现开始停止效果
+        let timer2;
+        let btns = document.querySelectorAll('button');
+        btns[0].onclick = function () {
+            let spans = document.querySelectorAll('.name-box span');
+
+            clearInterval(timer2);
+            timer2 = setInterval(function () {
+                for (let i = 0; i < spans.length; i++) {
+                    spans[i].style.backgroundColor = 'rgb(250, 204, 124)';
+                }
+
+                let num = ~~(Math.random() * (spans.length - 1 + 1));
+                spans[num].style.backgroundColor = 'red';
+            }, 100);
+        };
+
+        btns[1].onclick = function(){
+            clearInterval(timer2);
+        }
+    </script>
+</body>
+
+</html>

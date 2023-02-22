@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: skyblue;
+            text-align: center;
+        }
+
+        .time {
+            width: 600px;
+            margin: 0 auto;
+            text-align: right;
+            font-weight: 700;
+        }
+        .name-box{
+            width: 1200px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        .name-box span{
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            float: left;
+            background-color: rgb(250, 204, 124);
+            line-height: 30px;
+            box-shadow: 0 5px 3px rgb(186 116 9);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button{
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            background-color: rgb(250, 204, 124);
+            line-height: 30px;
+            box-shadow: 0 5px 3px rgb(186 116 9);
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>随机点名</h2>
+    <div class="time"></div>
+    <div class="name-box"></div>
+    <button>开始</button>
+    <button>停止</button>
+
+    <script>
+        // 给页面中打印当前日期
+        let showTime = () => {
+            let now = new Date();
+            let year = now.getFullYear();
+            let month = now.getMonth() + 1;
+            let date = now.getDate();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+
+            if(month < 10){
+                month = '0' + month;
+            }
+            if(date < 10){
+                date = '0' + date;
+            }
+            if(hour < 10){
+                hour = '0' + hour;
+            }
+            if(minute < 10){
+                minute = '0' + minute;
+            }
+            if(second < 10){
+                second = '0' + second;
+            }
+
+            document.querySelector('.time').innerHTML = `${year}-${month}-${date} ${hour}:${minute}:${second}`;
+        };
+
+        showTime();
+
+        setInterval(showTime, 1000);
+
+        let nameArr = ['林毅霞', '张柳柳', '鄢家豪', '高燕', '屈河', '杨贤融', '董江涛', '袁好民', '袁临临', '唐同同', '卢朝阳', '王琳涵', '尹瑜威', '汪洋', '赵炎燚'];
+
+        for(let i = 0; i < nameArr.length; i++){
+            let span = document.createElement('span');
+
+            let div = document.querySelector('.name-box');
+            div.appendChild(span);
+
+            span.innerHTML = nameArr[i];
+        }
+    </script>
+</body>
+
+</html>

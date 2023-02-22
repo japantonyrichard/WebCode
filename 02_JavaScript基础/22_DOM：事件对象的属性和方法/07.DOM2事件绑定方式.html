@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        DOM2 事件绑定方式
+
+        1. 这种绑定方式对于IE浏览器不兼容
+
+        2. 语法格式：
+            元素.addEventListener(事件名, 匿名函数或函数名, 事件流);
+
+        3. 语法说明：
+            1) 参数1表示事件名，注意这个事件名不要加on，比如：click、mouseover 等等
+            2) 参数2表示匿名函数或者有名函数的函数名
+            3) 参数3表示事件流，是可选的
+        4. DOM2 事件绑定方式，可以在一个元素上绑定多个事件，而且可以绑定多个相同的事件，
+            如果一个元素绑定了多个相同事件，都生效。
+
+        5. IE 低版本的写法：
+            元素.attachEvent('on+事件名', 匿名函数或函数名);   
+
+        6. 兼容性写法：下面的写法能够达到IE低版本可以用，其它浏览器也能用
+     -->
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById('box');
+
+        // 演示 非 IE浏览器低版本 的写法
+        // box.addEventListener('click', function(){
+        //     console.log('hello');
+        // });
+
+        // function fun1(){
+        //     console.log('world');
+        // }
+
+        // box.addEventListener('click', fun1);
+
+        // 演示 IE低版本 的写法
+        // box.attachEvent('onclick', function(){
+        //     console.log('hello');
+        // });
+
+        // console.log(box.addEventListener);
+
+        // if(box.addEventListener){
+        //     console.log('是非IE低版本的浏览器');
+        // }else{
+        //     console.log('是IE低版本浏览器');
+        // }
+
+        // 定义一个函数，实现给元素绑定事件的兼容性写法
+        function bindEvent(ele, type, fun, stream){
+            if(ele.addEventListener){ // 非 IE 低版本
+                ele.addEventListener(type, fun);
+            }else{ // IE低版本
+                ele.attachEvent('on'+type, fun);
+            }
+        }
+
+        bindEvent(box, 'click', function(){
+            console.log(123);
+        });
+
+
+        function getStyle(ele){
+            if(getComputedStyle){
+                return getComputedStyle(ele);
+            }else{
+                return ele.currentStyle;
+            }
+        }
+
+        console.log(getStyle(box).width);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+            /* overflow: hidden; */
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+            padding: 50px;
+            border: 10px solid blue;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        事件对象的属性
+
+        1. clientX 和 clientY 属性 （掌握）
+            1) 这两个属性要配合鼠标事件去使用
+            2) 这两个属性返回鼠标单击位置与浏览器左上角的距离
+            3) clientX 属性返回的是鼠标单击位置与浏览器左上角的水平距离
+               clientY 属性返回的是鼠标单击位置与浏览器左上角的垂直距离
+
+        2. screenX 和 screenY 属性  （熟悉）
+            1) screen 是屏幕的意思
+            2) screenX 指的是鼠标单击位置与屏幕左上角的水平距离
+            3) screenY 指的是鼠标单击位置与屏幕左上角的垂直距离
+        
+        3. offsetX 和 offsetY 属性  （熟悉）
+            1) offset 是偏移的意思
+            2) offsetX 指的是鼠标单击位置与元素左上角的水平距离
+            3) offsetY 指的是鼠标单击位置与元素左上角的垂直距离
+            4) 元素的左上角包括 内容区、内边距，不包括边框和外边距
+
+        4. pageX 和 pageY 属性  （熟悉）
+            1) page 是页面的意思，body的大小也就是网页的实际大小
+            2) pageX 指的是鼠标单击位置与文档(网页)左上角的水平距离
+            3) pageY 指的是鼠标单击位置与文档(网页)左上角的垂直距离
+
+     -->
+    <div class="box">
+
+    </div>
+
+    <script>
+        document.body.onclick = (e) => {
+            console.log('浏览器左上角：' + e.clientX);
+            console.log('浏览器左上角：' + e.clientY);
+
+            console.log('----------------------------');
+
+            console.log('屏幕左上角：' + e.screenX);
+            console.log('屏幕左上角：' + e.screenY);
+
+            console.log('-------------------------------');
+            console.log('文档左上角：' + e.pageX);
+            console.log('文档左上角：' + e.pageY);
+        };
+
+        // document.querySelector('.box').onclick = (e) => {
+        //     console.log('元素左上角：' + e.offsetX);
+        //     console.log('元素左上角：' + e.offsetY);
+        // }
+    </script>
+</body>
+
+</html>

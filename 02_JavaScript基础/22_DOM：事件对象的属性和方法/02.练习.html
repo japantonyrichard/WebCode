@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: fixed;
+            top: 100px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // 获取div元素
+        let div = document.querySelector('.box');
+        // 获取到div目前的 top
+        let topDis = getComputedStyle(div).top;
+        // 将 100px 解析为 100
+        topDis = parseInt(topDis);
+
+        let timer2;
+        // 上移的函数
+        let up = () => {
+            // 自减10
+            topDis -= 10;
+
+            // 对上移的位置进行判断，超出浏览器窗口就停下来
+            if (topDis <= 0) {
+                topDis = 0;
+                // 停止上移的定时器
+                clearInterval(timer1);
+
+                // 开启下移的定时器
+                timer2 = setInterval(down, 50);
+            }
+
+            // 将最新的值设置给元素
+            div.style.top = topDis + 'px';
+        };
+
+        // 开启定时器，每隔50ms去执行上移的函数
+        let timer1 = setInterval(up, 50);
+
+        // 下移的函数
+        let down = () => {
+            // 自增
+            topDis += 10;
+
+            // 获取浏览器窗口的高度
+            let windowHeight = document.documentElement.clientHeight;
+            // 元素自己的高度
+            let height = div.clientHeight;
+
+            if(topDis >= windowHeight - height){
+                topDis = windowHeight - height;
+
+                // 停止下移的定时器
+                clearInterval(timer2);
+
+                // 开启上移的定时器
+                timer1 = setInterval(up, 50);
+            }
+
+             // 将最新的值设置给元素
+             div.style.top = topDis + 'px';
+        };
+    </script>
+</body>
+
+</html>

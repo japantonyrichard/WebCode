@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        事件删除
+
+        1. 事件删除就是将绑定到元素上的事件给删掉！
+        2. 事件删除用的很少
+        3. 事件的绑定有3种，主要用的是后两种，事件删除也是针对后两种的删除！
+
+        DOM0 事件绑定方式的事件删除
+        1. DOM0 方式绑定的事件删除的话，利用的是 DOM0 这种方式的特点：
+            一个元素绑定多个相同的事件的话，只有一个生效，后面写的生效！！！
+        2. 语法：
+            元素.onclick = null;
+
+
+        DOM2 事件删除
+        1. 因为 DOM2 方式给元素绑定事件的话，可以给元素绑定相同的事件，如果绑定多个相同的事件，那都生效的！
+        2. 所以 删除 DOM2 的事件的话，得指定 删除哪个事件的哪个函数
+        3. 语法格式：
+            元素.removeEventListener('事件名', 函数名, 事件流);
+
+        4. 如果是IE低版本的 DOM2 事件，删除的话需要使用如下：
+            元素.detachEvent('on+事件名', 函数名);
+     -->
+    <div class="box" id="box"></div>
+    <button id="btn">我是按钮</button>
+
+    <script>
+        // 演示 DOM0 事件删除
+        // let div = document.querySelector('.box');
+
+        // div.onclick = () => {
+        //     console.log(123);
+        // };
+
+        // let btn = document.querySelector('button');
+        // btn.onclick = () => {
+        //     // 删掉div元素上的点击事件
+        //     div.onclick = null;
+        // };
+
+        // 演示 DOM2 事件删除
+        // let div = document.querySelector('.box');
+
+        // div.addEventListener('click', function(){
+        //     console.log(123);
+        // });
+
+        // function fun1(){
+        //     console.log(456);
+        // }
+        // div.addEventListener('click', fun1);
+
+        // let btn = document.querySelector('button');
+        // btn.addEventListener('click', function(){
+        //     // 删除事件
+        //     div.removeEventListener('click', fun1);
+        // });
+
+        // 演示兼容性的使用 DOM2 绑定事件，删除事件
+        function bindEvent(ele, type, fun, stream){
+            if(ele.addEventListener){ // 不是IE低版本
+                ele.addEventListener(type, fun);
+            }else{ // IE低版本
+                ele.attachEvent('on'+type, fun);
+            }
+        }
+
+        var div = document.getElementById('box');
+
+        function fun1(){
+            console.log(123);
+        }
+
+        bindEvent(div, 'click', fun1);
+
+        // 删除 DOM2 事件的兼容性写法
+        function deleteEvent(ele, type, fun){
+            if(ele.removeEventListener){ // 不是 iE低版本
+                ele.removeEventListener(type, fun);
+            }else{
+                ele.detachEvent('on'+type, fun);
+            }
+        }
+
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function(){
+            deleteEvent(div, 'click', fun1);
+        };
+
+
+    </script>
+</body>
+
+</html>

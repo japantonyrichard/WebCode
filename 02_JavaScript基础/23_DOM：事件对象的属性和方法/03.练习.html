@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: fixed;
+            top: 100px;
+            left: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+
+    <script>
+        /**
+         * 当点击 W S A D 的时候分别向 上、下、左、右去移动
+         * 当点击 ↑ ↓ ← → 的时候分别向 上、下、左、右去移动
+         * 移动的元素碰到窗口就停下来，不能超出窗口
+         */
+
+        // 给文档绑定键盘按下事件
+        document.body.onkeydown = (e) => { // e 事件对象
+            // 获取当前按键的键码值
+            let code = e.keyCode;
+            console.log(code); // w - 87   ↑ - 38   s - 83   ↓ - 40   a - 65  ← - 37   d - 68  → - 39
+
+            let box = document.querySelector('.box');
+            // 100px
+            let topDis = getComputedStyle(box).top;
+            // 100
+            topDis = parseInt(topDis);
+
+            let leftDis = getComputedStyle(box).left;
+            leftDis = parseInt(leftDis);
+
+            if (code == 87 || code == 38) { //上移
+                topDis -= 10;
+
+                if (topDis <= 0) {
+                    topDis = 0;
+                }
+
+                // 将样式设置回去
+                box.style.top = topDis + 'px';
+            } else if (code == 83 || code == 40) { // 下移
+                topDis += 10;
+
+                let windowHeight = document.documentElement.clientHeight;
+                let boxHeight = box.clientHeight;
+
+                if (topDis >= windowHeight - boxHeight) {
+                    topDis = windowHeight - boxHeight;
+                }
+
+                // 将样式设置回去
+                box.style.top = topDis + 'px';
+            } else if (code == 65 || code == 37) { // 左移
+
+                leftDis -= 10;
+
+                if (leftDis <= 0) {
+                    leftDis = 0;
+                }
+
+                box.style.left = leftDis + 'px';
+            } else if (code == 68 || code == 39) { // 右移
+
+                leftDis += 10;
+
+                let windowWidth = document.documentElement.clientWidth;
+                let boxWidth = box.clientWidth;
+
+                if(leftDis >= windowWidth - boxWidth){
+                    leftDis = windowWidth - boxWidth;
+                }
+                box.style.left = leftDis + 'px';
+            } else {
+                alert('请按正确的键！');
+            }
+        };
+    </script>
+</body>
+
+</html>
