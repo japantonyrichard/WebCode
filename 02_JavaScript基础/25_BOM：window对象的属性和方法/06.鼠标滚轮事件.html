@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        鼠标滚轮事件
+
+        1. 鼠标滚轮事件其实也属于鼠标事件，只不过是它比较特殊
+
+        2. 鼠标滚轮事件有兼容性问题，IE 和 谷歌浏览器，火狐浏览器
+
+        3. 鼠标滚轮事件是绑定在 document 对象上的
+
+        4. IE 和 谷歌浏览器绑定鼠标滚轮事件的格式：
+            document.onmousewheel = function(){};
+            通过事件对象的 wheelDelta 属性的返回值可以判断滚轮滚动的方向，
+            返回 120，向上滚动，返回 -120，向下滚动
+
+        5. 火狐浏览器绑定鼠标滚轮事件的格式：
+            document.addEventListener('DOMMouseScroll', function(){});
+            通过事件对象的 detail 属性的返回值可以判断滚轮滚动的方向，
+            返回 -3，向上滚动，返回 3，向下滚动
+        
+        6. 鼠标滚轮事件的兼容性写法：
+
+     -->
+
+    <script>
+        // 给文档绑定鼠标滚轮事件，IE 和 谷歌浏览器的写法
+        // document.onmousewheel = function(e){
+        //     // 兼容IE低版本
+        //     e = e || window.event;
+
+        //     // console.log(e.wheelDelta);
+        //     if(e.wheelDelta > 0){
+        //         console.log('向上');
+        //     }else{
+        //         console.log('向下');
+        //     }
+        // }
+
+        // 给文档绑定鼠标滚轮事件，火狐浏览器的写法
+        // document.addEventListener('DOMMouseScroll', function(e){
+        //     // console.log(e.detail);
+        //     if(e.detail > 0){
+        //         console.log('向下');
+        //     }else{
+        //         console.log('向上');
+        //     }
+        // });
+
+        // 鼠标滚动后做的事情
+        function wheel(e){
+            // 兼容 IE低版本
+            e = e || window.event;
+
+            if(e.wheelDelta){ // IE 和 谷歌
+                console.log(e.wheelDelta > 0 ? '向上' : '向下');
+            }else{ // 火狐
+                console.log(e.detail > 0 ? '向下' : '向上');
+            }
+        }
+        
+        // 给 IE 和 谷歌绑定鼠标滚轮事件
+        document.onmousewheel = wheel;
+
+        // 火狐浏览器绑定鼠标滚轮事件
+        if(document.addEventListener){ // 目的是为了排除掉IE浏览器，因为IE不认识里面的DOM2这种写法
+            document.addEventListener('DOMMouseScroll', wheel);
+        }
+    </script>
+</body>
+
+</html>

@@ -15,6 +15,7 @@
         body {
             height: 3000px;
             /* overflow: hidden; */
+            /* ↑ 开启BFC 但是此路不通 那就换其他开启BFC的方式 */
         }
 
         .box{
@@ -24,7 +25,14 @@
             margin: 100px;
             padding: 50px;
             border: 10px solid blue;
+            /* 开启BFC */
             float: left;
+            /* 
+            可以通过一些特殊方式来开启元素的BFC:
+                1、设置元素的浮动(不推荐)
+                2、将元素设置为行内块元素display：inline-block(不推荐)
+                3、设置overflow: hidden 
+            */
         }
     </style>
 </head>

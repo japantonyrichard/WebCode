@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        触摸事件（了解）
+        1. 触摸事件，就是通过手指去触摸屏幕，触发事件的执行。属于移动端开发用的。
+        2. 触摸事件有：
+            1) touchstart：开始触摸
+            2) touchend：结束触摸
+            3) touchmove：移动触摸
+     -->
+
+    <div class="box">
+
+    </div>
+
+    <script>
+        let box = document.querySelector('.box');
+
+        box.ontouchstart = () => {
+            console.log('触摸开始');
+        };
+
+        box.ontouchend = () => {
+            console.log('触摸结束');
+        };
+
+        box.ontouchmove = () => {
+            console.log('触摸移动');
+        };
+    </script>
+</body>
+
+</html>

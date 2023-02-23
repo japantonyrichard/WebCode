@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        鼠标事件
+        1. 鼠标的英文单词是 mouse，事件的英文单词是 event
+            click-点击 double-双倍 down-下来、落下  up-向上 over-滑过 out-出去 enter-进入  leave-离开
+        2. 鼠标事件指的是通过鼠标去触发
+
+        3. 鼠标事件有：
+            1) click：鼠标单击事件
+            2) dblclick：鼠标双击事件
+            3) mousedown：鼠标按下事件
+            4) mouseup：鼠标松开事件
+            5) mouseover：鼠标移入事件，支持冒泡
+            6) mouseout：鼠标移出事件，支持冒泡
+            7) mouseenter：鼠标移入事件，不支持冒泡
+            8) mouseleave：鼠标移出事件，不支持冒泡
+            9) contextmenu：鼠标右击事件   context是上下文的意思，menu是菜单的意思
+            10) mousemove：鼠标移动事件，只要鼠标移动1px就会触发
+        
+        4. 一个元素可以绑定多个不同的事件，比如：一个元素 绑定了  click、mousedown、mouseup，
+            那我点击一次鼠标事件执行顺序是？  先是 mousedown ，然后是 mouseup，然后是 click
+
+        5. 上面的所有鼠标事件，使用 DOM0、DOM2 都可以绑定，为了简单使用 DOM0 绑定。// DOM0加on
+     -->
+
+    <div class="box">
+        <div class="box2"></div>
+    </div>
+
+    <script>
+        let box = document.querySelector('.box');
+
+        // 单击事件 // 按下加松开构成一次单击
+        // box.onclick = () => {
+        //     console.log('点击');
+        // };
+
+        // 双击事件
+        // box.ondblclick = () => {
+        //     console.log('双击');
+        // };
+
+        // 鼠标按下
+        // box.onmousedown = () => {
+        //     console.log('按下');
+        // };
+
+        // 鼠标松开
+        // box.onmouseup = () => {
+        //     console.log('松开');
+        // };
+
+        // 鼠标移入 支持冒泡
+        // box.onmouseover = (e) => {
+        //     console.log('移入');
+        //     // console.log(e.bubbles);
+        // };
+
+        // 鼠标移出 支持冒泡
+        // box.onmouseout = (e) => {
+        //     console.log('移出');
+        //     console.log(e.bubbles);
+        // };
+
+        // 鼠标移入
+        // box.onmouseenter = (e) => {
+        //     console.log('移入');
+        //     console.log(e.bubbles); // false
+        // };
+        // box.onmouseleave = (e) => {
+        //     console.log('移出');
+        //     console.log(e.bubbles); // false
+        // };
+
+        // box.oncontextmenu = (e) => {
+        //     console.log('右击');
+        //     // 阻止默认行为
+        //     e.preventDefault();
+        // };   
+
+        box.onmousemove = () => {
+            console.log('移动');
+        };
+    </script>
+</body>
+
+</html>

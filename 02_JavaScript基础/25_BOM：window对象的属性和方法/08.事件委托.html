@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        事件委托
+
+        1. 事件委托，也称为事件代理
+        2. 事件委托指的就是有些事情，我们不自己做，委托给别人去做，交给代理去做！
+        3. 之前我们已经用过事件委托了，例如：点击 li 标签，获取标签中的内容，可以给每个li标签绑定点击事件，
+            这不叫事件委托；没有给li绑定事件，给它的父亲ul绑定事件，去实现获取li中间的内容，这叫事件委托
+        4. 事件委托必须要有：事件冒泡！！！
+        5. 事件委托的好处：
+            1) 减少DOM操作，提高性能
+            2) 动态添加的子元素，同样有效果！
+     -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <button>添加</button>
+
+    <script>
+        // 不使用委托的思想，亲力亲为！
+        // let lis = document.querySelectorAll('li');
+
+        // for (let i = 0; i < lis.length; i++) {
+        //     lis[i].onclick = () => {
+        //         console.log(lis[i].innerHTML);
+        //     };
+        // }
+
+        let btn = document.querySelector('button');
+        btn.onclick = () => {
+            let li = document.createElement('li');
+            li.innerHTML = '哈哈';
+
+            let ul = document.querySelector('ul');
+            ul.appendChild(li);
+
+            // let lis = document.querySelectorAll('li');
+
+            // for (let i = 0; i < lis.length; i++) {
+            //     lis[i].onclick = () => {
+            //         console.log(lis[i].innerHTML);
+            //     };
+            // }
+        }
+
+        // 使用事件委托，子元素们不做事情了，委托给父元素
+        let ul = document.querySelector('ul');
+
+        ul.onclick = (e) => {
+            // 获取到的就是触发这个事件的元素节点
+            console.log(e.target.innerHTML); 
+        };
+    </script>
+</body>
+
+</html>

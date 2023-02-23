@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 3000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="./09.练习.html">点我跳转到9页面</a>
+    <!-- 
+        window对象的属性（了解）
+
+        1. name 属性
+            1) 默认是空串，通过该属性可以实现在两个页面之间传递数据
+
+        2. closed 属性
+            1) 该属性的作用就是判断浏览器窗口关闭了没有，关闭的话返回 true，没有关闭返回 false
+
+        3. self、window 属性
+            1) 这两个属性返回的还是window对象
+
+        4. 位置大小属性：
+            screenX、screenY 属性：指的是浏览器窗口与屏幕左上角的距离
+            innerHeight、innerWidth 属性：指的就是视口的大小
+            outerHeight、outerWidth 属性：指的是窗口的大小，包括浏览器边框、菜单这些在内
+            scrollX、scrollY 属性：指的是水平滚动条滚动过的距离，和垂直滚动条滚动的距离
+
+     -->
+    <script>
+
+        console.log('距离屏幕左上角：' + window.screenX);
+        console.log('距离屏幕左上角：' + window.screenY);
+        console.log('视口的宽度：' + window.innerWidth);
+        console.log('视口的高度：' + window.innerHeight);
+        console.log('外部的宽度' + window.outerWidth);
+        console.log('外部的高度' + window.outerHeight);
+        console.log('水平滚动条：' + window.scrollX);
+        console.log('垂直滚动条：' + window.scrollY);
+
+
+        // console.log(window.self === window); // true
+        // console.log(window.window === window); // true
+
+
+        // console.log(window);
+
+        // window.name = '11页面的值';
+
+        // console.log(window.closed); // false
+    </script>
+</body>
+
+</html>

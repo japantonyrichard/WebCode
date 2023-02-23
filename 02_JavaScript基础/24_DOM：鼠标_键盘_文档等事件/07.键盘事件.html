@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        键盘事件
+
+        1. 键盘事件就是通过键盘按键去触发
+
+        2. 键盘事件有：
+            1) keydown：键盘按下事件
+            2) keyup：键盘松开事件
+            3) keypress：键盘按下事件，但是它只能是有值的按键触发，没有值的按键是不能触发，
+                        比如 ctrl、alt、shift按下去触发不了
+            4) 如果 keydown 和 keypress 都存在的话，按有值的键，会先触发 keydown，然后触发 keypress
+     -->
+
+    <script>
+        document.onkeydown = () => {
+            console.log('键盘按下');
+        }
+
+        // document.onkeyup = () => {
+        //     console.log('键盘松开');
+        // };
+
+        document.onkeypress = () => {
+            console.log('键盘按下');
+        }
+    </script>
+</body>
+
+</html>

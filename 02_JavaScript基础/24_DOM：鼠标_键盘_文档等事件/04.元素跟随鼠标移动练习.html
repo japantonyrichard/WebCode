@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+
+        .box {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script>
+        // 绑定鼠标移动事件
+        document.onmousemove = (e) => {
+            // 获取鼠标距离浏览器窗口左上角的位置
+            let clientX = e.clientX;
+            let clientY = e.clientY;
+
+            let box = document.querySelector('.box');
+
+            // 获取元素自己的宽度和高度
+            let boxWidth = box.clientWidth; // 包括 width 和 padding
+            let boxHeight = box.clientHeight;
+
+            // 设置样式
+            box.style.top = clientY - boxHeight / 2 + 'px';
+            box.style.left = clientX - boxWidth / 2 + 'px';
+        };
+    </script>
+</body>
+
+</html>

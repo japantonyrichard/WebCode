@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+        .box2 {
+            position: fixed;
+            left: 300px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+
+    <div class="box2"></div>
+
+    <script>
+        let box = document.querySelector('.box');
+
+        // 提取移动的函数
+        function move(e, ele) {
+            // 获取鼠标位置距离元素左上角的距离
+            let offsetX = e.offsetX;
+            let offsetY = e.offsetY;
+
+            // 给整个文档绑定鼠标按下事件
+            document.onmousemove = (e2) => {
+                // 获取元素距离浏览器左上角的距离
+                let clientX = e2.clientX;
+                let clientY = e2.clientY;
+
+                // 设置元素的top和left
+                ele.style.top = clientY - offsetY + 'px';
+                ele.style.left = clientX - offsetX + 'px';
+            };
+        }
+
+        // 给box绑定鼠标按下事件
+        box.onmousedown = (e) => {
+            move(e, box);
+        };
+
+        // 给box绑定鼠标释放事件
+        box.onmouseup = () => {
+            // 删除文档的鼠标移动事件
+            document.onmousemove = null;
+        };
+
+        // 获取元素
+        let box2 = document.querySelector('.box2');
+        box2.onmousedown = (e) => {
+            move(e, box2);
+        };
+        box2.onmouseup = () => {
+            document.onmousemove = null;
+        };
+    </script>
+</body>
+
+</html>

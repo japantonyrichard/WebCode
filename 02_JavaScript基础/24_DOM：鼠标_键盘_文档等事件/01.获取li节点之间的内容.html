@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        // 方式一：给每个li绑定事件，获取里面的内容
+        // let lis = document.querySelectorAll('li');
+
+        // for(let i = 0; i < lis.length; i++){
+        //     lis[i].onclick = () => {
+        //         console.log(lis[i].innerHTML);
+        //     };
+        // }
+
+        // 方式二： 目前i是用 var声明的，是全局变量
+        // for(var i = 0; i < lis.length; i++){
+        //     lis[i].onclick = function() {
+        //         // console.log(lis[i].innerHTML);
+        //         console.log(this.innerHTML);
+        //     };
+        // }
+
+        // console.log(i);
+        // i = 5
+
+        // 方式三：给ul绑定事件，利用了事件冒泡！         效率更高！！！！！！！！！！！！！！！
+        let ul = document.querySelector('ul');
+        ul.onclick = (e) => {
+            // e.target指的是触发当前事件那个元素，比如我们点击 ul 中的某个li
+            // li会向外冒泡，会触发到ul的点击事件执行，所以，target指的是li
+            console.log(e.target.innerHTML);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+            width: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        滚动条滚动事件
+
+        1. 滚动事件 scroll，就是通过滚动条滚动去触发
+        2. 滚动事件一般是给文档去绑定
+        3. 滚动条有的浏览器是算在body上，有的是算在html上，所以获取滚动条水平、垂直滚动的距离是：
+            document.documentElement.scrollTop || document.body.scrollTop;
+            document.documentElement.scrollLeft || document.body.scrollLeft;
+        
+     -->
+    <script>
+        // 给文档绑定滚动事件
+        document.onscroll = () => {
+            // let top = document.documentElement.scrollTop || document.body.scrollTop;
+            // console.log(top);
+            let left = document.documentElement.scrollLeft || document.body.scrollLeft;
+            console.log(left);
+        };
+    </script>
+</body>
+
+</html>

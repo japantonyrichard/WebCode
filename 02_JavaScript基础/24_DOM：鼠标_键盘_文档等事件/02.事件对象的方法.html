@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        #box2{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        事件对象的方法
+
+        1. preventDefault()
+            1) prevent 是阻止的意思，default 是默认的意思
+            2) 该方法的作用就是阻止事件默认的行为，比如：点击超链接后，默认超链接会跳转，可以通过该方法方法不让它跳转
+            3) 该方法有兼容性问题，如果是IE低版本的浏览器的话，用下面的方式阻止：
+                e.returnValue = false;
+            4) 兼容性的写法：
+                if(e.preventDefault){
+                    e.preventDefault();
+                }else{
+                    e.returnValue = false;
+                }
+
+        2. stopPropagation()
+            1) stop 是停止的意思，propagation 是传播的意思
+            2) 该方法的作用是停止冒泡
+            3) 该方法有兼容性问题，如果是 IE低版本的话，需要使用下面的方式停止冒泡：
+                e.cancelBubble = true;
+            4) 兼容性写法：
+                if(e.stopPropagation){
+                    e.stopPropagation();
+                }else{
+                    e.cancelBubble = true;
+                }
+
+     -->
+    <!-- <a href="https://www.jd.com" id="a1" target="_blank">京东</a> -->
+
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+
+    <script>
+        // var a1 = document.getElementById('a1');
+
+        // a1.onclick = function(e){
+        //     e = e || window.event;
+
+        //     // 阻止默认行为
+        //     // e.preventDefault();
+
+        //     // e.returnValue = false;    // IE低版本用
+        //     // console.log(e.preventDefault);
+
+        //     // 兼容性的写法
+        //     e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        // }
+
+        var box1 = document.getElementById('box1');
+        var box2 = document.getElementById('box2');
+        var box3 = document.getElementById('box3');
+
+        box1.onclick = function(){
+            console.log('大div被执行！');
+        }
+        box2.onclick = function(){
+            console.log('中div被执行！');
+        }
+        box3.onclick = function(e){
+            console.log('小div被执行！');
+
+            e = e || window.event;
+
+            // 停止冒泡
+            // e.stopPropagation();
+
+            // 停止冒泡兼容性写法
+            e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+        }
+
+        document.body.onclick = function(){
+            console.log('body被执行！');
+        }
+    </script>
+</body>
+
+</html>

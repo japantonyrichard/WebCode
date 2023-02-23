@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            background-color: pink;
+            overflow: hidden;
+        }
+        body{
+            text-align: center;
+        }
+        h3{
+            margin: 30px 0;
+        }
+        button{
+            width: 40px;
+            height: 40px;
+            background-color: orange;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>嫁给我吧!!!</h3>
+        <button>YES</button>
+        <button>NO</button>
+    </div>
+
+    <script>
+        let btns = document.querySelectorAll('.box button');
+        let box = document.querySelector('.box');
+
+        btns[0].onclick = () => {
+            alert('爱你呦！');
+        };
+
+
+        function generateRanNum(min, max){
+            return ~~(Math.random()*(max-min +1) + min);
+        }
+
+        btns[1].onmouseover = () => {
+            // 获取浏览器窗口的高度
+            let windowHeight = document.documentElement.clientHeight;
+            let boxHeight = box.clientHeight;
+
+            // 生成随机数，作为 top
+            box.style.top = generateRanNum(0, windowHeight - boxHeight) + 'px';
+
+            // 获取浏览器窗口的宽度
+            let windowWidth = document.documentElement.clientWidth;
+            let boxWidth = box.clientWidth;
+
+            box.style.left = generateRanNum(0, windowWidth - boxWidth) + 'px';
+        };
+
+    </script>
+</body>
+</html>

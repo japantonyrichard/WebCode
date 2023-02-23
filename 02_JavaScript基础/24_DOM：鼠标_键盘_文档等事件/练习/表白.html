@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .box {
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            background-color: pink;
+        }
+
+        button {
+            width: 40px;
+            height: 40px;
+            background-color: orange;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>嫁给我吧!!!</h3>
+        <button>YES</button>
+        <button>NO</button>
+    </div>
+
+    <script>
+        let btns = document.querySelectorAll('button');
+
+        btns[0].onclick = () => {
+            alert('爱你呦！');
+        };
+
+        let generateNum = (min, max) => {
+            return ~~(Math.random()*(max-min+1)+min);
+        };
+
+        btns[1].onmouseover = () => {
+            let box = document.querySelector('.box');
+
+            // 获取浏览器窗口高度
+            let windowHeight = document.documentElement.clientHeight;
+            // 获取元素高度
+            let boxHeight = box.clientHeight;
+
+            // 设置元素的 top 样式
+            box.style.top = generateNum(0, windowHeight - boxHeight) + 'px';
+
+            // 获取浏览器窗口宽度
+            let windowWidth = document.documentElement.clientWidth;
+            // 获取元素宽度
+            let boxWidth = box.clientWidth;
+
+            // 设置元素的 left 样式
+            box.style.left = generateNum(0, windowWidth - boxWidth) + 'px';
+        };
+    </script>
+</body>
+
+</html>

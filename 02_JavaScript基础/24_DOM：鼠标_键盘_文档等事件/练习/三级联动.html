@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            text-align: center;
+        }
+        .box select{
+            width: 80px;
+            height: 30px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <select id="province">
+            <option value="">请选择</option>
+        </select>
+        <span>省</span>
+        <select id="city">
+            <option value="">请选择</option>
+        </select>
+        <span>市</span>
+        <select id="county">
+            <option value="">请选择</option>
+        </select>
+        <span>县</span>
+    </div>
+
+    <script>
+        // 添加省
+        let provinceData = ['北京', '山西', '山东', '河南'];
+        let province = document.querySelector('#province');
+        let city = document.querySelector('#city');
+        let county = document.querySelector('#county');
+
+        for(let i = 0; i < provinceData.length; i++){
+            let option = document.createElement('option');
+            province.appendChild(option);
+            option.innerHTML = provinceData[i];
+            option.value = i;
+        }
+
+        let cityData = [
+            ['海淀', '大兴', '昌平'],
+            ['太原', '临汾'],
+            ['济南', '青岛', '聊城'],
+            ['郑州', '开封']
+        ];
+
+        // 给省绑定确定改变事件，当选择一个省后，就要添加对应的城市
+        // 根据选择的省份的value属性值确定对应的城市
+        province.onchange = () => {
+            // 获取选择的省
+            let provinceNum =  province.value;
+
+            // 先将之前城市拉下列表中的内容清掉，就剩一个请选择
+            city.length = 1;
+
+            // 将县清空剩一个请选择
+            county.length = 1;
+
+            // 将省对应的城市添加到城市的下拉框中
+            for(let i = 0; i < cityData[provinceNum].length; i++){
+                let option = document.createElement('option');
+                city.appendChild(option);
+                option.innerHTML = cityData[provinceNum][i];
+                option.value = i;
+            }
+        };
+
+        // 县区
+        let countyData = [
+            [
+                ['西二旗', '海淀黄庄'],
+                ['天宫院', '庞各庄'],
+                ['沙河', '生命科技园']
+            ],
+            [
+                ['迎泽', '小店'],
+                ['尧都', '襄汾']
+            ],
+            [
+                ['历城', '历下'],
+                ['崂山', '胶州'],
+                ['阳谷', '东阿']
+            ],
+            [
+                ['金水', '巩义'],
+                ['通许', '兰考']
+            ]
+        ];
+
+        // 当市发生改变时。添加县
+        city.onchange = () => {
+            let provinceNum = province.value;
+            let cityNum = city.value;
+
+            county.length = 1;
+            for(let i = 0; i < countyData[provinceNum][cityNum].length; i++){
+                let option = document.createElement('option');
+                county.appendChild(option);
+
+                option.innerHTML = countyData[provinceNum][cityNum][i];
+                option.value = i;
+            }
+        };
+    </script>
+</body>
+</html>

@@ -16,6 +16,9 @@
             1) current 是当前的意思，target 是目标、靶子的意思
             2) currentTarget 属性指的是绑定事件的那个元素，也等价于 this
             3) target 属性指的是触发事件的元素
+            4) target 属性有兼容性问题，如果是 IE低版本的话需要使用：
+                e.srcElement;
+                target = e.target || e.scrElement;
      -->
 
     <ul>

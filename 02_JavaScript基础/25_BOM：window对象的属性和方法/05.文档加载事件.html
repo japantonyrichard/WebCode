@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 给window对象绑定一个页面加载完事件，该事件是在网页加载完毕后触发！
+        // window.onload = function () {
+        //     let box = document.querySelector('.box');
+        //     console.log(box);
+        // }
+    </script>
+</head>
+
+<body>
+    <!-- 
+        文档加载事件
+
+        1. 文档，指的就是整个网页
+        2. 文档中的内容越多，浏览器加载解析起来就越慢，就越需要一些时间
+        3. 文档加载事件指的是在浏览器加载解析服务器响应回来的数据的过程中，触发的一些事件！
+        4. 文档加载事件：
+            1) load：指的是页面加载完事件，也就是所有的数据都正常加载完了！
+            2) error：指的是页面或者某个资源加载过程中，出错了，会触发该事件
+            3) DOMContentLoaded
+            4) readystatechange
+
+
+        load 事件   （掌握）
+        1. load 单词是加载的意思
+        2. 该事件我们一般绑定在 window 对象上（window 对象就代表一个浏览器窗口，也称为全局对象），
+            在浏览器页面加载完毕后触发该事件
+        3. 语法格式：
+            window.onload = function(){}
+        4. 语法说明：上面代码表示 整个文档加载完毕后，会触发load事件，执行事件处理函数
+
+        error 事件 （了解）
+        1. error 是错误的意思
+        2. 该事件表示网页文档或者某个资源加载失败时触发的事件！
+
+        DOMContentLoaded 事件 （了解）
+        1. 翻译过来是 DOM 内容加载完
+        2. 该事件表示，客户端发请求给服务器，服务器响应数据给客户端，客户端的浏览器对数据进行解析，当数据的DOM结构
+            解析完成后，会触发 document 对象的 DOMContentLoaded 事件，这时候外部资源还在加载中（外部资源指定是css文件、js文件等等）
+        3. DOMContentLoaded 事件发生的要比 load 事件早！！！
+        4. DOMContentLoaded 事件只能绑定在 document 对象上，而且只能用 DOM2 的绑定方式
+
+        readystatechange 事件  （了解）
+        1. 翻译过来是 准备状态改变
+        2. 客户端发送请求给服务器，服务器收到请求后处理请求响应数据给客户端，客户端收到服务器响应回来的数据，就要对数据
+            进行解析，主要 解析 DOM结构、外部资源（css文件、js文件、图片、视频）等
+        3. document 对象中的 readyState 属性，该属性就表示了网页数据解析中的三个状态：
+            loading状态：表示网页数据解析中
+            interactive状态：表示网页的DOM结构解析完成（这时候外部资源还没有解析完），如果你有DOMContentLoaded事件，这时候会触发它
+            complete状态：表示网页中所有的内容都解析完了！！ 这时候如果你有 load 事件，就会被触发！
+        4. 该事件就是监听网页解析过程中的状态改变的，当浏览器解析网页的状态发生了改变就会触发！！！
+        5. 该事件必须绑定给 document 对象
+     -->
+
+    <div class="box"></div>
+    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13557342943%2F1000.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653198388&t=819bf8f613fe452370385e28ba18081a"
+        alt="">
+
+    <script>
+        // let img = document.querySelector('img');
+
+        // img.onerror = () => {
+        //     console.log('图片失败啦！！！');
+        // };
+
+        // 整个页面加载完后会触发该事件
+        window.onload = () => {
+            console.log('load事件被执行！！！');
+        }
+
+        // 给 document对象绑定 DOMContentLoaded事件，该事件是在DOM解析完成后触发
+        document.addEventListener('DOMContentLoaded', function(){
+            console.log('DOM解析完事件被触发！！！');
+        });
+
+        // 给文档绑定网页解析状态改变的事件，一旦网页解析状态发生改变就会触发该事件
+        document.onreadystatechange = function(){
+            console.log('网页解析状态发生变化了，现在是：' + document.readyState);
+        }
+    </script>  
+</body>
+
+</html>
