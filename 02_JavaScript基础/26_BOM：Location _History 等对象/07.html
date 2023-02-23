@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>07.html页面</h3>
+    <a href="./08.html">跳转到08.html页面</a>
+    <br>
+    <button>前进</button>
+    <button>后退</button>
+    <button>go(2)</button>
+
+    <script>
+        let btns = document.querySelectorAll('button');
+
+        btns[0].onclick = () => {
+            // 前进一个页面
+            history.forward();
+        }
+
+        btns[1].onclick = () => {
+            // 后退一个页面
+            history.back();
+        }
+
+        btns[2].onclick = () => {
+            // 后退一个页面
+            history.go(2);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        location 对象  (了解)
+        1. location 是地址的意思
+        2. 该对象中就存储了浏览器地址栏信息
+        3. 获取该对象的方式有：
+            window.location;
+            document.location;
+            直接使用 location 对象;
+
+        location 对象的方法
+        1. assign() 
+            1) 该方法就是可以让浏览器网页进行跳转
+
+        2. replace()
+            1) 该方法就是让浏览器网页进行跳转，但是它不能回退
+
+        3. reload()
+            1) 该方法的作用就是刷新网页
+            2) 语法格式：
+                location.reload(true|false);
+            3) 语法说明：
+                可以不写参数，默认就是false，表示重新加载网页的话，使用本地缓存
+                如果参数写为 true，表示重新发送请求到服务器去加载
+            
+
+     -->
+    <button>按钮</button>
+
+    <script>
+        let btn = document.querySelector('button');
+        btn.onclick = () => {
+            // location.href = 'https://www.jd.com';
+
+            // 跳转到新的地址
+            // location.assign('https://www.vip.com');
+
+            // 跳转到新的地址，不能回退
+            // location.replace('https://www.vip.com');
+
+            // 重新加载
+            location.reload(true);
+        };
+    </script>
+</body>
+
+</html>

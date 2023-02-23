@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        回流和重绘（记住）
+
+        1. 介绍
+
+        **浏览器渲染原理图：**
+
+        <img src="images/1.png" alt=""> 
+
+        * html 页面经过浏览器中的 html 解析器解析会生成一个 DOM 树  document Object model
+        * css 样式表经过浏览器中的 css 解析器解析会生成一个 CSSOM 树 css object model
+        * 将 DOM 树和 CSSOM 树结合起来就生成了 渲染树（render tree），渲染树中就有元素和样式了
+
+        * 回流（layout）：根据生成的渲染树，进行回流，就可以得到节点的几何信息（位置、大小）
+        * 重绘（painting）：根据渲染树以及回流得到的几何信息，得到节点的绝对像素
+
+        **生成渲染树：**
+
+        <img src="images/2.png" alt="">
+
+        为了构建渲染树，浏览器主要完成了以下工作：
+
+        * 从 DOM 树的根节点开始遍历每个可见节点
+        * 对于每个可见的节点，找到 CSSOM 树中对应的规则，并应用它们
+        * 根据每个可见节点及其对应的样式，组合生成渲染树
+        * 渲染树中不会有的节点  // 这些不需要渲染，只有body里面的需要
+        * script、meta、link 等
+        * display:none 的元素 // 隐藏的元素
+
+        2. 回流（重排）
+
+        * 我们知道通过构造渲染树，浏览器将 DOM 节点树和 CSSOM 树结合起来，得到渲染树，可是还需要计算它们在页面上的位置和大小，这个计算的阶段是就回流，也称为重排
+        * 回流是影响浏览器性能的关键因素，因为其变化会涉及到部分页面或整个页面的布局更新
+        * 一个元素的回流可能会导致了所有子元素以及其后面的兄弟元素、祖先元素的随后回流
+        * 所以说，尽可能少的去改变元素的大小和位置
+
+        3. 重绘
+
+        * 通过构造渲染树和回流阶段，我们知道了哪些节点是可见的，以及可见节点的**样式**和**位置大小几何信息**，那么我们就可以**将渲染树的每个节点转为屏幕上的实际像素**，这个阶段就叫做**重绘**
+
+        4. 何时发生回流和重绘
+
+        * 我们知道回流阶段主要是计算节点的位置大小信息，那么当页面布局或者位置信息发生改变时，就需要回流，比如以下情况：
+        * 添加或删除可见的 DOM 元素
+        * 元素的位置发生变化
+        * 元素的尺寸发生变化（外边距、内边距、边框、高度、宽度等）
+        * 内容发生变化，比如文本变化或图片被另一个不同尺寸的图片代替等
+        * 页面一开始渲染的时候（这肯定避免不了）
+        * 浏览器的窗口尺寸变化
+
+        * 注意：回流一定会触发重绘，但是重绘不一定会回流，比如以下两点发生变化，但是并没有改变元素的大小和位置，所以不会回流，只会重绘：
+        * 改变元素的颜色
+        * 改变元素的背景颜色
+
+        5. 减少回流和重绘
+
+        尽可能的减少回流和重绘，这样可以提高浏览器性能，有如下操作：
+
+        * 不要一项一项的修改元素的样式，而是使用 cssText 或者 className 一次性修改
+
+        * 不要一个一个的添加 DOM 元素，可以使用 documentFragment 去一次性操作
+
+        * 案例：
+
+        ```js
+        // 下面代码发生两次回流、重绘
+        // let div = document.createElement('div');
+        // div.innerHTML = 'div中的内容';
+        // document.body.appendChild(div);
+        
+        // let p = document.createElement('p');
+        // p.innerHTML = '我是段落';
+        // document.body.appendChild(p);
+        
+        // 利用文档片段，减少回流、重绘，下面代码发生一次
+        let div = document.createElement('div');
+        div.innerHTML = 'div中的内容';
+        
+        let p = document.createElement('p');
+        p.innerHTML = '我是段落';
+        0
+        let df = document.createDocumentFragment();
+        df.appendChild(div);
+        df.appendChild(p);
+        
+        document.body.appendChild(df);
+        ```
+     -->
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        button{
+            position: fixed;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        window 对象的方法
+
+        1. confirm() (掌握)
+            1) confirm 是确认的意思
+            2) 该方法会弹出一个确认框，有确定和取消两个按钮，点击确定后返回 true，点击取消返回 false
+
+        2. open() (了解)
+            1) 该方法会打开一个浏览器窗口
+            2) 语法格式：
+                window.open('url', '窗口名字', '属性');
+            3) 语法说明：
+                方法参数可以都省略，那就表示打开一个空白窗口
+                参数1，表示打开窗口后显示的网址内容
+                参数2，给打开的新窗口起个名字，没有太大的作用
+                参数3，可以写一个样式属性，单位默认是px，比如：'width=500,height=500'
+        3. close() (了解)
+            1) 该方法的作用是关闭一个窗口，往往用它来关闭打开的新窗口
+
+        4. setTimeOut()  (掌握)
+            1) 该方法的作用、写法和之前学习的 setInterval() 特别像
+            2) 该方法的作用是在间隔指定的时间间隔后执行回调函数，只执行一次！
+        
+        5. clearTimeOut()  (了解)
+            1) 该方法的作用是可以清除 setTimeOut() 定时器
+
+        6. moveTo() （了解）
+            1) 该方法的作用就是将窗口移动到距离屏幕左上角指定的位置
+
+        7. moveBy() (了解)
+            1) 该方法的作用是相对于原来的位置进行移动
+
+        8. resizeTo() (了解)
+            1) 该方法的作用是重新指定窗口的大小到指定的一个大小
+        
+        9. resizeBy() (了解)
+            1) 该方法的作用是将窗口增加或缩小指定的数据
+
+        9. scrollTo()  (了解)
+            1) 该方法的作用是将滚动条移动距离浏览器左上角到指定的位置
+
+        10. scrollBy()  (了解)
+            1) 该方法的作用是将滚动条移动到距离滚动条原来位置多大
+     -->
+
+    <button>按钮</button>
+
+    <script>
+        // 1.confirm 方法
+        // let b = window.confirm('确认删除吗？');
+        // if(b){
+        //     console.log('确定要删除！');
+        // }else{
+        //     console.log('取消删除！');
+        // }
+
+        // 2.open 方法
+        // let timer1 = setInterval(function(){
+        //     // 打开一个空白窗口
+        //     window.open();
+        //     clearInterval(timer1);
+        // }, 3000);
+
+        // let timer2 = setInterval(function(){
+        //     window.open('https://www.baidu.com');
+        //     clearInterval(timer2);
+        // }, 3000);
+
+        // let timer3 = setInterval(() => {
+        //     window.open('https://www.jd.com', 'jd', 'width=500,height=500,top=200,left=200');
+        //     clearInterval(timer3);
+        // }, 3000);
+
+        // 3.close方法
+        // let timer1 = setInterval(() => {
+        //     // 打开新窗口
+        //     let newWin = open('https://www.jd.com', 'jd', 'width=500,height=500,top=100,left=100');
+
+        //     clearInterval(timer1);
+
+        //     let timer2 = setInterval(() => {
+        //         // 关闭窗口
+        //         newWin.close();
+        //         clearInterval(timer2);
+        //     }, 3000);
+        // }, 3000);
+
+        // 4.setTimeOut() 方法
+        // let timer1 = setTimeout(function(){
+        //     console.log('hello');
+        //     clearTimeout(timer1);
+        // }, 3000);
+
+        // 5.moveTo()
+        // setTimeout(() => {
+        //     let newWin = open('https://www.jd.com', 'jd', 'width=500,height=500,top=100,left=100');
+
+        //     // 移动窗口到距离屏幕指定的位置
+        //     // newWin.moveTo(200, 200);
+        //     // 移动窗口，相对于原来的位置进行移动，距离屏幕上方300，左边 300
+        //     newWin.moveBy(200, 200);
+        // }, 3000);
+
+        // 6.resizeTo、resizeBy()
+        // setTimeout(() => {
+
+        //     let newWin = open('https://www.jd.com', 'jd', 'width=300,height=300,top=100,left=100');
+
+        //     // 将窗口大小指定为 200 * 200
+        //     // newWin.resizeTo(200, 200);
+
+        //     // 在原来窗口的基础上加上指定的大小
+        //     newWin.resizeBy(200, 200);
+
+        // }, 3000);
+
+        // 
+        let btn = document.querySelector('button');
+        btn.onclick = () => {
+            // 设置滚动条距离浏览器左上角指定的位置
+            // window.scrollTo(0, 500);
+
+            // 相对于之前的位置进行设置
+            window.scrollBy(0, 500);
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        navigator对象 (了解)
+
+        1. 该对象里面存储了浏览器版本相关的信息
+
+        2. userAgent 属性：通过该属性可以获取到用户使用的浏览器的版本等信息
+            但是不好确定用户用的到底是哪个浏览器，但是通过该属性可以判断用户用的是移动端还是PC端访问！
+            如果用户是使用手机访问，那该属性返回的内容中包含 Mobile
+        
+        3. plugins 属性：plugin 单词是插件的意思，该属性就是返回用户的浏览器上安装了哪些插件！返回一个类数组对象
+     -->
+
+    <script>
+        // Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+        // Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
+        console.log(navigator.userAgent);
+
+        console.log(navigator.plugins);
+
+    </script>
+</body>
+
+</html>
