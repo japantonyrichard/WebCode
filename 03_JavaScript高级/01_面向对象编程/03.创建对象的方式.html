@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        创建对象方式：
+        1. 字面量法
+            这种方式写起来简单，但是不是特别好！如果要搞100个对象，那就需要老老实实写100个对象的代码
+        2. 构造函数法
+        3. 静态方式
+     -->
+    
+    <script>
+        // 1. 使用字面量法创建对象
+        // let p1 = {
+        //     name:'张三',
+        //     age:18
+        // };
+
+        // let p2 = {
+        //     name:'小美',
+        //     age:20
+        // };
+
+        // 2. 使用字面量法创建对象，优化一下，利用函数去优化
+        function person(name, age){
+            return {
+                name, // 属性名是 name，属性值是 name的变量
+                age
+            };
+        }
+
+        let p1 = person('张三', 18);
+        let p2 = person('小美', 28);
+
+        console.log(p1);
+        console.log(p2);
+
+    </script>
+
+</body>
+</html>

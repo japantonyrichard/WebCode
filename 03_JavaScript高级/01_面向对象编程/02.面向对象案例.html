@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 定义对象，模拟两个玩家的一场战斗
+         * 对象的基础属性：name、攻击力（随机数）、血量
+         * 对象的基础方法：单次攻击造成的伤害（包含是否产生暴击）
+         * 定义 battle 对象，通过对象之间的相互作用实现最终的需求
+         */
+
+        function randomNum(min, max){
+            return ~~(Math.random() * (max - min + 1) + min);
+        }
+
+        //  定义英雄1
+        let hero1 = {
+            name:'林冲', // 名字
+            atk:80, // 基础攻击力
+            hp:800, // 血量
+            attack:function(other){ // 攻击的方法
+                // 生成上下浮动的攻击力
+                let damage = this.atk + randomNum(-10, 10);
+
+                // 林冲有 20% 的几率放大招
+                let isBaoJi = Math.random() > 0.8;
+
+                // 产生暴击的话，伤害翻倍
+                if(isBaoJi){
+                    damage *= 2;
+                }
+
+                // 减掉另外一个人的血量
+                other.hp -= damage;
+
+                // 对另外一个人每次攻击后，判断一下另一个人的血量
+                if(other.hp <= 0){
+                    other.hp = 0;
+                }
+                
+                console.log(`${this.name}攻击了${other.name}，本次造成${damage}伤害，
+                ${other.name}还剩${other.hp}血量！`);
+            }
+        };
+
+        //  定义英雄2
+        let hero2 = {
+            name:'鲁智深', // 名字
+            atk:60, // 基础攻击力
+            hp:1000, // 血量
+            attack:function(other){ // 攻击的方法
+                // 生成上下浮动的攻击力
+                let damage = this.atk + randomNum(-10, 10);
+
+                // 鲁智深有 15% 的几率放大招
+                let isBaoJi = Math.random() > 0.85;
+
+                // 产生暴击的话，伤害翻倍
+                if(isBaoJi){
+                    damage *= 2;
+                }
+
+                // 减掉另外一个人的血量
+                other.hp -= damage;
+
+                // 对另外一个人每次攻击后，判断一下另一个人的血量
+                if(other.hp <= 0){
+                    other.hp = 0;
+                }
+                
+                console.log(`${this.name}攻击了${other.name}，本次造成${damage}伤害，
+                ${other.name}还剩${other.hp}血量！`);
+            }
+        };
+
+        // 定义battle对象，让两个英雄战斗
+        let battle = {
+            player1:hero1,
+            player2:hero2,
+            start:function(){
+                // 利用死循环，去对打，当一方的血量为0后结束循环
+                while(true){
+
+                    // 英雄1打英雄2
+                    this.player1.attack(this.player2);
+
+                    if(this.player2.hp <= 0){
+                        console.log(this.player1.name + '胜利了！');
+                        break;
+                    }
+
+                    // 英雄2打英雄1
+                    this.player2.attack(this.player1);
+                    if(this.player1.hp <= 0){
+                        console.log(this.player2.name + '胜利了！');
+                        break;
+                    }
+                }
+            }
+        };
+
+        // 开始战斗！
+        battle.start();
+    </script>
+</body>
+
+</html>

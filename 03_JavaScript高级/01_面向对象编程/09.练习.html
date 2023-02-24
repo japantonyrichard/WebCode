@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 实现老师教多名学生
+        // 创建老师的构造函数，作为模板，通过模板就可以创建很多的实例对象
+        function Teacher(name, sex, age){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+
+            this.teach = function(stus){
+                for(let i = 0; i < stus.length; i++){
+                    console.log(this.name + '在教' + stus[i].name);
+                }
+            }
+        }
+
+        // 创建学生的构造函数，作为模板，就可以创建很多实例对象
+        function Student(name, age){
+            this.name = name;
+            this.age = age;
+            this.study = function(){
+                console.log(this.name + '在好好学习！');
+            }
+        }
+
+        // 创建一个老师对象
+        let teacher = new Teacher('宋江', '男', 55);
+
+        // 创建学生对象
+        let stu1 = new Student('林冲', 48);
+        let stu2 = new Student('武松', 28);
+        let stu3 = new Student('李逵', 38);
+
+        let arr = [stu1, stu2, stu3];
+
+        teacher.teach(arr);
+
+        stu2.study();
+    </script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1. 网页的组成部分有？分别对应什么技术。
+            结构：html
+            表现：css
+            行为：JavaScript，JS
+
+        2. 块元素的特点是什么？
+            块元素在页面中垂直摆放，独占一整行，宽度默认是父元素的100%，高度默认由内容撑起来。
+
+        3. 怎样将行内元素转为块元素？
+            display:block;
+
+        4. 说出以下选择器选中的元素：
+            选中 id="abc"
+            #abc{}
+            选中 class="abc" 的元素里面的子元素 li 里面的子元素 a。
+            .abc>li>a{}
+            选中 class="xyz" 的元素里面的所有的 ul 标签里面的所有的 class="img" 的元素
+            .xyz ul .img{}
+            选中 class="aaa" 的元素里面的所有的 ul 标签里面的子元素 li，且li得是鼠标悬浮的，里面的 class="nav"的元素
+            .aaa ul>li:hover .nav{}
+            
+        5. 绝对定位的特点
+            绝对定位就是相对于最近的有定位的祖先元素进行定位，如果祖先元素都没有定位就相对于视口。
+            绝对定位后元素原位置不保留，会脱离文档流，元素的层级会提升。
+            子元素使用绝对定位，父元素往往使用相对定位。
+
+        1. 表示二进制、八进制、十六进制的数分别以什么开头？
+            二进制：0b开头
+            八进制：0O开头
+            十六进制：0x开头
+
+        2. 说说 ES 和 JS 有什么关系？
+            ES 是一种标准、规范，JS 是这个标准的实现。
+
+        3. 分别写出使用 JS 输出到控制台、网页、警告框的代码。
+            console.log('内容',xxxx,xxxx);
+            document.write('内容');
+            window.alert('内容');   alert('内容');
+
+        4. 标识符的命名规则是。
+            标识符是由 字母、数字、下划线和 $ 组成
+            数字不能开头
+            不能直接是关键字和保留字
+
+        5. 举例声明一个变量并赋值。
+            var age = 18;
+            
+            console.log(age + 2);
+
+        6. 变量提升是什么意思，举例说明。
+            变量提升：浏览器在解析我们的js代码时，会将所有的变量声明提到最前面。
+            赋值是不会提升。
+            
+            console.log(x);// undefined
+            var x = 5;
+            
+            等价于
+            var x;
+            console.log(x);
+            x = 5;
+
+        7. 编写代码交换两个变量的值。
+            var x = 10;
+            var y = 20;
+            
+            var temp;
+            temp = x;
+            x = y;
+            y = temp;
+
+        1. JS 中的数据类型有哪些？
+	        number、string、boolean、undefined、null、object
+
+        2. NaN 是什么意思？属于什么数据类型？
+            NaN 是 not a number，不是一个数字。
+            NaN 是属于number类型。
+
+        3. 8 + "5" + 3 的结果是：853
+
+        4. boolean 类型的两个值是：true、false 
+
+        5. typeof 运算符的作用是？
+            可以返回数据、变量的数据类型。  
+
+        6. 当字符串与别的数据类型进行加法操作时会怎样？
+            字符串与别的数据类型进行加法操作时，会拼接。
+
+        7. == 和 === 的区别是？
+            == 相等，只比较数值大小
+            === 相等，既比较数值大小，又比较数据类型。
+
+        8. 比较运算符的结果是什么？
+            布尔类型。
+
+        1. =、== 和 === 的区别是？
+            = 是赋值号
+            == 是比较运算符，仅比较数值
+            === 是比较运算符，不仅比较数值，还比较类型
+
+        2. 描述一下短路机制是什么意思？
+            一旦某个表达式的结果能够决定整个表达式的结果时，就不会继续往后执行。
+            a && b，a 是 false时，就不会执行b了
+            a || b，a 是 true 时，就不会执行b了
+
+        3. 三目运算符的语法格式及执行过程。
+            表达式1 ? 表达式2 : 表达式3;
+            表达式1成立的话，结果就是表达式2；表达式1不成立的话，结果就是表达式3.
+
+        4. 怎样对 4.53 取整。
+            ~~4.53
+
+        5. 强制类型转换涉及到的3个函数是？
+            Number()  String()  Boolean()
+
+        1. if-else 语句的语法结构是？
+            if(){
+            
+            }else if(){
+            
+            }else{
+            
+            }
+
+        2. switch 语句的语法结构是？
+            switch(){
+                case 值1:
+                    代码
+                case 值2:
+                    代码
+                default:
+                    
+            }
+
+        3. 生成一个 [20-50] 的随机整数。
+            ~~(Math.random()*(50-20 + 1) + 20);
+
+        4. 循环的组成部分有？
+            初始化部分、循环条件、迭代部分、循环体
+
+        5. for 循环的语法结构是？
+            for(var i = 0; i < 100; i++){
+                循环体
+            }
+
+        1. while 循环的语法结构是？
+            1. 初始化部分
+            while(2.循环条件){
+                3.循环体
+                4.迭代部分
+            }
+
+        2. do-while 循环的语法结构是？
+            1.初始化部分
+            do{
+                3.循环体
+                4.迭代部分
+            }while(2.循环条件);
+
+        3. while 和 do-while 的区别是？
+            while 循环是先判断，再执行
+            do-while 循环是先执行，再判断
+
+        4. 说说break 和 continue 关键字的使用。
+            break 关键字可以用在 switch 和 循环结构中。在switch中时，代码执行碰到break后，
+            switch结构就结束。在循环中，代码执行碰到break后，循环就结束。
+            
+            continue 关键只可以用在循环中，当代码中执行碰到continue，本次循环结束，进入下一次循环。
+
+        5. 标准盒子模型的组成部分有？
+            内容区、内边距、边框、外边距
+
+        6. display 属性的可选值有？分别是什么作用。
+            display 属性的可选值有：
+            1.block：将行内元素转为块元素
+            2.inline：将块元素转为行内元素
+            3.inline-block：将元素转为行内块元素
+            4.none：将元素隐藏
+            5.table-cell：将元素转为表格单元格，配合 vertical-align可以使里面的元素垂直居中
+            6.flex：开启弹性盒模型，里面的子元素默认会水平排列为一行
+
+        1. 函数的声明有哪些方式？分别写一个例子。
+            函数的声明方式有：
+            function命令法
+            function fun1(){
+                console.log('hello');
+            }
+            函数表达式法
+            var fun2 = function (){
+                console.log('world!');
+            };
+            构造函数法(了解)
+            var fun3 = new Function('console.log("abc");');
+
+        2. 函数有声明提升吗？怎么提升。
+            函数也是有声明提升的。在浏览器解析我们的js代码时，会将函数的声明
+            提升到最前面。
+
+        3. 函数重复声明的话会怎样？
+            函数重复声明的话，后面的会覆盖掉前面的。
+
+        4. JS 的数据类型有哪些？
+            JS的数据类型有：number string boolean null undefined object
+            
+            object对象类型：纯对象、函数、数组
+
+        5. 形参和实参分别是什么意思？
+            形参就是函数声明时写的参数，其实和变量没什么区别，不需要写var关键
+            实参就是调用函数时实际传入的参数。
+            
+            形参和可以和实参的个数不一致。
+
+        6. 说说你对 arguments 对象的了解
+            arguments 对象可以获取所有的实参。
+            arguments 对象中的有 length 属性，它表示获取到实参个数。
+            arguments[0]-获取第1个实参  arguments[1]-获取第2个实参
+
+        1. 什么是函数的重载？ JS中有没有函数的重载，为什么？
+            函数的重载指的是在一个页面中，有多个函数名一样，但是参数列表不一样，这些函数就构成了函数的重载。
+            JS中没有函数的重载，因为JS中函数重复声明的话，后面的生效。
+
+        2. arguments对象的作用是什么？
+            arguments对象的作用就是可以获取所有的实参。
+
+        3. 函数需要有返回值的话，怎样写？
+            return 值;
+            函数执行过程中，如果碰到return，就结束了。
+            
+            函数中使用return关键字可以结束函数
+            switch和循环中使用break关键可以结束循环、switch
+            循环中使用continue结束本次循环进入下一次循环
+
+        4. 说说你对全局变量和局部变量的了解。
+            ES5中作用域就两种：函数作用域、全局作用域
+
+            局部变量：只能在函数内部使用；形参、函数内部使用var关键字定义的变量
+            全局变量：可以在任何地方使用，除了局部变量都是全局变量
+
+        1. 什么是回调函数？
+            回调函数就是指一个函数A作为参数传递给另一个函数B，
+            在函数B中会执行这个参数函数，这时参数函数A就称为回调函数。
+            如果参数函数没有名字，那就称为匿名回调函数。
+
+        2. 举例演示三种函数声明方式分别是怎样变为立即执行函数的。
+            var fun1 = function(){}();
+            var fun2 = new Function()();
+            (function fun3(){})();
+
+        3. 说说你对递归函数的理解。
+            递归函数其实就是函数自己调用自己。
+            递归函数需要有结束条件，不然就变为了死循环。
+            利用递归函数我们解决的是：将一个大问题，分解为几个子问题，子问题又可以接着分解为子问题，
+            子问题、大问题解决思路都是一样的！
+
+        4. 对比一下 let 和 var 关键字
+            
+                    作用		作用域	 					能否变量提升	能否重复声明
+            var		声明变量	函数作用域、全局作用域		可以提升		可以重复声明
+            let		声明变量	块级作用域					不能提升		不可以重复声明
+
+        1. 分别举例演示创建数组的两种方式。
+            let arr1 = [1,3,5];
+            let arr2 = new Array(2,4,6);
+
+        2. 数组的空位是什么意思。
+            数组的空位就是指某个位置上没有具体的值，返回的undefined
+
+        3. 数组长度为 length，那么索引到几了？
+            length - 1
+
+        4. function fun1(a, b){
+                console.log(a);
+                console.log(b);
+            }
+            改造为箭头函数是？
+            let fun2 = (a,b) => {
+                console.log(a);
+                console.log(b);
+            };
+
+        1. 数组的遍历方式有哪些？
+            for循环：
+            for(let i = 0; i < arr.length; i++){
+                arr[i]
+            }
+            
+            for in：
+            for(let i in arr){
+                arr[i]
+            }
+            
+            for of：
+            for(let ele of arr){
+                ele
+            }
+            
+            map方法：
+            arr.map(function(ele, index, arr){
+                ele
+            });
+            
+            forEach方法：
+            arr.forEach((ele, index, arr) => {
+                ele
+            });
+
+
+        2. 数组静态方法的调用格式是？
+            静态方法就是定义在类型上的方法，这些方法的调用格式是：Array.xxx();
+            
+
+        3. 数组实例方法的调用格式是？
+
+        4. 常用的数组实例方法有哪些？（至少5个）
+
+        1. sort 方法的作用及使用格式
+            sort 方法可以对数组内容进行排序，默认是按照字符串进行排序的
+            数组名.sort();
+            数组名.sort((a, b) => {
+                return a-b;
+            });
+
+        2. filter 方法的作用及使用格式
+            filter 方法可以将数组中符合条件的元素过滤出来返回一个新数组
+            数组名.filter((ele, index, arr) => {
+                return ele % 2 == 0;
+            });
+
+        3. 栈中存放什么样的数据？
+            栈中存放的是基本类型的数据 和 引用类型数据在堆中的地址
+
+        4. 堆中存放什么样的数据？
+            堆中存放的是引用类型的数据
+
+        5. 深拷贝和浅拷贝是什么意思？ 数组如何实现深拷贝？
+            深拷贝和浅拷贝主要指的引用类型变量之间的赋值
+            将变量A赋值给变量B，如果A改变的话，B 跟着变化，那就是浅拷贝
+            B没有变化，那就是深拷贝。
+            
+            1) 手动实现
+                let arr1 = [1,2,3];
+                let arr2 = [arr1[0], arr1[1], arr1[2]];
+
+            2) concat 方法实现
+                let arr1 = [1,2,3];
+                let arr2 =  arr1.concat();
+
+        1. 实现数组深拷贝的方式有哪些？
+            手动实现
+            使用 concat 方法实现
+            使用 slice 方法实现
+            使用扩展运算符
+
+        2. 定义对象的格式是？
+            let 对象名 = {
+                key1:value1,
+                key2:value2,
+                ...
+                keyn:valuen
+            };
+
+
+        3. 使用 . 和 [] 获取对象属性值的区别是？
+            能用 . 的 肯定是能用 []，能用 [] 不一定能用 .
+            一般都使用 .  因为它比较简单。
+            但是以下情况必须使用 []：
+            1) 键名中有特殊符号：空格 # * 
+            2) 键名是以数字开头的
+            3) 键名是存储在一个变量中
+                let a = 'name';
+                obj[a]
+                obj['a']
+            
+
+        4. 实现对象深拷贝的方式有哪些？
+            手动实现
+            扩展运算符
+
+        5. 遍历对象的方式有哪些？
+            for-in
+            keys 静态方法
+            values 静态方法
+            entries 静态方法  [['name','张三'],['age', 18],[]]
+
+        1. 变量的解构赋值在数组和对象中使用的语法格式是？
+            let [a, b=123, c] = [1, 2, 3];
+            let {name, age = 18} = {name:'张三', age:18};
+
+        2. 写案例，使用解构赋值交换两个变量
+            let a = 10;
+            let b = 20;
+            [a, b] = [b, a];
+
+        3. instanceof关键字的作用是什么？
+            可以判断某个对象(实例)属于某个类型吗？
+            对象名 instanceof 类型
+
+        4. in关键字的作用是什么？
+            可以用来判断某个对象中是否包含某个属性
+            对象名.hasOwnProperty(属性);
+
+        5. 静态方法是什么意思？调用方式是？
+            静态方法：就是这个方法是定义在某个类型上，调用的话需要使用 类型.xxx();
+
+
+        6. 实例方法是什么意思？调用方式是？
+            实例方法：就是这个方法是属于实例的，也就是属于对象的，
+            调用的话就是 对象名.xxx();
+            
+            arr1.reverse()  arr.pop()  arr.push()
+            Array.isArray()
+
+
+        7. JS 中的三个包装对象是？包装对象的两个作用是？
+            Number、String、Boolean 三个包装对象。
+            
+            包装对象的两个作用：
+            1) 将数据转为object数据类型   123   let num = new Number(123);
+            2) 可以将别的数据转为相应的数据类型  '123'   Number('123')
+
+            
+
+        8. 写代码，对 let num = 1.85; 保留1位小数
+            num = num.toFixed(1);
+
+        1. 说出以下字符串的方法的作用：
+            startsWith()：判断字符串是否以指定的内容开头
+            endsWith()：判断字符串是否以指定的内容结尾
+            padStart()：当字符串长度不够时，在开始位置进行填充指定的内容
+            padEnd()：当字符串长度不够时，在结束位置进行填充指定的内容
+	
+        2. 简单写代码，创建当前日期时间
+            let date = new Date();
+            let date2 = new Date(year,month,date,...);
+            let date3 = new Date('2020-05-05 15:16:20');
+            
+            date3.getFullYear();
+
+        3. 说出下列Math方法的作用：
+            floor()：向下取整
+            ceil()：向上取整
+            round()：四舍五入，当前数字+0.5，然后向下取整就是round()的结果
+            random()：生成[0,1)的随机数
+                ~~(Math.random()*(max-min+1)+min)
+
+        1. eval() 函数有什么作用
+	        eval() 函数可以将字符串的代码解析为真正的js代码
+
+        2. call、apply和bind函数有什么作用，写一个call的例子
+            call、apply和bind函数都可以使一个对象向另一个对象借用函数
+            obj2.eat.call(obj1);
+
+        3. ES6中对对象扩展后可以将属性和函数简写为？
+            let name = '张三';
+            let age = 18;
+            let obj1 = {
+                name, // 表示属性名是name，属性值是name变量
+                age,
+                eat(){
+                
+                }
+            };
+
+        4. DOM中我们要用的4种节点是？
+            document 文档节点
+            element  元素节点
+            attribute 属性节点
+            text	 文本节点
+            
+            <a href="#">超链接</a>
+            
+            整个网页就是文档，js 中认为就是 document对象
+            
+
+        5. 每个节点都有的3个属性是？
+            nodeType
+            nodeName 
+            nodeValue
+
+        1. 获取元素的方式有哪些，写出具体语法：
+            let x = document.getElementById('id值');
+            let xx = document.getElementsByClassName('class的值');
+            let xx = document.getElementsByTagName('标签名');
+            let xx = document.getElementsByName('name属性值');
+            document.querySelector('选择器');
+            document.querySelectorAll('选择器');
+
+        2. 怎样创建元素？
+            let xx = document.createElement('标签');
+            xxx.appendChild(xxx);
+
+        3. innerHTML 有什么作用？
+            innerHTML属性可以获取到元素之间的内容，包括标签。
+
+        4. 怎样获取表单项元素的值？
+            1.先获取到表单项元素
+            2.表单项元素.value;
+
+        5. 怎样操作元素的标准属性？
+            元素.属性名;
+            元素['属性名'];
+            
+            元素.属性名 = 属性值;
+            元素['属性名'] = 属性值;
+
+        1. 分别使用两种方式操作属性(获取、设置、删除属性)
+            元素.属性名
+            元素['属性名']
+            
+            元素.setAttribute();
+            元素.getAttribute();
+            元素.removeAttribute();
+            
+            http://mg.kaoyan365.cn/23bkzx/?wt.mc_id=K5bd_qg_cx_bd160284pc&bd_vid=11983860301206184004
+
+        1. document 对象中我们需要掌握的属性有哪几个？ 
+            documentElement 属性能获取到 html元素
+            body 属性能够body元素
+            location对象的href属性，可以获取地址栏的地址，也可以通过它设置地址栏地址
+
+        2. 定时器的语法格式是：
+            let timer = setInterval(回调函数, 时间间隔);
+
+        3. 怎样停止定时器？
+            clearInterval(timer);
+
+        1. 编写代码，创建一个div元素并添加到body中
+            let div = document.createElement('div');
+            document.body.appendChild(div);
+
+        2. 给div元素中设置内容：你好
+            div.innerHTML = '你好';
+
+        3. 使用js给div设置宽度是200px，高度是200px，背景颜色是红色
+            div.style.width = '200px';
+            div.style.height = '200px';
+            div.style.backgroundColor = 'red';
+
+        4. 删除元素的语法是？
+            元素.remove();
+
+        1. 怎样获取一个元素的宽度？
+            getComputedStyle(元素).width;   元素.currentStyle.width;
+            元素.clientWidth; width 和 padding
+            元素.scrollWidth; width、padding和溢出部分
+            
+            if(getComputedStyle){
+                return getComputedStyle(元素).width;
+            }else{
+                元素.currentStyle.width;
+            }
+
+        2. 怎样获取当前浏览器窗口的宽度和高度
+            document.documentElement.clientWidth;
+            document.documentElement.clientHeight;
+
+        3. 怎样获取浏览器中滚动条与上边的距离
+            let top = document.body.scrollTop || document.documentElement.scrollTop;
+
+        1. DOM0 绑定事件的语法格式是？
+	        元素.on事件名 = 匿名函数或函数名;
+
+        2. DOM2 绑定事件的语法格式是？
+            元素.addEventListener('事件名', 匿名函数或者函数名, 事件流);
+
+        3. 事件冒泡 和 事件捕获是什么意思？
+            事件冒泡指的是事件由内向外去执行
+            事件捕获指的是事件由外向内执行
+
+        4. 如何获取一个元素的宽度和高度？
+            元素.clientWidth;
+            getComputedStyle(元素).width;
+
+        5. 如何获取当前浏览器窗口的宽度和高度？
+            document.documentElement.clientWidth;
+            document.documentElement.clientHeight;
+
+        6. 浏览器兼容性问题是什么意思？对于一个函数(方法),一般我们怎样解决兼容性问题？
+            浏览器兼容性问题指的就是某些代码在IE低版本 和 其它浏览器中都能运行，就称为兼容，
+            否则就是不兼容。
+            
+            if(函数名){
+                //写这个函数相关的代码
+            }else{
+                //写IE低版本的代码
+            }
+
+        1. 事件对象的以下属性有什么作用？
+            keyCode属性：获取到按键的键码值
+            clientX属性：获取到鼠标点击的位置距离浏览器左上角的水平距离
+            clientY属性：获取到鼠标点击的位置距离浏览器左上角的垂直距离
+            offsetX属性：获取到鼠标点击的位置距离元素左上角的水平距离
+            offsetY属性：获取到鼠标点击的位置距离元素左上角的垂直距离
+            currentTarget属性：指的是绑定事件的元素对象，等价于this
+            target属性：指的是触发事件执行的元素节点
+
+        1. 鼠标事件有哪些？
+            click
+            mousedown
+            mouseup
+            mouseover
+            mouseout
+            mouseenter
+            mouseleave
+            mousemove
+            contextmenu
+            dblclick
+
+        2. 表单事件有哪些？
+            focus
+            blur
+            input
+            change
+            submit
+            reset
+
+        1. 描述load 事件的特点
+	        load 事件指的是页面加载完后会触发该事件。
+
+        2. 说说你对事件委托的理解
+            事件委托就是子元素不去做某些事情，交给父元素去做。
+            事情委托本质上利用的是事件冒泡
+            事件委托可以减少DOM操作，提升性能；后来添加的子元素也有效果。
+     -->
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * Object 原来我们称为类型，其实它是一个构造函数
+         * 通过构造函数可以创建属于这种类型的对象
+         */ 
+
+        let obj1 = new Object({
+            name:'张三',
+            age:18
+        });
+
+        console.log(obj1);
+
+        let num1 = new Number('123');
+        console.log(num1);
+        console.log(num1 instanceof Number);
+
+        let arr1 = new Array(10,20,30);
+    </script>
+</body>
+
+</html>

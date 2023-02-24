@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        new 关键字
+
+        1. new 是创建的意思
+
+        2. 我们定义了构造函数，通过 new 构造函数名(实参, 实参, ...); 的方式去创建对象
+
+        3. 所以说，new 是可以调用执行构造函数的
+
+        4. 利用构造函数创建对象，必须通过 new 去调用构造函数，如果不用new的话，就相当于调用了普通函数
+
+        5. 为了防止没有使用 new，直接调用构造函数的情况，有以下两种解决方案：
+            1) 在构造函数中使用严格模式
+            2) 在构造函数中对 this 进行判断
+
+
+        构造函数的返回值
+        1. 构造函数我们一般是不写返回值的，不写返回值，通过new的方式调用构造函数，其实也给我们返回东西了，返回一个对象
+        2. 如果要给构造函数写返回值：
+            1) 如果返回值是基本数据类型，那写了和没写一样都没有效果，没有影响！
+            2) 如果返回值是引用数据类型，那就将该引用数据类型返回给函数调用处，不论是否使用new调用构造函数都会返回该引用类型的数据
+
+     -->
+
+    <script>
+        // 定义构造函数，作为模板，通过构造函数创建很多实例对象
+        // function Person(name, age){
+        //     // 'use strict' // 使用严格模式，表示如果你不是用的new的方式调用构造函数的话，会报错
+
+        //     if(!(this instanceof Person)){
+        //         return new Person(name, age);
+        //     }
+
+        //     this.name = name;
+        //     this.age = age;
+        //     this.hobby = function(){
+        //         console.log(this.name + '爱学习！');
+        //     }
+        // }
+
+        // // 通过构造函数创建实例对象
+        // let p1 = new Person('张三', 18);
+        // console.log(p1);
+
+        // p1.name = '哈哈';
+
+
+        // 构造函数的返回值
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+            // return 123;
+            // return {
+            //     aaa:'哈哈',
+            //     bbb:'呵呵'
+            // };
+        }
+
+        let p1 = new Person('张三', 28);
+        console.log(p1);
+    </script>
+</body>
+
+</html>
