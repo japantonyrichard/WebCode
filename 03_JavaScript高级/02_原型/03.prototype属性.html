@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        prototype 属性
+
+        1. 每个函数都有 prototype 属性，构造函数也是函数，所以构造函数中也有 prototype 属性
+            而且，我们主要就是研究构造函数中的 prototype 属性！
+
+        2. 构造函数的prototype属性指向的是一个原型对象，原型对象上的属性和方法可以被该构造函数的所有实例对象共享
+
+        3. 修改原型对象上的属性和方法，那么所有实例对象用到的原型对象上的属性和方法就是改后的
+
+        4. 如果实例对象上的属性和方法 与 原型对象上的属性和方法重名了！ 那么使用实例对象调用重名的属性和方法时，
+            用的是实例对象自己的！！！
+            也就是自己有，就用自己的，自己没有就用原型对象的！
+     -->
+
+     <script>
+        //  function fun1(){
+        //      console.log('hello');
+        //  }
+
+        //  console.log(fun1.prototype);
+        
+        // 定义构造函数作为对象的模板，通过构造函数可以创建很多实例对象
+        function Person(name, sex){
+            this.name = name;
+            this.sex = sex;
+        }
+
+        // 构造函数的原型对象上的属性和方法，可以被该构造函数创建出来的所有实例对象共享！！！
+        Person.prototype.nation = '中国';
+        Person.prototype.speak = function(){
+            console.log('说中文！');
+        }
+
+        let p1 = new Person('张三', '男');
+        let p2 = new Person('小美', '女');
+
+        console.log(p1);
+        console.log(p2);
+
+        // 实例对象使用原型对象上的属性
+        console.log(p1.nation);
+        console.log(p2.nation);
+
+        p1.speak();
+        p2.speak();
+
+        // 修改原型对象上的属性
+        Person.prototype.nation = 'China';
+
+        // 所有实例对象用的都是原型对象中改后的最新属性
+        console.log(p1.nation);
+        console.log(p2.nation);
+
+        // 给实例对象添加了一个属性
+        p1.nation = '中华人民共和国';
+
+        console.log(p1);
+        // 实例对象中的属性和原型对象中的属性重名了，优先使用实例对象自己的
+        console.log(p1.nation); // 中华人民共和国
+
+     </script>
+
+</body>
+</html>

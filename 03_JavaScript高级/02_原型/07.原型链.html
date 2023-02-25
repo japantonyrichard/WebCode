@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        原型链
+
+        * 上图中红色线条，就称为原型链
+        * 原型链，也就是通过一个实例对象找创建这个实例对象的构造函数的原型对象，然后原型对象也是一个对象，
+        所以可以接着再往上找创建该原型对象的构造函数的原型对象，一直找，最后就找到 null 了
+        * 而且，我们可以看到原型链有效的顶端也就是到 Object 构造函数的原型对象了
+        * 实例对象是可以共享使用原型对象中的属性和方法的，而原型对象也是对象，
+        又可以共享使用该原型对象的原型对象上的属性和方法，
+        所以说，一个实例对象是可以使用它的整个原型链上的属性和方法的
+        * 说明1：实例对象有指定的属性和方法，那就使用实例对象自己的，如果实例对象没有，JS 会自动向上找，
+        看它的原型对象上有没有，有的话就可以使用，如果还没有，那就继续找原型对象的原型对象，看有没有，
+        一直找到 Object 的原型对象，如果都没有的话，就返回 undefined
+        * 说明2：如果实例对象的属性和原型对象的属性同名了，那优先使用实例对象自己的！
+
+        可以通过对象的__proto__属性找到该对象的原型对象，再通过原型对象的__proto__属性找到原型对象的原型对象
+
+        整个这个找原型的过程，就称为原型链
+
+        一个对象是可以使用它原型链上所有原型对象中的属性和方法
+
+        当然了，如果对象自己有，就用自己的，如果没有，就往上找一层，也就是找他原型链上面的原型对象，....
+
+     -->
+
+    <script>
+        // 定义构造函数
+        function Person(name){
+            this.name = name;
+        }
+
+        // 通过构造函数创建一个对象
+        let p = new Person('张三');
+
+        console.log(Person.prototype);
+
+        console.log(Person.prototype.constructor);
+
+        console.log(p.__proto__ === Person.prototype);
+
+        console.log(p.__proto__.__proto__ === Object.prototype);
+        console.log(p.__proto__.__proto__.__proto__);
+
+        p.toString();
+
+    </script>
+</body>
+
+</html>

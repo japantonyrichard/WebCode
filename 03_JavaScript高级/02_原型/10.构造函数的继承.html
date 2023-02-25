@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    构造函数的继承
+
+    问题
+
+    * 目前有这么个问题：如果有一个构造函数 Person，它里面有属性 name，sex，age，
+      有方法 speak；还有一个构造函数 Student，它里面也有属性 name，sex，age，score，
+      也有方法 speak 和方法 study，而且方法内容也一样，那能不能只重点定义一个构造函数，
+      让另一个构造函数继承一下该构造函数的内容呢？
+    * 当然是可以的，JS 中支持构造函数的继承
+    * 往往我们说是 子类型 继承 父类型的 东西，或者 子构造函数 继承 父构造函数中的内容
+    * 当然，子构造函数中可以有自己特有的属性，只不过是其它和父构造函数一样的属性和方法可以继承父构造函数的
+ -->
+<body>
+    <script>
+        // 定义一个构造函数
+        function Person(name, sex){
+            this.name = name;
+            this.sex = sex;
+            this.run = function(){
+                console.log(this.name + '在跑步！');
+            }
+        }
+        Person.prototype.nation = '中国';
+        Person.prototype.speak = function(){
+            console.log('说中文！');
+        }
+        // 定义一个构造函数
+        function Student(name, sex, age){
+            // 这里其实是借用Person构造函数！！！
+            Person.call(this, name, sex);
+            this.age = age;
+            this.study = function(){
+                console.log(this.name + '喜欢学习！');
+            }
+        }
+        let stu = new Student('张三', '男', 25);
+        console.log(stu);
+
+        console.log(stu.nation);
+        stu.speak();
+    </script>
+    <!-- 
+        缺点
+
+        * 子构造函数继承父构造函数中的内容后通过子构造函数创建出来的对象，拥有父构造函数中的属性和方法，
+          但是不能使用父构造函数的原型对象上的属性和方法！
+
+        * 原型对象上的属性和方法只能由该原型对象所在的构造函数创建出来的实例对象使用！！！
+     -->
+</body>
+
+</html>

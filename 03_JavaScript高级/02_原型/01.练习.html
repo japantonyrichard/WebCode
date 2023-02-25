@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        div {
+            border-radius: 50%;
+            position: fixed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function randomNum(min, max) {
+            return ~~(Math.random() * (max - min + 1) + min);
+        }
+
+        function randomColor() {
+            let red = randomNum(0, 255);
+            let green = randomNum(0, 255);
+            let blue = randomNum(0, 255);
+
+            return `rgb(${red}, ${green}, ${blue})`; // rgb(12,253,19)
+        }
+
+        // 大小随机、颜色随机、位置随机、速度随机的小球
+        // 创建一个球的构造函数，作为模板，通过该构造函数就可以创建很多球对象
+        function Ball() {
+            this.div = document.createElement('div');
+            let num = randomNum(30, 80);
+
+            this.width = num;
+            this.height = num;
+
+            this.color = randomColor();
+
+            let windowHeight = document.documentElement.clientHeight;
+
+            this.top = randomNum(0, windowHeight - num);
+
+            let windowWidth = document.documentElement.clientWidth;
+            this.left = randomNum(0, windowWidth - num);
+
+            this.speedX = randomNum(-20, 20);
+            this.speedY = randomNum(-20, 20);
+
+            this.render = function () { // 将球渲染到页面
+                document.body.appendChild(this.div);
+                this.div.style.cssText =
+                    `width:${this.width}px;height:${this.height}px;
+                    background-color:${this.color};top:${this.top}px;left:${this.left}px;`;
+            }
+
+            let that = this;
+
+            this.move = function () {
+                setInterval(function () {
+                    // console.log(that.div.style.top);
+                    // console.log(that.speedY);
+                    that.div.style.top = parseInt(that.div.style.top) + that.speedY + 'px';
+
+                    if (parseInt(that.div.style.top) <= 0 || parseInt(that.div.style.top) >= windowHeight -
+                        num) {
+                        that.speedY *= -1;
+                    }
+
+                    that.div.style.left = parseInt(that.div.style.left) + that.speedX + 'px';
+
+                    if (parseInt(that.div.style.left) <= 0 || parseInt(that.div.style.left) >= windowWidth -
+                        num) {
+                        that.speedX *= -1;
+                    }
+                }, 50);
+            }
+        }
+
+        for (let i = 0; i < 100; i++) {
+            // 通过构造函数创建对象
+            let ball = new Ball();
+            ball.render();
+            ball.move();
+        }
+    </script>
+</body>
+
+</html>

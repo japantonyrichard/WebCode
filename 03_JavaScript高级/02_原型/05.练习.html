@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1. hasOwnProperty()：该方法可以判断对象中是否有某个属性！（不算从原型对象中拿过来的） 
+
+        2. in 运算符：该运算符可以判断对象中是否有某个属性！（包括从原型对象中拿过来的）
+     -->
+    <script>
+        // 构造函数
+        function Person(name){
+            this.name = name;
+        }
+
+        // 给构造函数的原型对象上定义属性
+        Person.prototype.nation = '中国';
+
+        let p = new Person('张三');
+        console.log(p);
+        console.log(p.name);
+        console.log(p.nation);
+
+        console.log(p.hasOwnProperty('name')); // true
+        console.log(p.hasOwnProperty('nation')); // false
+        console.log(p.hasOwnProperty('constructor')); // false
+
+        console.log('name' in p); // true
+        console.log('nation' in p); // true
+        console.log('constructor' in p); // true
+    </script>
+</body>
+
+</html>

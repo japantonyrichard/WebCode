@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1. 构造函数作为对象的模板，可以通过构造函数创建出很多实例对象
+
+        2. 构造函数中有什么，创建出来的每个实例对象就有什么
+
+        3. 如果每个实例对象中的某些属性和方法，是大家都一样的！ 那其实没有必要每个实例对象都搞一份，
+            因为这样的话太浪费内存空间了！！！
+
+        4. 也就意味着公共的东西，搞一份就可以了！所有的实例对象去共享它！
+
+        5. 这个公共的东西(属性、方法)，不能写在构造函数中，要写在原型对象中，就可以实现所有的实例对象共享它！！！
+     -->
+
+    <script>
+        // 定义一个构造函数作为对象的模板，通过它可以创建很多实例对象
+        function Person(name, sex){
+            this.name = name;
+            this.sex = sex;
+
+            this.nation = '中国'; // nation是国籍、国家的意思
+
+            this.speak = function(){
+                console.log('说中文！');
+            }
+        }
+
+        let p1 = new Person('林冲', '男');
+        let p2 = new Person('金莲', '女');
+
+        console.log(p1);
+        console.log(p2);
+
+
+    </script>
+</body>
+
+</html>

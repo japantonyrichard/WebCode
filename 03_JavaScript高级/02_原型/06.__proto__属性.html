@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        __proto__ 属性
+
+        1. 每个对象都有 __proto__ 属性，实例对象 和 原型对象肯定也都有 __proto__ 属性
+
+        2. 对象的 __proto__ 属性，指向创建该对象的构造函数的原型对象
+     -->
+
+    <script>
+        // 定义构造函数
+        function Person(name){
+            this.name = name;
+        }
+
+        let p = new Person('张三');
+
+        console.log(p.__proto__ === Person.prototype);
+
+        console.log(Person.prototype.constructor);
+
+    </script>
+</body>
+
+</html>
