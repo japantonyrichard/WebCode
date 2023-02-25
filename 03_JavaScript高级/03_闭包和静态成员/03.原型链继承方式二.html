@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        原型链继承方式二：
+        步骤：
+        1. 将子构造函数的prototype属性指向父构造函数的原型对象
+        2. 将子构造函数的原型对象的constructor属性指回子构造函数
+
+        问题：
+        这种方式有问题，因为子构造函数和父构造函数其实使用的是同一个原型对象，
+        所以子构造函数往它的原型对象中添加了内容后，父构造函数的原型看到的也是添加后的，不合适！！！
+
+        解决：
+        中心思想：搞这么一个对象，这个对象拥有父构造函数的原型对象中的内容，而且对它进行修改的话不会
+        影响到父构造函数的原型对象，然后将该对象作为子构造函数的原型对象。
+
+        子构造函数.prototype = Object.create(父构造函数.prototype);
+        子构造函数.prototype.constructor = 子构造函数;
+     -->
+
+
+
+    <script>
+        // 定义父构造函数
+        function Person(name){
+            this.name = name;
+        }
+
+        // 在父构造函数的原型对象中定义一些属性和方法
+        Person.prototype.nation = '中国';
+        Person.prototype.speak = function(){
+            console.log('说中文！');
+        }
+
+        // 定义子构造函数
+        function Student(name, age){
+            this.name = name;
+            this.age = age;
+        }
+
+        // 1. 修改子构造函数的原型
+        // Student.prototype = Person.prototype;  ↓ JS 业界公认的最好的一个办法 ↓
+        // Student.prototype = Object.create(Person.prototype); // 相当于拷贝一个影子中介？复制品再修改不影响原模型了。
+        Student.prototype = {...Person.prototype};// 深拷贝一份。这个也能达到一模一样的效果，也好理解。
+
+        // 2. 将原型对象的constructor属性指回Student
+        Student.prototype.constructor = Student;
+
+        // 通过子构造函数创建实例对象
+        let stu = new Student('武松', 28);
+
+        // 子构造函数的实例对象可以使用父构造函数的原型对象中的内容
+        console.log(stu.nation); // 中国
+        stu.speak(); // 说中文！
+
+
+        Student.prototype.study = function(){
+            console.log('学生爱学习！');
+        }
+
+        stu.study();
+
+        let p = new Person('宋江');
+        // p.study();
+
+        console.log(p.constructor);
+
+
+        Student.prototype.nation = 'China';
+        console.log(stu.nation); // China
+
+        console.log(p.nation);// 中国  不会受影响了。
+
+    </script>
+</body>
+
+</html>

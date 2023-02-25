@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        组合继承：
+
+        1. 其实就是将构造函数继承和原型链继承组合到一块了
+
+        2. 这样通过子构造函数创建的实例对象中有子构造函数中的结构、也有父构造函数中的结构，而且该实例对象还可以使用
+        父构造函数的原型对象上属性和方法
+     -->
+
+    <script>
+        // 定义父构造函数
+        function Person(name, sex){
+            this.name = name;
+            this.sex = sex;
+            this.eat = function(){
+                console.log(this.name + '喜欢吃牛肉丸子面！');
+            }
+        }
+
+        // 给父构造函数的原型对象上添加属性和方法
+        Person.prototype.nation = '中国';
+        Person.prototype.speak = function(){
+            console.log('说中文！');
+        }
+
+        // 定义子构造函数
+        function Student(name, sex, age, address){
+            // 实现构造函数的继承，其实是借用父构造函数的内容
+            Person.call(this, name, sex);
+            this.age = age;
+            this.address = address;
+            this.study = function(){
+                console.log(this.name + '爱学习Java！');
+            }
+        }
+
+        // 实现原型链的继承
+        // 1. 让子构造函数的原型（prototype）指向 以父构造函数的原型 为 原型的一个实例对象，也就是相当于搞一个父构造函数的原型的复制品
+        Student.prototype = Object.create(Person.prototype);
+
+        // 2. 修改子构造函数的原型对象的constructor属性，指回子构造函数
+        Student.prototype.constructor = Student;
+
+        // 测试构造函数的继承、 原型链的继承
+        let stu = new Student('大朗', '男', 28, '梁山');
+
+        console.log(stu);
+
+        console.log(stu.nation); // 中国
+        stu.speak();
+    </script>
+</body>
+
+</html>

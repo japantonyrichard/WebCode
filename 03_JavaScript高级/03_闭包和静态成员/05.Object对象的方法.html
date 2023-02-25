@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        Object 的方法
+
+        1. hasOwnProperty()
+            1) 是一个实例方法，对象.xxx()
+            2) 该方法的作用是判断对象中是否有指定的属性，只看自己的，从原型那拿来的不算
+
+        2. getOwnPropertyNames()
+            1) 该方法是一个静态方法， Object.xxx()
+            2) 该方法的作用是返回某个对象自己的所有的属性名（不包括从原型那拿来的）
+
+        3. getPrototypeOf()
+            1) 该方法是一个静态方法， Object.xxx()
+            2) 该方法的作用是返回一个对象的原型对象
+
+            知道一个实例对象后，可以有以下方式获取它的原型对象：
+            1) 实例对象.__proto__ ;
+            2) 实例对象.constructor.prototype;
+            3) Object.getPrototypeOf(实例对象);
+
+        4. setPrototypeOf()
+            1) 该方法是一个静态方法，Object.xxx()
+            2) 该方法的作用是设置某个对象的原型为另一个对象
+            3) 语法格式：
+                Object.setPrototypeOf(对象1，对象2);
+            4) 语法说明：
+                设置对象1的原型对象为对象2
+
+        5. create()
+            1) 该方法是一个静态方法
+            2) Object.create(参数对象);
+                意思是创建一个以参数对象为原型对象的实例对象
+     -->
+    <script>
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.nation = '中国';
+
+        let p = new Person('张三', 18);
+
+        // 1.演示 hasOwnProperty()
+        console.log(p.hasOwnProperty('name')); // true
+        console.log(p.hasOwnProperty('age')); // true
+        console.log(p.hasOwnProperty('nation')); // false
+        console.log(p.hasOwnProperty('constructor')); // false  // 如果是in的话就全是true了，in只要能用就算，不一定是自己有的。
+
+        // 2. 演示 getOwnPropertyNames()
+        let names = Object.getOwnPropertyNames(p);
+        console.log(names);// (2) ['name', 'age']
+
+        // 3. 演示 getPrototypeOf()
+        console.log(Object.getPrototypeOf(p) === Person.prototype); // true
+
+
+        
+        console.log(Object.getPrototypeOf({name:'张三'}) === Object.prototype);
+
+
+        console.log(p.__proto__ === Person.prototype); // true
+
+
+        let p2 = new Person('哈哈', 28);
+        Object.setPrototypeOf(p, p2);
+
+        console.log(p.__proto__ === Person.prototype); // false
+
+
+
+    </script>
+</body>
+
+</html>

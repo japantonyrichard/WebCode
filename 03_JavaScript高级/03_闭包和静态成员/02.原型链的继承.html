@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     
+        原型链的继承
+
+        1. 之前学习过构造函数的继承，子构造函数继承了父构造函数后，使用子构造函数创建出来的实例对象，
+            不仅有子构造函数中的内容(属性和方法)，还有父构造函数中的内容(属性和方法)
+        2. 但是子构造函数创建出来的实例对象是不能使用父构造函数的原型对象中的内容
+        3. 因为原型对象中的内容只能是由它所在的构造函数的实例对象使用
+        4. 如果要想实现子构造函数创建出来的实例对象也要能使用父构造函数原型对象中的内容，就需要使用原型链继承
+
+
+        实现原型链继承的方式有两种
+
+        方式一：
+        步骤：
+        1. 子构造函数的 prototype 属性指向父构造函数创建的实例对象
+        2. 子构造函数的原型对象的constructor属性指回子构造函数自己
+        
+        问题：
+        这种方式是有问题的，修改子构造函数的原型对象中的内容，会影响到父构造函数的原型中的内容。（如果只是添加，不改，倒是没什么问题）
+
+        不推荐使用！！！
+     -->
+
+
+
+    <script>
+        // 定义父构造函数
+        function Person(name, sex){
+            this.name = name;
+            this.sex = sex;
+        }
+
+        // 给父构造函数的原型对象中添加属性和方法
+        Person.prototype.nation = '中国';
+        Person.prototype.speak = function(){
+            console.log('说中文！');
+        }
+
+        // 定义子构造函数
+        function Student(name, sex, age){
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+        }
+
+        let p = new Person('宋江', '男');
+        // 1.将子构造函数的prototype属性指向父构造函数的实例对象
+        Student.prototype = p;
+        // 2.将原型对象的constructor属性指回子构造函数
+        Student.prototype.constructor = Student;
+
+        // 通过子构造函数创建实例对象
+        let stu = new Student('武松', '男', 28);
+
+        console.log(stu.nation);
+        stu.speak();
+
+
+        console.log('---------------------------------------------');
+
+        // 修改子构造函数的原型对象中的内容，这里其实是将父构造函数的原型内容给修改了
+        Student.prototype.nation = 'China';
+
+        console.log(stu.nation); // China
+
+        console.log(p.nation); // China
+
+    </script>
+</body>
+
+</html>

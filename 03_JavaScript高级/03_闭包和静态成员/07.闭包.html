@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        闭包
+
+        1. 正常来说，内层的作用域可以访问外层作用域中的内容，外层作用域是不能访问内层作用域中的内容
+
+        2. 如果非要在外层作用域访问内层作用域中的内容呢？？？ 就使用闭包！
+
+        3. 闭包：
+            1) 想在一个函数A的外部去访问函数A内的变量
+            2) 就在函数A内部定义了一个函数B
+            3) 将该内部函数B 作为 函数A 的返回值返回给外面，然后在外面调用执行
+            4) 其实内部的函数B就称为闭包！
+
+        * 本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁
+
+
+        * 两个案例都是使用函数内部的一个函数作为闭包，闭包的函数可以是匿名的也可以是有名的
+
+     -->
+
+    <script>
+
+        // 正常访问的写法
+        // function fun1(){
+        //     var num = 100;
+
+        //     function fun2(){
+        //         console.log(num);
+        //     }
+        //     fun2();
+        // }
+
+        // fun1();
+
+
+        // 闭包的写法1
+        // function fun1(){
+        //     var num = 100;
+
+        //     function fun2(){
+        //         console.log(num);
+        //     }
+
+        //     return fun2; // fun2 表示的就是fun2的声明
+        // }
+
+        // let fn = fun1(); // 等价于 let fn = function fun2(){ console.log(num); }
+
+        // fn();
+
+        // 闭包的写法2
+        function fun1(){
+            var num = 100;
+            return function(){
+                console.log(num);
+            }
+        }
+
+        let fn = fun1(); // fn = function(){ console.log(num); }
+
+        fn();
+    </script>
+</body>
+
+</html>

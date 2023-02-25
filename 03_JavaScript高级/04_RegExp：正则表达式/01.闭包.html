@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        闭包
+
+        1. 如果在一个函数外部想访问函数内的变量，可以在函数内部再定义一个函数，内层函数是可以访问外层函数的变量的，
+            然后将内层函数返回，返回到外部，就到达了在外层函数外部访问它里面变量的情况了！
+
+        2. 简单来说，上面的内层函数就是闭包！
+
+        3. 基本用法：
+            function fun1(){
+                let num = 100;
+
+                return function(){
+                    console.log(num);
+                }
+            }
+
+            let fn = fun1(); // fn = function(){ console.log(num) }
+
+            fn();
+        
+
+        闭包的特点：
+        1. 可以读取外层函数内的变量
+        2. 让外层函数内的变量始终保存在内存中，缺点，耗费内存
+
+        
+        作用
+
+        * 闭包的作用或者说特点有两个：
+
+        1.可以读取外层函数内部的变量
+        2.让外层函数内部的变量始终保持在内存中(因为将内部函数作为返回值赋值给一个全局变量了)，
+          即闭包可以使得它诞生环境一直存在，也就是使得内部变量记住上一次调用时的运算结果。
+
+        * 回顾：之前我们说过，局部变量，在函数执行完后就从内存中释放了，
+          全局变量会一直保存在内存中直到浏览器关闭。
+
+        * 其实内存中一直存在外层函数中的变量是个缺点，总是占用着内存
+        
+     -->
+
+    <script>
+        function fun1(num){
+            return function(){
+                console.log(++num);
+            } 
+        }
+
+        let fn = fun1(2); // fn = function(){ console.log(++num); }
+        fn(); // 3
+        fn(); // 4
+        fn(); // 5
+
+        let fn2 = fun1(2);
+        fn2(); // 3
+        fn2(); // 4
+        fn2(); // 5
+    </script>
+</body>
+
+</html>
