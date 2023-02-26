@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        (7) 点字符
+
+        * 点字符 . 匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符
+        * 注意，对于码点大于0xFFFF字符，点字符不能正确匹配，会认为这是两个字符
+
+        1. 点字符就是 .
+        2. 它用来匹配除了 回车、换行、行分隔、段分隔符以外的其它字符
+        3. 不要是特别生僻的文字
+        4. 如果要匹配 . 这个符号字面意思，需要转义： \.
+
+
+        三.预定义字符
+        1. 预定义字符就是对前面一些模式的简写
+        2. \d 表示匹配0-9的任一数字，相当于 [0-9]   ****************
+        3. \D 表示匹配除了0-9的字符，相当于 [^0-9]
+        4. \w 表示匹配字母、数字、下划线，相当于 [A-Za-z0-9_]  ******************
+        5. \W 表示匹配除了字母、数字、下划线，相当于 [^A-Za-z0-9_]  
+        6. \s 表示匹配空格、制表符、换行符等
+        7. \S 表示匹配除了空格符以外的内容
+
+        四.特殊字符
+        1. 平时开发的时候使用的编码方式是 utf-8，是 Unicode编码的一种，是万国码
+        2. [\u4e00-\u9fa5] 用来匹配常见的汉字
+
+        五.修饰符
+        1. 修饰符就是对正则表达式做一些附加规则
+        2. 修饰符要写在正则表达式的最后面，比如 /^规则$/修饰符
+        3. 修饰符就两个：
+            1) g：表示全局匹配，g-global
+
+            2) i：表示忽略大小写匹配，ignoreCase忽略大小写的意思
+
+            这两个修饰符都是结合字符串的相关方法去使用的，比如 replace()
+     -->
+    <script>
+        // 1.演示点字符
+        // console.log(/^.*$/.test('hello')); // true
+        // console.log(/^.*$/.test('哈哈哈')); // true
+        // console.log(/^.*$/.test('哈哈哈\n')); // false  \n 换行
+
+
+        // 2.演示预定义字符
+        //匹配一个QQ号 要求5-13位的数字 第一位不能是0
+        // let reg = /^[1-9][0-9]{4,12}$/;
+
+        // reg = /^[1-9]\d{4,12}$/;
+
+        // 3.演示特殊字符
+        // 匹配名字是 张x兴
+        // console.log(/^张[\u4e00-\u9fa5]兴$/.test('张艺兴')); // true
+        // console.log(/^张[\u4e00-\u9fa5]兴$/.test('张兴')); // false
+        // console.log(/^张[\u4e00-\u9fa5]兴$/.test('张y兴')); // false
+        // console.log(/^张[\u4e00-\u9fa5]兴$/.test('张哈哈兴')); // false
+
+        // 4.演示修饰符
+        let str = 'CBA-cba-CBA-cba';
+
+        let result = str.replace('cba', 'NBA'); // replace方法是替换的意思，将字符串中的内容替换为新内容
+        console.log(result);
+
+        result = str.replace(/cba/g, 'NBA');
+        console.log(result);
+
+        result = str.replace(/cba/ig, 'NBA'); // i g g i 先后不分
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

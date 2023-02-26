@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.实现每隔1s在控制台打印hello  使用匿名函数
+        // setInterval(function(){
+        //     console.log('hello');
+        // }, 1000);
+
+        // 2.实现每隔1s在控制台打印hello  使用有名函数
+        // function fun1(){
+        //     console.log('hello');
+        // }
+        // setInterval(fun1, 1000);
+
+        // 3.实现每隔1s在控制台打印传入的参数
+        // function fun1(str){
+        //     console.log(str);
+        // }
+
+        // setInterval(fun1, 1000, 'world');
+        // setInterval('fun1("哈哈")', 1000);
+
+        // 4.实现每隔1s在控制台打印传入的参数  使用闭包
+        function fun1(str){
+            return function(){
+                console.log(str);
+            }
+        }
+
+        let fn = fun1('哈哈哈'); // 相当于 fn = function(){ console.log(str); }
+        setInterval(fn, 1000);
+
+
+    </script>
+</body>
+</html>

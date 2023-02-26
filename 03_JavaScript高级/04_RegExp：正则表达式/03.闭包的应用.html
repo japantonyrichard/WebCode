@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul> -->
+
+    <script>
+        // let ul = document.querySelector('ul');
+        // let lis = document.querySelectorAll('li');
+
+        // 方式一：利用let块级作用域的方式，给每个li绑定点击事件
+        // for(let i = 0; i < lis.length; i++){
+        //     lis[i].onclick = function(){
+        //         // console.log(lis[i].innerHTML);
+        //         console.log(this.innerHTML);
+        //     }
+        // }
+
+        // 方式二：利用this 和 var   这里的i是全局变量！！！！
+        // for(var i = 0; i < lis.length; i++){
+        //     lis[i].onclick = function(){
+        //         // console.log(lis[i].innerHTML);    // i拿的是5，会报错！！
+        //         console.log(this.innerHTML);
+        //     }
+        // }
+
+        // 方式三：利用事件委托 本质上用的是事件冒泡！！！
+        // ul.onclick = function(e){
+        //     e = e || window.event; // window.event 兼容IE低版本
+        //     let target = e.target || e.srcElement; // e.srcElement 兼容IE低版本
+        //     console.log(target.innerHTML);
+        // }
+
+        // 方式四：利用闭包   这里其实是利用了闭包对变量进行了隔离保护！
+
+        // function fun(j){
+        //     return function(){
+        //         console.log(lis[j].innerHTML);
+        //     }
+        // }
+
+        // for(var i = 0; i < lis.length; i++){
+        //     lis[i].onclick = fun(i);
+
+        //     /**
+        //      * lis[i].onclick = function(){ console.log(lis[j].innerHTML); };
+        //      * 
+        //      */ 
+        // }
+
+        // 闭包在封装对象私有属性的应用
+        // 私有属性：指的是对象的属性，不能通过 对象名.属性名 的方式去操作属性！ 要求使用相应的方法去操作属性
+
+        function Person(){
+            // 定义一个私有属性，私有属性往往使用 _xxx 的名称格式
+            let _age;
+
+            function setAge(a){
+                _age = a;
+            }
+
+            function getAge(){
+                return _age;
+            }
+
+            return {
+                setAge:setAge,
+                getAge:getAge
+            };
+        }
+
+        let p = Person(); // 和 let p2 = new person(); 一样
+
+        p.setAge(18);
+        let age = p.getAge();
+        console.log(age);
+    </script>
+</body>
+
+</html>

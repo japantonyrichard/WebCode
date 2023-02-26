@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        正则表达式的匹配规则
+
+        介绍：
+        * 学习正则表达式，其实就是学习怎样写出一个匹配符合要求字符串的正则表达式
+        * 也就是学习正则表达式的匹配规则怎么写
+
+        一.字面量字符（literal characters）
+        1. 某些字符，没有特殊的含义，就是表示该字符，那这些字符就是字面量字符。
+        
+        2. 比如： a   b，常见的字面量字符 0-9  a-z  A-Z
+
+        二.元字符
+
+        介绍
+        * 除了字面量字符以外，还有一部分字符有特殊含义，不代表字面的意思。它们叫做“元字符”（meta characters）
+        * 元字符包括 .、^、$、|、\、*、+、?、()、[]、{} 等
+        1. 有些字符，不是我们看到的字面意思，而且有其它含义，这些字符就称为 元字符
+
+        2. 比如：.  + ? * () [] {} 等等
+
+        (1) 位置字符
+        1. 之前我们写的正则表达式是包含匹配，实际中，我们其实是要求完全匹配的或者说叫整串匹配
+        2. 位置字符有两个：
+            1) ^ 匹配字符串的开始
+            2) $ 匹配字符串的结束
+
+            比如：/^xxxxx/  /xxxxx$/   /^xxxxx$/
+
+        3. 一般，我们会将 ^ 和 $ 都用上，表示整串匹配，完全匹配，不是包含匹配
+
+        (2) 量词符
+        1. 表示某个模式出现的次数
+        2. 量词符有3个：
+            1) ? 表示模式出现 0次或1次
+            2) * 表示模式出现 0次或多次
+            3) + 表示模式出现 1次或多次
+
+        (3) 重复类
+        1. 表示它前面的那个内容重复多少次  {}
+        2. {n} 表示它前面的那个内容重复 n 次
+        3. {n,} 表示它前面的那个内容重复 至少 n 次   >= n 次
+        4. {n, m} 表示它前面的那个内容重复 至少 n 次，至多 m 次    >=n <=m
+
+
+        (4) 字符类
+        1. 表示提供多个可选择的内容给指定的字符串
+        2. 使用的格式是：[xxxxx]
+        3. 比如：[xyz]  就是要求指定的字符串只要匹配 x、y、z中的一个就行
+
+            连字符
+            1. 就是一种简写连续字符序列的方式
+            2. 比如：[abcd] [a-d]  [a-z]表示a到z中任意一个就行  [A-Z]   [0-9]   [a-zA-Z0-9]
+
+            脱字符
+            1. 脱字符要配合 [] 使用
+            2. [abc] 表示指定的字符串是a、b、c里面任意一个就行
+                [^abc] 表示指定的字符串不能是 a、b、c中的内容 
+
+        (5) 选择符
+        1. | 表示选择符，表示从多个选项中符合其中一个
+        2. 比如 cat|dog 匹配 cat 或者 dog
+        3. 结合 () 使用
+        ***注意：| 要配合 () 使用，不然正则不是正确的效果！！！***
+            比如：
+                /^cat|dog$/ 它匹配的是只要字符串以 cat 开头即可 或者 以 dog 结尾就行！！！
+
+        (6) 转义字符
+        1. \t  \n 
+        2. \ 就是转义字符，在正则表达式的中元字符有特殊的含义，比如 + 表示它前面的内容得是1次或多次
+            但是如果我们就是要匹配 + 这个字符，需要转义，  \+
+        3. 正则表达式中：+ ? * . () [ ^ $ 都有特殊的含义，如果要将它们当做字面意思去使用，要转义 
+
+        4. 如果使用 new RegExp(); 方式写正则表达式，要匹配特殊的符号，那转义字符需要写两次
+
+            let reg = new RegExp('^1\\+1$');
+
+        * 正则表达式中，需要反斜杠转义的，一共有12个字符：^、.、[、$、(、)、|、*、+、?、{ 和 \。
+          需要特别注意的是，如果使用 RegExp 构造函数的方式生成正则对象，转义需要使用两个斜杠\\，
+          因为字符串内部会先转义一次。
+          (new RegExp('1\\+1')).test('1+1'); // true
+     -->
+
+    <script>
+
+        // 1.演示字面量字符
+        // 表示判断给定的字符串中是否包含e
+        // let reg = /e/;
+        // console.log(reg.test('hello')); // true
+
+        // // 给定的字符串是否包含 ll
+        // console.log(/ll/.test('hel00lo')); // false
+
+        // // 给定的字符串是否包含 haHa
+        // console.log(/haHa/.test('hehe haha haha')); // false
+
+        // 2.演示元字符概念
+        // console.log(/./.test(''));  // true
+
+        // 3.演示位置字符
+        // console.log(/hello/.test('hello')); // true
+        // console.log(/hello/.test('hello hello')); // true 
+        // console.log(/hello/.test('hello world')); // true
+
+        // console.log(/^hello/.test('hello')); // true
+        // console.log(/^hello/.test('hello world')); // true
+        // console.log(/^hello/.test('hell world')); // false
+        // console.log(/hello$/.test('hello')); // true
+        // console.log(/hello$/.test('hello world')); // false 
+        // console.log(/^hello$/.test('hello')); // true
+        // console.log(/^hello$/.test('hello hello')); // false
+
+        // 4.演示量词符
+        // console.log(/he?llo/.test('hello world')); // true
+        // console.log(/he?llo/.test('heello world')); // false
+        // console.log(/he?llo/.test('heeello world')); // false
+        // console.log(/he?llo/.test('hllo world')); // true
+        // console.log(/he?llo/.test('llo world')); // false
+
+        // console.log('----------------------------------------');
+        // console.log(/^he?llo$/.test('hello world')); // false
+        // console.log(/^he?llo$/.test('hllo world')); // false
+        // console.log(/^he?llo$/.test('heello')); // false
+        // console.log(/^he?llo$/.test('heeeello')); // false
+        // console.log(/^he?llo$/.test('ello')); // false
+        // console.log('----------------------------------------');
+
+        // console.log(/^he*llo$/.test('hello world')); // false
+        // console.log(/^he*llo$/.test('hllo')); // true
+        // console.log(/^he*llo$/.test('heello')); // true
+        // console.log(/^he*llo$/.test('heeeelalo')); // false
+        // console.log(/^he*llo$/.test('ello')); // false
+        // console.log('----------------------------------------');
+        // console.log(/^he+llo$/.test('hello')); // true
+        // console.log(/^he+llo$/.test('hllo')); // false
+        // console.log(/^he+llo$/.test('heelalo')); // false
+        // console.log(/^he+llo$/.test('heeeello')); // true
+        // console.log(/^he+llo$/.test('ello')); // false
+
+        // 5.演示重复类
+        // console.log(/^cba{2}$/.test('cba')); // false
+        // console.log(/^cba{2}$/.test('cbaa')); // true
+        // console.log(/^cba{2}$/.test('cbaaa')); // false
+        // console.log(/^cba{2,}$/.test('cba')); // false
+        // console.log(/^cba{2,}$/.test('cbaa')); // true
+        // console.log(/^cba{2,}$/.test('cbaaa')); // true
+        // console.log(/^cba{2,}$/.test('cbba')); // false
+        // console.log(/^cba{2,4}$/.test('cba')); // false
+        // console.log(/^cba{2,4}$/.test('cbaa')); // true
+        // console.log(/^cba{2,4}$/.test('cbaaa')); // true
+        // console.log(/^cba{2,4}$/.test('cbaaaaa')); // false
+        // console.log(/^cba{2,4}$/.test('cbcaaaaa')); // false
+
+        // 6.演示字符类
+        // console.log(/[abc]/.test('a')); // true
+        // console.log(/[abc]/.test('abb')); // true
+        // console.log(/[abc]/.test('acc')); // true
+        // console.log(/[abc]/.test('aasd')); // true
+        // console.log(/[abc]/.test('adga')); // true
+        // console.log(/[abc]/.test('xyz')); // false
+        // console.log(/[abc]/.test('hello')); // false
+
+        // 7.演示连字符
+        // console.log(/^[0-9]{2}$/.test('1')); // false
+        // console.log(/^[0-9]{2}$/.test('12')); // true
+        // console.log(/^[0-9]{2}$/.test('234')); // false
+        // console.log(/^[0-9]{2}$/.test('a3')); // false
+        // console.log(/^[0-9a-z]{2,4}$/.test('23a5')); // true
+        // console.log(/^[0-9a-z]{2,}$/.test('353s45')); // true
+        // console.log(/^[0-9A-Z]{2,}$/.test('a3')); // false
+        // console.log(/^[0-9a-z]{2,}$/.test('a3CD')); // false
+
+        // 8.脱字符
+        // console.log(/[^abc]/.test('aaa')); // false
+        // console.log(/[^abc]/.test('a')); // false
+        // console.log(/[^abc]/.test('xy')); // true
+        // console.log(/[^abc]/.test('ayz')); // true  *********************
+        // console.log(/[^abc]/.test('tt')); // true
+        // console.log(/[^abc]/.test('hello')); // true
+
+        // console.log(/aaa/.test('bbbbbbbbbbaaaccasdadsaaaaac')); // true
+        // console.log(/[a^bc]/.test('abcaa')); // true /[a^bc]/里面的^没有写在最前面，就被当成是一个普通字符^
+        // ^不写在首尾没有特殊含义      [^] 表示 匹配一切字符
+
+        // console.log(/abc/.test('asdadssgfaaabccccc'));
+        // console.log(/[^abc]/.test('aabbycc')); // true
+        // console.log(/[^abc]/.test('aabbcc')); // false
+
+        // 9.选择符
+        // let reg = /^i love html|css|js$/; // 这样写就不对了，得配合 () 使用！！！
+        // let reg = /^i love (html|css|js)$/;  // 这里加()和不加()的判断还是有疑问。
+                                                // 不加()    加()
+        // console.log(reg.test('i love html')); // true     true
+        // console.log(reg.test('i love css')); // true      true
+        // console.log(reg.test('i love js')); // true       true
+        // console.log(reg.test('i love html css')); // true false
+        // console.log(reg.test('i love html js')); // true  false
+        // console.log(reg.test('i love cs')); // false      false
+
+        // let reg = /^I cat|dog$/;
+        // console.log(reg.test('cat')); // false
+        // console.log(reg.test('dog')); // true
+        // console.log(reg.test('I cat')); // true
+
+        // 上面的疑问解决： 不加()就不对了！！！乱套了！！！
+        let reg = /^i love html|css|js$/;
+        console.log(reg.test('i love htmlaaaaaaaaaaaaaaaaaaaaaaa')); // true
+        console.log(reg.test('pordikgp;erokg;sr;flsdkjs')); // true
+        console.log(reg.test('5409fdkj34css6sjlgk450dgil')); // true
+
+        let reg2 = /^(cat|dog)$/; 
+        console.log(reg2.test('cat')); // true
+        console.log(reg2.test('cat432aaa')); // false
+        console.log(reg2.test('dog')); // true
+
+        // 10.转义字符
+        console.log(/^1+1$/.test('1+1')); // false
+        console.log(/^1\+1$/.test('1+1')); // true
+
+        console.log(/^1\+1$/.test('111')); // false
+    </script>
+</body>
+
+</html>
