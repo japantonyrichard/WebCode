@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.匹配邮政编码，由6个数字组成，第一个不能是0
+        let reg = /^[1-9][0-9]{5}$/;
+        reg = /^[1-9]\d{5}$/;
+
+        // 2.匹配手机号，由13、15、17、18开头的11位数字
+        reg = /^1[3578][0-9]{9}$/;
+        reg = /^1[3578]\d{9}$/;
+
+        // 3.匹配qq号，第一位不能是0，位数在5-12位之间
+        reg = /^[1-9][0-9]{4,11}$/;
+        reg = /^[1-9]\d{4,11}$/;
+
+        // 4.匹配压缩文件的名称，名称由字母、数字和下划线组成，不可以以数字开头，后缀是 .zip/.rar/.gz
+        // [ziprargz]这样是不行的
+        reg = /^[a-zA-Z_][a-zA-Z0-9_]*\.(zip|rar|gz)$/; // 使用 | 的话，必须配合 ()  (xxxx|xxx|Xxxx)
+        reg = /^[a-zA-Z_]\w*\.(zip|rar|gz)$/;
+
+        // console.log(reg.test('a.zip')); // true
+        // console.log(reg.test('a12.rar')); // true
+        // console.log(reg.test('abc.gz')); // true
+        // console.log(reg.test('1abc.gz')); // false
+        // console.log(reg.test('abc.gzz')); // false
+
+        // 5.匹配年龄是 18-40 的  18  19  20-29  30-39  40
+        // reg = /^[18-40]$/; // []只能是 0-9  a-z A-Z 汉字 不能是 [10-20]
+        reg = /^(1[89]|2[0-9]|3[0-9]|40)$/;
+        reg = /^(1[89]|2\d|3\d|40)$/;
+        reg = /^(1[89]|[23]\d|40)$/;
+        reg = /^(1(8|9)|(2|3)\d|40)$/;
+
+        // 6.匹配身份证号，18位，第一位不能是0，最后一位可以是X
+        reg = /^[1-9]\d{16}[X0-9]$/;
+
+        // 7.匹配姓名，三个汉字，中间的必须是小或者晓
+        reg = /^[\u4e00-\u9fa5][小晓][\u4e00-\u9fa5]$/;
+        reg = /^[\u4e00-\u9fa5](小|晓)[\u4e00-\u9fa5]$/;
+
+        // 8.匹配 0-255 的数字 
+        // 一位数：0-9  \d
+        // 二位数：10-99  [1-9][0-9]
+        // 三位数：1xx 200-255  1[0-9][0-9]  2[0-4][0-9]  25[0-5]
+        reg = /^(\d|[1-9][0-9]|1\d{2}|2[0-4]\d|25[0-5])$/;
+        console.log(reg.test('5'));
+        console.log(reg.test('55'));
+        console.log(reg.test('125'));
+        console.log(reg.test('255'));
+        console.log(reg.test('285'));
+    </script>
+</body>
+
+</html>

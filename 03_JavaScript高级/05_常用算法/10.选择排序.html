@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        选择排序
+
+        思路：
+        1. 从要排序数组中找出最小的一个数，然后将其放在数组的第一个位置
+        2. 从剩余的数中，再找出最小的一个数，然后将其放在数组的第二个位置
+        3. 如果有10个数，那只需要找最小的9个放在前面即可，最后一个自然是最大的了！
+
+        演示：
+
+        1   5   3   2   4
+
+        利用选择排序对上面的数据进行从小到大排序
+
+
+        具体做的时候的思路：
+        1. 将待排序的数组的第0个元素假设为最小的数，然后将它和后面的每个数据进行比较，
+            如果找到比它还小的，那就将找到的最小的那个，和假设的最小的，进行交换
+
+        2. 将数组的第1个元素假设为最小的数，然后将它和后面的每个数据进行比较，
+            如果找到比它还小的，那就将找到的最小的那个，和假设的最小的，进行交换
+
+        3. 以此类推
+
+        如果有 10 个数，我们只需要找出最小的9个数，就排好序了！
+
+        数组的长度是 arr.length 我们需要找出 arr.length - 1 个最小的
+
+
+        算法的东西，代码不重要！！！关键是思路！！
+     -->
+
+    <script>
+        // 选择排序
+        function fun1(arr) {
+            // 外层循环就是找几个最小的数
+            for (let i = 0; i < arr.length - 1; i++) {
+                // 假设本次循环的i对应的位置就是最小的
+                let min = i;
+
+                // 内层循环，找每次的最小的那个数
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[min] > arr[j]) { // 后面的数据，有比假设的小的数，
+                        min = j; // min重新赋值
+                    }
+                }
+
+                // 代码执行到这里，说明确实找到本次最小的那个数对应的索引了！
+                if (min != i) { // 如果找到的最小的索引，不是我们假设的那个最小的，就交换
+                    let temp = arr[i];
+                    arr[i] = arr[min];
+                    arr[min] = temp;
+                }
+            }
+        }
+        let arr = [2, 3, 4, 1, 9, 5, 6];
+        fun1(arr);
+        console.log(arr);
+    </script>
+</body>
+
+</html>

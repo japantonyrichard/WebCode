@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        插入排序
+
+        插入排序的道理很简单，和打扑克一样的原理。
+
+        将未排序序列的每个数插入到已排序列的合适的位置！
+        插入的时候，从有序序列的后面往前找找到合适的位置插入进去
+
+
+        5 9 10 2 3 6 7 13 12 1 4
+
+        插入排序的具体实现思路：
+
+        1. 认为数组中的第0个元素就是有序序列
+        2. 将数组中第1个元素和第0个元素进行比较，如果比第0个大，那就不需要动，如果比第0个小，和第0个交换位置
+        
+            5 9 10 2 3 6 7 13 12 1 4
+
+        3. 待排序序列中的10，和前面9比较，比9大，所以10的位置不用动 
+            5 9 10 2 3 6 7 13 12 1 4
+
+        4. 将 2 和 10比较，2小于10，将2和10进行交换
+            2 5 9 10 3 6 7 13 12 1 4
+
+        5. 3 和 10 比较，3<10,3 和 10 交换
+            2 3 5 9 10 6 7 13 12 1 4
+
+        6. 6 和 10 进行比较 6 < 10 交换
+
+            ...
+     -->
+
+    <script>
+        // 插入排序
+        function fun1(arr) {
+            // 外层循环就控制拿到每个元素
+            for (let i = 1; i < arr.length; i++) {
+                // 内层循环就是控制我们这次获取到元素，和前面的有序序列进行比较
+                for (let j = i - 1; j >= 0; j--) {
+                    // 比较后一个和前一个
+                    if (arr[j + 1] < arr[j]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    } else {
+                        // break只会结束包裹它的那个for循环，外层的循环是不会结束的！
+                        break; // 没必要往前进行比较了，前面都是有序的了！！！
+                    }
+                }
+            }
+        }
+        let arr = [2, 1, 9, 7, 8, 4, 5, 0];
+        fun1(arr);
+        console.log(arr);
+    </script>
+
+</body>
+
+</html>

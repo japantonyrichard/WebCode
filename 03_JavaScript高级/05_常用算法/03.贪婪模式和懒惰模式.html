@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        贪婪模式和懒惰模式
+
+        1. 之前学习过的量词符： + * ?
+
+        2. 贪婪模式和懒惰模式都是针对量词符来说的
+
+        3. 贪婪模式就是最大可能匹配，也就是能匹配到多少就匹配到多少。默认就是贪婪模式
+
+        4. 懒惰模式就是最小可能匹配，也就是只要能匹配到一点，就不继续往后匹配了
+            懒惰模式，就是在 + * ? 后面再写一个?
+
+        5. 这两个模式，往往结合 字符串的 match 方法，该方法就是返回字符串中匹配到的内容
+
+     -->
+
+    <script>
+        // 1.演示贪婪模式
+        // let result = 'cbaaa'.match(/cba?/);
+        // console.log(result);
+
+        // result = 'cbaaa'.match(/cba*/);
+        // console.log(result);
+
+        // result = 'cbaaa'.match(/cba+/);
+        // console.log(result);
+
+        // 2.演示懒惰模式
+        let result = 'cbaaa'.match(/cba??/);
+        console.log(result); // cb
+
+        result = 'cbaaa'.match(/cba*?/); 
+        console.log(result); // cb
+
+        result = 'cbaaa'.match(/cba+?/);
+        console.log(result); // cba
+    </script>
+</body>
+
+</html>

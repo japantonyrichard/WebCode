@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        正则的实例方法
+        1. test()
+        2. exec()
+            1) 该方法就是返回字符串中匹配到正则的子字符串组成的内容
+            2) 在正则表达式上写 g 修饰符，可以多次调用 exec() 获取到字符串中所有匹配正则的子字符串
+
+     -->
+    <script>
+
+        // 1.演示exec方法
+        // let reg = /abc/;
+        // let result = reg.exec('hello_abc');
+
+        // console.log(result);
+
+        // let str = 'ab-ab12-abc123-abcd1234';
+
+        // let reg = /[a-z]{2,4}\d{2,4}/g;
+
+        // let result = reg.exec(str);
+        // console.log(result[0]); // ab12
+
+        // result = reg.exec(str);
+        // console.log(result[0]); // abc123
+
+        // result = reg.exec(str);
+        // console.log(result[0]); // abcd1234
+
+        // result = reg.exec(str);
+        // console.log(result); // null
+
+        // 2.演示通过循环去调用 exec方法，获取字符串中所有符合正则的子字符串内容
+        let str = 'abc-ab12-abc123-abcd1234';
+        let reg = /[a-z]{2,4}\d{2,4}/g;
+
+        // 因为不知道调用多少次exec方法，使用死循环
+        while(true){
+
+            let result = reg.exec(str);
+
+            if(result == null){
+                break;
+            }
+
+            console.log(result[0]);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     
+        正则的实例属性
+
+        1. 创建正则表达式有两种方式：
+            let reg = //;
+            let reg = new RegExp();
+
+        2. 正则的实例对象可以使用的属性：
+            1) ignoreCase：该属性返回true或者false，表示正则表达式是否设置了 i 修饰符
+            2) global：该属性返回true或者false，表示正则表达式是否设置了 g 修饰符
+            3) flags：该属性返回正则表达式设置的所有的修饰符 
+     -->
+
+    <script>
+        // console.log(/abc/ instanceof RegExp);
+
+        let reg = /^abc$/i;
+
+        console.log(reg.ignoreCase); // true
+        console.log(reg.global); // false
+        console.log(reg.flags); // i
+    </script>
+</body>
+
+</html>

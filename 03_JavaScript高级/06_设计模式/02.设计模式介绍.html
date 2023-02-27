@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        设计模式
+
+        1. 设计模式是一些有经验的人，经过长时间的实践总结出来的一套用来解决某些问题的方案
+
+        2. 设计模式总共有23种，它不是特指某种语言的设计模式，而是软件开发行业都能用！
+
+        3. 设计模式共分为3类：
+            1) 创建型设计模式：主要用来创建对象的
+            2) 结构型设计模式：主要用来实现类和对象组合、继承关系的
+            3) 行为型设计模式：主要用来对象之间进行通信
+
+        
+        工厂模式
+        1. 工厂模式就是创建型设计模式的一种，它负责创建对象，将创建对象的逻辑给隐藏起来，其实就是一个函数
+        2. 工厂模式，往往是创建一些复杂的对象时使用！！！
+        3. 工厂的单词是 factory
+     -->
+
+    <script>
+        // 创建一个书的工厂，其实就是一个函数，这个书的工厂就可以创造很多书对象！
+        function bookShop(name, version, year){
+            let obj = {}; // 等价于 obj = new Object();
+            obj.name = name;
+            obj.version = version;
+            obj.year = year;
+            obj.price = '暂无报价'
+
+            if(name == 'JS高级编程'){
+                obj.price = '99'
+            }else if(name == 'CSS世界'){
+                obj.price = '89';
+            }else if(name == 'VUE权威指南'){
+                obj.price = '100';
+            }
+
+            return obj;
+        }
+
+        let obj1 = bookShop('JS高级编程', '第三版', '2013年出版');
+        let obj2 = bookShop('CSS世界', '第一版', '2017年出版');
+        let obj3 = bookShop('VUE权威指南', '第一版', '2018年出版');
+
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj3);
+    </script>
+</body>
+
+</html>

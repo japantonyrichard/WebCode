@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     
+        数组去重
+
+        1、 利用数组的 indexOf()
+            该方法的作用是在一个数组中找指定的元素，如果找到的话返回第一个找到的元素的索引位置，找不到返回 -1
+
+        2、 利用数组的 includes()
+            该方法的作用就是判断数组中是否包含某个内容，是的话返回true，否则返回false
+     -->
+
+    <script>
+        // 该函数的作用就是去重
+        function fun1(arr) {
+            let newArr = []; // 存放去重后的数据
+            for (let i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) == -1) {
+                    newArr.push(arr[i]); // 将数据添加到新数组的最后
+                }
+            }
+            return newArr;
+        }
+
+        function fun2(arr){
+            let newArr = []; // 存放去重后的数据
+            for(let i = 0; i < arr.length; i++){
+                if(!newArr.includes(arr[i])){
+                    newArr.push(arr[i]);
+                }
+            }
+        }
+
+        function fun3(arr){
+            for(let i = 0; i < arr.length; i++){
+
+                for(let j = i + 1; j < arr.length; j++){
+                    if(arr[i] == arr[j]){
+                        arr.splice(j, 1);
+                        j--;
+                    }
+                }
+            }
+        }
+
+        function fun4(arr){
+            let obj = {};
+            for(let i = 0; i < arr.length; i++){
+                obj[arr[i]] = true;
+            }
+
+            return Object.keys(obj); // 获取对象的所有的key
+        }
+
+        let arr = [1, 2, 3, 2, 2, 2, 3, 4, 3, 4, 5];
+        let result = fun4(arr);
+        console.log(result);
+    </script>
+</body>
+
+</html>
