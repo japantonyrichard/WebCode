@@ -1,0 +1,87 @@
+2.8php接收前端表单的数据
+1）客户端给服务端发送请求--form表单
+2）服务端接收客户端的请求--php接收--$_GET[]和$_POST[]
+3）服务端处理请求--php处理
+4）给客户端响应数据--echo、var_dump
+5)客户端接收到数据，渲染到页面
+
+
+①$_GET[]
+a、作用
+接收method="get"提交的数据
+b、语法
+$_GET['变量名']--变量名是前端input的name属性
+c、说明
+get操作的是浏览器的地址栏
+get提交数据的大小有限制
+
+②$_POST[]
+a、作用
+接收method="post"提交的数据
+b、语法
+$_POST['变量名']--变量名是前端input的name属性
+c、说明
+post提交数据是安全的,不显示在地址栏
+post提交数据大小理论上没有限制
+
+
+3.mysql数据库
+3.1作用
+1）存储数据的仓库
+mysql数据库是关系型数据库--数据库由许多数据表组成
+2）操作数据
+增删改查
+
+3.2PHP连接数据库
+五步：
+<?php
+//PHP连接数据库
+//1.创建数据库的连接
+//mysqli_connect("域名|IP地址", "DB用户名", "DB密码", "数据库名称","端口号");
+//连接成功，返回对象；否则返回false
+$con = mysqli_connect("localhost", "root", "", "sq105");
+// var_dump($con);
+
+//判断数据库连接是否成功
+if ($con) {
+    //成功
+    //2.设置编码格式，防止插入数据时中文乱码
+    //mysqli_query(数据库的连接,字符串)
+    mysqli_query($con, "set names utf8");
+    
+    //3.SQL语句
+    //往数据库中插入数据
+    $sql = "insert into userinfo(username,password) values ('张昊','444')";
+    
+    //4.发送sql语句到数据库
+    mysqli_query($con, $sql);
+} else {
+    //失败
+    echo "数据库连接失败";
+}
+
+//5.关闭数据库--可以省略--后面不可以继续操作数据库
+mysqli_close($con);
+?>
+
+
+3.3SQL语句
+1）插入语句--增--注册
+语法1：inset into 表名(字段1,字段2,...) values(值1,值2,...)
+$sql = "insert into userinfo(username,password) values('涂成来','999') ";
+
+语法2：insert into 表名 values(值1,值2,null,...)
+$sql="insert into userinfo values(null,'汪洋','888')";
+
+2）修改语句--改--更新信息
+语法：update 表名 set 字段='新值',字段='新值' where 条件
+$sql = "update userinfo set username='毕艳宁',password='5566' where id=7";
+
+3）删除语句--删--注销
+语法：delete from 表名 where 条件
+$sql = "delete from userinfo where id=4";
+
+4）查询语句--查--登录
+语法：select 信息 from 表名 where 条件
+信息：①*--表示查询所有字段 ②字段名--查询指定的字段，多个字段用逗号隔开
+条件：①1--无条件查询 ②有条件查询--字段='值',多个字段使用and或者or连接
