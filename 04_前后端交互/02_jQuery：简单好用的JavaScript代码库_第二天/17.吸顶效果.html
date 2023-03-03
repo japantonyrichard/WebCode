@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        .nav {
+            width: 100%;
+            height: 50px;
+            background-color: pink;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav"></div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        $(document).scroll(function () {
+            //当滚动条距上面大于等于500px，导航固定定位
+            if ($(this).scrollTop() >= 500) {
+                $('.nav').addClass('fixed');
+            } else {
+                $('.nav').removeClass('fixed');
+            }
+        })
+    </script>
+</body>
+
+</html>

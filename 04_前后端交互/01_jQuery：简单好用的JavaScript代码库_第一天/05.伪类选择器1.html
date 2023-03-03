@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <p>段落</p>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <p>段落</p>
+    </ul>
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        //伪类选择器
+        //不区分元素类型
+        // $('ul>li').css('color', 'red');
+        // //第一个子元素是li
+        // $('ul>li:first-child').css('color', 'green');
+        // //最后一个子元素是li
+        // $('ul>li:last-child').css('color', 'pink');
+        // //第三个子元素是li
+        // $('ul>li:nth-child(3)').css('color', 'gold');
+        // $('ul>li:nth-child(3n)').css('color', 'orange');
+        // $('ul>li:nth-child(odd)').css('color', 'blue');
+        // $('ul>li:nth-child(even)').css('color', '#ddd');
+        // $('ul>li:nth-last-child(3)').css('color', 'skyblue');
+
+        //区分元素类型
+        //第一个li
+        $('ul>li:first-of-type').css('color', 'red');
+        //最后一个li
+        $('ul>li:last-of-type').css('color', 'pink');
+        $('ul>li:nth-of-type(3)').css('color', 'gold');
+        $('ul>li:nth-last-of-type(3)').css('color', 'orange');
+        $('ul>li:nth-of-type(3n)').css('color', 'green');
+        $('ul>li:nth-of-type(odd)').css('color', 'blue');
+        $('ul>li:nth-of-type(even)').css('color', 'skyblue');
+
+    </script>
+</body>
+
+</html>

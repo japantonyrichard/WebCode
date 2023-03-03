@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 20px;
+            border: 5px solid skyblue;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //获取元素的宽度和高度
+        //包含padding和滚动条
+        console.log($('.box').innerWidth());//240
+        console.log($('.box').innerHeight());//240
+
+        //包含padding、border、滚动条
+        console.log($('div').outerWidth());//250
+        console.log($('div').outerHeight());//250
+
+        //设置元素的宽度和高度
+        //包含padding和滚动条
+        // $('div').innerWidth(100);
+        // $('div').innerHeight(100);
+
+        //包含padding、border、滚动条
+        $('.box').outerWidth(100);
+        $('.box').outerHeight(100);
+
+
+    </script>
+</body>
+
+</html>

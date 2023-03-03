@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <input type="hidden">
+    <div style="display: none;"></div>
+    <div style="opacity: 0;"></div>
+
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        /*
+        可见性选择器：
+        :hidden  所有不可见的元素，包含type="hidden"、head、meta、title、script、style、link等
+        :visible  所有可见的元素，包含html、body
+        
+        */
+        console.log($(':hidden'));
+        console.log($(':visible'));
+    </script>
+</body>
+
+</html>

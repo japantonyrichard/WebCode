@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .box2 {
+            border-radius: 50%;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+        }
+
+        .box3 {
+            transform: rotate(360deg);
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        会广
+    </div>
+    <button class="add">添加class</button>
+    <button class="remove">删除class</button>
+    <button class="toggle">切换class</button>
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        //添加class
+        //addClass()
+        $('.add').click(function () {
+            $('div').addClass('box2 box3');
+        })
+
+        //删除class
+        //removeClass()
+        $('.remove').click(function () {
+            //删除所有class
+            // $('div').removeClass();
+            //删除指定的class
+            $('div').removeClass('box2');
+        })
+
+        //切换class
+        //toggleClass()
+        $('.toggle').click(function () {
+            $('div').toggleClass('box2');
+        })
+    </script>
+</body>
+
+</html>

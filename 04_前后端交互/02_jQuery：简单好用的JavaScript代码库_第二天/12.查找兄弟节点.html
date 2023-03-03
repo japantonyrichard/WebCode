@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+        <b>啊哈</b>
+        <b>啊哈</b>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //查找兄弟节点
+        console.log($('p:eq(4)').siblings());//返回符合条件的所有的兄弟节点
+        //查找后面的兄弟节点
+        console.log($("p:eq(4)").next());//返回下一个兄弟节点
+        console.log($("p:eq(4)").nextAll('p'));//返回后面所有的兄弟节点
+        console.log($("p:eq(4)").nextUntil($('p:eq(8)')));//返回后面所有的兄弟节点，直到满足条件结束
+        //查找前面的兄弟节点
+        console.log($('p:eq(4)').prev());
+        console.log($('p:eq(4)').prevAll());
+        console.log($('p:eq(4)').prevUntil($('p:eq(1)')));
+    </script>
+</body>
+
+</html>

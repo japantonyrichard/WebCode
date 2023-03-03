@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        哈哈哈哈
+    </div>
+    <button>删除div的事件</button>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        $('div').bind({
+            click: function () {
+                console.log('点击');
+            },
+            mouseover: function () {
+                console.log('移入');
+            },
+            mouseout: function () {
+                console.log('移出');
+            }
+        })
+
+        //点击按钮删除div的事件
+        $('button').click(function () {
+            //删除所有的事件
+            // $('div').unbind();
+            // $('div').off();
+
+            //删除指定的事件
+            // $('div').unbind('click');
+            // $('div').unbind('mouseover mouseout')
+            // $('div').off('mouseover mouseout')
+
+            //删除通过ul绑定的所有事件
+            // $('ul').undelegate();
+            //删除指定的事件
+            $('ul').undelegate('mouseover mouseout');
+        })
+
+        //给li绑定多个事件
+        $('ul').delegate('li', 'click mouseover mouseout', function () {
+            console.log($(this).html());
+        })
+
+
+    </script>
+</body>
+
+</html>

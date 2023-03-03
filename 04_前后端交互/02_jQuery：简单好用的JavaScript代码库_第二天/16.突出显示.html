@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+        }
+
+        .box {
+            width: 660px;
+            margin: 50px auto;
+        }
+
+        .box img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <img src="./images/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/5.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/6.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //鼠标移入li，对应的li突出显示
+        $('li').mouseover(function () {
+            $(this).css('opacity', '1').siblings().css('opacity', '.4')
+        })
+
+        //移出大容器，所有元素都突出显示
+        $('.box').mouseout(function () {
+            $('li').css('opacity', 1);
+        })
+    </script>
+</body>
+
+</html>

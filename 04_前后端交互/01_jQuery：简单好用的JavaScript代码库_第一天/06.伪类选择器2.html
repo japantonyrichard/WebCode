@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li class="three">我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+        <li>我是第6个li</li>
+        <li>我是第7个li</li>
+        <li>我是第8个li</li>
+        <li>我是第9个li</li>
+        <li>我是第10个li</li>
+    </ul>
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        /*
+            伪类选择器
+            :first  第一个元素
+            :last  最后一个元素
+            :even  下标为偶数的元素，下标从0开始
+            :odd  下标为奇数的元素
+            :eq(index)  下标为index的元素
+            :gt(index)  下标大于index的元素
+            :lt(index)  下标小于index的元素
+        */
+        $('li').css('color', 'red');
+        $('li:first').css('color', 'pink');
+        $('li:last').css('color', 'green');
+        //下标为偶数的li
+        $('li:even').css('color', 'blue');
+        //下标为奇数的li
+        $('li:odd').css('color', 'orange');
+        //下标为2的li
+        $('li:eq(2)').css('color', 'gold');
+        //下标小于2的li
+        $('li:lt(2)').css('color', '#999');
+        //下标大于2的li
+        $('li:gt(2)').css('color', '#000');
+
+
+    </script>
+</body>
+
+</html>

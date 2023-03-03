@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">我是1个小div</div>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <p>我是第1个段落</p>
+    <p class="box1">我是第2个段落</p>
+    <p>我是第3个段落</p>
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        //基础选择器
+        //id  class  元素  全局  合并
+        //$('#idName')
+        //$('.className')
+        //$('tagName')
+        //$('*')
+        //$('选择器1,选择器2,...')
+        //返回jQuery对象
+
+        //ID选择器
+        console.log($('#box'));
+        console.log($('#box').html());
+        $('#box').css('color', 'red');
+
+        //类选择器
+        console.log($('.box'));
+        console.log($('.box').html());
+        $('.box').css('color', 'pink');
+
+        //元素选择器
+        console.log($('div'));
+        $('div').css('font-size', '20px');
+
+        //全局选择器
+        console.log($('*'));
+
+        //合并选择器
+        console.log($('.box,.box1'));
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .tab {
+            width: 988px;
+            height: 38px;
+            border: 1px solid #eee;
+            border-bottom-color: #e4393c;
+        }
+
+        .tab li {
+            padding: 10px 25px;
+            font-size: 14px;
+            float: left;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .tab .tab-active {
+            background-color: #e4393c;
+            color: #fff;
+        }
+
+        .list {
+            width: 990px;
+            background-color: pink;
+            height: 500px;
+        }
+
+        .items {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .list-active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="tab">
+            <ul>
+                <li class="tab-active">商品介绍</li>
+                <li>商品介绍</li>
+                <li>商品介绍</li>
+                <li>商品介绍</li>
+                <li>商品介绍</li>
+            </ul>
+        </div>
+        <div class="list">
+            <div class="items list-active">1</div>
+            <div class="items">2</div>
+            <div class="items">3</div>
+            <div class="items">4</div>
+            <div class="items">5</div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //点击li，点击的li添加class，其他所有兄弟去掉class
+        //给li绑定点击事件
+        $('li').click(function () {
+            //点击的li添加class  其他所有兄弟去掉class
+            //jQuery支持链式操作
+            $(this).addClass('tab-active').siblings().removeClass('tab-active');
+            //对应的div显示  其他所有div隐藏
+            //下标相等的div显示
+            //拿到点击的li的下标
+            let i = $(this).index();
+            //相同下标的div显示
+            $('.items').eq(i).addClass('list-active').siblings().removeClass('list-active');
+        })
+
+
+    </script>
+</body>
+
+</html>

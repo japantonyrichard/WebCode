@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>哈哈哈哈</div>
+    <div>哈哈哈哈</div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //在div的外部插入内容
+        //在div的后面添加内容
+        //把b元素添加到div的后面
+        // $('div').after('<b>啊哈</b>');
+        // $('<b>啊哈</b>').insertAfter($('div'));
+
+        //把b元素添加到div的前面
+        // $('div').before('<b>啊哈</b>');
+        $('<b>啊哈</b>').insertBefore($('div'));
+    </script>
+</body>
+
+</html>

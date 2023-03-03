@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            我是div的儿子p
+            <span>我是div的孙子span</span>
+        </p>
+        <span>我是div的儿子span</span>
+    </div>
+    <span>我是div的兄弟span</span>
+
+    <p>我是第1个p</p>
+    <p class="two">我是第2个p</p>
+    <p>我是第3个p</p>
+    <p>我是第4个p</p>
+    <p>我是第5个p</p>
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        //层级选择器
+        //后代选择器  空格
+        //子代选择器  >
+        //相邻兄弟选择器  +
+        //通用兄弟选择器  ~
+
+        //选中所有后代span
+        $('.box span').css('color', 'red');
+        //选中所有儿子span
+        $('.box>span').css('color', 'pink');
+        $('.box>p>span').css('color', 'green');
+
+        $('.two+p').css('color', 'red');
+        $('.two~p').css('color', 'pink');
+        $('.two+p+p').css('color', 'green');
+    </script>
+</body>
+
+</html>

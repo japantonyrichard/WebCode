@@ -1,0 +1,510 @@
+1.jQuery
+js的框架、库
+封装了js常用的操作
+
+使用：先引入jQuery.js,再使用
+
+2.jQuery对象和js对象相互转换
+1）jq转换为js
+jq[0]
+
+2）js转换为jq
+$(js对象)
+
+3.选择器
+1）基础选择器
+全局选择器 $('*')
+元素选择器 $('div')
+类选择器 $('.className')
+ID选择器 $('#idName')
+合并选择器 $('选择器1,选择器2,...')
+
+2）层级选择器
+子代选择器 $('选择器1>选择器2')
+后代选择器 $('选择器1 选择器2')
+相邻兄弟选择器 $('选择器1+选择器2')
+通用兄弟选择器 $('选择器1~选择器2')
+
+3）伪类选择器
+①不区分元素类型
+$(':first-child') 第一个子元素是...
+$(':last-child') 最后一个子元素是...
+$(':nth-child()') 第几个子元素是...
+$(':nth-last-child()') 倒数第几个子元素是...
+
+②区分元素类型
+$(':first-of-type') 第一个...元素
+$(':last-of-type') 最后一个...元素
+$(':nth-of-type()') 第几个...元素
+$(':nth-last-of-type') 倒数第几个...元素
+
+③通过下标
+$(':first') 第一个元素
+$(':last') 最后一个元素
+$(':even') 下标为偶数的元素
+$(':odd') 下标为奇数的元素
+$(':eq(index)') 下标为index的元素
+$(':lt(index)') 下标小于index的元素
+$(':gt(index)') 下标大于index的元素
+
+4）可见性选择器
+$(':hidden') 不可见的元素，包含display:none的元素、head、title、meta、style、link、script
+$(':visible') 可见的元素，包含html、body
+
+
+5）表单选择器
+$(':input') 选中所有表单元素，input、textarea、select、button
+$(':text')
+$(':password')
+$(':radio')
+$(':checkbox')
+$(':submit')
+$(':reset')
+$(':button') 选中所有button标签和type="button"的input
+$(':checked') 选中checked="checked"的单选框和复选框、selected="selected"的option
+$(':selected') 选中selected="selected"的option
+
+6）属性选择器
+利用HTML的属性
+[属性] 有此属性的所有元素
+[属性=属性值] 有此属性=属性值的所有元素
+元素[属性=属性值] 有此属性=属性值的指定元素
+元素[属性^=值] 开头
+元素[属性$=值] 结尾
+元素[属性*=值] 包含
+
+4.jQuery常用方法
+4.1操作HTML的属性
+1）获取和设置元素的内容
+①html()
+a、获取元素之间的内容
+jq.html()
+返回第一个符合条件的元素的内容，返回string类型
+
+b、设置元素之间的内容
+jq.html('内容')
+设置所有符合条件的元素的内容
+默认会替换之前的内容，如果是追加，可以字符串拼接
+
+c、说明
+支持HTML标签和属性
+
+②text()
+a、获取元素之间的内容
+jq.text()
+返回所有符合条件的元素的内容，返回string类型
+
+b、设置元素之间的内容
+jq.text('内容')
+设置所有符合条件的元素的内容
+默认会替换之前的内容，如果是追加，可以字符串拼接
+
+c、说明
+不支持HTML的标签和属性
+
+③val()
+a、获取表单元素的当前值
+jq.val()
+获取第一个符合条件的元素的当前值
+返回string类型
+
+b、设置表单元素的当前值
+jq.val('当前值')
+设置所有符合条件的元素的当前值
+
+c、说明
+一般动态获取（用户输入后再获取）
+
+2）操作HTML的属性
+①不支持自定义属性
+a、获取
+jq.prop('属性名')
+返回对应的属性值，返回string类型
+
+b、设置
+jq.prop('属性名','属性值')
+jq.prop({
+属性名:属性值,
+属性名:属性值,
+属性名:属性值
+})
+
+c、删除
+jq.removeProp('属性名')
+
+②支持HTML的自定义属性
+a、获取
+jq.attr('属性名')
+返回对应的属性值，返回string类型
+
+b、设置
+jq.attr('属性名','属性值')
+jq.attr({
+属性名:属性值,
+属性名:属性值,
+属性名:属性值
+})
+
+c、删除
+jq.removeAttr('属性名')
+
+3）操作class属性
+①添加class属性
+jq.addClass('类名1 类名2')
+
+②删除class属性
+jq.removeClass()//删除所有类名
+jq.removeClass('类名')//删除指定的类名
+
+③切换class属性
+没有就添加，有就删除
+jq.toggleClass('类名')
+
+
+4.2css类
+1）获取和设置css样式
+①获取css样式
+jq.css('属性名')
+返回对应的属性值，返回string类型
+
+②设置css样式
+jq.css('属性名','属性值')
+jq.css({
+属性:属性值,
+属性:属性值,
+属性:属性值
+})
+
+2）获取和设置元素的宽高
+①只包含内容区域
+a、获取
+jq.width()
+jq.height()
+返回第一个符合条件的元素的宽度和高度，返回number类型
+
+b、设置
+jq.width(number)
+jq.height(number)
+设置所有符合条件的元素的宽度和高度
+
+②包含内容和padding
+a、获取
+jq.innerWidth()
+jq.innerHeight()
+返回第一个符合条件的元素的宽度和高度，返回number类型
+
+b、设置
+jq.innerWidth(number)
+jq.innerHeight(number)
+设置所有符合条件的元素的宽度和高度
+
+③包含内容、padding、border
+a、获取
+jq.outerWidth()
+jq.outerHeight()
+返回第一个符合条件的元素的宽度和高度，返回number类型
+
+b、设置
+jq.outerWidth(number)
+jq.outerHeight(number)
+设置所有符合条件的元素的宽度和高度
+
+3）滚动条距元素上和左的距离
+a、获取
+jq.scrollTop()
+jq.scrollLeft()
+
+返回number类型
+
+b、设置
+jq.scrollTop(number)
+jq.scrollLeft(number)
+
+c、说明
+获取整个页面的对象
+$(document)//返回document对象
+$(window)//返回window对象
+
+d、例子
+<script>
+    //返回页面顶部
+    //当滚动条距上面的距离大于等于500时显示返回页面顶部的按钮
+    //点击按钮，返回页面顶部
+    //显示按钮
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 500) {
+            $('button').css('display', 'block')
+        } else {
+            $('button').css('display', 'none');
+        }
+    })
+
+    //点击按钮回到顶部
+    $('button').click(function () {
+        $(window).scrollTop(0);
+    })
+</script>
+
+4.3文档处理
+插入、删除、复制、替换等操作
+1）内部插入
+jq.append(内容)//把内容添加到jq对象内部的后面
+$(内容).appendTo(jq对象)//把内容添加到jq对象内部的后面
+jq.prepend(内容)//把内容添加到jq对象内部的前面
+$(内容).prependTo(jq对象)//把内容添加到jq对象内部的前面
+
+2）外部插入
+jq.after(内容)//把内容添加到jq对象外部的后面
+$(内容).insertAfter(jq对象)//把内容添加到jq对象外部的后面
+jq.before(内容)//把内容添加到jq对象外部的前面
+$(内容).insertBefore(jq对象)//把内容添加到jq对象外部的前面
+
+3）删除节点
+jq对象.empty();//删除所有jq对象的子节点
+jq对象.remove();//删除指定的jq对象
+
+4）复制节点
+jq对象.clone(false|true);//默认参数为false，表示不复制事件；当参数为true，复制事件
+
+5）替换节点
+A.replaceAll(B)//所有的B替换成A
+A.replaceWith(B);//所有的A替换成B
+
+5.筛选
+5.1节点之间的关系
+1）父节点
+jq对象.parent();//返回父元素
+jq对象.parents();//返回所有祖先元素，最大返回html
+jq对象.parentsUntil('条件');//返回所有祖先元素，直到匹配的元素停止，不包含停止的元素
+
+2）子节点
+jq对象.children();//返回所有子节点
+jq对象.find(选择器);//返回所有匹配的子元素
+
+3）兄弟节点
+JQ对象.siblings();//返回所有的兄弟节点
+JQ对象.next();//返回下一个兄弟节点
+JQ对象.nextAll();//返回后面所有的兄弟节点
+JQ对象.nextUntil('条件');//返回后面所有的兄弟节点，直到满足条件结束
+JQ对象.prev();//返回上一个兄弟节点
+JQ对象.prevAll();//返回前面所有的兄弟节点
+JQ对象.prevUntil('条件');//返回前面所有的兄弟节点，直到满足条件结束
+
+5.2过滤
+JQ对象.first();//返回第一个元素
+JQ对象.last();//返回最后一个元素
+JQ对象.eq(index);//返回下标为index的元素
+JQ对象.filter('条件1,条件2,..')//返回满足条件的元素
+
+5.3查找对象
+JQ对象.index()//返回第一个满足条件的元素的下标，如果查找不到返回-1
+
+6.事件
+6.1语法
+JQ对象.事件名称(callback);
+callback可以是匿名函数和有名函数的函数名
+当同一个元素绑定了相同的事件不会发生覆盖
+动态创建的元素没有事件
+<script>
+    $('.box').click(function () {//匿名函数
+        console.log(1);
+    });
+
+    function hello() {
+        console.log('hello');
+    }
+    $('.box').click(hello);//有名函数函数名
+</script>
+
+6.2事件绑定
+1）bind()
+①语法
+JQ对象.bind(事件名称,callback);
+
+当绑定一个事件：
+JQ对象.bind('事件名称',callback);
+当绑定多个事件，处理程序相同时：
+JQ对象.bind('事件名称1 事件名称2',callback);
+当绑定多个事件，处理程序不相同时：
+JQ对象.bind({
+事件名称1:function(){
+
+},
+事件名称2:function(){
+
+}
+});
+
+②说明
+同一个元素绑定相同的事件，不会发生覆盖
+动态创建的元素没有事件
+
+2）on()
+①语法
+JQ对象.on(事件名称,callback);
+
+当绑定一个事件：
+JQ对象.on('事件名称',callback);
+当绑定多个事件，处理程序相同时：
+JQ对象.on('事件名称1 事件名称2',callback);
+当绑定多个事件，处理程序不相同时：
+JQ对象.on({
+事件名称1:function(){
+
+},
+事件名称2:function(){
+
+}
+});
+
+②说明
+同一个元素绑定相同的事件，不会发生覆盖
+动态创建的元素没有事件
+false可以作为一个函数的简写，一般用来阻止页面的提交或重置
+
+例子：阻止页面的提交
+$(':submit').on('click',false);
+
+③语法
+JQ对象.on(事件名称,选择器,callback)
+
+说明：
+选择器一般是JQ对象的后代
+选择器是真正绑定事件的元素
+选择器是一个字符串，例如选中li需要写成'li'
+可以给动态创建的元素绑定事件
+<script>
+    //给动态创建的li绑定事件
+    $('ul').on('click', 'li', function () {
+        console.log($(this).html());
+    })
+</script>
+
+3）delegate()
+①语法
+JQ对象.delegate('选择器','事件名称',callback)
+
+②说明
+选择器一般是JQ对象的后代
+选择器是一个字符串，例如选中li需要写成'li'
+可以给动态创建的元素绑定事件
+
+4）one()
+①语法
+JQ对象.one('事件名称',callback)
+
+②说明
+通过one绑定的事件只执行一次
+其他语法同bind
+
+6.3事件删除
+1）unbind()
+删除bind绑定的事件
+JQ对象.unbind();//删除绑定的所有事件
+JQ对象.unbind('事件1 事件2');//删除绑定的指定的事件
+
+2）off()
+删除on绑定的事件
+JQ对象.off();//删除绑定的所有事件
+JQ对象.off('事件1 事件2');//删除绑定的指定的事件
+
+3）undelegate()
+删除通过delegate绑定的事件
+JQ对象.undelegate();//删除通过JQ对象绑定的所有事件
+JQ对象.undelegate('事件1 事件2');//删除通过JQ对象绑定的指定的事件
+
+7.事件
+7.1鼠标事件
+click()
+mouseover()
+mouseout()
+mousedown()
+mouseup()
+mousemove()
+dblclick()
+
+7.2键盘事件
+keydown()
+keyup()
+keypress()
+
+7.3表单事件
+focus()
+blur()
+change()
+submit()
+
+7.4页面载入
+当DOM加载完成后执行回调函数中的内容
+相当于window.onload
+
+语法：
+$(document).ready(function(){
+
+})
+
+//简写
+$(function(){
+
+})
+
+//$相当于jQuery
+jQuery(function(){
+
+})
+
+7.5浏览器窗口大小发生改变时触发的事件
+$(window).resize(function(){
+
+})
+
+8.动画
+8.1基础显示和隐藏
+控制元素的display属性
+show(速度,callback)--显示
+速度默认值为'normal',可以取值'slow'、'fast'、毫秒数
+fast=200ms normal=400ms slow=600ms
+callback是动画执行完成时执行的代码
+
+hide(速度,callback)--隐藏
+
+8.2滑动显示和隐藏
+控制元素的height属性
+slideDown(速度,callback)--显示
+slideUp(速度,callback)--隐藏
+slideToggle(速度,callback)--切换
+
+8.3淡入淡出
+控制元素的opacity属性
+取值0-1之间
+fadeIn(速度,callback)--显示
+fadeOut(速度,callback)--隐藏
+fadeToggle(速度,callback)--切换
+fadeTo(速度,opacity,callback)--控制元素的透明度到具体的值
+
+8.4自定义动画
+语法1：
+JQ对象.animate({样式},速度,callback)
+样式--必须--只支持数值型的属性，字符型的属性不支持，属性值可以进行简单的计算
+速度--可选--默认值为'normal',可以取值'slow'、'fast'、毫秒数
+fast=200ms normal=400ms slow=600ms
+callback--可选--动画执行完成时执行的代码
+多个动画链式操作时，按顺序执行
+
+语法2：
+JQ对象.animate({样式},{queue:布尔值,duration:速度},callback)
+第一个参数必选，第二个和第三个参数可选项
+queue--是否加入队列，默认为true，加入队列按顺序执行；取值false，不加入队列，动画立即执行
+
+8.5遍历JQ对象
+语法1：
+JQ对象.each(function(index,ele){////第一个形参表示下标，第二个形参表示元素
+//返回下标为number类型
+//返回的元素是js对象
+
+})
+
+语法2：
+$.each(JQ对象,function(index,ele){
+
+})

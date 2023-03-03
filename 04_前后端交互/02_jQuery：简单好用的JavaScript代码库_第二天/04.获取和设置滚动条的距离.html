@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        button {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button>返回页面顶部</button>
+
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        console.log($(document));//document
+        console.log($(window));//window
+
+        $(document).scroll(function () {
+            console.log($(this).scrollTop());
+        });
+
+        //返回页面顶部
+        //当滚动条距上面的距离大于等于500时显示返回页面顶部的按钮
+        //点击按钮，返回页面顶部
+        //显示按钮
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 500) {
+                $('button').css('display', 'block')
+            } else {
+                $('button').css('display', 'none');
+            }
+        })
+
+        //点击按钮回到顶部
+        $('button').click(function () {
+            $(window).scrollTop(0);
+        })
+    </script>
+</body>
+
+</html>

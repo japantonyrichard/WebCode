@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        table {
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>添加新员工</h2>
+    <div>
+        姓名：<input type="text" id="name">
+        电话：<input type="text" id="tel">
+        薪资：<input type="text" id="salary">
+        <br>
+        <br>
+        <input type="submit" value="添加" id="add">
+    </div>
+    <hr>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>薪资</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr>
+            <td>王一博</td>
+            <td>18888888888</td>
+            <td>88888</td>
+            <td><button class="del">删除</button></td>
+        </tr>
+        <tr>
+            <td>易烊千玺</td>
+            <td>18888888888</td>
+            <td>88888</td>
+            <td><button class="del">删除</button></td>
+        </tr>
+        <tr>
+            <td>朱亚文</td>
+            <td>18888888888</td>
+            <td>88888</td>
+            <td><button class="del">删除</button></td>
+        </tr>
+    </table>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //①绑定点击事件
+        $('#add').click(function () {
+            //②获取当前值
+            let name = $('#name').val();
+            let tel = $('#tel').val();
+            let salary = $('#salary').val();
+            //输出
+            console.log(name, tel, salary);
+            //③添加到单元格中，tr添加到table中
+            $('tbody').append(`<tr>
+            <td>${name}</td>
+            <td>${tel}</td>
+            <td>${salary}</td>
+            <td><button class="del">删除</button></td>
+            </tr>`);
+
+            //清空输入框的值
+            $('#name').val('');
+            $('#tel').val('');
+            $('#salary').val('');
+
+        })
+        //给删除按钮绑定点击事件
+        $('table').on('click', '.del', function () {
+            let res = confirm('你确定要删除吗');//返回布尔值
+            if (res) {//确定删除
+                //删除点击按钮的父元素的父元素
+                $(this).parent().parent().remove();
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

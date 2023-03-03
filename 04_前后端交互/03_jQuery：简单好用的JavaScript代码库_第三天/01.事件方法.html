@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <ul id="ul">
+
+    </ul>
+    <button>点击创建li</button>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //点击div  控制台输出内容
+        //jq对象.事件名称(callback);
+        //callback可以是匿名函数和有名函数的函数名
+        //当同一个元素绑定了相同的事件不会发生覆盖
+        //动态创建的元素没有事件
+
+        $('.box').click(function () {
+            console.log(1);
+        });
+
+        function hello() {
+            console.log('hello');
+        }
+        $('.box').click(hello);
+
+        //点击按钮，创建10个li，添加到ul中
+        //1.绑定事件
+        $('button').click(function () {
+            //2.创建10个li
+            for (let i = 0; i < 10; i++) {
+                //3.添加到ul中
+                $('#ul').html($('#ul').html() + '<li>哈哈哈</li>');
+            }
+        });
+
+        //点击li，获取li之间的内容
+        $('#ul>li').click(function () {
+            console.log($(this).html());
+        })
+
+        //鼠标移入和移出
+        $('.box').mouseover(function () {
+            console.log('移入');
+        })
+        $('.box').mouseout(function () {
+            console.log('移出');
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="five">5</div>
+    <p class="one">p</p>
+    <p>p</p>
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        /*
+        属性选择器
+        [属性]
+        [属性=属性值]
+        元素[属性=属性值]
+        元素[属性^=值]
+        元素[属性$=值]
+        元素[属性*=值]
+        */
+        //选中有class属性的所有元素
+        $('[class]').css('color', 'red');
+        //选中所有class=one的元素
+        $('[class=one]').css('color', 'pink');
+        //选中所有class=one的div元素
+        $('div[class=one]').css('color', 'orange');
+        $('div[class^=f]').css('color', 'green');
+        $('div[class$=e]').css('color', 'blue');
+        $('div[class*=o]').css('color', 'gold');
+    </script>
+</body>
+
+</html>

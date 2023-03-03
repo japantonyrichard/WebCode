@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">我是一个大二郎</div>
+    <div class="box">我是一个大三郎</div>
+    <div class="box">我是一个大四郎</div>
+
+    <input type="text">
+    <input type="text">
+    <select name="city" id="city">
+        <option value="0">北京</option>
+        <option value="1">河北</option>
+        <option value="2">天津</option>
+    </select>
+    <button id="btn">点击</button>
+
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        /*
+        .html()  获取和设置元素之间的内容，支持HTML标签和属性，相当于js的innerHTML
+        .text()  获取和设置元素之间的内容，不支持HTML标签和属性，相当于js的innerText
+        .val()  获取和设置表单元素的当前值，需要动态获取，相当于js的value
+        */
+
+        //html()
+        // console.log($('.box').html());//我是一个大二郎
+        // $('.box').html($('.box').html() + '<b style="color:red;">我变了</b>');
+
+        //text()
+        // console.log($('.box').text());
+        // $('.box').text($('.box').text() + '<b style="color:red;">我变了</b>');
+
+        //点击按钮，获取表单元素的当前值
+        $('#btn').click(function () {
+            //获取
+            // console.log($('input').val());
+            // console.log($('select').val());
+
+            //设置
+            $('input').val('武大郎');
+
+        })
+    </script>
+</body>
+
+</html>

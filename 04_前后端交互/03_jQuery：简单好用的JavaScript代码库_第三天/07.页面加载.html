@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //整个页面加载完成后执行
+        window.onload = function () {
+            console.log(document.querySelector('.box'));
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //当DOM加载完成后执行回调函数中的内容
+        /* $(document).ready(function () {
+            console.log($('div'));
+        }) */
+
+        //简写
+        $(function () {
+            console.log($('div'));
+        })
+
+        jQuery(function () {
+            console.log($('div'));
+        })
+    </script>
+
+    <div class="box"></div>
+
+    <script>
+        //当浏览器窗口大小发生改变，弹出警告框
+        $(window).resize(function () {
+            alert('别动了');
+        });
+    </script>
+
+</body>
+
+</html>

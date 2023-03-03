@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 200px;height: 200px;">我是1个小div</div>
+    <div>我是2个小div</div>
+    <div>我是3个小div</div>
+    <div>我是4个小div</div>
+    <div>我是5个小div</div>
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        //html()方法  相当于innerHTML属性
+        //获取div
+        let div = $('div');
+        console.log(div);
+        //获取第一个匹配元素的内容  
+        console.log(div.html());//我是1个小div
+        //设置HTML元素的内容
+        //设置所有符合条件的元素的内容
+        div.html(div.html() + '<b style="color:red;">我变了</b>');
+
+        //css()方法
+        //设置和获取css样式
+        //不区分行内样式还是外部样式
+        console.log(div.css('width'));//200px
+        console.log(div.css('color'));//rgb(255, 0, 0)
+
+        div.css('background-color', 'pink');
+        div.css({
+            'font-size': '20px',
+            borderRadius: '50%'
+        });
+    </script>
+</body>
+
+</html>

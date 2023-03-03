@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: fixed;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <button>开始动画</button>
+    <button>停止动画</button>
+    <div class="box">
+        hello
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        $('button:first').click(function () {
+            $('.box').animate({
+                width: '500px',
+                height: '500px',
+                backgroundColor: 'green',//不支持
+                lineHeight: '500px',
+                borderRadius: '50%',
+                fontSize: '30px',
+                left: '500px',
+                top: '200px'
+            }, 2000, function () {
+                console.log('动画执行完毕');
+            })
+        })
+        $('button:last').click(function () {
+            $('.box').stop();
+        })
+
+        //多个动画，链式操作
+        /* $('button').click(function () {
+            $('.box').animate({
+                width: '400px',
+                height: '400px'
+            }, 1000, function () {
+                console.log('第一个动画执行完成');
+            }).animate({
+                borderRadius: '50%',
+                lineHeight: '400px'
+            }, 1500, function () {
+                console.log('第二个动画执行完成');
+            }).animate({
+                fontSize: '40px'
+            }, function () {
+                console.log('第三个动画执行完成');
+            })
+        })
+        */
+        // 属性值可以进行简单的计算
+        /*  $('button').click(function () {
+             $('.box').animate({
+                 width: '+=50px',
+                 height: '+=50px'
+             }, 1000);
+         }) */
+
+        //动画语法1
+        //animate({样式},速度,callback)
+        //当多个动画链式操作时，按顺序执行
+
+        //动画语法2
+        //animate({样式},{速度、是否加入队列},callback)
+        /* $('button').click(function () {
+            $('.box')
+                .animate({
+                    width: '400px',
+                    height: '400px',
+                    backgroundColor: 'rgb(0,255,0)'//不支持 
+                }, 1000, function () {
+                    console.log('第一个动画完成');
+                })
+                .animate({
+                    borderRadius: '50%',
+                    lineHeight: '400px'
+                }, function () {
+                    console.log('第二个动画完成');
+                })
+                .animate({
+                    fontSize: '40px'
+                }, {
+                    duration: 1000,
+                    queue: false
+                }, function () {
+                    console.log('第三个动画完成');
+                })
+                .animate({
+                    top: '200px',
+                    left: '300px'
+                }, {
+                    queue: false,
+                    duration: 1000
+                }, function () {
+                    console.log('第四个动画完成');
+                })
+        }) */
+    </script>
+</body>
+
+</html>

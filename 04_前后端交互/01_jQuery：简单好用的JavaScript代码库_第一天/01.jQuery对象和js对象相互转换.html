@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 引入jQuery框架  未压缩版本 -->
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        //$等同于jQuery
+        // console.log($('div'));
+        // console.log(jQuery('div'));
+
+        //jQuery对象只能用jQuery方法,不能使用js的方法
+        //js对象只能使用js的方法，不能使用jQuery的方法
+        //jQuery对象和js对象可以相互转换
+        //jQuery对象转换为js对象  jQuery对象[0]
+        //js对象转换为jQuery对象  $(js对象)
+
+        let div1 = $('<div>我是一个小div</div>');
+        console.log(div1);//jQuery对象
+        //jQuery对象只能使用jQuery的方法
+        console.log(div1.html());//我是一个小div
+        //不能使用js的方法
+        // console.log(div1.innerHTML);//undefined
+
+        //转换为js对象
+        console.log(div1[0].innerHTML);//我是一个小div
+
+
+        let div2 = document.createElement('div');
+        div2.innerHTML = '我是一个大div';
+        console.log(div2);//js的对象
+        //js对象只能使用js的方法
+        console.log(div2.innerHTML);//我是一个大div
+        //不能使用jQuery的方法
+        // console.log(div2.html());
+
+        //转换为jQuery对象
+        console.log($(div2).html());//我是一个大div
+    </script>
+</body>
+
+</html>

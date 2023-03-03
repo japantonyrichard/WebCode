@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        会广
+    </div>
+    <button>点击有惊喜</button>
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        let names = ['会广', '道闯', '王欣悦', '石佳琳', '耿耿', '孙梦茹', '杜佳欣', '宋翔宇', '马文杰', '赵文杰', '李杰男', '明委', '张容'];
+        function random(min, max) {
+            return ~~(Math.random() * (max - min + 1) + min);
+        }
+        //点击按钮 切换元素之间的内容
+        $('button').click(function () {
+            //设置div之间的内容
+            $('.box').html(names[random(0, names.length - 1)]);
+        })
+    </script>
+</body>
+
+</html>

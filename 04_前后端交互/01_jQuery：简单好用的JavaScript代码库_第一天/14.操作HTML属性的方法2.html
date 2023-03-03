@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" title="鼠标悬停" my="自定义">
+        盒模型1
+    </div>
+    <div class="box" title="鼠标悬停" my="自定义">
+        盒模型2
+    </div>
+
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+
+
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        /*
+        prop()  获取和设置HTML的标准属性，相当于js元素节点.属性名
+        attr()  获取和设置HTML的属性，支持自定义属性，相当于js的getAttribute()、setAttribute()
+
+        语法：
+        获取第一个符合条件的元素的属性
+        jquery对象.prop('属性名')
+        jquery对象.attr('属性名')
+
+        设置一个属性
+        jquery对象.prop('属性名','属性值')
+        jquery对象.attr('属性名','属性值')
+
+        设置多个属性
+        jquery对象.prop({
+            属性:属性值,
+            属性:属性值,
+            属性:属性值
+        })
+        jquery对象.attr({
+            属性:属性值,
+            属性:属性值,
+            属性:属性值
+        })
+        
+        
+        */
+
+        //获取元素的HTML属性
+        console.log($('.box').prop('title'));//鼠标悬停
+        console.log($('.box').prop('my'));//undefined
+        console.log($('.box').attr('title'));//鼠标悬停
+        console.log($('.box').attr('my'));//自定义
+
+        //设置元素的HTML属性
+        // $('.box').prop('align', 'center');
+        $('.box').prop({
+            style: 'color:red',
+            align: 'center'
+        })
+
+        /*  $('.box').attr('align', 'center');
+         $('.box').attr({
+             style: 'color:red',
+             class: 'box1'
+         }) */
+
+        //删除属性  多个属性之间用空格隔开
+        // $('div').removeAttr('title my style');
+        $('div').removeProp('title');
+        $('div').removeProp('my');
+        $('div').removeProp('style');
+
+        //设置复选框被选中
+        $('input').attr('checked', 'true');
+    </script>
+</body>
+
+</html>

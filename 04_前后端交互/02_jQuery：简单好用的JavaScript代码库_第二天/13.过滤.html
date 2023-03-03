@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="p">我是第1个段落</p>
+    <p>我是第2个段落</p>
+    <p>我是第3个段落</p>
+    <p>我是第4个段落</p>
+    <p class="p">我是第5个段落</p>
+    <div class="p">哈哈</div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        console.log($('p'));
+        console.log($('p:first'));
+        console.log($('p').first());//返回第一个元素
+        console.log($('p').last());//返回最后一个元素
+        console.log($('p:last'));
+        let num = 2;
+        console.log($('p').eq(num));//返回下标为2的元素
+        console.log($('p:eq(2)'));
+        console.log($('p').filter('.p'));
+    </script>
+</body>
+
+</html>

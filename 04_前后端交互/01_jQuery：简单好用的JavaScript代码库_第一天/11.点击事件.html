@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        哈哈哈哈
+    </div>
+    <script src="./js/jquery-3.6.3.js"></script>
+    <script>
+        //点击div，控制台输出元素之间的内容
+        //获取元素之间的内容  .html()
+        /* 点击事件语法：jQuery对象.click(function(){
+            //点击jQuery对象执行的操作
+        }) */
+
+        $('.box').click(function () {
+            // console.log($('.box').html());
+            console.log($(this).html());
+        })
+
+    </script>
+</body>
+
+</html>
