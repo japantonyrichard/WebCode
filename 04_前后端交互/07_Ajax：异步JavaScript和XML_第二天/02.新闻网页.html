@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            padding: 0 10px;
+        }
+
+        .item {
+            /* 移动端推荐用弹性盒模型，PC端推荐用浮动 */
+            /* 开启弹性盒模型  子元素水平排列 子元素宽度变为由内容撑开 */
+            display: flex;
+            width: 100%;
+            height: 100px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .item img {
+            width: 120px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .info {
+            /* flex-grow: 1;    1份全给这个儿子 */
+            flex-grow: 1;
+            height: 100px;
+            margin-left: 10px;
+        }
+
+        .desc {
+            height: 72px;
+            line-height: 24px;
+            color: #999;
+            font-size: 14px;
+            /* 三行文字溢出省略号显示 */
+            overflow: hidden;
+            -webkit-line-clamp: 3;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+
+        .readNum {
+            line-height: 30px;
+            text-align: right;
+            color: indianred;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <!--  <div class="item">
+            <img src="..." alt="">
+            <div class="info">
+                <p class="desc">人们常说“人过七十古来稀“，然而孙思邈却活了142岁。活了古代高寿的两辈子，让人惊叹不已，就算放到现在，142岁的高寿也是很少见的！那么他的养生秘诀是什么呢？</p>
+                <p class="readNum">4350次阅读</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="..." alt="">
+            <div class="info">
+                <p class="desc">人们常说“人过七十古来稀“，然而孙思邈却活了142岁。活了古代高寿的两辈子，让人惊叹不已，就算放到现在，142岁的高寿也是很少见的！那么他的养生秘诀是什么呢？</p>
+                <p class="readNum">4350次阅读</p>
+            </div>
+        </div> -->
+    </div>
+
+    <script>
+        //页面一加载客户端给服务端发送http请求
+        //1.创建Ajax
+        let xhr = new XMLHttpRequest();
+
+        //2.准备发送
+        xhr.open('get', './data/list.json', true);
+
+        //3.发送
+        xhr.send();
+
+        //4.监听函数
+        xhr.onreadystatechange = function () {
+            //5.状态完成
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                //获取后台的数据
+                console.log(xhr.response);
+                //转换为js对象
+                let obj = JSON.parse(xhr.response);
+                console.log(obj);
+                //获取对象的data属性
+                let arr = obj.data;
+                console.log(arr);
+
+                let str = '';
+                //遍历数组
+                for (let i = 0; i < arr.length; i++) {
+                    str += ` <div class="item">
+                        <img src="${arr[i].image}" alt="">
+                        <div class="info">
+                            <p class="desc">${arr[i].desc}</p>
+                            <p class="readNum">${arr[i].readNum}次阅读</p>
+                        </div>
+                    </div>`;
+                }
+                //添加到页面中
+                document.querySelector('.content').innerHTML = str;
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

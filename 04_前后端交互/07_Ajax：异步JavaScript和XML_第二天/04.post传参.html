@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <input type="text" placeholder="用户名" id="user">
+    </p>
+    <p>
+        <input type="text" placeholder="密码" id="pwd">
+    </p>
+    <p>
+        <input type="button" value="登录" id="btn">
+    </p>
+
+    <script>
+        //1.获取dom元素
+        let btn = document.getElementById('btn');
+
+        //2.绑定点击事件
+        btn.onclick = function () {
+            //获取当前值
+            let user = document.getElementById('user').value;
+            let pwd = document.getElementById('pwd').value;
+
+            //3.发送http请求
+            //3.1创建xhr对象
+            let xhr = new XMLHttpRequest();
+            
+            //3.2准备发送
+            xhr.open('post', './php/04.post.php', true);
+
+            //设置请求头
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded;charset=utf-8");
+
+            //3.3发送
+            //xhr.send("后台参数=前端参数值&后台参数=前端参数值")
+            xhr.send(`username=${user}&password=${pwd}`);
+            
+
+            //3.4监听
+            xhr.onreadystatechange = function () {
+                //3.5状态完成
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //获取后台响应的数据
+                    console.log(xhr.response);//用户名--临琳,密码--999
+                }
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //ajax使用步骤
+        //1.创建xhr对象 -- 秘书
+        let xhr = new XMLHttpRequest();
+        console.log(xhr);
+
+        //2.准备发送请求 -- 让秘书找一下小王
+        xhr.open('get', './06.ajax.php', true);
+
+        //3.发送请求 -- 秘书去找小王
+        xhr.send();
+
+        //4.监听函数 -- 监督秘书的工作
+        //只要状态发生改变，就会触发事件，事件会触发多次
+        xhr.onreadystatechange = function () {
+            //5.状态执行完毕才可以获取数据 -- 秘书正确的找到了小王
+            if (xhr.readyState === 4 && xhr.status === 200){
+                //成功获取后台的数据
+                console.log(xhr.response);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

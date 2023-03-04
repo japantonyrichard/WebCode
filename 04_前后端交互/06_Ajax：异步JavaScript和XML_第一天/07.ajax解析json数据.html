@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>名著推荐如下</h2>
+    <button type="button">点击查看信息</button>
+    <ul id="list">
+        <!-- <li>
+            <h3>书名：三国演义</h3>
+            <p>简介：一个军阀混战的年代</p>
+        </li>
+        <li>
+            <h3>书名：三国演义</h3>
+            <p>简介：一个军阀混战的年代</p>
+        </li> -->
+    </ul>
+
+    <script>
+        //获取ul
+        let ul = document.getElementById('list');
+
+        //点击按钮，给服务器发送请求
+        //1.获取按钮,给按钮绑定点击事件
+        document.querySelector('button').onclick = function () {
+            //2.给服务器发送请求--ajax
+            //2.1创建ajax -- 秘书
+            let xhr = new XMLHttpRequest();
+            //2.2准备发送请求
+            xhr.open('get', './data/book.json', true);
+            //2.3发送请求
+            xhr.send();
+            //2.4监听函数
+            xhr.onreadystatechange = function () {
+                //2.5状态完毕，响应成功
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //成功拿到后台的数据
+                    // console.log(xhr.response);
+                    let res = xhr.response;
+
+                    //将json字符串转换为对象
+                    let obj = JSON.parse(res);
+
+                    //拿到data属性
+                    let arr = obj.data;
+                    console.log(arr);
+
+                    //方法1：创建元素节点
+                    //拿到数组中所有的数据
+                    for (let i = 0; i < arr.length; i++) {
+                        console.log(arr[i]);
+                        //渲染到页面
+                        //创建li
+                        lis = document.createElement('li');
+                        //设置li的内容
+                        lis.innerHTML += `<h3>书名：${arr[i].name}</h3>
+                        <p>简介：${arr[i].desc}</p>`;
+                        console.log(lis);
+                        //添加到ul中
+                        ul.appendChild(lis);
+                    }
+
+                    //方法2：设置ul的内容
+                    let str = '';
+                    //拿到所有数据
+                    for (let i = 0; i < arr.length; i++) {
+                        //    console.log(arr[i]);
+                        str += `<li>
+                            <h3>书名：${arr[i].name}</h3>
+                            <p>简介：${arr[i].desc}</p>
+                        </li>`;
+                    }
+                    console.log(str);
+                    ul.innerHTML = str;
+                }
+            }
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

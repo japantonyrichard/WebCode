@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./js/myAjax.js"></script>
+    <script>
+        myAjax({
+            type: 'get',
+            // url:'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=36547,38123,38116,37861,38265,38174,38289,38229,37921,26350,37957,22158,37881&wd=%E7%8E%8B%E4%B8%80&req=2&csor=2&pwd=%E7%8E%8B%E4%B8%80%E5%8D%9A&cb=jQuery110207105253053173595_1677952185006&_=1677952185024',
+            url: "./php/06.baidu.php",
+            success(res) {
+                console.log(res);
+            }
+        })
+    </script>
+
+</body>
+
+</html>

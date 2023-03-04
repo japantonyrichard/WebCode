@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <input type="text" placeholder="用户名" id="user">
+    </p>
+    <p>
+        <input type="text" placeholder="密码" id="pwd">
+    </p>
+    <p>
+        <input type="button" id="btn" value="登录">
+    </p>
+
+
+    <script>
+        /*
+        思路 -- 参考jquery封装的ajax
+        jquery中的ajax：
+            $.ajax({
+                type:'',
+                url:'',
+                data:{},
+                success(res){}
+            })
+
+        封装原生ajax：
+            myAjax({
+                type:'',
+                url:'',
+                data:{},
+                success(res){}
+            });
+
+        原生ajax：
+            //1.创建xhr对象
+            let xhr=new XMLHttpRequest();
+            //2.准备发送请求
+            xhr.open('method','url',true);
+            //3.发送
+            xhr.send();
+            //4.监听
+            xhr.onreadystatechange=function(){
+                //5.状态完成
+                if(xhr.readyState===4&&xhr.status===200){
+                    xhr.response//获取后台返回的数据
+                }
+            }
+        */
+
+        /* 
+        思路：
+        1）点击按钮，发送http请求
+        2）判断get请求还是post请求
+        2）get请求在open中传参，post请求在send中传参
+        
+        */
+
+        //1.获取按钮
+        let btn = document.getElementById('btn');
+
+        //2.绑定事件
+        btn.onclick = function () {
+            //4.获取前端的参数值--表单元素的当前值
+            let user = document.getElementById('user').value;
+            let pwd = document.getElementById('pwd').value;
+
+            //3.发送http请求 -- 调用自己封装的网络请求的方法
+            myAjax({
+                type: 'get',
+                url: './php/02.login.php',
+                data: {
+                    //后台的参数:前端的参数值
+                    user,
+                    pwd
+                },
+                success(res) {//形参 -- 接收后台返回的数据
+                    console.log(res);
+                }
+            });
+        }
+
+        //封装网络请求
+        function myAjax(obj) {//形参--实质是一个对象
+            // console.log(obj);
+            //1.创建xhr对象
+            let xhr = new XMLHttpRequest();
+
+            //3.处理字符串
+            // console.log(obj.data);//{user: '王一博', pwd: '666'} -- user=王一博&pwd=666
+            //3.1遍历对象
+            let str = '';
+            for (const key in obj.data) {
+                // console.log(key,obj.data[key]);//user 王一博  pwd 666
+                //3.2字符串拼接
+                str += `${key}=${obj.data[key]}&`
+            }
+            // console.log(str);//user=王一博&pwd=666&
+            //3.3处理&
+            let params = str.slice(0, -1);//user=王一博&pwd=666
+
+            //2.判断请求方式
+            if (obj.type === 'get') {
+                //2.1准备发送
+                xhr.open('get', obj.url + '?' + params, true);
+                //2.2 发送请求
+                xhr.send();
+
+            } else if (obj.type === 'post') {
+                //2.1准备发送
+                xhr.open('post', obj.url, true);
+                //设置请求头
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+                //2.2发送请求
+                xhr.send(params);
+            }
+
+            //4.监听
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //5.响应数据
+                    obj.success(xhr.response);//调用成功的函数，传递成功响应的数据
+                }
+            }
+
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

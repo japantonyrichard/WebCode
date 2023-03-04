@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.json -- 数据格式 -- 字符串
+            1.1说明
+                1）属性必须加双引号
+                2）属性值是字符串类型必须加双引号
+                3）json数据中不允许有注释
+                4）不支持undefined和函数
+
+            1.2JSON字符串和js对象相互转换
+                JSON.parse(json字符串)  -- 返回js对象
+                JSON.stringify(js对象) -- 返回json字符串
+
+        2.Ajax
+            2.1概念
+                异步的js和xml -- 不是新技术 -- 是一种新方案
+            2.2作用
+                给服务端发送http请求
+            2.3特点
+                传统的form表单 -- 刷新整个页面
+                Ajax -- 异步请求，局部刷新
+            2.4原理 -- 秘书
+                1）创建ajax对象
+                2）让ajax对象去发送http请求给服务器
+                3）服务器接收到请求，处理请求，处理完请求数据响应给Ajax对象
+                4）把Ajax对象拿到的数据渲染到页面
+
+            2.5Ajax请求步骤
+                1）创建xhr对象 -- 秘书
+                    let xhr = new XMLHttpRequest();
+                2）准备发送http请求 -- 告诉秘书去找小王
+                    xhr.open('请求方式','url'，true);
+                3）发送 -- 秘书去找小王了
+                    xhr.send();
+                4）监听函数
+                    xhr.onreadystatechange=(){
+
+                    }
+                5）状态执行完毕，成功的响应
+                    if(readyState === 4 && status === 200){
+                        //拿到后台响应的数据 // response 响应
+                        xhr.response
+                    }
+
+
+
+     -->
+</body>
+</html>

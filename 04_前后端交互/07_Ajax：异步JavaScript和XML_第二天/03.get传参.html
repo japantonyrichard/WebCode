@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <input type="text" placeholder="用户名" id="user">
+    </p>
+    <p>
+        <input type="text" placeholder="密码" id="pwd">
+    </p>
+    <p>
+        <input type="button" value="登录" id="btn">
+    </p>
+
+    <script>
+        //Ajax给服务器发送http请求，有参数的请求
+
+        //1.获取DOM元素
+        let btn = document.getElementById('btn');
+
+        //2.点击按钮发送http请求
+        btn.onclick = function () {
+            //获取表单元素的当前值
+            let user = document.getElementById('user').value;
+            let pwd = document.getElementById('pwd').value;
+            console.log(user, pwd);
+
+            //3.发送请求
+            //3.1创建xhr对象
+            let xhr = new XMLHttpRequest();
+            // console.log(xhr.readyState);//0 -- 还没有开始请求，xhr对象初始化完成
+
+            //3.2准备发送
+            //get传参在地址栏中
+            //url?后台参数=前端参数值&后台参数=前端参数值
+            let params = `?username=${user}&password=${pwd}`;
+            xhr.open('get', './php/03.get.php' + params, true);
+            // console.log(xhr.readyState);//1 -- 发送请求
+
+            //3.3发送请求
+            xhr.send();
+            // console.log(xhr.readyState);//1 -- 发送请求
+
+            //3.4监听函数
+            //监听函数执行多次
+            xhr.onreadystatechange = function () {
+                // console.log(xhr.readyState);//2--接收到请求 3--开始处理请求 4--响应请求
+                //2.5状态完成
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //获取后台响应的数据
+                    console.log(xhr.response);
+                }
+            }
+
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

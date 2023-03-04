@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快递单号查询</title>
+    <style>
+        #list>li:first-child{
+            color: red;
+        }
+        #list>li{
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>快递单号：4307101743736</h2>
+    快递单号：<input type="text" id="info">
+    <button type="button" id="search">查询</button>
+    <ul id="list"></ul>
+
+    <script>
+        /* 
+        分析：
+        1.前端给后台发送http请求
+            1）点击按钮的时候发送get请求
+            2）有参数
+
+        2.后台接收到前端的数据
+            2）$_GET[]
+
+        3.处理前端的请求 -- 判断
+        4.后代响应前端的请求：有数据--返回数据，没有数据，返回--( 暂未查到与您单号相关的物流信息，请稍后再尝试。
+        
+        */
+
+        //1.获取DOM元素
+        let search = document.getElementById('search');
+        let list = document.getElementById('list');
+
+        //2.绑定点击事件
+        search.onclick = function () {
+            //获取快递单号
+            let info = document.getElementById('info').value;
+
+            //3.发送http请求
+            //3.1创建xhr对象
+            let xhr = new XMLHttpRequest();
+
+            //3.2准备发送
+            let params = `?num=${info}`;
+            xhr.open('get', './php/05.ems.php' + params, true);
+
+            //3.3发送
+            xhr.send();
+
+            //3.4监听
+            xhr.onreadystatechange = function () {
+                //3.5状态完成
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //获取后台返回的数据
+                    //成功查找到，返回快递单号的数据；没有查找到，返回--0
+                    // console.log(xhr.response);
+
+                    //判断是否有数据
+                    if (xhr.response === '0') {//没有数据
+                        list.innerHTML = '：( 暂未查到与您单号相关的物流信息，请稍后再尝试。';
+                    } else {//拿到数据--渲染数据
+                        //转换为js对象
+                        let obj = JSON.parse(xhr.response);
+                        //拿到对应的数据
+                        let emsData = obj.data.info.context;
+                        console.log(emsData);
+
+                        //遍历数组
+                        let str = '';
+                        for (let i = 0; i < emsData.length; i++) {
+                            str += `
+                                <li>
+                                    <h4>${time(emsData[i].time)}</h4>    
+                                    <p>${emsData[i].desc}</p>    
+                                </li>
+                            `;
+                        }
+                        //设置到页面
+                        list.innerHTML = str;
+
+                    }
+                }
+            }
+
+        }
+
+
+        //处理时间的函数
+        function time(date){//形参 -- 1595411133:秒
+            //创建日期
+            //当new Date只有一个参数时表示毫秒数
+            let time = new Date(date*1000);
+
+            //获取年月日  时分秒
+            let year=time.getFullYear();
+            let month=time.getMonth()+1;
+            let day=time.getDate();
+
+            let hours=time.getHours();
+            let minus=time.getMinutes();
+            let secondes=time.getSeconds();
+
+            //分和秒补零
+            if(minus<10){
+                minus='0'+minus;
+            }
+            if(secondes<10){
+                secondes='0'+secondes;
+            }
+
+            //12小时制  默认是上午  当大于12--需要减去12，并且换成下午
+            let mark='上午';
+            if(hours>12){
+                hours-=12;
+                mark='下午';
+            }
+
+            //返回时间格式
+            return `${year}年${month}月${day}日 ${mark}${hours}:${minus}:${secondes}`;
+
+        }
+
+
+    </script>
+</body>
+
+</html>

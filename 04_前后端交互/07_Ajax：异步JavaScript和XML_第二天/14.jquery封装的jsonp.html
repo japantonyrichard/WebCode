@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <button id="search">百度一下</button>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        //1.绑定点击事件
+        $('#search').click(function () {
+            //2.获取当前值
+            let text = $('#text').val();
+
+            //3.网络请求
+            //使用jquery封装的jsonp解决跨域
+            $.ajax({
+                type:'get',
+                // url:'http://suggestion.baidu.com/su?cb=callback&wd=',
+                url:'http://suggestion.baidu.com/su?',
+                data:{
+                    //后台参数:前端参数值
+                    wd:text
+                },
+                dataType:'jsonp',//返回的数据格式必须设置
+                jsonp:'cb',//后台定义用来接收前端函数的变量名，默认为callback，如果是callback可以省略
+                // jsonpCallback:'callback',//前端接收数据的函数名--一直可以省略，省略后默认为：jquery+随机数字
+                success(res){
+                    console.log(res);
+                }
+            })
+
+        })
+    </script>
+</body>
+
+</html>

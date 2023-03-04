@@ -1,0 +1,163 @@
+1.Ajax传递参数
+    1.1get传递参数
+        1）语法
+        xhr.open('get','url?后台参数=前端参数值&后台参数=前端参数值&...&...',true);
+        2）说明
+        get传递参数是在url地址栏中传参
+
+    1.2post传递参数
+        1）语法
+            xhr.open('post','url',true);
+
+            //设置请求头
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded;charset=utf-8");
+            
+            xhr.send('后台参数=前端参数值&后台参数=前端参数值');
+
+2.jquery封装的Ajax
+    语法:
+        $.ajax({
+            type:'get|post',//请求方式
+            url:'路径',//请求的地址
+            data:{//传参 -- 没有参数可以省略
+                后台参数:前端参数值,
+                后台参数:前端参数值,
+                后台参数:前端参数值,
+            },
+            dataType:'返回的数据类型',//可以省略
+            async:'是否异步',//默认true--异步--可以省略
+            success:function(res){//形参--用来接收后台成功时返回的数据
+
+            },
+            error:function(err){//形参--用来接收后台失败时返回的数据--可以省略
+
+            },
+            beforeSend:function(){//请求成功之前执行的函数--可以省略
+
+            },
+            complete:function(){//请求完成时执行的函数，不管成功还是失败--可以省略
+
+            }
+
+        });
+
+3.原生--封装Ajax
+    目的：
+        1）多次使用网络请求
+        2）项目不使用jQuery
+    思路：
+        参考jQuery封装的Ajax
+        <script>
+            //封装网络请求
+            function myAjax(obj) {//形参--实质是一个对象
+            // console.log(obj);
+            //1.创建xhr对象
+            let xhr = new XMLHttpRequest();
+
+            //3.处理字符串
+            // console.log(obj.data);//{user: '王一博', pwd: '666'} -- user=王一博&pwd=666
+            //3.1遍历对象
+            let str = '';
+            for (const key in obj.data) {
+                // console.log(key,obj.data[key]);//user 王一博  pwd 666
+                //3.2字符串拼接
+                str += `${key}=${obj.data[key]}&`
+            }
+            // console.log(str);//user=王一博&pwd=666&
+            //3.3处理&
+            let params = str.slice(0, -1);//user=王一博&pwd=666
+
+            //2.判断请求方式
+            if (obj.type === 'get') {
+                //2.1准备发送
+                xhr.open('get', obj.url + '?' + params, true);
+                //2.2 发送请求
+                xhr.send();
+
+            } else if (obj.type === 'post') {
+                //2.1准备发送
+                xhr.open('post', obj.url, true);
+                //设置请求头
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+                //2.2发送请求
+                xhr.send(params);
+            }
+
+            //4.监听
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //5.响应数据
+                    obj.success(xhr.response);//调用成功的函数，传递成功响应的数据
+                }
+            }
+
+        }
+        </script>
+    
+
+跨域： -- 只有浏览器有跨域
+    为什么有跨域？
+        浏览器出于安全考虑，有一个同源策略
+
+    同源策略：
+        协议、域名、端口号三个必须全部一致，称为同源；只要有一种一个不同，就称为非同源
+        非同源的情况下，浏览器不允许相互访问
+
+    解决跨域问题：
+        实现不同域名之间相互访问
+        1）后台代理（php代理--强调：只是学习阶段使用--工作不用）
+        2）jsonp -- 对数据格式有要求！ // 和json一点关系没有！！！ **********
+        3）cors资源共享 -- 后端设置  学node的时候会讲             **********
+        4）proxy反向代理 -- 学react、Vue框架的时候才能用          **********
+        5）frame（早期写法）-- 已被淘汰。
+
+        后台代理：-- php
+            思路：
+                让php去访问服务器，服务器把数据返回给php，php再把数据响应给前端
+
+            语法：
+                PHP访问服务器：
+                file_get_contents('服务器的路径')
+
+        jsonp：
+            原理：
+                1.动态创建script标签
+                2.设置src属性去访问资源（src属性可以访问网上所有的资源，不会跨域）
+                3.后台给前端响应数据，前端需要定义函数去接收返回的数据
+
+            说明：
+                1.jsonp只支持get请求
+                2.返回的数据必须是一个函数
+
+            例子：核心代码
+            <script>
+                //3.1创建script
+                let script = document.createElement('script');
+                //3.2scr请求数据
+                //wd -- 后台定义接收前端参数的变量
+                //cb=callback -- cb:后台定义用来接收前端函数的变量，callback：前端接收数据的变量名
+                script.src = 'http://suggestion.baidu.com/su?cb=callback&wd=' + 前端的参数值;
+                //3.3添加到body中
+                document.body.appendChild(script);
+                //3.4前端定义接收数据的函数
+                function callback(res){
+                    console.log(res);
+                }
+            </script>
+
+            jquery封装的jsonp:
+                $.ajax({
+                    type:'get',
+                    url:'url',
+                    data:{  // 没有参数可以省略
+                        后台参数:前端参数值,
+                        后台参数:前端参数值,
+                    },
+                    dataType:'json', // 后台返回的数据类型，必须设置为jsonp
+                    jsonp:'', // 后台定义接收前端函数的变量名，如果是callback可以省略
+                    jsonpCallback:'', // 前端接收数据的函数名，一直可以省略，默认为jquery+随机数
+                    success(res){} // 成功的回调函数
+                })
+
+        
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 引入自己封装的ajax -->
+    <script src="./js/myAjax.js"></script>
+    <script>
+        //页面一加载就发送网络请求
+        myAjax({
+            type:'get',
+            // has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value
+            // url:'https://m.qyer.com/z/zworld.php/search/ajaxGetProList?ajaxID=5c1b419a6e7d48653d90fd02&tag=535,146&page=2',
+            url:'./php/04.kuayu.php',
+            success(res){//形参--接收后台返回的数据
+                console.log(JSON.parse(res));
+            }
+        });
+
+    </script>
+</body>
+</html>

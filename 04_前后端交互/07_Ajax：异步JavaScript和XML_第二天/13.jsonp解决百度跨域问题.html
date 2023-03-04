@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <button id="search">百度一下</button>
+    <script>
+        //jsonp解决跨域
+        //1.创建script  2.scr请求数据  3.前端用函数接收返回的数据
+
+        //1.绑定点击事件
+        document.getElementById('search').onclick = function () {
+            //2、获取当前值
+            let text = document.getElementById('text').value;
+
+            //3.网络请求
+            //3.1创建script
+            let script = document.createElement('script');
+            //3.2scr请求数据
+            //wd -- 后台定义接收前端参数的变量
+            //cb=callback -- cb:后台定义用来接收前端函数的变量，callback：前端接收数据的变量名
+            script.src = 'http://suggestion.baidu.com/su?cb=callback&wd=' + text;
+            //3.3添加到body中
+            document.body.appendChild(script);
+
+        }
+
+        //3.4前端定义接收数据的函数
+        function callback(res){
+            console.log(res);
+        }
+
+    </script>
+</body>
+
+</html>
