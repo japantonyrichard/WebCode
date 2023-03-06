@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Promise对象的状态
+        /* 
+        pending -- 进行中
+        rejected -- 失败状态
+        fulfilled -- 成功状态
+        状态一旦发生改变，就不会再改变
+        */
+
+        function fn() {
+            return new Promise((resolve, reject) => {
+                //Promise初始化状态为pending--进行时
+                reject('失败状态')//状态由pending变为了rejected
+                resolve('成功状态');//状态由pending变为了fulfilled
+            })
+        }
+        fn().then(res => {
+            console.log(res);
+        }, err => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

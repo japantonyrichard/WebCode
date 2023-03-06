@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //高阶函数 -- 一个函数，他的参数或者返回值是函数
+
+        //创建promise
+        //Promise是一个构造函数，接收一个函数作为参数
+        //参数函数接收两个函数作为参数
+        let p = new Promise((resolve, reject) => {//潜规则
+            //promise可以看做一个容器，一般里面封装了一个异步操作
+            //resolve函数返回异步操作成功的值
+            //reject函数返回异步操作失败的值
+
+            //假设异步操作成功
+            if (false) {
+                resolve('成功')//成功的返回值
+            } else {
+                reject('失败')//失败的返回值
+            }
+
+        });
+
+        //调用实例对象的then方法
+        p.then(result => {//潜规则
+            console.log(result);
+        }, error => {
+            console.log(error);
+        })
+
+       /*  
+        p.then(function(res){
+            console.log(res);
+        },function(err){
+            console.log(err);
+        }) */
+
+    </script>
+</body>
+
+</html>

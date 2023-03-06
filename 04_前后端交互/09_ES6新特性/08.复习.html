@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.symbol
+            1.1数据类型
+                1）ES5
+                    number string boolean null undefined object
+                2）ES6新增
+                    symbol -- 原始数据类型
+            1.2介绍
+                symbol表示独一无二的值，可以接收一个字符串的参数，用来描述这个值
+
+            1.3语法
+                Symbol('string')
+                typeof返回symbol
+
+                Symbol() == Symbol() //false
+
+            1.4作用
+                对象的属性
+                1）语法
+                    ①直接赋值
+                    let s = Symbol();
+                    let obj = {
+                        [s]:18
+                    }
+
+                    ②[]赋值
+                    let s = Symbol();
+                    let obj = {}
+                    obj[s] = 18
+
+                    ③静态方法
+                    let s = Symbol();
+                    Object.defineProperty(对象名,s,{
+                        value:28
+                    })
+
+        2.Set -- 数据结构
+            2.1介绍
+                Set数据结构的成员是唯一的，Set是一个构造函数，可以接受一个数组或者类数组作为参数
+
+            2.2语法
+                let s = new Set([1,2,3,4,3,2,1]);
+                console.log(s);//{1,2,3,4}
+
+            2.3作用
+                1）数组去重
+                    ①Array.from()
+                        let s = new Set([1,2,3,4,3,2,1]);
+                        Array.from(s)//[1,2,3,4]
+
+                    ②...
+                        let s = new Set([1,2,3,4,3,2,1]);
+                        [...s]//[1,2,3,4]
+                    
+
+                2）字符串去重
+                    数组去重后通过join()转换为字符串
+                
+            2.4属性和方法
+                s.size -- 返回Set结构的成员个数
+                s.add(value) -- 增加值
+                s.delete(value) -- 删除值
+                s.clear() -- 删除所有值
+                s.has(value) -- 判断是否包含某个值，包含返回true；否则返回false
+
+        3.Promise
+            3.1介绍
+                理解为一种方案，解决层层嵌套的回调函数，称为回调地狱，代码可读性比较低
+
+                Promise可以像同步操作一样，表示异步的操作
+
+            3.2语法
+                1）创建Promise -- 封装异步请求
+                new Promise((resolve,reject)=>{//潜规则，第一个参数表示成功的回调，第二个参数表示失败的回调
+                    //异步操作 -- ajax、定时器
+                    resolve()//异步操作成功时调用的函数
+                    reject()//异步操作失败时调用的函数
+
+                })
+
+                2）调用Promise实例对象的then方法
+                实例对象
+                .then(res=>{},err=>{})
+                .then()
+                .then()
+                .then()
+
+            3.3封装ajax异步请求
+                1）封装
+                function http(type,url,data){
+                    return new Promise((resolve,reject)=>{
+                        //异步操作 -- ajax
+                        $.ajax({
+                            type,//type:type
+                            url,//url:url
+                            data,//data:data
+                            success(res){//简写
+                               resolve(res) 
+                            },
+                            error:function(err){
+                                reject(err)
+                            }
+                        })
+                    })
+                }
+
+                2)调用函数
+                http('get','路径',{后端参数:前端参数值})
+                .then(res=>{},err=>{})
+
+            3.4实例对象的方法
+                1）then(res=>{},err=>{})
+                    res--获取实例对象成功时的返回值
+                    err--获取实例对象失败时的返回值--可以省略
+
+                2）catch(err=>{})
+                    err--获取实例对象失败时的返回值--相当于then的第二个参数
+
+                3）all()
+                    Promise.all([实例对象1,实例对象2,...]).then()
+                    所有参数实例对象，都成功以后，才可以执行then方法
+
+
+
+
+
+
+
+
+
+     -->
+</body>
+</html>

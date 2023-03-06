@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <script>
+        /* 
+        ES5数据类型：
+        1.原始数据类型
+        number string boolean  undefined  null
+
+        2.引用数据类型
+        object
+
+        ES6新增原始数据类型：
+        symbol -- 表示独一无二的值
+        
+        */
+
+        //创建symbol类型的值时，不能使用new创建
+        let s1 = Symbol();
+        console.log(s1, typeof s1);//Symbol()  symbol
+
+        let s2 = Symbol();
+        console.log(s2, typeof s2);//Symbol()  symbol
+
+        console.log(s1 == s2);//false  ==：只判断值
+
+        //symbol可以接受一个字符串作为参数，用来描述symbol
+        let s3 = Symbol('age');
+        console.log(s3, typeof s3);//Symbol(age) 
+        let s4 = Symbol('name');
+        console.log(s4);//Symbol(name)
+
+        let s5 = Symbol('age');
+        console.log(s3 == s5);//false
+
+        //作用：保证对象的属性独一无二
+        /* 
+        ES5创建对象：
+        属性的写法：
+        1.obj={key:value}
+        2.obj={}
+        obj.key = value;
+        obj['key'] = value;
+        
+        */
+        //创建一个独一无二的属性
+        let sName = Symbol('name');
+
+        //创建对象
+        //方法1
+        /*  let obj = {
+             [sName]: '王一博',
+         }
+         console.log(obj);//{Symbol(name): '王一博'} */
+
+        //方法2
+        let obj = {};
+        //key就是sName
+        // obj.sName = '王一博';//{sName: '王一博'}
+        //symbol的key必须通过中括号[]添加
+        obj[sName] = '王一博';
+        console.log(obj);//{Symbol(name): '王一博'}
+        console.log(obj.sName);//undefined
+        console.log(obj['sName']);//undefined
+        console.log(obj[sName]);//王一博
+
+
+        /*  let b = 'a';
+         let obj1 = {
+             a: 10,
+             b: 20
+         }
+         console.log(obj1.b);//20 -- 对象的key为b
+         console.log(obj1['b']);//20 -- 对象的key为b
+         console.log(obj1[b]);//10 -- b表示字符串变量 -- 相当于obj['a'] */
+
+
+        let sAge = Symbol('age');
+        //Object.defineProperty(对象名,属性名,{value:属性值})
+        Object.defineProperty(obj, sAge, {
+            value: 18
+        })
+        console.log(obj);
+
+
+
+
+
+    </script>
+</body>
+
+</html>

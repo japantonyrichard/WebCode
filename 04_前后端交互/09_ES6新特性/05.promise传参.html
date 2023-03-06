@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fn(flag) {//形参
+            //1.创建Promise
+            //返回到函数调用处
+            return new Promise((resolve, reject) => {
+                //异步请求
+                if (flag) {
+                    resolve('成功')
+                } else {
+                    reject('失败');
+                }
+            })
+        }
+
+        //2.调用实例对象的then方法
+        //then方法可以链式操作
+        fn(false)
+        .then(res => {
+            console.log(res);
+        }, err => {
+            console.log(err);
+        })
+        .then(hello=>{
+            console.log('hello');
+        })
+        .then(world=>{
+            console.log('world');
+        })
+
+
+    </script>
+</body>
+
+</html>

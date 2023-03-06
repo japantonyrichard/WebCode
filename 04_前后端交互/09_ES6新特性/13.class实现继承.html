@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.定义父类
+        class Person {
+            //1.1定义构造函数
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            //1.2定义原型对象上的方法
+            say(str) {//形参 -- 局部变量
+                console.log('ta说：' + str);
+            }
+        }
+
+        //2.定义子类继承父类的属性和方法  -------- 男孩
+        class Boy extends Person {
+            //2.1定义子类自己的属性--先继承父类，再定义自己
+            constructor(name, age, sex) {
+                super(name, age);
+                this.sex = sex;
+            }
+
+            //2.2定义子类自己的方法
+            play() {
+                console.log(this.name + '爱打游戏');
+            }
+        }
+        //3.创建子类的实例对象
+        let boy = new Boy('李通', 20, '男');
+        console.log(boy);
+        boy.say('我想打游戏')
+        boy.play();
+
+
+
+        //2.定义子类 --------女孩
+        class Girl extends Person {
+            //2.1子类可以定义自己的属性和方法
+            constructor(name, age, sex, height) {
+                super(name, age)
+                this.sex = sex;
+                this.height = height;
+            }
+
+            //定义子类自己的方法
+            eat() {
+                console.log(this.name + '爱喝奶茶');
+            }
+        }
+
+        //3.创建子类的实例对象
+        let g = new Girl('赵扬', 18, '女', '165cm');
+        console.log(g);
+        g.say('hi')//实参 -- 具体的值
+        g.eat()
+    </script>
+</body>
+
+</html>

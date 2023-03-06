@@ -1,0 +1,296 @@
+ES6+：
+1.symbol
+    1.1概念
+        原始数据类型，表示独一无二的值
+
+    1.2说明
+        symbol可以接受一个字符串作为参数，用来描述symbol
+
+    1.3语法
+        1）创建symbol类型的值
+            let s = Symbol();
+        2）注意
+            不能使用new创建symbol
+        3）typeof时返回symbol
+
+    1.4独一无二
+        let s1 = Symbol();
+        let s2 = Symbol();
+        s1 == s2 //false
+
+        let s3 = Symbol('age');
+        let s4 = Symbol('age');
+        s3 == s4 //false
+
+    1.5作用：保证对象的属性独一无二
+        1）语法1
+            let mySymbol=Symbol('name');
+            let obj = {
+                [mySymbol]:value
+            }
+
+        2）语法2
+            let mySymbol=Symbol('name');
+            let obj = {};
+            obj[mySymbol] = value;//必须使用中括号添加和访问
+
+        3)语法3
+            let mySymbol=Symbol('name');
+            let obj={};
+            Object.defineProperty(对象名,mySymbol,{
+                value:属性值
+            })
+
+2.Set数据结构
+    2.1介绍
+        Set是ES6新增的一种数据结构，成员是【唯一】的值,参数可以是数组和类数组对象
+
+    2.2创建
+        let s = new Set(参数);
+        s//object
+
+    2.3作用
+        1）数组去重
+            let s = new Set([1,2,3,2,1]);
+            //把set结构的s转换为数组
+            //方法1 -- 扩展运算符
+            [...s]
+            //方法2 -- Array.from() -- --将两类对象转换为数组，类数组对象和set结构
+            Array.from(s)
+
+        2）字符串去重
+            将set结构转换为数组后再转换为字符串
+            let s = new Set('hello');
+            [...s].join('')
+
+    2.4实例属性
+        s.size -- 返回set结构的成员个数
+
+    2.5实例方法
+        s.add(value) -- 添加值
+        s.delete(value) -- 删除值
+        s.has(value) -- 判断是否包含某个值，包含返回true；否则返回false
+        s.clear() -- 清空所有值
+
+3.Promise
+    3.1作用
+        解决层层嵌套的回调函数
+
+    3.2语法
+        1）创建promise对象
+            ①promise构造函数的参数需要一个函数，这个函数有两个参数(resolve,reject)
+            ②resolve和reject是两个函数，resolve表示异步操作成功时的回调，reject表示异步操作失败时的回调
+            
+            let p = new Promise((resolve,reject)=>{//潜规则
+                //异步操作 -- ajax
+
+                if(/*异步操作成功*/){
+                    resolve('成功的返回值');
+                }else{
+                    reject('失败的返回值');
+                }
+
+            });
+
+        2）调用实例对象的方法
+            ①then方法接受两个函数作为参数，第一个函数接受成功的返回值，第二个函数接收失败的返回值，第二个函数可以省略
+
+            p.then(result=>{
+                //result是成功的返回值
+            },error=>{
+                //error是失败的返回值
+            })
+
+    3.3传参
+        1）封装Promise
+        function http(params){  //  params-参数
+            return new Promise((resolve,reject)=>{
+                //异步操作 -- ajax
+
+                if(params){//成功的回调
+                    resolve();
+                }else{
+                    reject();
+                }
+            })
+        }
+
+        2）调用实例对象的then方法
+        http()
+        .then(res=>{},err=>{})
+        .then(res=>{},err=>{})
+
+    3.4实例对象的方法
+        1）then()
+            ①语法
+            实例对象.then(res=>{},err=>{})
+            res--成功的回调
+            err--失败的回调--可以省略
+
+            ②返回值
+            then方法返回一个新的实例对象
+            then方法中的return：
+                实例对象
+                .then(res=>{return xx;})
+                .then(res=>{return xx;})
+                a、返回Promise实例对象
+                    下一个then的状态取决于return返回的Promise实例对象的状态(成功或者失败)
+
+                b、返回其他值，或者没有返回值
+                    函数默认的返回值为undefined
+                    下一个then的状态为成功，return后面的值会作为下一个then方法中成功回调的参数
+
+        2）catch()
+            ①语法
+            实例对象.catch(err=>{})
+            err--失败的回调--相当于then的第二个参数
+
+        3）all()
+            ①语法
+            Promise.all([实例对象1,实例对象2,...]).then()
+            ②说明
+            当所有实例对象都请求成功后才会执行then
+
+    3.5网易云案例
+    <script>
+        //1.创建promise
+        //封装为一个函数
+        function http(type, url, data) {
+            return new Promise((resolve, reject) => {
+                //异步操作 -- ajax
+                $.ajax({
+                    type,
+                    url,
+                    data,
+                    success(res) {//成功的回调
+                        //异步操作成功 -- 调用resolve函数
+                        resolve(res);
+                    },
+                    error(err) {//失败的回调
+                        //异步操作失败 -- 调用reject函数
+                        reject(err);
+                    }
+                })
+            })
+        }
+
+        //2.调用实例对象的then方法
+        http('get','http://iwenwiki.com:3000/personalized/newsong',{})
+        .then(res=>{//所有音乐列表的数据
+            // console.log(res);
+
+            //获取第一条音乐数据的id
+            let id = res.result[0].id;
+            // console.log(id);
+
+            //继续网络请求
+            //不推荐 -- 层层回调函数嵌套
+            /* http('get',' http://iwenwiki.com:3000/song/url?',{id}).then(res=>{
+                console.log(res);
+            }) */
+
+            //推荐方案
+            return http('get',' http://iwenwiki.com:3000/song/url?',{id})
+
+        },err=>{
+            console.log(err);
+        })
+        .then(res=>{//第一个音乐列表的数据
+            console.log(res);
+        })
+    </script>
+
+    3.6Promise对象的状态
+        1）pending -- 初始化的状态 -- 进行中
+        2）fulfilled -- 成功状态
+        3）rejected -- 失败状态
+    
+    3.7特点
+        状态一旦发生改变，就不会再改变
+
+4.async函数
+    4.1作用
+        async是一种方案，解决异步操作层层回调函数嵌套问题，以同步的流程表达异步的操作
+
+    4.2语法
+        async function 函数名(){
+            //await是顺序执行
+            await 异步操作;
+            await 异步操作;
+            await 异步操作;
+        }
+
+5.class -- 类
+    5.1作用
+        创建对象的模板--相当于构造函数的简写
+
+    5.2语法
+        1）创建
+            class 构造函数名{
+                //构造函数
+                constructor(参数1,参数2,...){
+                    //this指向实例对象
+                    this.属性1 = 参数1;
+                    this.属性2 = 参数2;
+                    ...
+                }
+
+                //原型对象上的方法,多个方法之间不适用任何符号
+                方法名1(){}
+                方法名2(){}
+            }
+
+        2）使用
+            new 构造函数名(实参1,实参2,...)
+
+    5.3继承
+        1）定义父类
+        class Person{
+            //1.定义构造函数
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+
+            //2.定义原型对象上的方法
+            say(){
+                console.log(this.name+'say hi');
+            }
+        }
+
+        2）定义子类继承父类的属性和方法
+        class Boy extends Person{
+            //1.定义子类自己的属性
+            constructor(name,age,sex){
+                //1.1先继承父类
+                super(name,age);
+                //1.2定义自己的属性
+                this.sex = sex;
+            }
+
+            //2.定义子类自己的方法
+            play(){
+                console.log(this.name + '就是要玩');
+            }
+            eat(){
+                console.log(this.name + '是个吃货');
+            }
+
+        }
+
+
+6.export和import -- 导出和导入
+    6.1概念
+        js认为每一个.js文件都是独立的一块，不可以相互使用变量
+
+    6.2作用
+        使用其他js文件中的变量
+
+        步骤：
+        1）导出需要的变量、函数、类
+            export {a,b,c}
+        2）导入需要的变量
+            import {a,b as age,c as sex} from '导出的js文件';
+        3）设置script标签的属性
+            <script src="" type="module"></script>
+

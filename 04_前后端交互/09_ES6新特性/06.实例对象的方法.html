@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            if (true) {
+                resolve('成功')
+            } else {
+                reject('失败');
+            }
+        })
+
+        let p2 = new Promise(resolve => {
+            resolve('第二个promise成功')
+        })
+
+        //当p和p1都成以后执行
+        Promise.all([p, p2]).then(res => {
+            console.log(res);
+        })
+
+
+        /*  p
+         .then(res => {
+             console.log(res);
+         })
+         //失败的回调，相当于then的第二个参数
+         .catch(err=>{
+             console.log(err);
+         }) */
+
+
+    </script>
+</body>
+
+</html>
