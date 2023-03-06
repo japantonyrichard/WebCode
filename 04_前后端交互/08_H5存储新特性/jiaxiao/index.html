@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>驾校一点通</title>
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- 
+        驾校一点通：
+        涉及的知识点：
+        HTML+css+js+Ajax+php+本地存储+Jquery
+
+        产品--提出需求--实现的功能
+
+        1.静态页面 -- HTML+CSS
+        2.渲染页面--题号+题目+答案
+        3.实现下一题和上一题
+        4.渲染100个题号
+        5.开始答题--答题和渲染页面
+        6.本地存储
+        7.重新答题
+
+    -->
+    
+    <div class="wrap">
+        <div class="content">
+            <div class="title1">
+                <!-- <p>1.驾驶机动车在道路上违反道路交通安全法的行为，属于什么行为？</p> -->
+            </div>
+            <div class="sel">
+                <!-- <label for="A">
+                    <input type="radio" name="sel" value="1" id="A">
+                    A: 刑事责任
+                </label>
+                <label for="B">
+                    <input type="radio" name="sel" value="2" id="B">
+                    B: 民事责任
+                </label>
+                <label for="C">
+                    <input type="radio" name="sel" value="3" id="C">
+                    C: 经济责任
+                </label>
+                <label for="D">
+                    <input type="radio" name="sel" value="4" id="D">
+                    D: 直接责任
+                </label> -->
+            </div>
+            <div class="daan">
+                <!-- <div class="wrong">很遗憾答错了</div> -->
+                <!-- <div class="right">恭喜你对了</div> -->
+            </div>
+            <div class="fenye">
+                <a href="javascript:;" class="prev">上一题</a>
+                <a href="javascript:;" class="next">下一题</a>
+                <a href="javascript:;" class="begin">重新答题</a>
+            </div>
+            <div class="tongji">
+                <p>
+                    已答：
+                    <span class="total">0</span>
+                    正确：
+                    <span class="rightNum">0</span>
+                    错误：
+                    <span class="wrongNum">0</span>
+                    正确率：
+                    <span class="lv">0.00%</span>
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <!-- <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div> -->
+        </div>
+    </div>
+    
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

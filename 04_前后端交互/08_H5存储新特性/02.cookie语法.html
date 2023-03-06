@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //后台存储，前端获取 -- document.cookie
+        //前端存储，前端获取
+        //前端存储 -- document.cookie = "name=value"; -- 多个键值对分号隔开
+        //前端获取 -- document.cookie
+
+        //存储 -- 一次只能存储一条数据
+        // document.cookie = "user=admin";
+        // document.cookie = 'pwd=666';
+        // document.cookie = "sex=男";
+
+        //有效时间 -- 只支持GMT(格林尼治时间),UTC(国际统一时间)
+        //路径 -- /--整个域名下所有文件--根目录  /code--code文件
+        //安全设置 -- secure=true|false -- 设置请求和响应的过程数据加密，客户端本地保存的cookie没有加密，需要自己设置加密
+
+        //处理时间
+        //1.获取当前时间  2.转换为国际标准时间
+        //new Date()--默认返回字符串
+        let now = new Date(new Date().getTime() + 1 * 1000 * 60);
+        let endTime = now.toUTCString();
+        document.cookie = "user=王一博;expires=" + endTime + ";path=/";
+        document.cookie = "pwd=666;expires=" + endTime + ";path=/";
+
+        console.log(document.cookie);//user=王一博; pwd=666
+
+    </script>
+</body>
+
+</html>

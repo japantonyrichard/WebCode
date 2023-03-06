@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //封装设置cookie的方法
+        //document.cookie = "name=value;expires=结束时间;path=/";
+        /**
+         * name -- 键名
+         * value -- 键值
+         * endTime -- 结束时间 --分钟 ，5--表示5分钟后失效
+         * */
+        function setCookie(name, value, endTime) {
+            //2.给value加密
+            value = encodeURIComponent(value);
+
+            //3.处理结束时间
+            let now = new Date(new Date().getTime() + endTime * 60 * 1000);
+            let endTime1 = now.toUTCString();
+
+            //1.设置cookie
+            document.cookie = `${name}=${value};expires=${endTime1};path=/`;
+
+        }
+
+        //设置cookie
+        setCookie('user', '易烊千玺', 10);//10分钟后失效
+        // setCookie('username', '迪丽热巴', 5);
+        // setCookie('user', '王一博hello', 20);//cookie存储数据时name不可以重复，如果重复后面的数据会覆盖前面的数据
+        setCookie('pwd', '666', 1);
+
+        //获取cookie
+        // let cookie = document.cookie;
+        // console.log(cookie);//username=%E8%BF%AA%E4%B8%BD%E7%83%AD%E5%B7%B4; user=%E7%8E%8B%E4%B8%80%E5%8D%9Ahello
+
+        //封装获取cookie的方法
+        //思路：传入name，返回对应的value
+        function getCookie(key) {
+            //1.获取所有cookie
+            let cookie = document.cookie + ';';
+            // console.log(cookie);
+            //username=%E8%BF%AA%E4%B8%BD%E7%83%AD%E5%B7%B4; user=%E7%8E%8B%E4%B8%80%E5%8D%9Ahello;
+
+            //2.拿到需要的value
+            //思路：字符串截取 -- str.slice(开始位置的下标,结束位置的下标)--含头不含尾
+            //开始位置的下标 -- key后面第一个等号的下一位
+            //结束位置的下标 -- key后面第一个分号 -- 最后一个键值对后面没有分号，补一个
+
+            //2.1查找key,获取key的下标
+            let index = cookie.indexOf(key);
+            // console.log(index);
+            let startIndex = index + key.length + 1;
+            // console.log(startIndex);
+
+            //2.2获取结束位置的下标
+            let endIndex = cookie.indexOf(';', index);
+
+            //2.3截取字符串 -- 返回对应的value并解码
+            return decodeURIComponent(cookie.slice(startIndex, endIndex));
+        }
+        console.log(getCookie('pwd'));//666
+        console.log(getCookie('user'));//易烊千玺
+    </script>
+</body>
+
+</html>

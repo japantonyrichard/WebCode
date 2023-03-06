@@ -1,0 +1,66 @@
+1.本地存储 -- 缓冲
+1.1cookie
+    1）特点
+        ①存储大小有限制 -- 4kb
+        ②需要网络 -- 每次都要发送http请求
+        ③没有兼容性问题
+
+    2）原理
+        客户端访问服务端的时候，服务端会自动生成一个cookie，响应给客户端是会传送自动生成的cookie，客户端会把cookie保存起来，等以后再次访问服务端时，会携带cookie去访问服务端。
+
+    3）百度登录例子的过程
+        ①第一次登录百度，访问服务器，服务器生成一个cookie
+        ②服务端响应给客户端，把cookie传递给客户端了，用户需要输入用户名和密码
+        ③以后再登录百度，客户端携带者cookie访问服务器
+        ④服务端响应客户端，用户直接登录百度页面，不显示登录按钮
+
+    4）语法
+        ①后台存储，前端获取 -- document.cookie
+        ②前端存储，前端获取
+            前端存储：document.cookie="name=value;expires=结束时间;path=/";
+            有效时间--只支持GMT(格林尼治时间)和UTC(国际统一时间)
+            path--/--表示根目录
+
+            前端获取：document.cookie
+
+    5）注意
+        当name相同时，后面的数据会完全覆盖前面的数据
+
+1.2localStorage -- 本地永久存储
+    1）特点
+        ①存储在客户端的浏览器上
+        ②大小有限制--5M
+        ③存储的数据都是字符串形式
+        ④可以直接从本地获取数据，不需要像cookie一样每次都请求服务器
+        ⑤IE低版本不支持
+        ⑥永久的本地存储，只要不主动删除数据，数据就会永远存在
+
+    2）语法
+        设置数据 -- localStorage.setItem('key','value') -- 复杂数据类型使用JSON.stringify转换为JSON格式的字符串
+        获取数据 -- localStorage.getItem('key') -- 复杂数据类型使用JSON.parse转换为js对象
+        删除数据 -- localStorage.removeItem('key')
+        清空数据 -- localStorage.clear()
+
+
+
+1.3sessionStorage -- 本地临时存储
+    1）特点
+        ①存储在客户端的浏览器上
+        ②大小有限制--5M
+        ③存储的数据都是字符串形式
+        ④可以直接从本地获取数据，不需要像cookie一样每次都请求服务器
+        ⑤IE低版本不支持
+        ⑥本地临时存储，只要关闭浏览器，数据就消失
+
+    2）语法
+        设置数据 -- sessionStorage.setItem('key','value') -- 复杂数据类型使用JSON.stringify转换为JSON格式的字符串
+        获取数据 -- sessionStorage.getItem('key') -- 复杂数据类型使用JSON.parse转换为js对象
+        删除数据 -- sessionStorage.removeItem('key')
+        清空数据 -- sessionStorage.clear()
+
+1.4区别
+    1）存储大小，cookie--4kb，storage--5M
+    2）有效时间，cookie可以设置有效时间，localStorage--永久有效，sessionStorage--关闭浏览器失效
+    3）兼容性，cookie没有兼容性问题，storage在IE8以下不支持
+    4）网络，cookie每次都请求服务器，storage本地有存储可以直接使用
+    5）方法，cookie方法单一，storage内置方法

@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    width: 1200px;
+    height: 414px;
+    padding: 20px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    margin: 20px 0;
+}
+
+.title1>p {
+    font-size: 20px;
+}
+
+.sel>label {
+    display: block;
+    margin: 10px 0;
+}
+
+.sel {
+    height: 160px;
+}
+
+.wrong, .right {
+    display: inline-block;
+    background-color: #FCBABC;
+    color: red;
+    border: 1px solid red;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.right {
+    background-color: lightgreen;
+    color: green;
+    border-color: green;
+}
+
+.fenye {
+    margin: 20px;
+}
+
+.fenye>a {
+    display: inline-block;
+    width: 123px;
+    height: 47px;
+    background-color: #56B04B;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 47px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.tongji {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.container {
+    width: 1200px;
+    height: 342px;
+    padding: 20px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    margin: 20px 0;
+}
+
+.item {
+    float: left;
+    width: 55.9px;
+    height: 36px;
+    border: 1px solid #eee;
+    text-align: center;
+    line-height: 36px;
+}
+
+.no {
+    background-color: #ff4c2d;
+    color: #fff;
+}
+
+.ok {
+    background-color: #00c356;
+    color: #fff;
+}

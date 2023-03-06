@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //H5新增本地存储
+        //localStorage -- 永久存储
+        //存储数据
+        localStorage.setItem('user', '古力娜扎'); // window. 可以省略
+        localStorage.setItem('pwd', '666');
+        let obj = { name: '王哟波', age: 18 };
+
+        //参数需要一个字符串
+        //把对象转换为字符串，使用JSON.stringify()把对象转换为字符串
+        localStorage.setItem('boyFriend', JSON.stringify(obj));
+
+        //获取数据
+        console.log(localStorage.getItem('user'));
+        //获取数据时返回json格式的字符串，通过JSON.parse()转换为对象
+        console.log(JSON.parse(localStorage.getItem('boyFriend')));
+
+        //删除数据
+        localStorage.removeItem('pwd');
+
+        //清空数据
+        localStorage.clear();
+
+        console.log('------------------------------');
+        //sessionStorage()--临时存储
+        //存储数据
+        sessionStorage.setItem('user', '迪丽热巴');
+        sessionStorage.setItem('boyFriend', JSON.stringify({ name: '肖战' }));
+
+        //获取数据
+        console.log(sessionStorage.getItem('user'));
+        console.log(JSON.parse(sessionStorage.getItem('boyFriend')));
+
+        //删除数据
+        sessionStorage.removeItem('user');
+
+        //清空数据
+        sessionStorage.clear();
+    </script>
+</body>
+
+</html>

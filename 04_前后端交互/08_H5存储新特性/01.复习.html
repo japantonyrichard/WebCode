@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1.封装ajax
+            myAjax({
+                type:'',
+                url:'',
+                data:{},
+                success(res){}
+            })
+        
+        //封装网络请求
+        function myAjax(obj) {
+            //1.创建xhr对象
+            let xhr = new XMLHttpRequest();
+
+            //3.处理字符串
+            //obj.data -- {user:王一博,pwd:666}
+            //转换为 -- user=王一博&pwd=666
+            let data = obj.data;
+            let str = '';
+            for (const key in data) {
+                str += `${key}=${data[key]}&`;
+            }
+            let params = str.slice(0, -1)
+
+            //2.判断请求方式
+            if (obj.type === 'get') {
+                //2.1准备发送
+                xhr.open('get', obj.url + '?' + params, true);
+                //2.2发送
+                xhr.send();
+
+            } else if (obj.type === 'post') {
+                //2.1准备发送
+                xhr.open('post', obj.url, true);
+                //设置请求头
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+                //2.2发送
+                xhr.send(params);
+            }
+
+            //4.监听函数
+            xhr.onreadystatechange = function () {
+                //5.状态完成
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //拿到数据
+                    obj.success(xhr.response);
+                }
+            }
+        }
+
+        2.跨域 -- 浏览器跨域
+            当前域名下客户端去请求其他域名下的资源，浏览器出于安全考虑有同源策略，就是协议、域名、端口号必须一致才可以相互访问
+
+            解决跨域的方法：
+            1）jsonp
+            2）cors -- 资源共享
+            3）反向代理
+
+            2.1PHP代理 -- 上课用
+                1）实现原理
+                    让PHP请求数据，服务器响应数据给PHP，PHP再把数据返回给前端
+
+            2.2jsonp
+                1）实现原理
+                    ①动态创建script标签
+                        let script=document.createElement('script');
+                    ②设置src属性
+                        script.src="路径";
+                    ③后台响应的数据，前端需要定义一个函数去接收
+                        function callback(res){
+                            console.log(res);
+                        }
+
+                2）jquery封装的jsonp
+                       $.ajax({
+                           type:'get',//jsonp只能是get请求
+                           url:'url',
+                           data:{
+                               后台参数:前端参数值,
+                               后台参数:前端参数值,
+                           },
+                           datatype:'jsonp',//返回的数据格式
+                           jsonp:,//后台定义接收前端函数的变量名，当为callback是可以省略
+                           jsonpCallback:,//前端接收数据的函数名，一直可以省略，默认为jquery+随机数
+                           success(res){}//成功的回调
+                       })
+
+    -->
+    <script>
+        /* 
+        myAjax({
+            type:'',
+            url:'',
+            data:{},
+            success(res){}
+        })
+        
+        */
+        //封装网络请求
+        function myAjax(obj) {
+            //1.创建xhr对象
+            let xhr = new XMLHttpRequest();
+
+            //3.处理字符串
+            //obj.data -- {user:王一博,pwd:666}
+            //转换为 -- user=王一博&pwd=666
+            let data = obj.data;
+            let str = '';
+            for (const key in data) {
+                str += `${key}=${data[key]}&`;
+            }
+            let params = str.slice(0, -1)
+
+            //2.判断请求方式
+            if (obj.type === 'get') {
+                //2.1准备发送
+                xhr.open('get', obj.url + '?' + params, true);
+                //2.2发送
+                xhr.send();
+
+            } else if (obj.type === 'post') {
+                //2.1准备发送
+                xhr.open('post', obj.url, true);
+                //设置请求头
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+                //2.2发送
+                xhr.send(params);
+            }
+
+            //4.监听函数
+            xhr.onreadystatechange = function () {
+                //5.状态完成
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //拿到数据
+                    obj.success(xhr.response);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

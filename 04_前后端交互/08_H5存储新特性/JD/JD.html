@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 990px;
+            margin: 0 auto;
+        }
+
+        .item {
+            padding-top: 18px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .ask {
+            height: 18px;
+            line-height: 18px;
+        }
+
+
+        .icon-ask {
+            float: left;
+            width: 18px;
+            height: 18px;
+            background-color: #f91;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 50%;
+            font-style: normal;
+            text-align: center;
+        }
+
+        .item-con {
+            float: left;
+            margin-left: 7px;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .icon-answer {
+            position: relative;
+            top: 16px;
+            background-color: #9b1;
+        }
+
+        .answer-con {
+            line-height: 30px;
+            padding: 10px 0 8px;
+            font-weight: 400;
+        }
+
+        .answer-item {
+            overflow: hidden;
+        }
+
+        .more {
+            color: #005ea7;
+            font-size: 14px;
+            text-decoration: none;
+            margin-left: 25px;
+            padding-bottom: 18px;
+            display: block;
+        }
+
+        .moreAnswer {
+            display: none;
+            margin-left: 25px;
+        }
+
+        .moreAnswer>p {
+            height: 30px;
+            line-height: 30px;
+            padding: 10px 0 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .flag {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="item">
+            <div class="ask">
+                <i class="icon-ask">问</i>
+                <p class="item-con">男的用粉色合适吗？还有那个颜色好看？</p>
+            </div>
+            <div class="answer">
+                <div class="answer-item">
+                    <i class="icon-ask icon-answer">答</i>
+                    <p class="item-con answer-con">
+                        白色的也很好看呀
+                    </p>
+                </div>
+                <a href="javascript:;" class="more">继续查看8条回答</a>
+            </div>
+        </div> -->
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        //网页一加载就渲染页面
+        //jsonp解决跨域
+        $.ajax({
+            type: 'get',
+            url: 'https://question.jd.com/question/getQuestionAnswerList.action?page=2&productId=100012015172',
+            // data:{},//没有参数--省略
+            dataType: 'jsonp',
+            // jsonp:'callback',//默认callback--省略
+            // jsonpCallback:'',//默认jquery+随机数--省略
+            success(res) {
+                // console.log(res);
+                //渲染数据
+                let arr = res.questionList;
+                console.log(arr);
+                //遍历
+                let str = '';
+                for (let i = 0; i < arr.length; i++) {
+                    str += `<div class="item">
+                    <div class="ask">
+                        <i class="icon-ask">问</i>
+                        <p class="item-con">${arr[i].content}</p>
+                    </div>
+                    <div class="answer">
+                        <div class="answer-item">
+                            <i class="icon-ask icon-answer">答</i>
+                            <p class="item-con answer-con">
+                                ${arr[i].answerList[0].content}
+                            </p>
+                        </div>
+                        <div class="moreAnswer"></div>
+                        <a href="javascript:;" class="more" data-id="${arr[i].id}">继续查看${arr[i].answerCount}条回答</a>
+                    </div>
+                </div>`;
+                }
+                //添加到页面
+                $('.container').html(str);
+            }
+        })
+
+
+        //点击a，渲染更多答案
+        //a元素是动态生成 -- 事件委托   -- 动态生成的元素用事件委托！！
+        $('.container').on('click', '.more', function () {
+            //获取每一条数据的ID
+            //在上面渲染数据时给a元素自定义了一个属性，用来获取对应的id
+            //获取点击a的自定义属性
+            let id = $(this).attr('data-id');
+            console.log(id);
+
+            //获取点击的a
+            let that = $(this);
+            console.log(that);
+
+            // let id=;
+            //网络请求
+            $.ajax({
+                type: 'get',
+                url: 'https://question.jd.com/question/getAnswerListById.action?&page=1&questionId=' + id,
+                dataType: 'jsonp',
+                success(res) {
+                    // console.log(res);
+                    let arr = res.answers;
+                    console.log(arr);
+                    //遍历
+                    let str = '';
+                    for (let i = 0; i < arr.length; i++) {
+                        str += `<p>${arr[i].content}</p>`;
+                    }
+                    //显示点击a对应的div
+                    //ajax中的this不指向触发事件的元素
+                    that.prev().html(str).toggleClass('flag');
+                    // console.log($(this));
+                }
+            })
+        })
+
+
+        //绑定失败
+        /* $('.more').click(function () {
+            console.log(1111);
+        }) */
+    </script>
+</body>
+
+</html>
