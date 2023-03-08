@@ -1,0 +1,134 @@
+<!--
+1.scss(sass)
+    1.1概念
+        css预处理语言，css的扩展，在css的基础之上新增动态语言的特点
+    1.2作用
+        写网页样式
+    1.3文件后缀  .scss
+    1.4HTML不识别scss文件，需要转换为对应的css文件，然后再HTML中引入
+    1.5变量
+        1）声明变量 -- $变量名:值;
+        2）使用变量 -- $变量名
+
+    1.6嵌套 -- 同less
+        css选择器可以像HTML结构一样去嵌套，默认是后代选择器，如果需要子代选择器，可以在选择器前加>
+        .box{
+            width:100%
+            .item{
+                width:303px;
+                float:left;
+                .price{
+                    color:#ff6700;
+                }
+            }
+        }
+
+    1.7混合
+        把公共的样式声明到一个混合中，需要的时候直接调用混合即可
+        1）声明混合(声明方法)
+            @mixin 混合名{
+                //公共的样式
+            }
+
+        2）调用混合(调用方法)
+            .box{
+                @include 混合名();//声明和调用时的小括号可以省略
+            }
+
+2.bootstrap
+    2.1介绍
+        bootstrap是一个HTML、CSS、JavaScript的框架，响应式布局
+    2.2特点
+        1）预处理工具 -- bootstrap的源码采用的less和scss
+        2）响应式布局 -- 写一次样式，兼容所有终端
+        3）功能完备 -- HTML、css、js(基于jquery)
+        4）完全开源
+
+    2.3使用
+        1）引入
+            ①下载到本地 css、js、font文件
+            ②线上--CDN
+
+        2）引入的文件
+            //bootstrap中css样式的核心文件
+            <link rel="stylesheet" href="css/bootstrap.min.css"/>
+            //引入jquery--bootstrap的js文件给予jq
+            <script src="js/jquery.js"></script>
+            //引入bootstrap的js
+            <script src="js/bootstrap.min.js"></script>
+    2.4布局容器
+        1）.container -- 固定宽度实现响应式布局
+        2）.container-fluid -- 100%宽度
+        注意：两个容器不可以相互嵌套
+
+    2.5栅格系统 -- 掌握
+        1）由行和列构成
+        2）行(.row)必须写在布局容器中
+        3）列需要写在行中，一行最多有12列
+        4）当一行大于12列后，自动换行
+        5）列的class为.col-设备-数字
+        xs--移动,sm--平板,md--pc端,lg--超大pc
+        6）栅格系统在宽度大于等于临界点值时生效
+
+    2.6表格
+        1）table类
+        .table -- 表格基础的样式
+        .table-bordered -- 带边框的表格
+        .table-striped -- 隔行变色的表格
+        .table-hover -- 鼠标悬停的表格
+        .table-condensed -- 紧缩的表格
+
+        2）行和列类
+        设置行和单元格的颜色
+        .active -- 默认颜色--灰色
+        .success -- 成功--绿色
+        .info -- 信息 -- 淡蓝色
+        .warning -- 警告 -- 黄色
+        .danger -- 危险 -- 红色
+    2.7按钮
+        .btn -- 基础样式
+        .btn-default -- 默认样式
+        .btn-success -- 绿色按钮
+        .btn-info -- 浅蓝色按钮
+        .btn-warning --黄色按钮
+        .btn-danger -- 红色按钮
+        .btn-primary -- 深蓝色按钮
+        .btn-link -- 连接按钮
+        .btn-lg -- 大按钮
+        .btn-sm -- 小按钮
+        .btn-xs -- 超小按钮
+        .disabled -- 禁用按钮
+
+    2.8图片
+        .img-responsive -- 响应式图片
+        .img-rounded -- 圆角图片
+        .img-circle  -- 圆图片
+        .img-thumbnail -- 带边框的图片
+
+    2.9表单
+        .form-group -- 表单容器类
+        .form-control -- 表单元素类
+        .form-inline -- 表单容器类，使表单元素变为行内块
+
+        组合表单：
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"></div>
+                    <input type="text" class="form-control">
+                    <div class="input-group-addon"></div>
+                </div>
+            </div>
+        </div>
+
+    2.10关闭按钮
+        <div class="close"><span>&times;</span></div>
+    2.11三角形
+        <div class="caret"></div>
+
+
+
+生产环境：(上线环境)把错误日志关闭，代码压缩          
+开发环境：开发阶段，一般错误日志都打开
+测试环境：把开发环境的代码复制一遍
+

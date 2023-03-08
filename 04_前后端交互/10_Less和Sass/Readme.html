@@ -1,0 +1,315 @@
+<!--  
+
+less和scss重点掌握变量、嵌套、混合   
+1.less 和 sass(scss)
+    1.1作用
+        写网页样式
+        
+    1.2介绍
+        less和scss都是css的预处理语言，本质就是css的扩展，在css的基础之上新增了动态语言的特点，例如变量、函数、作用域等
+
+    1.3文件后缀
+        less文件后缀 -- .less
+        scss文件后缀 -- .scss 或者 .sass
+    
+        html文件不识别less和scss的，最终需要转换为对应的css文件
+
+    1.4注释
+        //单行注释 -- css文件不显示
+        /*多行注释*/ -- css同步
+
+    1.5less变量
+        1）声明变量  *****
+            @变量名 : 值;
+        2）使用变量
+            @变量名;
+        3）例子
+            @w：100px;
+            @h:100px;
+            @bg:#666;
+
+            .box{
+                width:@w;
+                height:@h;
+                background-color:@bg;
+            }
+
+        4）变量可以计算
+            + - * 以第一个单位为准
+            / 单位必须统一，必须加()
+
+            .box{
+                width:@w + 100;
+                height:@h - 100;
+                background-color:@bg * 1;
+                color:(@bg/#333);
+            }
+
+        5）属性变量
+            声明：@w:width;
+            使用：.box{ @{w}:200px; }
+
+        6）选择器变量
+            声明：@wrap:.wrap;
+            使用：@{wrap}{ margin: 0 auto; }
+
+        7）路径变量  *****
+            声明：@url:'../images/';
+            使用：.box{ background:url("@{url}1.jpg");}
+
+        8）变量的作用域
+            就近原则
+            @w:100px;
+            @w:200px;//全局变量名字重复后面的变量会覆盖前面的变量
+            .box{
+                @w:100px;//块级作用域，就近原则
+                width:@w;//100px
+            }
+
+    1.6less嵌套
+        1）概念
+            less可以让css选择器像HTML结构一样去嵌套
+
+        2）说明
+            默认是后代选择器，如果需要子代选择器，在选择器前面加>
+
+        3）语法
+            祖先选择器{
+                父选择器{
+                    子选择器{
+                        子选择器1{
+
+                        }
+                        子选择器2{
+
+                        }
+                    }
+                }
+            }
+
+        4）例子
+        less文件：
+            @w2:100%;
+            @h2:614px;
+            @color:#ff6700;
+            .phone{
+                width:@w2 ;
+                height: @h2;
+                .item{
+                    width: 234px; 
+                    height: 300px;
+                    background-color: red;
+                    >.name{
+                            color: @color;
+                            font-size: 18px;
+                    }
+                    .desc{
+                        color: @color;
+                    }
+                    .price{
+                        color: @color;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+        css文件：
+        .phone {
+            width: 100%;
+            height: 614px;
+        }
+        .phone .item {
+            width: 234px;
+            height: 300px;
+            background-color: red;
+        }
+        .phone .item > .name {
+            color: #ff6700;
+            font-size: 18px;
+        }
+        .phone .item .desc {
+            color: #ff6700;
+        }
+        .phone .item .price {
+            color: #ff6700;
+            font-size: 14px;
+        }
+
+        5）& -- 表示上一层选择器，一般配合伪对象和伪类选择器使用
+            less文件：
+            .box{
+                &::after{}
+                &:hover{}
+            }
+
+            css文件：
+            .box::after{}
+            .box:hover{}
+
+        6）媒体查询 -- 了解
+        元素不同终端的样式，可以嵌套在一个选择器中
+        每一个元素都会解析出来三个终端的样式
+
+        语法：
+        .box{
+            //三个终端共同的样式
+            padding:10px;
+
+            //单个终端不同的样式
+            @media screen{
+                 //移动端
+                 @media (max-width:768px){
+                     width:50%;
+                 }
+                 //平板端
+                 @media (max-width:992px) and (min-width:768px){
+                     width:33%;
+                 }
+                 //pc端
+                 @media (min-width:992px){
+                     width:25%;
+                 }
+            }     
+        }
+
+    1.7混合 -- mixin
+        1）概念
+            把一组属性(class或者id)混合到另外一个属性中
+        2）语法
+            ①定义混合
+            .box(@a:10px;@b:20px){//小括号和参数都可以省略，参数是变量，参数的值为默认值,多个参数之间使用逗号或者分号
+                color:#333;
+                margin:@arguments;
+            }
+            #box(@a:10px;@b:20px){//小括号和参数都可以省略，参数是变量，参数的值为默认值
+                color:#ff6700;
+            }
+
+
+            ②使用混合
+            .item{
+                .box(100px,200px);//小括号和参数都可以省略，调用混合时传参会覆盖默认值
+                #box();
+            }
+
+        3）说明
+            ①参数需要加单位
+            ②@arguments表示所有参数
+
+        4）混合的命名空间
+            混合可以嵌套，使用时必须引入混的的命名空间(使用子混合时必须引入父混合)
+
+            .mix1(){
+                .mix2(){
+
+                }
+            }
+
+            //使用
+            .box{
+                .mix1>.mix2();//使用mix2时必须引入mix1，mix1不能加小括号
+            }
+
+        5）混合的匹配模式
+            //定义混合
+            .hunhe(条件,参数1,参数2,...){}
+            .hunhe(条件,参数1,参数2,...){}
+            .hunhe(@_,参数1,参数2,...){}//@_：表示任意变量，可以匹配任何条件
+
+            //使用混合
+            .hunhe(条件的值,参数1,参数2,...)
+
+            //例子
+            .margin(top,@w:10px){
+                margin-top: @w;
+            }
+            .margin(bottom,@w:10px){
+                margin-bottom: @w;
+            }
+            .margin(left,@w:10px){
+                margin-left: @w;
+            }
+            .margin(right,@w:10px){
+                margin-right: @w;
+            }
+            //@_可以匹配任何条件
+            .margin(@_,@w:10px){
+                padding: @w;
+            }
+
+            //2.调用混合
+            .box12{
+                .margin(left)
+            }
+            .box13{
+                .margin(bottom,20px)
+            }
+
+        6）混合的条件筛选
+            when--当...时候
+            when后面写条件
+            条件：and--并且、,--或者、not--不符合条件
+
+            //声明混合
+            .hunhe(){
+                //并且 -- and
+                .width1(@w) when (@w>100px) and (@w<300px){
+                    width: @w;
+                }
+                //或者 -- ,
+                .width2(@w) when (@w>300px),(@w<100px){
+                    width: @w;
+                }
+                //否定 -- not
+                .width3(@w) when not (@w>300px){
+                    width: @w;
+                }
+            }
+
+        7)混合中的循环
+            递归实现，在混合中调用自己，混合必须有结束条件
+
+            .hunhe1(@i:1) when (@i<4){
+                .item@{i}{
+                    width: @i*100px;
+                }
+
+                .hunhe1(@i+1);
+            }
+            .box{
+                .hunhe1();
+            }
+
+        8）参数数量不确定
+            ...：表示所有参数
+            @arguments:获取所有参数
+
+            .hunhe(...){
+                margin:@arguments;
+            }
+
+        9）混合使用 !important
+            调用混合的时候在方法后面直接加 !important
+
+            .box{
+                .hunhe() !important;
+            }
+
+    1.8继承  -- 了解
+        :extend(继承的样式)
+
+        //定义样式
+        .jicheng{
+            margin:0 auto;
+        }
+        //继承样式
+        .box{
+            &:extend(.jicheng);
+        }
+
+    1.9导入
+        导入其他less文件，可以写在任意位置
+        @import "./style.less";
+                            
+
+

@@ -1,0 +1,23 @@
+/* 
+less是css扩展 -- 在css的基础之上新增动态语言的特点
+
+*/
+/* less完全支持css的语法 */
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+.box1 {
+  width: 200px;
+  height: 200px;
+  background-color: #333;
+  font-size: 14px;
+}
+.box2 {
+  width: 300px;
+  height: 100px;
+  background-color: #666666;
+  font-size: 14px;
+  color: #010101;
+}

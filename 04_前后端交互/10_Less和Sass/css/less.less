@@ -1,0 +1,375 @@
+//单行注释
+/* 变量：@变量名:变量值;  使用：@变量名 */
+/* 1.值变量 ***** */
+@w:200px;
+@h:200px;
+
+.box1{
+    width: @w;
+    height: @h;
+    background-color: red;
+}
+
+/* 2.属性变量 */
+@width:width;
+@height:height;
+@bg:background;
+
+.box2{
+    @{width}:@w;//属性是变量的时候，使用时需要加{}
+    @{height}:200px;
+    @{bg}:green;
+}
+
+/* 3.选择器变量 */
+@sel1:.wrap;
+@sel2:wrap;
+
+@margin:0 auto;//值变量
+
+@{sel1}{//选择器变量使用时需要加{}
+    margin:@margin;
+}
+
+#@{sel2}{
+    margin: 50px auto;
+}
+
+/* 4.路径变量 -- 当项目目录改变时，只需要修改变量的路径即可 */
+
+@url:'../images/';
+
+.box3{
+    background-image: url("@{url}1.jpg");
+}
+
+/* 5.变量的作用域 -- 就近原则 */
+@w1:100px;
+@w1:200px;//全局作用域--全局变量--名字重复后面的变量会覆盖前面的变量
+
+.box4{
+    width: @w1;
+    height: @w1;
+    @w1:50px;//块级作用域--就近原则
+}
+
+/* 二、嵌套  css选择器像HTML结构一样嵌套 */
+/* 
+<div class="phone">
+    <div class="wrap">
+        <div class="item">
+            <p class="name"></p>
+            <p class="desc"></p>
+            <p class="price"></p>
+        </div>
+    </div>
+</div>
+
+.phone .item>.name{}
+.phone .item .desc{}
+.phone .item .price{}
+
+*/
+@w2:100%;
+@h2:614px;
+@color:#ff6700;
+.phone{
+    width:@w2 ;
+    height: @h2;
+    .item{
+       width: 234px; 
+       height: 300px;
+       background-color: red;
+       >.name{
+            color: @color;
+            font-size: 18px;
+       }
+       .desc{
+           color: @color;
+       }
+       .price{
+           color: @color;
+           font-size: 14px;
+       }
+    }
+}
+
+/* &：表示上一层的选择器 */
+.box5{
+    &::after{
+        content:"";
+        width:200px;
+        height:1px;
+        background-color: red;
+        display: block;
+    }
+    &::before{
+        content: "";
+        width: 1px;
+        height: 200px;
+        background-color: green;
+    }
+    &:hover{
+        background-color: pink;
+    }
+}
+
+/* 媒体查询 */
+/* 
+媒体查询语法：
+移动端：
+@media screen and (max-width:768px){
+    .item{}
+    .box{}
+    .name{}
+}
+ipad：
+@media screen and (max-width:992px) and (min-width:768px){
+    .item{}
+    .box{}
+    .name{}
+}
+pc：
+@media screen and (min-width:992px) {
+    .item{}
+    .box{}
+    .name{}
+}
+
+
+
+*/
+.item{
+    //三个终端共同的样式
+    height: 430px;
+    padding: 10px;
+    //每个终端各自的样式
+    @media screen {
+        //移动端
+        @media (max-width:768px){
+            width: 50%;
+        }
+        //ipad
+        @media (max-width:992px) and (min-width:768px){
+            width: 33%;
+        }
+        //pc端
+        @media (min-width:992px){
+            width: 25%;
+        }
+    }
+}
+
+.box6{
+    @media screen {
+        //移动端
+        @media (max-width:768px){
+            font-size: 12px;
+        }
+        //ipad
+        @media (max-width:992px) and (min-width:768px){
+            font-size: 14px;
+        }
+        //pc
+        @media (min-width:992px){
+            font-size: 16px;
+        }
+        
+    }
+}
+
+/* 
+混合：可以通过class或者ID定义
+1.定义混合  mixin
+.box(){//()可以省略，省略后会编译到css文件中
+    width:200px;
+}
+#item(){//()可以省略
+    height:200px;
+}
+2.使用混合
+.box();//小括号可以省略
+#item();//小括号可以省略
+*/
+//没有参数的混合  mixin
+//1.定义混合
+.base1(){//()可以省略
+    font-size: 14px;
+    color: #333;
+}
+#base2(){//()可以省略
+    text-align: center;
+}
+
+//2.使用混合
+.box7{
+    width: 234px;
+    height: 303px;
+    .base1();
+    #base2();
+}
+
+//有参数的混合
+//1.声明混合 -- 传参为默认值
+.base3(@a:0px,@b:10px,@c:30px,@color:red){//变量--变量的值为默认值
+    width: 234px;
+    height: @c;
+    background-color: @color;
+    // box-shadow:@a @b @c @color ;
+    box-shadow: @arguments;/* @arguments指代全部参数 */
+}
+//2.使用混合
+.box8{
+    font-size: 14px;
+    transition: 1s;
+    .base3();/* 调用的时候没有传参，取默认值 */
+}
+.box9{
+    .base3(0px,10px,300px,#ccc);/* 调用时传参，参数会覆盖默认值 */
+}
+
+//3.混合的命名空间
+.mix1(){
+    width: 200px;
+    height: 200px;
+    .mix2(@color:red){
+        color: @color;
+        .mix3(){
+            font-size: 14px;
+            background-color: @color;
+        }
+    }
+}
+//使用混合
+.box10{
+    .mix1();
+}
+.box11{
+    .mix1();
+    .mix1>.mix2();//使用子mixin，必须先引入他的命名空间(父mixin),使用>连接时，父混合不能加()
+    .mix3();
+}
+
+//4.混合的匹配模式
+/* 
+1）声明
+.hunhe(条件,参数1,参数2,...){}
+.hunhe(条件,参数1,参数2,...){}
+.hunhe(@_,参数1,参数2,...){}
+
+2）调用
+.box{
+    .hunhe(条件的值,参数1,参数2,...)
+}
+
+*/
+//1.定义混合
+.margin(top,@w:10px){
+    margin-top: @w;
+}
+.margin(bottom,@w:10px){
+    margin-bottom: @w;
+}
+.margin(left,@w:10px){
+    margin-left: @w;
+}
+.margin(right,@w:10px){
+    margin-right: @w;
+}
+//@_可以匹配任何条件
+.margin(@_,@w:10px){
+    padding: @w;
+}
+
+//2.调用混合
+.box12{
+    .margin(left)
+}
+.box13{
+    .margin(bottom,20px)
+}
+
+/* 5.混合的条件筛选 */
+/* 
+when--当...时候
+when后面写条件
+条件：and--并且、,--或者、not--不符合条件
+*/
+//定义混合
+.hunhe(){
+    //并且 -- and
+    .width1(@w) when (@w>100px) and (@w<300px){
+        width: @w;
+    }
+    //或者 -- ,
+    .width2(@w) when (@w>300px),(@w<100px){
+        width: @w;
+    }
+    //否定 -- not
+    .width3(@w) when not (@w>300px){
+        width: @w;
+    }
+}
+
+//调用混合
+.box14{
+    .hunhe>.width1(150px)
+}
+.box15{
+    .hunhe>.width2(500px);
+}
+.box16{
+    .hunhe>.width3(50px);
+}
+
+/* 6.混合的循环  -- 递归  -- 在混合内部调用自己 -- 得有混合结束的条件 */
+
+/* .box .item1{
+    width: 100px;
+}
+.box .item2{
+    width: 200px;
+}
+.box .item3{
+    width: 300px;
+} */
+
+.hunhe1(@i:1) when (@i<4){
+    .item@{i}{
+        width: @i*100px;
+    }
+
+    .hunhe1(@i+1);
+}
+.box{
+    .hunhe1();
+}
+
+/* 7.不确定数量的参数  ... */
+.hunhe2(...){
+    margin:@arguments;
+    box-shadow: @arguments;
+}
+.box17{
+    .hunhe2(10px,10px) !important
+}
+.box18{
+    .hunhe2(0,10px,30px)
+}
+
+/* 四、继承  extend */
+.jicheng{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+.box19{
+    &:extend(.jicheng);
+    color: gold;
+}
+
+/* 五、导入其他less文件 */
+@import "./style.less";
+
+
+

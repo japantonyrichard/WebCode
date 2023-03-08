@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入css核心文件 -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- 引入JQ文件 -->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>字体</h2>
+    <span class="glyphicon glyphicon-home"></span>
+    <span class="glyphicon glyphicon-play-circle "></span>
+    <button type="button" class="btn btn-danger btn-lg">收藏 
+        <span class="glyphicon glyphicon-star-empty"></span>
+    </button>
+
+    <script>
+        //点击按钮 -- 空心变为实心 -- 实心变为空心
+        $('button').click(function(){
+            //获取span的class
+            let class1 = $('button>span').attr('class');
+            console.log(class1);
+            if(class1==='glyphicon glyphicon-star-empty'){
+                //设置为实心
+                $('button>span').attr('class','glyphicon glyphicon-star');
+            }else{
+                //设置为空心
+                $('button>span').attr('class','glyphicon glyphicon-star-empty');
+            }
+        })
+    </script>
+</body>
+</html>

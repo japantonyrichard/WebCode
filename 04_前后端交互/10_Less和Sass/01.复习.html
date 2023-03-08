@@ -1,0 +1,147 @@
+<!-- 
+    1.symbol -- 基础数据类型
+    2.Set -- 数据结构   里面的值是唯一的，不重复的
+    3.Promise -- 构造函数 -- 解决回调函数嵌套问题
+        3.1创建Promise对象
+        function http(){
+            return new Promise((resolve,reject)=>{
+                //异步请求
+                $.ajax({
+                    type:,
+                    url:,
+                    data:{},
+                    success(res){
+                        resolve(res)
+                    },
+                    error(err){
+                        reject(err)
+                    }
+                })
+            })
+        }
+
+        3.2调用实例对象的then
+        http().then(res=>{  //拿到成功的数据--都是后台给的
+
+        },err=>{    //拿到失败的数据--都是后台给的
+
+        })
+
+    4.async函数
+        4.1作用
+            解决回调函数嵌套问题
+        4.2语法
+        //异步请求 -- ajax
+        function http(){
+            return new Promise((resolve,reject)=>{
+                //异步请求
+                $.ajax({
+                    type:,
+                    url:,
+                    data:{},
+                    success(res){
+                        resolve(res)
+                    },
+                    error(err){
+                        reject(err)
+                    }
+                })
+            })
+        }
+
+        async function fn(){
+            await http();
+            await 异步请求;
+            await 异步请求;
+        }
+    5.class
+        5.1作用
+            创建对象的模板
+        5.2语法
+            class Person{
+                //构造函数
+                constructor(name,age){
+                    this.name=name;
+                    this.age=age;
+                }
+
+                //原型对象上的方法
+                say(){
+
+                }
+                play(){
+
+                }
+
+            }
+
+        5.3继承
+            子类型继承父类型
+            class Boy extends Person{
+                //定义自己的属性
+                constructor(name,age,sex){
+                    super(name,age)
+                    this.sex=sex;
+                }
+
+                //定义自己的方法
+                sleep(){
+
+                }
+                eat(){
+
+                }
+                sun(a,b,c){
+                    console.log(a+b+c)
+                }
+
+            }
+
+
+    6.export和import -- 导出和导入
+        6.1作用
+            js认为每一个.js文件都是一个独立的模块，多个js文件之间不可以相互使用变量，如果需要使用其他js文件中的变量或者函数，需要在js文件中导出和导入变量和函数
+
+        6.2语法
+            1）导出
+                export {变量1,函数1,类名1,...} //按需导出
+            2）导入
+                import {变量1 as 新名字,函数1,类名1,...} from '导出js文件的路径';
+            3）设置script的type属性
+                <script type="module"></script>
+
+
+    less和sass(scss)
+        1.1概念
+            css预处理语言--css语言的扩展，在css的基础之上新增动态语言的特点、变量、函数等
+        1.2作用
+            写网页样式
+        1.3说明
+            HTML文件不支持less和scss文件，最终需要把less和scss转换为对应的css文件
+        1.4less
+            1）文件后缀 -- .less
+            2)变量
+                ①值变量
+                    声明变量：@变量名:值;
+                    使用变量：@变量名
+
+                    例子：
+                    @width:200px;
+                    @height:200px;
+
+                    .box{
+                        width:@width;
+                        height:@height;
+                    }
+
+                ②值变量计算
+                    + - * 以第一个单位为准
+                    /必须单位统一，加小括号
+
+                    .box{
+                        width:@width + 100;
+                        height:@height - 50;
+                        font-size:(@width/10px)
+                        line-height:@height*1;
+                    }
+                    

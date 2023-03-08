@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 适配IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 元数据标签 -- 视口             宽度=设备的宽度   初始化缩放比例1 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入样式核心文件 -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- 自己的样式文件 -->
+    <link rel="stylesheet" href="./css/bootstrap1.css">
+</head>
+
+<body>
+    <h2>栅格系统--.row里面嵌套.col--列  一行最多12列</h2>
+    <div class="container">
+        <h3>pc端--12列--只兼容pc</h3>
+        <div class="row">
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">2</div>
+            <div class="col-md-1">3</div>
+            <div class="col-md-1">4</div>
+            <div class="col-md-1">5</div>
+            <div class="col-md-1">6</div>
+            <div class="col-md-1">7</div>
+            <div class="col-md-1">8</div>
+            <div class="col-md-1">9</div>
+            <div class="col-md-1">10</div>
+            <div class="col-md-1">11</div>
+            <div class="col-md-1">12</div>
+        </div>
+        <h3>pc端--4列</h3>
+        <div class="row">
+            <div class="col-md-3">1</div>
+            <div class="col-md-3">2</div>
+            <div class="col-md-3">3</div>
+            <div class="col-md-3">4</div>
+            <div class="col-md-3">5</div>
+            <div class="col-md-3">6</div>
+            <div class="col-md-3">7</div>
+            <div class="col-md-3">8</div>
+            <div class="col-md-3">9</div>
+        </div>
+        <h3>ipad端--4列--平板、pc兼容</h3>
+        <div class="row">
+            <div class="col-sm-3">1</div>
+            <div class="col-sm-3">2</div>
+            <div class="col-sm-3">3</div>
+            <div class="col-sm-3">4</div>
+        </div>
+        <h3>移动端--2列--移动、平板、pc兼容</h3>
+        <div class="row">
+            <div class="col-xs-6">1</div>
+            <div class="col-xs-6">2</div>
+            <div class="col-xs-6">3</div>
+            <div class="col-xs-6">4</div>
+        </div>
+        <h3>列偏移--向右偏移</h3>
+        <div class="row">
+            <div class="col-xs-5">1</div>
+            <div class="col-xs-5 col-xs-offset-2">2</div>
+        </div>
+    </div>
+
+    <h2>全局样式</h2>
+    <div class="container">
+        <h3>表格</h3>
+        <table class="table table-striped table-bordered table-hover table-condensed ">
+            <tr class="active">
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+            </tr>
+            <tr class="success">
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+            </tr>
+            <tr class="info">
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+            </tr>
+            <tr class="warning">
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+            </tr>
+            <tr class="danger">
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+            </tr>
+            <tr>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+                <td>哈哈哈</td>
+            </tr>
+        </table>
+
+        <hr>
+        <h3>按钮</h3>
+        <button type="button">按钮</button>
+        <button type="button" class="btn">按钮</button>
+        <button type="button" class="btn btn-default btn-lg">按钮</button>
+        <button type="button" class="btn btn-success">按钮</button>
+        <button type="button" class="btn btn-warning btn-sm">按钮</button>
+        <button type="button" class="btn btn-info btn-xs">按钮</button>
+        <button type="button" class="btn btn-danger">按钮</button>
+        <button type="button" class="btn btn-primary disabled">按钮</button>
+        <button type="button" class="btn btn-link">按钮</button>
+
+        <hr>
+        <h3>图片</h3>
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620235352_kvdsn.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656144187&t=c2f22b45858e6603136d4094b4610576"
+            alt="" class="img-responsive">
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620235352_kvdsn.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656144187&t=c2f22b45858e6603136d4094b4610576"
+            alt="" class="img-responsive img-rounded">
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620235352_kvdsn.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656144187&t=c2f22b45858e6603136d4094b4610576"
+            alt="" class="img-responsive img-circle">
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F20%2F20200620235352_kvdsn.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656144187&t=c2f22b45858e6603136d4094b4610576"
+            alt="" class="img-responsive img-thumbnail">
+
+        <hr>
+        <h3>表单</h3>
+        <div class="form-group form-inline">
+            <label for="user">用户名：</label>
+            <input type="text" id="user" placeholder="用户名" class="form-control">
+        </div>
+        <div class="form-group form-inline">
+            <label for="password">密码：</label>
+            <input type="password" id="password" placeholder="密码" class="form-control">
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="text" class="form-control">
+                    <div class="input-group-addon">.00</div>
+                </div>
+            </div>
+        </div>
+        <h3>bootstrap快速构建登录界面</h3>
+        <div class="form-group">
+            <input type="text" placeholder="用户名" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="密码" class="form-control">
+        </div>
+        <button type="button" class="btn btn-primary login">登录</button>
+        <h3>关闭按钮</h3>
+        <div class="close">
+            <span>&times;</span>
+        </div>
+        <h3>三角形</h3>
+        <div class="caret"></div>
+
+
+
+
+    </div>
+</body>
+
+</html>

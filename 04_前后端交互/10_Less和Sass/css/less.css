@@ -1,0 +1,272 @@
+/* 变量：@变量名:变量值;  使用：@变量名 */
+/* 1.值变量 ***** */
+.box1 {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+/* 2.属性变量 */
+.box2 {
+  width: 200px;
+  height: 200px;
+  background: green;
+}
+/* 3.选择器变量 */
+.wrap {
+  margin: 0 auto;
+}
+#wrap {
+  margin: 50px auto;
+}
+/* 4.路径变量 -- 当项目目录改变时，只需要修改变量的路径即可 */
+.box3 {
+  background-image: url("../images/1.jpg");
+}
+/* 5.变量的作用域 -- 就近原则 */
+.box4 {
+  width: 50px;
+  height: 50px;
+}
+/* 二、嵌套  css选择器像HTML结构一样嵌套 */
+/* 
+<div class="phone">
+    <div class="wrap">
+        <div class="item">
+            <p class="name"></p>
+            <p class="desc"></p>
+            <p class="price"></p>
+        </div>
+    </div>
+</div>
+
+.phone .item>.name{}
+.phone .item .desc{}
+.phone .item .price{}
+
+*/
+.phone {
+  width: 100%;
+  height: 614px;
+}
+.phone .item {
+  width: 234px;
+  height: 300px;
+  background-color: red;
+}
+.phone .item > .name {
+  color: #ff6700;
+  font-size: 18px;
+}
+.phone .item .desc {
+  color: #ff6700;
+}
+.phone .item .price {
+  color: #ff6700;
+  font-size: 14px;
+}
+/* &：表示上一层的选择器 */
+.box5::after {
+  content: "";
+  width: 200px;
+  height: 1px;
+  background-color: red;
+  display: block;
+}
+.box5::before {
+  content: "";
+  width: 1px;
+  height: 200px;
+  background-color: green;
+}
+.box5:hover {
+  background-color: pink;
+}
+/* 媒体查询 */
+/* 
+媒体查询语法：
+移动端：
+@media screen and (max-width:768px){
+    .item{}
+    .box{}
+    .name{}
+}
+ipad：
+@media screen and (max-width:992px) and (min-width:768px){
+    .item{}
+    .box{}
+    .name{}
+}
+pc：
+@media screen and (min-width:992px) {
+    .item{}
+    .box{}
+    .name{}
+}
+
+
+
+*/
+.item {
+  height: 430px;
+  padding: 10px;
+}
+@media screen {
+}
+@media screen and (max-width: 768px) {
+  .item {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .item {
+    width: 33%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .item {
+    width: 25%;
+  }
+}
+@media screen {
+}
+@media screen and (max-width: 768px) {
+  .box6 {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .box6 {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .box6 {
+    font-size: 16px;
+  }
+}
+/* 
+混合：可以通过class或者ID定义
+1.定义混合  mixin
+.box(){//()可以省略，省略后会编译到css文件中
+    width:200px;
+}
+#item(){//()可以省略
+    height:200px;
+}
+2.使用混合
+.box();//小括号可以省略
+#item();//小括号可以省略
+*/
+.box7 {
+  width: 234px;
+  height: 303px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+.box8 {
+  font-size: 14px;
+  transition: 1s;
+  width: 234px;
+  height: 30px;
+  background-color: red;
+  box-shadow: 0px 10px 30px red;
+  /* @arguments指代全部参数 */
+  /* 调用的时候没有传参，取默认值 */
+}
+.box9 {
+  width: 234px;
+  height: 300px;
+  background-color: #ccc;
+  box-shadow: 0px 10px 300px #ccc;
+  /* @arguments指代全部参数 */
+  /* 调用时传参，参数会覆盖默认值 */
+}
+.box10 {
+  width: 200px;
+  height: 200px;
+}
+.box11 {
+  width: 200px;
+  height: 200px;
+  color: red;
+  font-size: 14px;
+  background-color: red;
+}
+/* 
+1）声明
+.hunhe(条件,参数1,参数2,...){}
+.hunhe(条件,参数1,参数2,...){}
+.hunhe(@_,参数1,参数2,...){}
+
+2）调用
+.box{
+    .hunhe(条件的值,参数1,参数2,...)
+}
+
+*/
+.box12 {
+  margin-left: 10px;
+  padding: 10px;
+}
+.box13 {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+/* 5.混合的条件筛选 */
+/* 
+when--当...时候
+when后面写条件
+条件：and--并且、,--或者、not--不符合条件
+*/
+.box14 {
+  width: 150px;
+}
+.box15 {
+  width: 500px;
+}
+.box16 {
+  width: 50px;
+}
+/* 6.混合的循环  -- 递归  -- 在混合内部调用自己 -- 得有混合结束的条件 */
+/* .box .item1{
+    width: 100px;
+}
+.box .item2{
+    width: 200px;
+}
+.box .item3{
+    width: 300px;
+} */
+.box .item1 {
+  width: 100px;
+}
+.box .item2 {
+  width: 200px;
+}
+.box .item3 {
+  width: 300px;
+}
+/* 7.不确定数量的参数  ... */
+.box17 {
+  margin: 10px 10px !important;
+  box-shadow: 10px 10px !important;
+}
+.box18 {
+  margin: 0 10px 30px;
+  box-shadow: 0 10px 30px;
+}
+/* 四、继承  extend */
+.jicheng,
+.box19 {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+.box19 {
+  color: gold;
+}
+/* 五、导入其他less文件 */
+.content {
+  overflow: hidden;
+}

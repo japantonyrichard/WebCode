@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- 
+        data-toggle="modal" ：唤醒模态框
+        data-target="#myModal"：指定唤醒的模态框 id="myModal"
+    -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">模态框</button>
+    <!-- fade：动画 ， mode：模态框的样式-->
+    <div class="modal fade" id="myModal">
+        <!-- modal-dialog：设置模态框像对话框样式一样，去掉模态框的宽度为100% -->
+        <div class="modal-dialog">
+            <!-- modal-content：模态框内容的样式 -->
+            <div class="modal-content">
+                <!-- modal-header：模态框头部样式 -->
+                <div class="modal-header">
+                    <!-- data-dismiss="modal"：关闭模态框 -->
+                    <div class="close" data-dismiss="modal"><span>&times;</span></div>
+                    <h3>模态框的标题</h3>
+                </div>
+                <!-- modal-body：模态框主体样式 -->
+                <div class="modal-body">
+                    <p>模态框的内容部分....</p>
+                </div>
+                <!-- modal-footer：模态框页脚样式 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

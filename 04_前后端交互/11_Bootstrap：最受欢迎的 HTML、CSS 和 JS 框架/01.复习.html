@@ -1,0 +1,199 @@
+<!-- 
+less和sass(scss)
+1.less
+    1.1变量
+        语法：
+            声明变量：@变量名:值;
+            使用变量：@变量名
+
+        1）值变量 -- 属性值声明为一个变量  *****
+            @w:200px;
+            .box{
+                width:@w;
+            }
+
+        2）属性变量 -- 属性声明为一个变量
+            @w:width;
+            .box{
+                @{w}:200px;
+            }
+
+        3）选择器变量 -- 选择器声明为一个变量
+            @wrap:.wrap;
+            @{wrap}{
+                margin:0 auto;
+            }
+
+        4）路径变量 -- 路径声明为一个变量
+            @url:'../images/';
+            .box{
+                background:url("@{url}1.jpg")
+            }
+
+        5）变量的作用域
+            就近原则，有块级变量，就使用块级变量，没有就使用全局变量
+            @w:100px;
+            .box{
+                @w:50px;
+                width:@w;//width:50px;
+            }
+
+
+    1.2嵌套
+        css选择器可以像HTML结构一样去嵌套
+        1）选择器嵌套  *****
+        .box{
+            width:100%
+            overflow:hidden;
+            .item{
+                width:303px;
+                height:375px;
+                float:left;
+                >img{
+                    width:230px
+                }
+                .name{
+                    line-height:24px;
+                }
+                .price{
+                    line-height:21px;
+                    font-size:14px;
+                }
+            }
+        }
+
+        默认为后代选择器，如果希望是子代选择器，需要在选择器前加>
+
+        2）& -- 表示上一层选择器，一般伪对象等使用
+            .box{
+                &::after{}
+                &::before{}
+                &:hover{}
+            }
+
+        3）媒体查询  -- 了解
+            .item{
+                padding:10px;
+                @media screen{
+                    @media (max-width:768px){
+                        width:50%;
+                    }
+                    @media (max-width:992px) and (min-width:768px){
+                        width:33%;
+                    }
+                    @media (min-width:992px){
+                        width:25%;
+                    }
+                }
+            }
+
+
+    1.3混合 -- mixin
+        声明混合可以使用class和id，声明和调用时的小括号可以省略
+
+        1）不带参数的混合  -- 掌握
+            .hunhe(){
+                margin:0;
+                padding:0;
+            }
+            .box{
+                .hunhe();
+            }
+
+        2）有参数的混合  -- 掌握
+            #hunhe(@a:10px,@b:20px,@c:30px){
+                padding:@a @b;
+                margin:@arguments;//表示所有参数
+            }
+            .box{
+               #hunhe(); //不传参取默认值
+               #hunhe(50px,100px);//传参位置为参数
+            }
+
+        3）条件匹配
+            .hunhe(left,@a:10px){
+                margin-left:@a;
+            }
+            .hunhe(right,@a:10px){
+                margin-right:@a;
+            }
+            .hunhe(@_,@a:10px){//变量任意条件都可以匹配
+               padding:@a;
+            }
+
+            .box{
+                .hunhe(right);
+            }
+
+        4）条件筛选
+            when -- 当...时候 
+            and -- 并且， 逗号 -- 或者，  not -- 不满足
+            .hunhe(@w:10px) when (@w>50px) and (@<100px){
+                width:@w;
+            }
+            .hunhe(@w:10px) when (@w>100px) , (@<50px){
+                width:@w;
+            }
+            .hunhe(@w:10px) when not (@w>100px){
+                width:@w;
+            }
+
+            .box{
+                .hunhe(70px);
+            }
+
+        5）循环
+            递归实现，在混合中调用自己
+            .hunhe(初始化变量) when (条件){
+                //重复执行的代码块
+
+                .hunhe(迭代)
+            }
+
+            .hunhe(@i:1) when (@i < 4){
+                //重复执行的代码块
+                .item@{i}{
+                    width:@i*100;
+                }
+                .hunhe(@i+1);
+            }
+
+        6）方法的命名空间
+            .hunhe1(){
+                .hunhe2(){
+                    .hunhe3(){
+
+                    }
+                }
+            }
+
+            .box{
+                .hunhe1>.hunhe2>.hunhe3();
+            }
+
+        7）参数不定
+            .hunhe(...){
+                margin:@arguments;
+            }
+
+        8)!important
+            .hunhe(){
+                margin:0 auto;
+            }
+            .box{
+                .hunhe() !important;
+            }
+
+    1.4继承
+        .box{
+            width:303px;
+            height:375px;
+        }
+
+        .item{
+            &:extend(.box)
+        }
+
+    1.5导入less文件
+        每一个less文件是独立的一块，在less文件中可以导入其他less文件
+        @import "less文件路径";

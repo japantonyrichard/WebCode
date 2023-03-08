@@ -1,0 +1,43 @@
+/* 
+less是css扩展 -- 在css的基础之上新增动态语言的特点
+
+*/
+
+//注释的内容
+
+/* less完全支持css的语法 */
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+
+//变量
+//值变量
+//1.声明变量
+@width:200px;
+@height:200px;
+@color:#333;
+@font:14px;
+@bg:#333333;
+
+
+//2.使用变量
+.box1{
+    width: @width;
+    height: @height;
+    background-color: @color;
+    font-size: @font;
+}
+
+//3.变量计算
+//+ - *以第一个值的单位为准
+//除法单位必须统一，除法必须加()
+.box2{
+    width: @width + 100;
+    height: @height - 100;
+    background-color: @color*2;
+    font-size: @font;
+    color: (@bg/#333333);
+    
+}

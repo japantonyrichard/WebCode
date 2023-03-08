@@ -1,0 +1,162 @@
+<!--
+1.git
+    1.1概念
+        版本控制系统，分布式版本控制系统
+    1.2集中式版本控制系统和分布式版本控制系统
+        集中式：SVN，CVS，把版本库存放在中央处理器中，每天干活都需要从中央处理器下载代码的最新版本，干完活需要把自己的代码上传到中央处理器
+
+        分布式：git，每个人的电脑都是一个版本库，都相当于一个中央处理器，分布式的安全性比集中式高
+
+    1.3名词
+        仓库：存储文件的位置，分为本地仓库（每个人的电脑都是一个本地仓库）和远程仓库
+
+    1.4提交代码到远程仓库的流程
+        工作区 --  add到缓存区(暂存区) -- commit到本地仓库 -- push到远程仓库
+        工作区：电脑随意一个文件目录
+
+    1.5git指令
+        git xxx
+        ctrl+C ：结束命令
+        ctrl+L(clear)：清空命令窗口
+        键盘向上键：查看历史指令
+        命令窗口出现: -- 按住q退出
+
+        git --version :查看git版本号
+
+        git init:初始化版本库
+        git add 文件名：添加工作区的文件到暂存区
+        git add .：添加工作区所有文件到暂存区
+        git add -A：添加工作区所有文件到暂存区
+        git commit -m '注释'：提交暂存区的文件到本地仓库
+        git status：查看文件状态
+        git log：查看详细的历史记录
+        git log --oneline：查看简单的历史记录
+        git reflog：查看所有操作记录
+        git reset --hard 版本号：回退到指定的版本
+        git reset -- hard HEAD^：回退到上一个版本
+        git reset -- hard HEAD^^：回退到上两个版本
+
+
+    1.6初始化本地仓库
+        1）找到一个合适的目录
+        2）初始化本地仓库：git init
+            生成一个.git文件，负责跟踪版本库
+        3）工作区新建、修改、删除文件
+            touch index.html -- 新建文件
+        4）添加到暂存区：git add 文件名
+            git add -A
+            git add .
+        5）提交到本地仓库：git commit -m '有意义的注释'
+        6）查看文件的状态：git status
+            红色：在工作区
+            绿色：在暂存区
+            nothing：在本地仓库
+
+    1.7历史版本回退
+        1）查看历史记录
+            git log：查看所有详细历史记录
+            git log --oneline:查看所有简单历史记录
+
+        2）历史版本回退
+            git reset --hard 版本号：回退到指定的版本
+            git reset --hard HEAD^:回退到上一个版本
+            git reset --hard HEAD^^:回退到上两个版本
+
+        3）查看所有操作的记录
+            git reflog
+
+    1.8删除本地仓库的文件
+        1）误删工作区的文件--需要找回
+            实质：用本地仓库的版本替换工作区的版本(前提：删除的文件已经同步到本地仓库)
+            git checkout -- 文件名
+
+        2）删除工作区的文件--同步本地仓库
+            git rm 文件名 -- 同步到暂存区
+            git commit -m '注释' -- 同步到本地仓库
+
+        3）删除本地仓库的文件可以通过版本回退找回
+
+    1.9分支 -- 重点
+        1）流程
+            ①创建分支 -- 在分支上开发
+            ②切换分支
+            ③合并到主分支(master) -- 注意：都需要在主分支上进行
+            ④删除分支 -- 注意：都需要在主分支上进行
+
+        2）命令
+            git branch -- 查看分支(当前分支前面加*)
+            git branch 分支名 -- 创建分支
+            git checkout 分支名 或者 git switch 分支名-- 切换分支
+            git checkout -b 分支名 或者 git switch -c 分支名-- 创建分支的同时切换分支
+            git merge 分支名 -- 合并分支(在主分支上进行合并)
+            git branch -d 分支名 -- 删除分支(在主分支上进行合并)
+
+        3）注意
+            主分支master或者其他分支，修改以后都要提交到本地仓库
+
+2.远程仓库
+    github
+    gitee
+
+    2.1第一次连接远程仓库 -- gitee
+        1）注册账号
+        2）安装ssh(秘钥)--本地仓库连接远程仓库
+        3）复制ssh到远程仓库gitee
+        4）创建远程仓库(开源)
+        5）初始化远程仓库设置
+            git init
+            git add .
+            git commit -m '注释'
+            git remote add origin 远程仓库的路径
+            git push -u origin "master"
+        6）以后同步本地仓库到远程仓库
+            git add .
+            git commit -m '注释'
+            git push
+        7）参数说明
+            remote：远程
+            origin：远程仓库的别名，潜规则，可以自定义
+            -u：关联，不仅把本地仓库master的内容推送到远程仓库的master，而且还把本地仓库的maser和远程仓库的master关联起来，以后再推送到远程仓库可以直接使用git push
+
+    2.2操作远程分支 --gitee
+        1）克隆远程分支到本地
+            git clone 分支的地址
+
+        2）复制远程分支到本地
+            git checkout -b 本地分支名称 origin/远程分支名称 -- 把远程分支复制到本地
+            git push origin head:远程分支名称 -- 把本地分支推送到远程分支
+
+            git pull -- 拉取远程分支到本地(更新)
+
+        3）强调
+            开发都是在工作区，工作区修改以后，需要同步到远程仓库
+            git add --  git commit -- git push
+
+    2.3github -- 所有操作和命令同gitee
+        1）初始化远程仓库
+            ①注册
+            ②通过ssh连接本地和远程仓库
+            ③创建仓库
+            ④仓库的初始化
+                git init
+                git add .
+                git commit -m ''
+                git branch -M main  -- 修改主分支名字为main
+                git remote add origin 远程仓库地址
+                git push -u origin "main"
+            ⑤以后同步本地仓库到远程仓库
+                git add .
+                git commit -m ''
+                git push
+
+        2）把远程仓库的代码同步到本地仓库
+            ①克隆
+            git clone 地址
+
+            ②复制
+            git checkout -b 本地分支名 origin/远程分支名 -- 拉取远程分支到本地
+            git pull -- 更新
+            git push origin head:分支名
+
+
+

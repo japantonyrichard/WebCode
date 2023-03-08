@@ -1,0 +1,39 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+}
+
+.box2 {
+  width: 100%;
+  overflow: hidden;
+}
+
+.box2 .item {
+  width: 303px;
+  height: 375px;
+  background-color: orange;
+}
+
+.box2 .item .name {
+  line-height: 24px;
+  color: #333;
+}
+
+.box2 .item > .price {
+  color: #ff6700;
+}
+
+body {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+}

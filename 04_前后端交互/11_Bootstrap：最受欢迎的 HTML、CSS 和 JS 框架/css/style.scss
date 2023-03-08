@@ -1,0 +1,54 @@
+//scss -- css的扩展语言 -- css语言的基础之上新增动态语言的特点
+//写css语法
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+
+//scss
+//1.声明变量  $变量名:值;  使用变量：$变量名
+$width:100px;
+$height:100px;
+$bg:pink;
+
+.box1{
+    width: $width;
+    height: $height;
+    background-color: $bg;
+}
+
+//2.嵌套 同less
+//css选择器可以像HTML结构一样嵌套，默认是后代选择器，可以在选择器前加>表示子代选择器
+.box2{
+    width: 100%;
+    overflow: hidden;
+    .item{
+        width: 303px;
+        height: 375px;
+        background-color: orange;
+        .name{
+            line-height: 24px;
+            color: #333;
+        }
+        >.price{
+            color: #ff6700;
+        }
+    }
+}
+
+//3.混合
+//在混合中封装公共的属性，需要此属性的时候调用混合即可
+//1）声明混合 @mixin 混合名  2）调用混合 @include 混合名
+//声明混合和调用混合时的小括号可以省略
+@mixin hunhe(){
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    @include hunhe();
+    background-color: #f5f5f5;
+}
