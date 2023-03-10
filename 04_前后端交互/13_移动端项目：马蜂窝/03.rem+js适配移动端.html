@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 20rem;
+            height: 20rem;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script>
+        //需求：iPhone6--160*160  屏幕宽度小于375，元素宽度小于160，屏幕宽度大于375，元素宽度大于160
+        //1.根据屏幕大小不同，设置根元素字体大小不同
+        //页面一加载就计算根元素大小
+        setSize();
+        //1.1给window绑定事件
+        window.onresize = setSize;
+
+        function setSize() {
+            //1.2获取屏幕大小
+            let deviceWidth = document.documentElement.clientWidth;
+            //1.3找比例，计算字体大小
+            //deviceWidth:屏幕宽度
+            //假设iPhone6：设计稿宽度为750px，假设iPhone6下根元素的字体大小为16px
+            //假设iPhone6下根元素字体大小为100px，为了根元素大于12px并且好计算
+            let fontSize = deviceWidth * 100 / 750;
+
+            //1.4设置根元素字体大小
+            document.documentElement.style.fontSize = fontSize + 'px';
+        }
+
+
+    </script>
+</body>
+
+</html>

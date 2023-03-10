@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.流程
+        上传：工作区上传到远程仓库
+        下载：远程仓库下载到工作区
+
+        2.上传
+        工作区 --  暂存区  -- 本地仓库 -- 远程仓库
+        git init
+        git add .
+        git commit -m '注释'
+        git push origin head:分支名称
+
+        3.下载
+        远程仓库 -- 工作区
+        1）克隆
+        git clone ssh地址
+        2）复制
+        git checkout -b 本地分支 origin/远程分支
+
+        4.git常见命令
+            1）查看版本号
+                git --version
+            2）版本初始化
+                git init
+            3）工作区添加到暂存区
+                git add 文件名
+                git add .
+                git add -A
+            4）暂存区提交到本地仓库
+                git commit -m '注释'
+            5）查看文件状态
+                git status
+            6）查看历史记录
+                git log ：返回详细的历史记录
+                jit log --oneline ：返回简单的历史记录
+            7）查看所有操作记录
+                git reflog
+            8）版本回退
+                git reset --hard 版本号
+                git reset --hard HEAD^
+            9）删除暂存区的文件
+                git rm 文件名
+            10）工作区删除文件找回
+                git checkout -- 文件名
+            11）查看分支
+                git branch
+            12）创建分支
+                git branch 分支名
+            13）切换分支
+                git checkout 分支名
+                git switch 分支名
+            14）创建分支的同时切换分支
+                git checkout -b 分支名
+                git switch -c 分支名
+            15）合并分支--不再当前分支
+                git merge 分支名
+            16）删除分支--不再当前分支
+                git branch -d 分支名
+            17）克隆代码
+                git clone 远程仓库地址
+            18）推送到远程仓库
+                git push origin head:分支名
+            19）下载远程分支代码
+                git checkout -b 本地分支 origin/远程分支
+            20）查看远程分支
+                git branch -r
+            21）查看所有分支
+                git branch -a
+            22）更新远程仓库
+                git pull
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     -->
+
+</body>
+</html>

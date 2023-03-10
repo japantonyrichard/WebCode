@@ -1,0 +1,218 @@
+/* 马蜂窝设置根元素字体大小为37.5px  -- rem转换为px需要乘以37.5，px转换为rem时需要除以37.5 */
+/* 导航 */
+.nav {
+  display: flex;
+  width: 100%;
+  height: 1.33rem;
+  line-height: 1.33rem;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.nav .logo img {
+  width: 2.51rem;
+  height: 0.67rem;
+  padding: 0 10px;
+}
+.nav .login {
+  width: 40px;
+  height: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+.nav .login a {
+  color: #ffa800;
+}
+.nav .search {
+  position: relative;
+  width: 5.89416rem;
+  height: 0.69168rem;
+  line-height: 0.69168rem;
+  background-color: #f3f3f3;
+  border-radius: 0.34584rem;
+  margin-top: 0.31916rem;
+  padding-left: 0.32rem;
+  box-sizing: border-box;
+}
+.nav .search input {
+  float: left;
+  width: 4.64rem;
+  height: 0.266rem;
+  padding: 0.213rem 0;
+  background-color: #f3f3f3;
+}
+.nav .search button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.93rem;
+  height: 0.8rem;
+  background: url("../images/btn_search2.png") no-repeat center;
+  background-size: 0.453rem;
+}
+/*轮播图  */
+.banner {
+  width: 100%;
+  height: 5.627rem;
+}
+.banner img {
+  width: 100%;
+  height: 5.627rem;
+}
+/* 菜单样式开始 */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.2rem 0.2rem 0.8rem;
+}
+.menu .item {
+  width: 25%;
+  padding-top: 0.533rem;
+  text-align: center;
+}
+.menu .item span {
+  display: inline-block;
+  width: 1.22rem;
+  height: 1.22rem;
+  background-image: url("../images/i_nav6.png");
+  background-size: 5rem;
+}
+.menu .item p {
+  color: #ff9d00;
+  font-size: 0.426rem;
+}
+.menu .item:nth-of-type(2) span {
+  background-position: 0 -1.24rem;
+}
+.menu .item:nth-of-type(2) p {
+  color: #feca2b;
+}
+.menu .item:nth-of-type(3) span {
+  background-position: -2.48rem -1.24rem;
+}
+.menu .item:nth-of-type(3) p {
+  color: #42d6ba;
+}
+.menu .item:nth-of-type(4) span {
+  background-position: -1.24rem -1.24rem;
+}
+.menu .item:nth-of-type(4) p {
+  color: #f94a87;
+}
+.menu .item:nth-of-type(5) span {
+  background-position: -1.24rem 0;
+}
+.menu .item:nth-of-type(5) p {
+  color: #32a2f1;
+}
+.menu .item:nth-of-type(6) span {
+  background-position: -2.48rem 0;
+}
+.menu .item:nth-of-type(6) p {
+  color: #fd4e4e;
+}
+.menu .item:nth-of-type(7) span {
+  background-position: -3.72rem 0;
+}
+.menu .item:nth-of-type(7) p {
+  color: #acce0e;
+}
+.menu .item:nth-of-type(8) span {
+  background-position: -3.72rem -1.24rem;
+}
+.menu .item:nth-of-type(8) p {
+  color: #b160df;
+}
+/* 菜单样式结束 */
+/*  主体样式开始*/
+.title {
+  height: 0.533rem;
+  line-height: 0.533rem;
+  margin-left: 0.4rem;
+  font-size: 0.533rem;
+  padding-left: 5px;
+  border-left: #ffdb53 solid 3px;
+  color: #474747;
+}
+.list {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem;
+  background: url("../images/line3.png") repeat-x 0 bottom;
+}
+.list h4 {
+  padding-right: 1.1rem;
+  font-size: 0.506rem;
+  color: #111;
+  line-height: 1.4em;
+  max-height: 1.3rem;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list .info {
+  width: 100%;
+  display: flex;
+  padding-top: 0.24rem;
+}
+.list .info > img {
+  width: 3.466rem;
+  height: 2.4rem;
+  background-color: red;
+}
+.list .info .msg {
+  overflow: hidden;
+  margin-left: 16px;
+  flex-grow: 1;
+  color: #999;
+}
+.list .info .msg p:first-of-type {
+  width: 100%;
+  padding-top: 0.14rem;
+  font-size: 0.373rem;
+  line-height: 1.3em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list .info .msg p:last-of-type {
+  height: 0.533rem;
+  line-height: 0.533rem;
+  font-size: 0.32rem;
+  margin-top: 0.2rem;
+}
+.list .info .msg p:last-of-type .author {
+  float: right;
+}
+.list .info .msg p:last-of-type .author img {
+  width: 0.533rem;
+  height: 0.533rem;
+  border-radius: 50%;
+  background-color: pink;
+  margin-left: 0.133rem;
+}
+/*  主体样式结束*/
+/* 显示更多样式开始 */
+.showMore {
+  font-size: 0.373rem;
+  padding: 20px;
+  text-align: center;
+  color: #2185FA;
+}
+/* 显示更多样式结束 */
+/* 返回页面顶部样式开始 */
+.backTop {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 0.4rem;
+  width: 1.066rem;
+  height: 1.066rem;
+  background: url("../images/backtop.png") no-repeat;
+  background-size: 100%;
+}
+/* 返回页面顶部样式结束 */

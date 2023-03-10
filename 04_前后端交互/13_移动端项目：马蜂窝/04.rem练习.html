@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./04.css/04.rem.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <img src="./04.images/item1.png" alt="">
+            <div class="info">
+                <p>东城区怡安外大街3号院</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./04.images/item2.png" alt="">
+            <div class="info">
+                <p>东城区怡安外大街3号院</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./04.images/item3.png" alt="">
+            <div class="info">
+                <p>东城区怡安外大街3号院</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./04.images/item4.png" alt="">
+            <div class="info">
+                <p>东城区怡安外大街3号院</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //动态设置HTML元素的字体大小
+        //1.页面一加载设置字体大小
+        setSize();
+
+        //2.当窗口大小改变时设置字体大小
+        window.onresize = setSize;  // 事件驱动的话函数不用加()
+        /* Vue 对函数调用做了封装，加与不加括号的区别在于事件对象参数 event 的处理。
+        （1）不加括号时，函数第一个参数为 event；
+        （2）加了括号后，需要手动传入 $event 才能获得事件对象。 */
+
+        //封装函数实现动态设置根元素字体大小
+        function setSize() {
+            //1.获取屏幕大小
+            let deviceWidth = document.documentElement.clientWidth;
+            //2.计算比例
+            //假设750设计稿下根元素字体大小为100px
+            let size = 100 * deviceWidth / 750;
+            //3.设置根元素大小
+            document.documentElement.style.fontSize = size + 'px';
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* em:相对单位，长度单位，相对于当前元素的字体大小 */
+        /* .parent {
+            font-size: 20px;
+        }
+
+        .son {
+            width: 10em;
+            height: 10em;
+            background-color: red;
+            font-size: 14px;
+        }
+        .sun{
+            font-size: 20px;
+            width: 5em;
+            height: 5em;
+            background-color: pink;
+        } */
+
+        /* rem：相对单位，长度单位，相对于根元素(html)的字体大小 */
+        /* 
+        需求：设备屏幕变大，根元素的字体大小变大，设备屏幕变小，根元素的字体大小变小
+        js设置HTML元素的字体大小：document.documentElement.style.fontSize=
+        js获取屏幕宽度：document.documentElement.clientWidth
+        js检测屏幕宽度变化：document.onresize
+        
+        */
+
+        html{
+            font-size: 20px;
+        }
+        .parent {
+            font-size: 20px;
+        }
+
+        .son {
+            width: 10rem;
+            height: 10rem;
+            background-color: red;
+            font-size: 14px;
+        }
+
+        .sun {
+            width: 5rem;
+            height: 5rem;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        父亲
+        <div class="son">
+            儿子
+            <div class="sun">孙子
+                <div class="zeng">曾孙子</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
