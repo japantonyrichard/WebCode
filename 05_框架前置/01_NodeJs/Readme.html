@@ -1,0 +1,157 @@
+<!-- 
+1.Node.js
+    1.1 概念
+        Node.js就是运行在服务端的JavaScript(用js写后台)
+
+    1.2 特点
+        单线程、非阻塞I/O、事件驱动
+
+    1.3 同步任务和异步任务
+        同步任务：代码由上往下执行
+        异步任务：setTimeout、setInterval、ajax、Promise、async
+
+        先执行主线程的同步任务，异步任务加入到事件队列(event queue),重复上面的动作，形成了事件环(event loop)
+
+    1.4 宏任务和微任务
+        宏任务：setTimeout、setInterval、ajax
+        微任务：Promise、async
+        先得到微任务的结果，再得到宏任务的结果
+
+    1.5 面试题
+        //异步操作 -- 宏任务
+        setTimeout(function () {
+            console.log('定时器开始啦')//④
+        });
+
+        //new--调用构造函数
+        new Promise(function (resolve) {
+            //封装异步操作--ajax
+            console.log('马上执行for循环啦');//①
+            for (var i = 0; i < 10000; i++) {
+                i == 99 && resolve();
+            }
+        }).then(function () {//then(res=>{异步操作成功的结果},err=>{异步操作失败的结果}) 
+            console.log('执行then函数啦')//③
+        });
+
+        console.log('代码执行结束');//②
+
+2. Node.js使用
+    2.1 安装node环境
+        node -v：检测node版本
+        
+    2.2 node命令可以运行在命令窗口或者vscode的集成终端
+        1）打开vscode的集成终端
+            ① 右击文件--在集成终端中打开
+            ②ctrl+`
+        2）打开命令窗口
+            ①window+R -- cmd -- 回车
+            ②搜索运行 -- cmd -- 回车
+            ③找到文件 -- 文件地址栏输入cmd -- 回车
+
+    2.3 常见命令
+        查找盘符：【盘符:】  例如：d:--进入d盘  E:--进入E盘
+        进入文件：cd 文件名\文件名\...
+        出文件：cd ../../../...
+        清空命令窗口：cls 或者 clear 或者 ctrl+L
+        终止命令：ctrl+C
+        查看历史命令：键盘向上键
+        自动补全文件名称：tab
+        运行nodejs：node 文件名
+    
+3.http模块
+    //1.导入http模块
+    const http = require('http');
+
+    //2.创建服务
+    const server = http.createServer((req, res) => {
+        //2.1 成功响应的状态
+        res.statusCode = 200;
+
+        //2.2设置表头
+        res.setHeader('Content-Type', 'text/plain;charset="UTF-8"')
+
+        //2.3关闭服务给前端响应数据
+        res.end('你好 世界');
+    })
+
+    //3.监听服务
+    server.listen(3000, () => {
+        console.log('服务成功');
+    })
+
+4.querystring模块
+    4.1 作用
+        处理网址
+    4.2 使用步骤
+        1）导入模块
+            const qs = require('querystring');
+
+        2）使用模块的方法
+            qs.parse():将字符串转换为对象
+            qs.stringify():将对象转换为字符串
+
+5.commonJS 模块
+    5.1 概念
+        js认为每一个文件都是独立的一块，相互之间不可以访问，如果需要访问其他js文件，需要导出数据和导入数据
+
+    5.2 ES6导入和导出语法
+        导出：
+            export {name,age,sex,...}
+        导入：
+            import {name as userName,age,sex,...} form "路径"
+
+    5.3Node.js导入和导出语法
+        导出：
+            module.exports = 变量; //导出一条数据
+            module.exports = { //导出多条数据，推荐
+                name,
+                age,
+                sex,
+                ...
+            }
+
+        导入：
+            const data = require('文件路径')
+            如果导入的是内置模块，直接写模块名称，如果导入的是自定义模块，相对路径，.js后缀可以省略
+ 
+6.NPM
+    6.1 介绍
+        node package manager 包管理工具
+        NPM的服务器在国外
+
+    6.2 作用
+        下载别人的代码
+        上传自己的代码
+
+    6.3 检测npm版本
+        npm -v
+
+    6.4 常见命令
+        1）初始化项目配置文件 -- 可以省略
+            npm init    
+            生成package.json项目配置文件
+            dependencies：本地开发环境依赖
+            devDependencies：生产环境依赖
+
+        2）下载包
+            npm install 包名称1 包名称2 --save  ：安装到dependencies
+            npm i 包名称1 包名称2  --save-dev  ：安装devDependencies
+            npm i 包名称 -g  :全局安装，一般工具等
+
+            例子：
+            npm i jquery swiper -S
+            npm i jquery swiper --save-dev
+
+        3）卸载包
+            npm uninstall 包名称
+
+        4）更新包
+            npm update 包名称
+            
+7.cnpm  
+    淘宝镜像，服务器在国内，上传下载速度比npm块，功能和命令一样，只需要在npm前面加上c，变为cnpm
+
+    例如：下载文件
+        cnpm i jquery -S
+        cnpm i swiper -S

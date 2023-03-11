@@ -1,0 +1,114 @@
+<!-- 
+Node.js是运行在服务端的JavaScript
+1.express
+    Node.js框架，主要用来快速搭建web服务器
+
+2.使用
+    2.1 下载
+    cnpm i express -S
+
+    2.2 使用
+        1）引入express
+        const express = require('express')
+
+        2）创建服务
+        const app = express();
+
+        3）配置路由
+        app.get('/',(req,res)=>{//req--接收前端的请求，res--给前端响应
+            //接收前端的请求
+            req.query.参数
+
+            //给前端响应
+            res.send({
+                status:200,
+                data
+            })
+
+        })
+        app.post('/login',(req,res)=>{
+            //接收前端的请求
+            req.body.参数
+
+            //给前端响应
+            res.send({
+                status:200,
+                data
+            })
+        })
+
+
+        4）监听服务
+        app.listen(3000,()=>{
+            console.log(3000)
+        })
+
+3.路由配置
+    1）router.js
+        ①导入express
+        const express = require('express')
+
+        ②创建路由
+        const router = express.Router();
+
+        ③配置路由
+        router.get('/',(req,res)=>{})
+        router.post('/login',(req,res)=>{})
+
+        ④导出数据
+        module.exports = router;
+
+    2）index.js
+        ①导入express
+        const express = require('express')
+
+        ②创建服务
+        const app = express()
+
+        ③路由配置
+        1.引入路由文件
+        const router = require('./router')//.js后缀可以省略
+        2.使用路由
+        app.use('/',router)
+
+        ④监听
+        app.listen(3000,()=>{
+            console.log(3000)
+        })
+
+4.静态文件托管
+    服务器上的html、css、js、图片等文件对外暴露
+    一般新建一个public文件，所有对外暴露的文件放在public文件中
+    app.use(express.static(public))//访问：http://localhost:3000/images/1.webp
+    app.use('/list',express.static(public))//访问：http://localhost:3000/list/images/1.webp
+
+5.前后端交互
+    前端发送网络请求 -- Ajax
+    后端接收前端的请求 -- app.get('',(req,res)=>{req.query.xxx})  app.post('',(req,res)=>{req.body.xxx})
+    后端处理请求 -- 去数据库操作、根据参数判断等
+    给前端响应数据 -- res.send({})
+    前端拿到数据后渲染到页面 -- js
+
+    注意：跨域问题 -- 浏览器的同源策略，协议、域名、端口号三个必须一致 -- 只有浏览器跨域，服务器没有跨域
+    解决跨域：
+    1）前端
+        ①JSONP -- 对数据格式有要求，前端需要使用函数去接数据
+
+    2）后台
+        ①配置数据共享
+        //设置允许跨域的域名，*代表允许任意域名跨域
+        res.header('Access-Control-Allow-Origin', '*')
+
+        //解决跨域--资源共享--配置在路由上面，让下方所有的路由接口实现共享
+        app.all("*", function (req, res, next) {
+            //设置允许跨域的域名，*代表允许任意域名跨域
+            res.header("Access-Control-Allow-Origin", "*");
+            //允许的header类型
+            res.header("Access-Control-Allow-Headers", "content-type");
+            //跨域允许的请求方式 
+            res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+            if (req.method.toLowerCase() == 'options')
+                res.send(200); //让options尝试请求快速结束
+            else
+                next();
+        })

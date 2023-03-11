@@ -1,0 +1,207 @@
+<!--  
+1.express
+    1.1 介绍
+        node.js的一个框架，用来快速的搭建web服务器
+
+    1.2使用
+        1）初始化项目配置文件(可以省略)
+            cnpm init
+
+        2）安装express
+            cnpm i express -S
+
+        3）使用express框架快速搭建web服务器
+            ①导入express模块
+            const express = require('express');
+
+            ②创建服务
+            const app = express();
+
+            ③路由配置
+            路由：页面走向
+            app.get('/',(req,res)=>{//形参--潜规则
+                //request--请求，接收前端的请求
+                //response--响应，给前端响应
+
+                //给前端响应数据--res.send(json对象)
+                res.send({
+                    key:value,
+                    key:value,
+                    data:data,
+                })
+
+            })
+
+
+            ④监听服务
+            app.listen(3000,()=>{
+                console.log('随便打印点提示');
+            })
+
+        4）运行node.js文件
+            node 文件名
+            
+        5）访问页面
+            localhost:3000/
+
+2.express中的路由
+    2.1 介绍
+        路由指页面的指向，网页的地址
+
+    2.2 语法 
+        1）get请求 -- 查找
+            app.get('路由',(req,res)=>{
+                
+            })    
+
+        2）post请求 -- 新增
+            app.post('路由',(req,res)=>{
+
+            })   
+
+        3）put请求 -- 更新
+            app.put('路由',(req,res)=>{
+
+            })  
+
+        4）delete请求 -- 删除
+            app.delete('路由',(req,res)=>{
+
+            })       
+
+3.nodemon工具
+    3.1 介绍
+        自动检测文件目录的改变，当文件改变时会自动重启服务
+
+    3.2 使用
+        1）安装，工具一般推荐全局安装‘
+        cnpm i nodemon -g
+        2）使用
+        nodemon 文件名  ： 开启服务
+
+4.路由配置文件
+    4.1 路由配置文件 -- router.js
+        1）导入express模块
+        const express = require('express');
+
+        2）创建路由
+        const router = express.Router();
+
+        3）配置路由
+        router.get('/',(req,res)=>{})
+        router.post('/login',(req,res)=>{})
+
+        4）导出路由
+        module.exports = router;
+
+    4.2使用路由 -- index.js
+        1）导入express
+        const express = require('express');
+
+        2）创建服务
+        const app = express();
+
+        3）路由配置
+        3.1 引入路由模块
+        const router = require('./router.js');
+        3.2 使用路由
+        app.use('/',router)
+        app.use('/login',router)
+
+        4）监听服务
+        app.listen(3000,()=>{
+            console.log('ok')
+        })
+
+5.静态文件托管
+    5.1 介绍
+        把服务器上的静态文件(html/css/js/images)对外公开
+
+    5.2 语法
+        app.use('/路径',express.static('public'))
+
+        参数说明：
+        1）'/路径'：可以省略
+            省略：访问路径 localhost:3000/images/1.webp
+            '/data':访问路径 localhost:3000/data/images/1.webp
+
+        2）对外公开public文件下的所有静态文件，所以访问路径中没有public
+
+6.get和post传参
+    6.1 get
+        req.query--接收前端的参数，返回一个对象
+
+    6.2 post
+        req.body--接收前端的参数，返回一个对象
+        注意：post请求需要设置表单的数据格式
+        app.use(express.urlencoded({
+            extended: true
+        }))
+
+7.前后端交互
+    前端发送网络请求 -- Ajax
+    后端接收前端的请求 -- app.get('',(req,res)=>{req.query.xxx})  app.post('',(req,res)=>{req.body.xxx})
+    后端处理请求 -- 去数据库操作、根据参数判断等
+    给前端响应数据 -- res.send({})
+    前端拿到数据后渲染到页面 -- js
+
+    注意：跨域问题 -- 浏览器的同源策略，协议、域名、端口号三个必须一致 -- 只有浏览器跨域，服务器没有跨域
+    解决跨域：
+    1）前端
+        ①JSONP -- 对数据格式有要求，前端需要使用函数去接数据
+
+    注意：跨域问题
+    后端解决跨域：-- 实现资源共享
+    7.1 设置头
+    res.header("Access-Control-Allow-Origin", "*");
+
+    //解决跨域--资源共享--配置在路由上面，让下方所有的路由接口实现共享
+    app.all("*", function (req, res, next) {
+        //设置允许跨域的域名，*代表允许任意域名跨域
+        res.header("Access-Control-Allow-Origin", "*");
+        //允许的header类型
+        res.header("Access-Control-Allow-Headers", "content-type");
+        //跨域允许的请求方式 
+        res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+        if (req.method.toLowerCase() == 'options')
+            res.send(200); //让options尝试请求快速结束
+        else
+            next();
+    })
+
+    7.2 cors
+        1）安装cors
+            cnpm i cors -S//安装到线上环境
+        2）导入cors
+            const cors = require('cors')
+        3）使用cors
+            app.use(cors())
+
+8. node.js连接数据库
+    五步：
+    8.1 安装mysql
+        cnpm i mysql -S
+
+    8.2 导入mysql模块
+        const mysql = require('mysql')
+        
+    8.3 连接数据库
+        const con = mysql.createConnection({
+            host:'localhost',//域名
+            port:3306,//端口号
+            user:'root',//数据库账号
+            password:'',//数据库密码
+            database:'',//数据库名称
+        })
+    8.4 sql语句
+        let sql ="select * from userinfo";
+
+    8.5 发送SQL语句
+        con.query(sql,(error,result)=>{//潜规则，error-失败的返回值，result-成功的返回值
+            if(error){
+                console.log('数据库连接失败')
+                return;
+            }
+            //成功的数据
+            console.log(result)
+        })

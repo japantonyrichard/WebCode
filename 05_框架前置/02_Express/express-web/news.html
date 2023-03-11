@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>新闻列表</h2>
+    <ul class="list">
+        <!-- <li>
+            <h3>标题</h3>
+            <p>描述</p>
+        </li> -->
+    </ul>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        //页面一加载发送网络请求
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:3000/news',
+            success: function (res) {
+                let arr = res.data;
+                console.log(arr);
+                let str = '';
+                for (let i = 0; i < arr.length; i++) {
+                    str += `<li>
+                    <h3>${arr[i].title}</h3>
+                    <p>${arr[i].desc}</p>
+                </li>`;
+                }
+                $('.list').html(str);
+            }
+        })
+
+    </script>
+</body>
+
+</html>

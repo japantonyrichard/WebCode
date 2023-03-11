@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //异步操作 -- 宏任务
+        setTimeout(function () {
+            console.log('定时器开始啦')//④
+        });
+
+        //new--调用构造函数
+        new Promise(function (resolve) {
+            //封装异步操作--ajax
+            console.log('马上执行for循环啦');//①
+            for (var i = 0; i < 10000; i++) {
+                i == 99 && resolve();
+            }
+        }).then(function () {//then(res=>{异步操作成功的结果},err=>{异步操作失败的结果}) 
+            console.log('执行then函数啦')//③
+        });
+
+        console.log('代码执行结束');//②
+    </script>
+</body>
+
+</html>

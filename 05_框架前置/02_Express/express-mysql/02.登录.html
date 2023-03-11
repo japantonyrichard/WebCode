@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+</head>
+
+<body>
+    <!-- 
+        需求：
+        1.前端点击按钮发送ajax
+        2.后台接收前端的请求
+        3.后代去数据库查找账号和密码
+        4.给前端响应，查找成功，登录成功，查找失败，登录失败
+     -->
+    <p>
+        <input type="text" placeholder="账号" id="user">
+    </p>
+    <p>
+        <input type="text" placeholder="密码" id="pwd">
+    </p>
+    <p>
+        <input type="button" value="登录" id="btn">
+    </p>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('#btn').click(function () {
+            //获取账号和密码
+            let user = $('#user').val()
+            let pwd = $('#pwd').val()
+
+            //发送网络请求
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost:3000/login',
+                data: {
+                    user,
+                    pwd
+                },
+                success: res => {
+                    console.log(res);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

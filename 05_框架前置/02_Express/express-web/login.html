@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <input type="text" placeholder="用户名" id="user">
+    </p>
+    <p>
+        <input type="text" placeholder="密码" id="pwd">
+    </p>
+    <p>
+        <input type="button" value="登录" id="login">
+    </p>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('#login').click(function () {
+            //获取用户名和密码
+            let user = $('#user').val()
+            let pwd = $('#pwd').val()
+            //网络请求
+            $.ajax({
+                type: 'post',
+                url: "http://localhost:3000/login",
+                data: {
+                    user,
+                    pwd
+                },
+                success: function (res) {
+                    console.log(res);
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>
