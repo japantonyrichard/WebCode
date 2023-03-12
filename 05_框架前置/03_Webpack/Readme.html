@@ -1,0 +1,304 @@
+<!--  
+1.webpack
+    1.1 介绍
+        静态模块打包工具
+        默认只支持js和json文件
+        webpack中，一切文件都认为是一个模块，html、css、js、图片都是一个模块，模块化
+
+    1.2 优点
+        1）开箱即用，零配置
+        2）大量的loader(转换器)、plugin(插件)
+        3）社区庞大
+
+    1.3 使用
+        1）安装webpack
+        npm i webpack webpack-cli -g
+        npm i webpack webpack-cli -D
+
+        说明：
+        -g：全局环境
+        -D：--save-dev 缩写 安装到开发环境(程序员环境)
+        -S：--save 缩写  安装到生产环境(线上环境)
+        -cli：Command Line Interface 命令行接口
+        npm init -y：项目配置文件默认初始化
+
+        2）使用
+        根目录下新建【src】文件夹，文件中新建【index.js】文件，【webpack】对项目进行打包
+
+2.webpack基本配置
+    2.1 新建配置文件
+        根目录下新建【webpack.config.js】
+
+    2.2 设置配置项
+        1）入口 entry   (默认 index.js)
+        2）出口 output  (默认 dist -- main.js)
+        3）转换器 loader
+        4）插件 plugins
+
+    2.3 入口
+        1）单入口
+        entry:'./src/index.js'
+        entry:['./src/index.js','./src/demo.js']
+
+        2）多入口
+        entry:{
+            index:'./src/index.js'.
+            demo:'./src/demo.js'.
+        }
+        说明：前面的属性为打包入口的文件名，后面的属性值为入口文件的相对路径
+
+    2.4 出口
+        1）单出口
+        const path = require('path');//导入path模块，不需要下载
+        output:{
+            filename:'main.js',//被打包成的文件名
+            path:path.resolve(__dirname,'dist')//被打包成绝对路径的文件夹名
+        }
+
+        2）多出口
+        const path = require('path');
+        output:{
+            filename:'[name].js',
+            path:path.resolve(__dirname,'dist')
+        }
+        说明：
+        [name]：占位符
+        [hash]：在文件名后随机生成一串哈希数字，不管文件是否有改动，再打包文件时都会生成一个新文件
+        [chunkhash]:在文件名后随机生成一串哈希数字，只有文件改动后，再打包文件时都会生成一个新文件
+        [chunkhash:6]:限制哈希的长度
+
+    2.5 例子
+        const path = require('path');
+        module.exports = {
+            entry:'./src/index.js',
+            output:{
+                filename:'main.js',
+                path:path.resolve(__dirname,'dist')
+            },
+            mode:'development|production'
+        }
+
+3. loader
+    3.1 作用
+        处理非JavaScript文件，webpack默认只支持打包js文件，如果需要打包非js文件，需要使用loader转换一下
+
+    3.2 使用
+        1）下载对应的loader
+        2）配置loader
+        module.exports = {
+            entry:'',
+            output:'',
+            mode:'',
+            module:{
+                rules:[
+                    {
+                        test:/\.css$/,//编译的文件
+                        use:['style-loader','css-loader'],//使用的loader，从后往前，从下往上读取
+                    },
+                    {
+                        test:/\.less$/,//编译的文件，以.less结束的所有文件
+                        use:['style-loader','css-loader','less-loader']//使用的loader，浏览器不支持less，最终需要转换为css
+                    },
+                ]
+            }
+        }
+
+    3.3 处理样式的loader
+        less-loader：加载和转换less代码  安装：cnpm i less less-loader -D
+        css-loader：加载和转换css代码  安装：cnpm i css-loader -D
+        style-loader：把css样式挂载到DOM元素上  安装：cnpm i style-loader -D
+
+
+    3.4 处理ES6+的兼容性问题 -- babel
+        1）处理ES6+的简单语法 let const 箭头函数
+            ①下载：npm i babel-loader @babel/core @babel/preset-env -D
+            ②配置：
+            module.exports={
+                module:{
+                    rules:[
+                        {
+                            test:/\.js$/,
+                            exclude:/node_modules/,//排除文件
+                            options:{
+                                presets: ['@babel/preset-env']//预设--指示babel做怎样的兼容性处理
+                            }
+                        }
+                    ]
+                }
+            }
+
+        2）处理ES6+的高级语法 promise set symbol
+            ①下载垫片
+            npm i @babel/polyfill -D
+
+            ②在使用高级语法的文件中引入，不需要配置
+            import '@babel/polyfill'
+
+            ③注意：所有兼容性代码全部引入
+
+        3）按需处理ES6+的高级语法
+        推荐使用方法1+方法3
+            ①下载：npm i core-js -D
+
+            ②配置
+            module.exports={
+                module:{
+                    rules:[
+                        {
+                            test: /\.js$/,
+                            exclude: /node_modules/,
+                            loader: 'babel-loader',
+                            options: {
+                                // 预设：指示babel做怎样的兼容性处理
+                                presets: [
+                                    [
+                                        '@babel/preset-env',//ES6+继承语法
+                                        {
+                                            // 按需加载
+                                            useBuiltIns: 'usage',
+                                            // 指定core-js版本
+                                            corejs: {
+                                                version: 3,
+                                            },
+                                            // 指定兼容浏览器版本范围
+                                            targets: {
+                                                chrome: '70', // 谷歌版本70及以上
+                                                firefox: '60',
+                                                ie: '8',
+                                                safari: '10',
+                                                edge: '17',
+                                            }
+                                        }
+                                    ]
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+
+        3.5 处理图片
+            1）下载：cnpm i file-loader -D
+                在入口文件index.js中导入图片：import img from '相对路径'
+            2）配置
+                rules:[
+                    {
+                        test:/\.(png|jpg|webp|gif|jpeg)$/;
+                        use:['file-loader']
+                    }
+                ]
+
+
+4.plugin 插件
+    4.1 介绍
+    转换非js文件，插件的功能比loader跟多，插件还做了优化
+
+    4.2 使用
+        1）安装： cnpm i 插件名 -D
+        2）导入：在webpack.config.js中导入， require('插件名')
+        3）使用
+            plugins:[new 插件(),new 插件()]
+
+    4.3 html-webpack-plugin
+        作用：打包出一个H5文件，自动引入需要的js和css
+        1）安装： cnpm i html-webpack-plugin -D
+        2）导入：const HWP = require('html-webpack-plugin')
+        3）使用
+            module.exports={
+                entry:'',
+                output:'',
+                plugins:[
+                    new HWP({
+                        filename:"指定的HTML文件名，默认为index.html",
+                        template:'相对路径指定一个HTML文件的模板，实质复制一遍'
+                    });
+                ]
+            }
+
+
+5.模块化
+    5.1 介绍
+        每一个文件都是独立的一个模块，提高代码的复用性
+    5.2 语法
+        1）Node.js
+            ①导出：module.exports = {}
+            ②导入：require('')
+
+        2）ES6
+            ①按需导入和导出
+                导出：export {a,b}
+                导入：import {a,b} from '文件'
+                注意：导出和导入的名字必须一致，可以导出多次
+            ②默认导入和导出
+                导出：export default a;
+                导入：import data from '文件'
+                注意：导入的变量名可以自定义，只能导出一次
+
+6.开发服务器 devServer
+    6.1 介绍
+    开发服务器可以实现项目自动化，自动打开浏览器、自动刷新页面、自动编译
+
+    6.2 使用
+        1）安装
+        cnpm i webpack-dev-server -g
+        cnpm i webpack-dev-server -D
+
+        2）配置
+        module.exports = {
+            devServer:{
+                static: {
+                    directory: path.join(__dirname, 'dist'), //项目构建后访问文件的路径地址--虚拟的地址
+                },
+                port:3002,//端口号
+                open:true,//自动打开浏览器
+                compress: true,//一切服务都使用gzip压缩
+            }
+        }
+
+        3）开启服务器
+            webpack server --open
+            或者
+            npx webpack server
+
+            npx：多用于执行某个命令，npx会智能的检索是否拥有某个模块，有就直接使用，没有就临时下载，使用完以后直接删除
+            npm：多用于下载或者卸载某个模块
+
+    6.3 跨域
+        1）介绍
+            浏览器安全策略，协议、域名、端口号有一个不一致，就会产生跨域
+        2）解决跨域
+            ①jsonp
+            ②cors
+            ③proxy 反向代理
+
+        3）配置 webpack.config.js
+            module.exports = {
+                entry:,
+                output:,
+                devServer:{
+                    static: {
+                        directory: path.join(__dirname, 'dist'), //项目打包的路径，是一个虚拟的路径
+                    },
+                    port: 3001, //端口号
+                    compress: true, //一切服务都启用gzip 压缩
+                    open: true, //自动打开浏览器
+                    proxy:{ //反向代理，解决跨域问题
+                        "/api":{ //使用/api代理真是的地址
+                            target:'http://localhost:3000', //访问服务器真实的地址
+                            changeOrigin:true,//允许跨域
+                            pathRewrite:{   //路径重写，访问服务器时遇到/api,转换为空字符串
+                                "^/api":""
+                            }
+                        }
+                    }
+                }
+            }
+
+        4）前端网络请求
+        $.ajax({
+            type:'get',
+            url:'/api', //表示路径为：http://localhost:3000
+            success:res=>{
+                console.log(res);
+            }
+        })
