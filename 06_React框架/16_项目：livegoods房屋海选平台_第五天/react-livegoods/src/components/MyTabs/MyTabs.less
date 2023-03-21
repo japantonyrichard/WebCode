@@ -1,0 +1,27 @@
+.my-tabs {
+    .tab-nav {
+        display: flex;
+
+        div {
+            flex: 1;
+            height: 1rem;
+            line-height: 1rem;
+            text-align: center;
+            border-right: 1px solid #ccc;
+        }
+        div:last-child{
+            border-right: 0 
+        }
+        .active{
+            color: red;
+        }
+    }
+    .tab-content{
+        div{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+    }
+}

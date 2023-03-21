@@ -1,0 +1,86 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -13px;
+
+    .item {
+        width: 290px;
+        height: 432px;
+        background-color: #fff;
+        position: relative;
+        margin-bottom: 20px;
+        margin-right: 13px;
+        border-radius: 4px;
+        box-shadow: 0 3px 6px #d9d4d4;
+
+        .icon {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            background: url(../../../assets/imgs/hicon5.png) 0% 0% / 100% 100% no-repeat;
+            width: 70px;
+            height: 25px;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .info {
+            padding: 10px;
+
+            .th {
+                font-size: 18px;
+                color: #333;
+                text-align: left;
+                min-height: 55px;
+            }
+
+            .money {
+                .num {
+                    color: #b83932;
+                    font-weight: 700;
+                    font-size: 24px;
+                }
+            }
+
+            .tags {
+                margin: 10px 0;
+
+                span {
+                    background-color: #ecf5ff;
+                    display: inline-block;
+                    height: 32px;
+                    padding: 0 10px;
+                    line-height: 30px;
+                    font-size: 12px;
+                    color: #409eff;
+                    border: 1px solid #d9ecff;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    white-space: nowrap;
+                    margin-right: 5px;
+                }
+
+            }
+
+            .time {
+                display: flex;
+
+                li {
+                    background-color: #17aa6b;
+                    color: #fff;
+                    height: 28px;
+                    line-height: 28px;
+                    padding: 0 7px;
+                    text-align: center;
+
+                }
+
+                li:nth-child(2) {
+                    margin-left: 4px;
+                    background-color: #ccc;
+                }
+            }
+        }
+    }
+}

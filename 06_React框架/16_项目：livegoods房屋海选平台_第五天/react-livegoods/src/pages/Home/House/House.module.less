@@ -1,0 +1,48 @@
+.house {
+    .title {
+        font-size: 0.34rem;
+        font-weight: 600;
+        padding-left: 0.2rem;
+    }
+
+    .list {
+        padding-bottom: 1rem;
+
+        .item {
+            position: relative;
+            margin: 0.2rem 0;
+
+            .info {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 1rem;
+                background-color: rgba(255, 255, 255, 0.5);
+                display: flex;
+                padding: 0.1rem 1rem;
+
+                .desc {
+                    flex: 2;
+                    font-weight: 600;
+                }
+
+                .type {
+                    flex: 1;
+
+                    .zu {
+                        border: 1px solid #187eb9;
+                        border-radius: 0.06rem;
+                        padding: 0.04rem 0.12rem;
+                    }
+
+                    .price {
+                        color: #ff5555;
+                    }
+                }
+            }
+
+        }
+    }
+
+}

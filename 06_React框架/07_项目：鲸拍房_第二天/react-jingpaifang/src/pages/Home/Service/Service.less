@@ -1,0 +1,34 @@
+.ant-tabs-nav .ant-tabs-nav-list {
+    border-bottom: 1px solid #4d73b8;
+}
+
+.ant-tabs-tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+// 选中的时候的样式
+.ant-tabs-tab-active {
+    background: #4d73b8;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #fff;
+    text-shadow: 0 0 0.25px currentcolor;
+}
+
+
+// 下边的蓝条取消掉
+.ant-tabs-ink-bar {
+    background: transparent;
+}

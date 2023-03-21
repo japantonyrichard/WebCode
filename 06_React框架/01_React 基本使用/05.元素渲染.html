@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入react核心库 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .box{
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备一个容器,用于react渲染 -->
+    <div id="root">
+
+    </div>
+
+    <!-- 一定要这么写： type="text/babel" 含义是：让babel翻译script中的代码  -->
+    <script type="text/babel">
+        // 定义变量
+        let msg='今天适合出去玩~';
+        let num=100;
+        let arr=[2,4,6,8,10];
+        let obj={
+            name:'zs',
+            age:10
+        }
+        let arrObj=[
+            {
+                id:1,
+                title:'Angular'
+            },{
+                id:2,
+                title:'React'
+            },{
+                id:3,
+                title:'Vue'
+            }
+        ]
+        // 1、创建虚拟DOM
+        const VDOM=(
+            <div>
+                <p>字符串：{msg}</p>
+                <p>数字：{num}</p>
+                <p>数组：{arr}</p>
+                {/* <p>对象：{obj}</p>  React中不允许直接渲染对象；
+                    但是，可以渲染对象里的属性
+                */}
+                <p>对象：{obj.name}</p>
+                <p>{3>2?'是的':'错了'}</p>
+                {/*<p>{function demo(){} demo()}</p> 报错*/}
+                <ul>
+                    <li>{arr[0]}</li>
+                    <li>{arr[1]}</li>
+                    <li>{arr[2]}</li>
+                </ul>
+                {/*map*/}
+                <ul>
+                    {
+                        arr.map((item,index)=>{
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+                <p className='box'>我是粉色的</p>
+                {/*表单*/}
+                <label htmlFor='txt'>
+                    用户名：
+                    <input type='text' id='txt'/> 
+                </label>
+
+                <p>
+                    <button style={{color:'pink',background:'green'}}>我是粉色的按钮</button>
+                </p>
+                <div>
+                    <h2>前端三大框架</h2>    
+                    <ul>
+                        {
+                            arrObj.map((item,index)=>{
+                                {/* <p>对象：{obj}</p>  React中不允许直接渲染对象；
+                                        但是，可以渲染对象里的属性
+                                    */}
+                                return <li key={item.id}>{item.title}</li>
+                            })
+                        }
+                    </ul>
+                </div>
+
+
+            </div>
+        ) 
+
+
+
+
+
+
+        // 2、使用react语法将虚拟DOM转成真实DOM,并且插入到页面当中
+        ReactDOM.render(VDOM,document.getElementById('root'));
+
+    </script>
+
+</body>
+
+</html>

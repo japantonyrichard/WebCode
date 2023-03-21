@@ -1,0 +1,33 @@
+.menu {
+    background-color: #fff;
+    height: 80px;
+
+    .contaner {
+        width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        line-height: 80px;
+        height: 80px;
+    }
+
+    .left {
+        flex: 1;
+    }
+
+    .right {
+        a {
+            color: #333;
+            font-size: 16px;
+            display: inline-block;
+            padding: 0 20px;
+            // 父级引用     不行
+            // &:active{
+            //     color: red;
+            // }
+        }
+        .active{
+            // color: red;
+            font-weight: bold;
+        }
+    }
+}

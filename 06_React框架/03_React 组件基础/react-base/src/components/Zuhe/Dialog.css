@@ -1,0 +1,35 @@
+.bg{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(83, 81, 81, 0.5);
+}
+
+.dialog{
+    width: 400px;
+    height: 260px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 4px;
+}
+.header{
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+}
+
+.close{
+    position: absolute;
+    right: 5px;
+    top: -5px;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+}

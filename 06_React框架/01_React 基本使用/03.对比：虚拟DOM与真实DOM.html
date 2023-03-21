@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入react核心库 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备一个容器,用于react渲染 -->
+    <div id="root">
+
+    </div>
+
+    <!-- 一定要这么写： type="text/babel" 含义是：让babel翻译script中的代码  -->
+    <script type="text/babel">
+        // 1、创建虚拟DOM  jsx
+        const VDOM=(
+            <div>
+                <h1>今天阳光真好呀</h1>
+                <span>1111</span>
+            </div>
+            
+
+        )//此处一定不要加引号，因为不是字符串
+        const TDOM=document.querySelector('#root'); //真实DOM
+        console.log('虚拟DOM:',VDOM);
+        console.log('真实DOM:',TDOM);
+
+
+
+        // 2、使用react语法将虚拟DOM转成真实DOM,并且插入到页面当中
+        ReactDOM.render(VDOM,document.getElementById('root'));
+
+    </script>
+
+</body>
+
+</html>
