@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+
+</head>
+
+<body>
+    <!-- 2、创建挂着点 -->
+    <div id="app">
+        <!-- 为什么v-for 一定要绑定key??? 
+            虚拟DOM:是真实DOM的映射
+            diff 算法：最小量更新 对比新旧虚拟DOM
+            key:唯一性标识
+            思考：为什么不能用下标？ 只要新插入元素，后面元素的下标就会跟着变
+        -->
+        <ul>
+            <li v-for="(item,index) in arr" :key="item">{{item}}</li>
+        </ul>
+        <button @click="add">插入元素</button>
+
+    </div>
+
+    <script>
+        // 3、new Vue 实例
+        new Vue({
+            el: '#app',
+            data: {
+                arr: [2, 4, 6, 8]
+            },
+            methods: {
+                add(){
+                    // console.log(this.arr);
+                    // 数组 splice(下标，删除个数,添加的值)
+                    this.arr.splice(2,0,'A')
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

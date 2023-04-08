@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 标签里面用：{{}}  绑定动态属性：v-bind:属性名-->
+        <!-- v-bind： 是单向数据流 -->
+        <a v-bind:href="link">{{title}}</a>
+        <img v-bind:src="url" alt="">
+        <!-- 语法糖：   ： -->
+        <img :src="url" alt="">
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                link: 'http://www.baidu.com',
+                title:'百度一下',
+                url:'https://cn.vuejs.org/images/logo.svg'
+            }
+        })
+    </script>
+</body>
+
+</html>

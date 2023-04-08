@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        姓：<input type="text" v-model="firstname">
+        名：<input type="text" v-model="lastname">
+        <!-- 迪丽-热巴 -->
+        <!-- 迪丽-热巴 -->
+        <!-- 第一种方式 1、字符串拼接 【不用】-->
+        <p>1、字符串拼接: {{firstname+'-'+lastname}}</p>
+        <!-- 第二种方式 2、方法 【不用】-->
+        <p>2、方法：{{getFullName()}}</p>
+        <p>2、方法：{{getFullName()}}</p>
+        <p>2、方法：{{getFullName()}}</p>
+
+        <p>3、计算属性：{{fullname}}</p>
+        <p>3、计算属性：{{fullname}}</p>
+        <p>3、计算属性：{{fullname}}</p>
+
+        <p>计算属性简写方式：{{fullname2}}</p>
+
+
+        <!-- 计算属性：
+                由计算得来的属性。当你需要一个属性，不需要在data中提前声明，而是由其他现有属性计算得到。
+                特点：是基于它的依赖而进行缓存。依赖变了，计算属性就重新计算;依赖不变，计算属性就不变。
+                应用：做大量计算的时候；如 购物车计算总价：数量*单价+数量*单价+数量*单价....
+            方法：
+                方法不存在缓存。调用几次方法，就执行几次方法，每次调用都执行
+        
+        -->
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                firstname: '迪丽',
+                lastname: '热巴'
+            },
+            methods: {
+                getFullName() {
+                    console.log('方法调用啦......');
+                    return this.firstname + '-' + this.lastname;
+                }
+            },
+            computed: {
+                // 计算属性，是基于它的依赖而变化的。
+                // 完整写法：
+                fullname: {
+                    // getter函数的返回值，就是计算属性的值
+                    get() {
+                        console.log('计算属性调用了.....');
+                        return this.firstname + '-' + this.lastname;
+                    },
+                    // 设置值时
+                    set(val) {
+
+                    }
+                },
+                // 如果计算属性中只有getter方法，可以简写
+                fullname2() {
+                    return this.firstname + '-' + this.lastname;
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

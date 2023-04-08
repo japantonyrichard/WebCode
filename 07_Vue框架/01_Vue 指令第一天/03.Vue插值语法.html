@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 2、创建挂载点 -->
+    <div id="app">
+        <!-- 字符串 -->
+        {{msg}}
+        <!-- 数字 -->
+        <p>{{num}}</p>
+        <!-- 对象 -->
+        <p>{{obj.name}}---{{obj.age}}</p>
+        <!-- 数组 -->
+        <p>{{arr}}---{{ok}}</p>
+        <!-- {{}} 表达式写法 -->
+        {{num+10}}
+        <!-- 三目运算符 -->
+        {{ok?'是的':'不是'}}
+        <!-- 字符串翻转 字符串==》数组-->
+        <h3>{{msg.split('').reverse().join('')}}</h3>
+    </div>
+
+    <script>
+        // 3、new vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                msg: '今天是元气满满的一天哦！',
+                num: 100,
+                obj:{
+                    name:'大毛',
+                    age:18
+                },
+                arr:[2,4,6,8],
+                ok:true
+            }
+        })
+    </script>
+
+
+
+</body>
+
+</html>

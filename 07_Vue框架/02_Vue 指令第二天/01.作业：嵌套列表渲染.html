@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 2、挂载点 -->
+    <div id="app">
+        <ul>
+            <!-- item 每一项 -->
+            <li v-for="item in arr" :key="item.id">
+                {{item.city}}
+                <ol>
+                    <!-- ele 每一项 ["东城区", "西城区"] -->
+                    <li v-for="(ele,index) in item.list" :key="index">{{ele}}</li>
+                </ol>
+            </li>
+
+        </ul>
+    </div>
+    <!-- 3、new Vue() -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                arr: [{
+                        "id": 1,
+                        "city": '北京',
+                        "list": ["东城区", "西城区"]
+                    }, {
+                        "id": 2,
+                        "city": '天津',
+                        "list": ["河东区", "河西区"]
+                    },
+                    {
+                        "id": 3,
+                        "city": '河北',
+                        "list": ["石家庄", "衡水"]
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

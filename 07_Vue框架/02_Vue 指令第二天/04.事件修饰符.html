@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="outer" v-on:click="btnOuter">
+            <!-- 阻止冒泡  @click.stop-->
+            <div class="inner" @click.stop="btnInner">
+
+            </div>
+        </div>
+        <!-- 阻止默认行为 -->
+        <a href="http://www.baidu.com" @click.prevent="test">百度一下，你就可以跳转了</a>
+
+        <!-- 按钮修饰符 -->
+        <!-- @keyup.enter 只有按的是回车，才触发后面的submit 方法 -->
+        <input type="text" @keyup.enter="submit">
+        <!-- 特殊 -->
+        <input type="text" @keydown.tab="submit">
+        <!-- 系统修饰键 -->
+        <input type="text" @keyup.alt.67="clear">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btnOuter() {
+                    console.log('我是外面的盒子')
+                },
+                btnInner(event) {
+                    console.log('我是里面的盒子');
+                    // 阻止冒泡，扼杀在摇篮里  原生JS写法
+                    // event.stopPropagation();
+
+                },
+                test() {
+                    console.log('我不让你跳');
+                },
+                // 键盘抬起事件
+                submit() {
+                    console.log(222);
+                },
+                clear() {
+                    //。。。。。
+                    console.log('333');
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

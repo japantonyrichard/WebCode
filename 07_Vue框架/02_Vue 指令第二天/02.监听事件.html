@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、 -->
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 2、 -->
+    <div id="app">
+        {{num}}
+        <!-- 语法： v-on:事件名='' -->
+        <button v-on:click="num+=1">点我+1</button>
+        <!-- 提出事件处理函数 -->
+        <button v-on:click="sayHi">Say Hi</button>
+    </div>
+
+    <!-- 3、 -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 0
+            },
+            // 定义多个方法
+            methods: {
+                sayHi() {
+                    alert('哈喽呀~~~~')
+                },
+                add() {
+
+                },
+                sub() {
+
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+</head>
+<body>
+    <!-- 2、创建挂载点 -->
+    <div id="app">
+        <!-- 遍历数组 -->
+        <ul>
+            <!-- 重复谁，就在谁身上写 v-for  item:每一项;index :下标-->
+            <li v-for="(item,index) in arr">{{item}}---{{index}}</li>
+        </ul>
+        <!-- 遍历对象 -->
+        <ol>
+            <li v-for="item in obj">{{item}}</li>
+        </ol>
+        <!-- 遍历对象数组 aa:每一项-->
+        <ul>
+            <li v-for="aa in books" :key="aa.id">{{aa.id}}----{{aa.name}}</li>
+        </ul>
+
+    </div>
+    <!-- 3、new Vue() -->
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                arr:[2,4,6,8],
+                obj:{
+                    name:'二毛',
+                    age:17,
+                    sex:'男'
+                },
+                books:[
+                    {
+                        id:1,
+                        name:'HTML'
+                    },{
+                        id:2,
+                        name:'CSS'
+                    },{
+                        id:3,
+                        name:'JS'
+                    }
+                ]
+            }
+        })
+    </script>
+    
+</body>
+</html>

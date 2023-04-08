@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="vue.js"></script>
+    <style>
+        .active {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- 点谁，给谁添加背景颜色 -->
+            <!-- 对象方式： active是否显示，取决于后面判断添加-->
+            <li v-for="(item,index) in 10" :key="index" :class="{active:index==num}" @click="changNum(index)">{{item}}
+            </li>
+        </ul>
+
+
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 0
+            },
+            methods: {
+                changNum(index) {
+                    // console.log(index);
+                    this.num = index;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

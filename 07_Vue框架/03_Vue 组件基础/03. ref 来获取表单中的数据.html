@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <!-- ref 来获取表单中的数据 : 获取DOM元素，再获取里面的值-->
+        <input type="text" ref="name">
+        <input type="text" ref="pwd">
+
+        <button @click="getVal">获取表单值</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods: {
+                getVal(){
+                    console.log(this.$refs.name.value);
+                }
+            },
+        })
+    </script>
+</body>
+</html>

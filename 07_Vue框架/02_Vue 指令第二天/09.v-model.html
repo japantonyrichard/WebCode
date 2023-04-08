@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <input type="text" v-model="msg">
+        <!-- v-model 默认收集的是表单元素中 value 的值 -->
+        <input type="text" value="123">
+
+        <hr>
+        <h2>自动收集表单数据</h2>
+        <p>用户名：
+            <input type="text" v-model="userInfo.useranme"></p>
+        <p>密码：<input type="text" v-model="userInfo.pwd"></p>
+        <p>
+            性别：男 <input type="radio" name="gender" value="boy" v-model="userInfo.gender">
+            女 <input type="radio" name="gender" value="girl" v-model="userInfo.gender">
+        </p>
+        <p>
+            爱好：
+            ⚽ <input type="checkbox" name="hobby" value="1" v-model="userInfo.hobby">
+            🏀 <input type="checkbox" name="hobby" value="2" v-model="userInfo.hobby">
+            🏓 <input type="checkbox" name="hobby" value="3" v-model="userInfo.hobby">
+        </p>
+        <p>
+            <button @click="submit">提交</button>
+        </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: '今天周五了✌',
+                // 表单数据对象
+                userInfo: {
+                    useranme: '易烊千玺',
+                    pwd: '123',
+                    gender: 'boy',
+                    hobby: ['2']
+                }
+            },
+            methods: {
+                submit() {
+                    console.log(this.userInfo);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

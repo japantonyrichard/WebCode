@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+数组扁平化: 取出嵌套数组(多维)中的所有元素放到一个新数组(一维)中
+  如: [1, [3, [2, 4]]]  ==>  [1, 3, 2, 4]
+*/
+
+        /*
+        方法一: 递归 + reduce() + concat()
+        */
+        function flatten1(array) {
+
+            return array.reduce((pre, item) => {
+                if (Array.isArray(item) && item.some((cItem => Array.isArray(cItem)))) {
+                    return pre.concat(flatten1(item))
+                } else {
+                    return pre.concat(item)
+                }
+            }, [])
+        }
+
+        /*
+        方法二: ... + some() + concat() 推荐
+        */
+        function flatten2(array) {
+
+            let arr = [].concat(...array)
+            while (arr.some(item => Array.isArray(item))) {
+                arr = [].concat(...arr)
+            }
+            return arr
+        }
+    </script>
+</body>
+
+</html>

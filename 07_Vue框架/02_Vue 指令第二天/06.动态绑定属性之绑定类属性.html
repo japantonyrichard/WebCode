@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue  -->
+    <script src="vue.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .size {
+            font-size: 30px;
+        }
+
+        .bold {
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2、挂载点 -->
+    <div id="app">
+        <!-- 第一种：对象方式 {属性名：属性值} 【最常用】
+            类样式能否生效依赖于后面的条件是true,还是false -->
+        <button @click="flag=!flag">修改flag</button>
+        <!-- 注意：在vue 当中 静态class和动态绑定class可以同时存在 -->
+        <div class="" v-bind:class="{box:flag,size:3>2}">对象方式</div>
+        <!-- 简写： -->
+        <div class="bold" :class="{box:flag,size:3>2}">对象方式</div>
+
+
+
+
+        <!-- 第二种：数组方式  active:是个变量，它的值是类名-->
+        <div v-bind:class="[active,{bold:false}]">数组方式</div>
+
+    </div>
+    <script>
+        // 3、new Vue 实例
+        new Vue({
+            el: '#app',
+            data: {
+                flag: false,
+                active: 'box'
+            }
+        })
+    </script>
+</body>
+
+</html>

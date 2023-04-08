@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Object.defineProperty</h2>
+    作用：为对象添加或修改现有属性，使之变成响应式
+    话术：Vue的双向绑定是由 数据劫持结合订阅发布模式实现的。那么，什么是数据劫持呢？Vue 实现数据劫持 就是靠的Object.defineProperty() 来实现劫持。由这个方法定义的对象属性，都有一个getter,setter，当你试图访问某个属性时，就会走getter()，给这个属性设置值时，就走setter方法。
+    <!-- 
+        响应式：数据变了，界面跟着变
+     -->
+    <script>
+        
+        let obj = {
+            firstname: '易烊',
+            lastname: '千玺'
+        }
+        // obj.fullname='易烊-千玺'
+        // obj.firstname='欧阳';
+
+        // console.log(obj);
+
+        // obj.fullname=10
+        Object.defineProperty(obj, 'fullname', {
+            // getter  当访问这个属性时，走getter
+            // value:10,
+            get() {
+                // 拦截 劫持  //[,,,,,,] 依赖收集
+                console.log('你正在企图访问：fullname 属性');
+                return this.firstname + '-' + this.lastname;
+            },
+            // setter  当给属性设置值时，走setter  发布  
+            set(val) {
+                console.log('你正在企图设置fullname的值:' + val);
+                // 古力-娜扎
+                let arr = val.split('-');
+                console.log(arr);
+                this.firstname=arr[0];
+                this.lastname=arr[1];
+            }
+        })
+        obj.firstname = '欧阳'
+        obj.lastname = '娜娜'
+
+        console.log(obj.fullname);  //[,,,,,,]
+
+        obj.fullname = '古力-娜扎'
+
+        console.log(obj);
+    </script>
+
+</body>
+
+</html>

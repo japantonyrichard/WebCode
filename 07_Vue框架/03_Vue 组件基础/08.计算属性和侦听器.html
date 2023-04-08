@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>08.计算属性和方法</h2>
+        姓：<input type="text" v-model="firstname">
+        名：<input type="text" v-model="lastname">
+
+        <p>
+            计算属性 fullname：{{fullname}}
+        </p>
+        <p>
+            侦听器 full：{{full}}
+        </p>
+
+        <input type="text" v-model="keyword">
+
+
+        <!-- 计算属性：
+                由计算得来的属性。当你需要一个属性，不需要在data中提前声明，而是由其他现有属性计算得到。
+                特点：是基于它的依赖而进行缓存。依赖变了，计算属性就重新计算;依赖不变，计算属性就不变。
+                应用：做大量计算的时候；如 购物车计算总价：数量*单价+数量*单价+数量*单价....
+                不支持异步！！！
+
+            方法：
+                方法不存在缓存。调用几次方法，就执行几次方法，每次调用都执行
+
+            侦听器：
+                侦听已有的属性的变化，当侦听到属性变化后，执行相应逻辑
+                特点：属性需要在data里提前声明
+
+                完整写法：immediate:true //无论有没有侦听到属性的变化，都执行一次上面的逻辑
+
+                侦听器支持异步！！！
+        
+        -->
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                firstname: '迪丽',
+                lastname: '热巴',
+                full: '',
+                keyword: '',
+            },
+            computed: {
+                // 计算属性 简写方式
+                fullname() {
+                    // let a=1;
+                    // setTimeout(() => {
+                    //     a= this.firstname+'-'+this.lastname
+                    // }, 2000);   
+
+                    // console.log(a);
+
+                    return this.firstname + '-' + this.lastname;
+                }
+            },
+            // 侦听器：侦听已有的属性的变化，当侦听到属性变化后，执行相应逻辑
+            watch: {
+                // 简写  第一个参数是：新值  第二个参数是：旧值
+                // firstname(newVal,oldVal){
+                //     console.log('firstname 变化了....',newVal,oldVal);
+                //     this.full=newVal+'-'+this.lastname
+                // },
+                lastname(newVal) {
+                    console.log('lastname 变化了....', newVal);
+                    this.full = this.firstname + '-' + newVal
+                },
+                // 完整写法
+                firstname: {
+                    handler(newVal, oldVal) {
+                        // 侦听器支持异步
+                        setTimeout(() => {
+                            this.full = newVal + '-' + this.lastname
+                        }, 2000);
+                    },
+                    immediate: true //无论有没有侦听到属性的变化，都执行一次上面的逻辑
+                },
+                keyword() {
+                    // 异步:发送网络请求，搜索
+                    this.checkName();
+
+                    // setTimeout(() => {
+                    //     console.log('keyword变化了,去发送网络请求.....');
+                    // }, 3000);
+                },
+                methods: {
+                    checkName(){
+                        // 发网络请求
+                    }
+                },
+
+            },
+        })
+    </script>
+
+</body>
+
+</html>

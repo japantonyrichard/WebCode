@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 2、创建挂载点 -->
+    <div id="app">
+        <input type="text" placeholder="关键字" v-model="keyword">
+        <ul>
+            <li v-for="item in newPersons" :key="item.id">{{item.id}}----{{item.name}}</li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        // 3、new Vue 实例
+        new Vue({
+            el: '#app',
+            data: {
+                keyword: '',
+                persons: [{
+                    id: 1,
+                    name: 'yiyangqianxi'
+                }, {
+                    id: 2,
+                    name: 'ouyangnana'
+                }, {
+                    id: 3,
+                    name: 'gulinazha'
+                }, {
+                    id: 4,
+                    name: 'dilireba'
+                }]
+            },
+            computed: {
+                newPersons() {
+                    // ES6解构
+                    // let {persons,keyword}=this;
+                    // return persons.filter(item=>item.name.indexOf(keyword)!=-1)
+
+                    return this.persons.filter(item => item.name.indexOf(this.keyword) != -1)
+                }
+            },
+
+        })
+
+        // 模糊搜索
+        // 1、字符串.indexOf(keyword) 有>=0 没有-1   !=-1 就表示有
+        // 2、遍历    newArr=arr.filter(item=>{
+        //      reurn item.name.indexOf(keyword)!=-1
+        // })
+    </script>
+</body>
+
+</html>

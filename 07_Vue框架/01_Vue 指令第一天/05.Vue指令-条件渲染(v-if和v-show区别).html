@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 2、创建挂载点 -->
+    <div id="app">
+        <h2>v-if</h2>
+        <!-- v-if 功能：添加、删除元素
+            特点：控制元素在页面中 是否渲染或者销毁   
+        -->
+        <p v-if="isBlack">天黑，请闭眼</p>
+        <!-- <p v-else>天亮了,该起床了</p> -->
+        <hr>
+        <div v-if="flag==='a'">A</div>
+        <div v-else-if="flag==='b'">B</div>
+        <div v-else-if="flag==='c'">C</div>
+        <div v-else> Not A、B、C </div>
+        <hr>
+        <div v-if="ok">
+            <h1>大大的标题</h1>
+            <p>他是个P</p>
+            <div>我是个盒子</div>
+        </div>
+        <!-- template:包裹容器，是个空标签，DOM 中不渲染 -->
+        <template v-if="ok">
+            <h1>大大的标题</h1>
+            <p>他是个P</p>
+            <div>我是个盒子</div>
+        </template>
+        <hr>
+        <h2>v-show</h2>
+        <!-- 功能：控制元素的display属性是否none -->
+        <p v-show="isShow">控制显示、隐藏</p>
+    </div>
+
+    <!-- 3、new Vue 实例-->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isBlack: false,
+                flag: 'bdfs',
+                ok: true,
+                isShow:false
+            }
+        })
+    </script>
+</body>
+
+</html>

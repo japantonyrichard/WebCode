@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+</head>
+<body>
+    <!-- 2、挂载点 -->
+    <div id="app">
+        <!-- {{}} 前后可以加内容 -->
+        <p>1------{{str}}------1</p>
+        <!-- 以标签形式展示 -->
+        <div v-html="str">22222222222</div>
+        <!-- v-text  以字符串形式展示-->
+        <div v-text="str">33333333333</div>
+    </div>
+
+    <script>
+        // 3、new Vue 实例
+        new Vue({
+            el:'#app',
+            data:{
+                str:'<h2>今天好热呀</h2>'
+            }
+        })
+    </script>
+    
+</body>
+</html>

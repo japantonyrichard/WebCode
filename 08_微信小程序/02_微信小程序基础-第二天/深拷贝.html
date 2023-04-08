@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 浅拷贝：把一个对象的地址，拷贝一份，给另一个变量。
+
+        // #### ==深拷贝==
+
+        // 把当前对象无论多少次的嵌套，把它的值类型，引用类型都拿出来，重新开辟一块内存空间，然后把里面的值都赋值进来。每一层的数据都要拷贝一份。
+        // 方法1：
+        function deepClone3(target, map = new Map()) {
+            const type = getType(target)
+            if (type === 'Object' || type === 'Array') {
+                // 从map容器取对应的clone对象
+                let cloneTarget = map.get(target)
+                // 如果有, 直接返回这个clone对象
+                if (cloneTarget) {
+                    return cloneTarget
+                }
+                cloneTarget = type === 'Array' ? [] : {}
+                // 将clone产生的对象保存到map容器
+                map.set(target, cloneTarget)
+                for (const key in target) {
+                    if (target.hasOwnProperty(key)) {
+                        cloneTarget[key] = deepClone3(target[key], map)
+                    }
+                }
+                return cloneTarget
+            } else {
+                return target
+            }
+        }
+
+        /* 
+        4). 方法2(优化遍历性能)
+            数组: while | for | forEach() 优于 for-in | keys()&forEach() 
+            对象: for-in 与 keys()&forEach() 差不多
+        */
+        function deepClone4(target, map = new Map()) {
+            const type = getType(target)
+            if (type === 'Object' || type === 'Array') {
+                let cloneTarget = map.get(target)
+                if (cloneTarget) {
+                    return cloneTarget
+                }
+
+                if (type === 'Array') {
+                    cloneTarget = []
+                    map.set(target, cloneTarget)
+                    target.forEach((item, index) => {
+                        cloneTarget[index] = deepClone4(item, map)
+                    })
+                } else {
+                    cloneTarget = {}
+                    map.set(target, cloneTarget)
+                    Object.keys(target).forEach(key => {
+                        cloneTarget[key] = deepClone4(target[key], map)
+                    })
+                }
+
+                return cloneTarget
+            } else {
+                return target
+            }
+        }
+    </script>
+
+</body>
+
+</html>

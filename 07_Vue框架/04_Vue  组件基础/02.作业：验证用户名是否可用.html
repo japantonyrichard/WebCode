@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1、引入vue -->
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 2、创建挂载点 -->
+    <div id="app">
+        用户名：<input type="text" v-model="username">
+        {{tip}}
+    </div>
+    <script>
+        // 3、new Vue 实例
+        new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                tip:'' //提示
+            },
+            methods: {
+                checkName(val) {
+                    setTimeout(() => {
+                        if (val == 'admin') {
+                            //已经存在
+                            this.tip='已经存在，换一个吧'
+                        } else {
+                            // 可以注册
+                            this.tip='可以注册哦'
+                        }
+                    }, 3000);
+                }
+            },
+            watch: {
+                username(val) {
+                    // 发送网络请求
+                    this.checkName(val)
+                    // 提示
+                    this.tip='客观请稍等...'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

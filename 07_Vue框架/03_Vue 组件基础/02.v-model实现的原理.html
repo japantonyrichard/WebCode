@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        -----{{msg}}----
+        <!-- .lazy  失去焦点 -->
+        <input type="text" v-model.lazy="msg">
+        <input type="text" v-model.number="num" type="number">
+        <input type="text" v-model.trim="msg">
+
+        <hr>
+        <h2>v-model实现的原理</h2>
+        <!-- 默认收集的是表单元素的  value 的值 -->
+        <!-- 
+            ==原理：==
+      1、通过v-bind，动态绑定value数据
+      2、监听input事件，把变化后的值赋值给变量
+         -->
+        {{val}}
+        <input type="text" :value="val" @input="change">
+        <input type="text"  :value="val" @input="val=$event.target.value">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: '  新的一周，加油鸭！ ',
+                num: 10,
+                // parseInt()
+                val: '初始值'
+            },
+            methods: {
+                change(e) {
+                    // e.target.value
+                    console.log(e.target.value);
+                    this.val = e.target.value;
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

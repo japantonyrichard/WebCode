@@ -1,0 +1,58 @@
+{
+  "id": "3180255",
+  "name": "vue-ego",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "后台管理系统",
+  "glyphs": [
+    {
+      "icon_id": "344066",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "1105",
+      "name": "认证用户",
+      "font_class": "vipyonghu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1727459",
+      "name": "224用户",
+      "font_class": "yonghu",
+      "unicode": "e8c8",
+      "unicode_decimal": 59592
+    },
+    {
+      "icon_id": "2126752",
+      "name": "257用户资料",
+      "font_class": "yonghuziliao",
+      "unicode": "e91b",
+      "unicode_decimal": 59675
+    },
+    {
+      "icon_id": "584065",
+      "name": "退出",
+      "font_class": "exit",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "16020747",
+      "name": "折叠2",
+      "font_class": "zhankai",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "16020767",
+      "name": "折叠1",
+      "font_class": "zhedie",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    }
+  ]
+}

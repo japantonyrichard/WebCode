@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <button v-on:click="test">查看this</button>
+        <!-- 传参 -->
+        <button v-on:click="say('Hi')">传参</button>
+        <!-- 事件对象  1、不带参数:接收到的第一个参数就是事件对象 -->
+        <button v-on:click="add">不带参数 查看事件对象</button>
+        <!-- 2、带参数：又要用事件对象时，必须写成$event！！！！！ -->
+        <button v-on:click="sub(2,$event)">带参数 查看事件对象</button>
+        <!-- 语法糖:简写   v-on的语法糖： @-->
+        <button @click="test">语法糖</button>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'Vue'
+            },
+            methods: {
+                test() {
+                    // this  当前实例
+                    console.log(this.msg);
+                    this.add();
+                },
+                add(e) {
+                    console.log(e);
+                },
+                say(msg) {
+                    alert(msg)
+                },
+                sub(num, e) {
+                    console.log(num, e);
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
